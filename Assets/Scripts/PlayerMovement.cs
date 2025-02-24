@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour {
     [SerializeField] private TrailRenderer trailRenderer;
 
     [Header("Movement Settings")]
-    [SerializeField] private float moveSpeed = 15f;
+    [SerializeField] private float moveSpeed = 10f;
     private Vector2 moveDirection;
 
     [Header("Jump Settings")]
@@ -25,11 +25,6 @@ public class PlayerMovement : MonoBehaviour {
 
         trailRenderer = GetComponent<TrailRenderer>();
     }
-
-    private void Update() {
-
-    }
-
     private void FixedUpdate() {
         rigidBody2D.linearVelocity = new Vector2(moveDirection.x * moveSpeed, rigidBody2D.linearVelocity.y);
         AdjustGravity();
