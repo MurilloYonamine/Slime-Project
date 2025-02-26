@@ -1,3 +1,4 @@
+using AUDIO;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -20,6 +21,8 @@ namespace PLAYER {
         [SerializeField] private float gravityScale = 5f;
         [SerializeField] private float fallGravityScale = 15f;
 
+        [SerializeField] private AudioClip audioTest;
+
         private void Start() {
             rigidBody2D = GetComponent<Rigidbody2D>();
             rigidBody2D.gravityScale = gravityScale;
@@ -35,6 +38,7 @@ namespace PLAYER {
             if (context.started && !isJumping) {
                 rigidBody2D.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
                 isJumping = true;
+                SoundFXManager.Instance.PlaySoundFXClip(audioTest, transform, 0.5f);
             }
             if (context.canceled && rigidBody2D.linearVelocity.y > 0) {
                 rigidBody2D.linearVelocity = new Vector2(rigidBody2D.linearVelocity.x, rigidBody2D.linearVelocity.y * 0.6f);
