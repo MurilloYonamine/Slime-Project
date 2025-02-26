@@ -55,8 +55,7 @@ namespace AUDIO {
         }
 
         private void SetAsActiveTrack(AudioTrack track) {
-            if (!tracks.Contains(track))
-                tracks.Add(track);
+            if (!tracks.Contains(track)) tracks.Add(track);
 
             activeTrack = track;
 
@@ -64,8 +63,7 @@ namespace AUDIO {
         }
 
         private void TryStartVolumeLeveling() {
-            if (!isLevelingVolume)
-                co_volumeLeveling = AudioManager.instance.StartCoroutine(VolumeLeveling());
+            if (!isLevelingVolume) co_volumeLeveling = AudioManager.instance.StartCoroutine(VolumeLeveling());
         }
 
         private IEnumerator VolumeLeveling() {
@@ -75,14 +73,11 @@ namespace AUDIO {
 
                     float targetVol = activeTrack == track ? track.volumeCap : 0;
 
-                    if (track == activeTrack && track.volume == targetVol)
-                        continue;
+                    if (track == activeTrack && track.volume == targetVol) continue;
 
                     track.volume = Mathf.MoveTowards(track.volume, targetVol, AudioManager.TRACK_TRANSITION_SPEED * Time.deltaTime);
 
-                    if (track != activeTrack && track.volume == 0) {
-                        DestroyTrack(track);
-                    }
+                    if (track != activeTrack && track.volume == 0) DestroyTrack(track);
                 }
                 yield return null;
             }
@@ -91,15 +86,13 @@ namespace AUDIO {
         }
 
         private void DestroyTrack(AudioTrack track) {
-            if (tracks.Contains(track))
-                tracks.Remove(track);
+            if (tracks.Contains(track)) tracks.Remove(track);
 
             Object.Destroy(track.root);
         }
 
         public void StopTrack(bool immediate = false) {
-            if (activeTrack == null)
-                return;
+            if (activeTrack == null) return;
 
             if (immediate) {
                 DestroyTrack(activeTrack);
