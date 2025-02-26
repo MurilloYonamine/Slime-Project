@@ -57,8 +57,7 @@ namespace AUDIO {
 
         public AudioSource PlaySoundEffect(AudioClip clip, AudioMixerGroup mixer = null, float volume = 1, float pitch = 1, bool loop = false, string filePath = "") {
             string fileName = clip.name;
-            if (filePath != string.Empty)
-                fileName = filePath;
+            if (filePath != string.Empty) fileName = filePath;
 
             AudioSource effectSource = new GameObject(string.Format(SFX_NAME_FORMAT, fileName)).AddComponent<AudioSource>();
             effectSource.transform.SetParent(sfxRoot);
@@ -66,8 +65,7 @@ namespace AUDIO {
 
             effectSource.clip = clip;
 
-            if (mixer == null)
-                mixer = sfxMixer;
+            if (mixer == null) mixer = sfxMixer;
 
             effectSource.outputAudioMixerGroup = mixer;
             effectSource.volume = volume;
@@ -77,8 +75,7 @@ namespace AUDIO {
 
             effectSource.Play();
 
-            if (!loop)
-                Destroy(effectSource.gameObject, (clip.length / pitch) + 1);
+            if (!loop) Destroy(effectSource.gameObject, (clip.length / pitch) + 1);
 
             return effectSource;
         }
@@ -110,8 +107,7 @@ namespace AUDIO {
 
             AudioSource[] sources = sfxRoot.GetComponentsInChildren<AudioSource>();
             foreach (var source in sources) {
-                if (source.clip.name.ToLower() == soundName)
-                    return true;
+                if (source.clip.name.ToLower() == soundName) return true;
             }
 
             return false;
@@ -137,8 +133,7 @@ namespace AUDIO {
         public void StopTrack(int channel) {
             AudioChannel audioChannel = TryGetChannel(channel, createIfDoesNotExist: false);
 
-            if (audioChannel == null)
-                return;
+            if (audioChannel == null) return;
 
             audioChannel.StopTrack();
         }
@@ -155,16 +150,12 @@ namespace AUDIO {
         }
 
         public void StopAllTracks() {
-            foreach (AudioChannel channel in channels.Values) {
-                channel.StopTrack();
-            }
+            foreach (AudioChannel channel in channels.Values) channel.StopTrack();
         }
 
         public void StopAllSoundEffects() {
             AudioSource[] sources = sfxRoot.GetComponentsInChildren<AudioSource>();
-            foreach (var source in sources) {
-                Destroy(source.gameObject);
-            }
+            foreach (var source in sources) Destroy(source.gameObject);
         }
 
         public AudioChannel TryGetChannel(int channelNumber, bool createIfDoesNotExist = false) {
@@ -196,4 +187,4 @@ namespace AUDIO {
             voicesMixer.audioMixer.SetFloat(VOICES_VOLUME_PARAMETER_NAME, volume);
         }
     }
-} 
+}

@@ -45,12 +45,7 @@ namespace AUDIO {
             return source;
         }
 
-        public void Play() {
-            source.Play();
-        }
-
-        public void Stop() {
-            source.Stop();
-        }
+        public void Play() => source.Play();
+        public void Stop() => source.Stop();
     }
 }
