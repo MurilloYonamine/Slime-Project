@@ -24,8 +24,7 @@ namespace AUDIO {
 
         public AudioTrack PlayTrack(AudioClip clip, bool loop, float startingVolume, float volumeCap, float pitch, string filePath) {
             if (TryGetTrack(clip.name, out AudioTrack existingTrack)) {
-                if (!existingTrack.isPlaying)
-                    existingTrack.Play();
+                if (!existingTrack.isPlaying) existingTrack.Play();
 
                 SetAsActiveTrack(existingTrack);
 

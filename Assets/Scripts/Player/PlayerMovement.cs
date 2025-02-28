@@ -37,8 +37,8 @@ namespace PLAYER {
         public void Jump(InputAction.CallbackContext context) {
             if (context.started && !isJumping) {
                 rigidBody2D.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
+                AudioManager.instance.PlaySoundEffect("Audio/SFX/Slime/slime_jump");
                 isJumping = true;
-                SoundFXManager.Instance.PlaySoundFXClip(audioTest, transform, 0.5f);
             }
             if (context.canceled && rigidBody2D.linearVelocity.y > 0) {
                 rigidBody2D.linearVelocity = new Vector2(rigidBody2D.linearVelocity.x, rigidBody2D.linearVelocity.y * 0.6f);

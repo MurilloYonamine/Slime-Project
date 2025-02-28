@@ -13,13 +13,16 @@ namespace AUDIO {
 
         private AudioChannel channel;
         private AudioSource source;
-        public bool loop => source.loop;
-        public float volumeCap { get; private set; }
-        public float pitch { get { return source.pitch; } set { source.pitch = value; } }
 
+        public bool loop => source.loop;
         public bool isPlaying => source.isPlaying;
 
+        public float volumeCap { get; private set; }
+        public float pitch { get { return source.pitch; } set { source.pitch = value; } }
         public float volume { get { return source.volume; } set { source.volume = value; } }
+
+
+
 
         public AudioTrack(AudioClip clip, bool loop, float startingVolume, float volumeCap, float pitch, AudioChannel channel, AudioMixerGroup mixer, string filePath) {
             name = clip.name;
