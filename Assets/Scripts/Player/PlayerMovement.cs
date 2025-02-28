@@ -21,7 +21,6 @@ namespace PLAYER {
         [SerializeField] private float gravityScale = 5f;
         [SerializeField] private float fallGravityScale = 15f;
 
-        [SerializeField] private AudioClip audioTest;
 
         private void Start() {
             rigidBody2D = GetComponent<Rigidbody2D>();
@@ -60,6 +59,7 @@ namespace PLAYER {
 
         private void OnCollisionEnter2D(Collision2D collision) {
             if (collision.gameObject.CompareTag("Ground")) {
+                Debug.Log("Está no Chão!");
                 isJumping = false;
             }
         }
