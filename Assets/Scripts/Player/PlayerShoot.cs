@@ -13,7 +13,6 @@ namespace PLAYER
         private void Update()
         {
             aimPrefab.anchoredPosition = Mouse.current.position.value;
-
         }
 
         public void Shoot(InputAction.CallbackContext context)

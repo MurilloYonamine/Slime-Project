@@ -7,7 +7,7 @@ namespace AUDIO
     public class AudioManager : MonoBehaviour
     {
 
-        public static AudioManager instance { get; private set; }
+        public static AudioManager Instance { get; private set; }
 
         public const string MUSIC_VOLUME_PARAMETER_NAME = "MusicVolume";
         public const string SFX_VOLUME_PARAMETER_NAME = "SoundFXVolume";
@@ -37,11 +37,11 @@ namespace AUDIO
         #region Unity Methods
         private void Awake()
         {
-            if (instance == null)
+            if (Instance == null)
             {
                 transform.SetParent(null);
                 DontDestroyOnLoad(gameObject);
-                instance = this;
+                Instance = this;
             }
             else
             {

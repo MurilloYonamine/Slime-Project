@@ -19,7 +19,7 @@ namespace AUDIO {
             channelIndex = channel;
 
             trackContainer = new GameObject(string.Format(TRACK_CONTAINER_NAME_FORMAT, channel)).transform;
-            trackContainer.SetParent(AudioManager.instance.transform);
+            trackContainer.SetParent(AudioManager.Instance.transform);
         }
 
         public AudioTrack PlayTrack(AudioClip clip, bool loop, float startingVolume, float volumeCap, float pitch, string filePath) {
@@ -31,7 +31,7 @@ namespace AUDIO {
                 return existingTrack;
             }
 
-            AudioTrack track = new AudioTrack(clip, loop, startingVolume, volumeCap, pitch, this, AudioManager.instance.musicMixer, filePath);
+            AudioTrack track = new AudioTrack(clip, loop, startingVolume, volumeCap, pitch, this, AudioManager.Instance.musicMixer, filePath);
             track.Play();
 
             SetAsActiveTrack(track);
@@ -62,7 +62,7 @@ namespace AUDIO {
         }
 
         private void TryStartVolumeLeveling() {
-            if (!isLevelingVolume) co_volumeLeveling = AudioManager.instance.StartCoroutine(VolumeLeveling());
+            if (!isLevelingVolume) co_volumeLeveling = AudioManager.Instance.StartCoroutine(VolumeLeveling());
         }
 
         private IEnumerator VolumeLeveling() {
