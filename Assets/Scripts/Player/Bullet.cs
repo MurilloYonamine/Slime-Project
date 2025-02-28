@@ -9,6 +9,7 @@ namespace PLAYER {
             Enemy enemy = other.GetComponent<Enemy>();
             if (enemy) {
                 other.GetComponent<Enemy>().TakeDamage(bulletDamage);
+                CameraManager.Instance.ShakeCamera(5f, 0.1f);
                 Destroy(gameObject);
             }
         }

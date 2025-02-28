@@ -6,12 +6,11 @@ namespace AUDIO
 {
     public class AudioManager : MonoBehaviour
     {
-
         public static AudioManager Instance { get; private set; }
 
+        public const string MASTER_VOLUME_PARAMETER_NAME = "MasterVolume";
         public const string MUSIC_VOLUME_PARAMETER_NAME = "MusicVolume";
         public const string SFX_VOLUME_PARAMETER_NAME = "SoundFXVolume";
-        public const string MASTER_VOLUME_PARAMETER_NAME = "MasterVolume";
 
         public const float MUTED_VOLUME_LEVEL = -80f;
         public const float TRACK_TRANSITION_SPEED = 1f;
@@ -24,6 +23,7 @@ namespace AUDIO
         public Dictionary<int, AudioChannel> channels = new Dictionary<int, AudioChannel>();
 
         [Header("Audio Mixers")]
+        public AudioMixerGroup masterMixer;
         public AudioMixerGroup musicMixer;
         public AudioMixerGroup sfxMixer;
 

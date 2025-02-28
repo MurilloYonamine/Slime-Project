@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance;
+    public static GameManager Instance { get; private set; }
 
     [Header("Text Elements")]
     [SerializeField] private TextMeshProUGUI mousePositionText;
