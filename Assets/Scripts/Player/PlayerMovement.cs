@@ -19,7 +19,7 @@ namespace PLAYER {
 
         [Header("Gravity Settings")]
         [SerializeField] private float gravityScale = 5f;
-        [SerializeField] private float fallGravityScale = 15f;
+        [SerializeField] private float fallGravityScale = 10f;
 
 
         private void Start() {
