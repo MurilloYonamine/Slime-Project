@@ -1,6 +1,7 @@
 using AUDIO;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 namespace PLAYER {
     public class Grappler : MonoBehaviour {
@@ -9,15 +10,21 @@ namespace PLAYER {
         [SerializeField] private LayerMask grappleLayer;
         public bool canGrapple = true;
 
+        [SerializeField] private Image playerAimImage;
+        private Color originalColor;
+
         private void Start() {
+            playerAimImage = GameManager.Instance.playerAim.GetComponent<Image>();
+            originalColor = playerAimImage.color;
+
             lineRenderer.enabled = false;
             distanceJoint2D.enabled = false;
         }
 
         private void Update() {
-            if (lineRenderer.enabled) {
-                lineRenderer.SetPosition(1, transform.position);
-            }
+            if (lineRenderer.enabled) lineRenderer.SetPosition(1, transform.position);
+
+            DetectHover();
         }
 
         public void Grapple(InputAction.CallbackContext context) {
@@ -43,6 +50,19 @@ namespace PLAYER {
 
             if (lineRenderer.enabled) lineRenderer.SetPosition(1, transform.position);
         }
+        private void DetectHover() {
+            Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+            RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero, 0f, grappleLayer);
 
+            if (hit.collider != null) {
+               playerAimImage.color = Color.red;
+            } else {
+                ResetHoverEffect();
+            }
+        }
+
+        private void ResetHoverEffect() {
+            playerAimImage.color = originalColor;
+        }
     }
 }

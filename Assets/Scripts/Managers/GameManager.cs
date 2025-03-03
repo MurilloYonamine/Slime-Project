@@ -12,9 +12,11 @@ public class GameManager : MonoBehaviour
 
     [Header("Game Objects")]
     [SerializeField] public GameObject player;
+    [SerializeField] public GameObject playerAim;
 
     void Awake()
     {
+        Cursor.visible = false;
         if (Instance == null)
         {
             Instance = this;

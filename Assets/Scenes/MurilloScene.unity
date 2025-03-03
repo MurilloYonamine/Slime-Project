@@ -1036,7 +1036,7 @@ LineRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1013143984}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1142,7 +1142,7 @@ DistanceJoint2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1013143984}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_EnableCollision: 0
   m_ConnectedRigidBody: {fileID: 0}
@@ -1173,6 +1173,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   canGrapple: 1
+  playerAimImage: {fileID: 0}
 --- !u!1 &1197463379
 GameObject:
   m_ObjectHideFlags: 0
@@ -13938,7 +13939,7 @@ MonoBehaviour:
   mousePositionText: {fileID: 2021293045}
   playerPositionText: {fileID: 1361496282}
   player: {fileID: 1013143984}
-  playerAim: {fileID: 0}
+  playerAim: {fileID: 1798204251}
 --- !u!1001 &2971260112650252658
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14042,6 +14043,10 @@ PrefabInstance:
     - target: {fileID: 4281693707818524730, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
       propertyPath: m_ActionEvents.Array.data[19].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7361843280154148714, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
+      propertyPath: fallGravityScale
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
