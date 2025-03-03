@@ -19,9 +19,8 @@ namespace PLAYER {
 
         [Header("Gravity Settings")]
         [SerializeField] private float gravityScale = 5f;
-        [SerializeField] private float fallGravityScale = 15f;
+        [SerializeField] private float fallGravityScale = 10f;
 
-        [SerializeField] private AudioClip audioTest;
 
         private void Start() {
             rigidBody2D = GetComponent<Rigidbody2D>();
@@ -37,8 +36,8 @@ namespace PLAYER {
         public void Jump(InputAction.CallbackContext context) {
             if (context.started && !isJumping) {
                 rigidBody2D.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
+                AudioManager.Instance.PlaySoundEffect("Audio/SFX/Slime/slime_jump");
                 isJumping = true;
-                SoundFXManager.Instance.PlaySoundFXClip(audioTest, transform, 0.5f);
             }
             if (context.canceled && rigidBody2D.linearVelocity.y > 0) {
                 rigidBody2D.linearVelocity = new Vector2(rigidBody2D.linearVelocity.x, rigidBody2D.linearVelocity.y * 0.6f);
@@ -60,6 +59,7 @@ namespace PLAYER {
 
         private void OnCollisionEnter2D(Collision2D collision) {
             if (collision.gameObject.CompareTag("Ground")) {
+                Debug.Log("Está no Chão!");
                 isJumping = false;
             }
         }

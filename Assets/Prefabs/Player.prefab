@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 8436713445552733064}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31,7 +31,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 668113724125027090}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.52, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -83,7 +83,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  m_Color: {r: 0.35686275, g: 0.50980395, b: 0.40000004, a: 1}
+  m_Color: {r: 0.41960785, g: 0.9529412, b: 0.84313726, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -254,7 +254,6 @@ MonoBehaviour:
   isJumping: 0
   gravityScale: 5
   fallGravityScale: 15
-  audioTest: {fileID: 0}
 --- !u!114 &265461876390502868
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -270,6 +269,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 2063527191266757597, guid: 99fa830106dc3a14a80cedd4407167db, type: 3}
   bulletSpeed: 35
   mainCamera: {fileID: 0}
+  aimPrefab: {fileID: 0}
 --- !u!50 &4114351590978167007
 Rigidbody2D:
   serializedVersion: 5
@@ -286,7 +286,7 @@ Rigidbody2D:
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 5
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 3f43772bfa4836240a20b37fa9ff95c6, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -419,7 +419,7 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.16078432, g: 0.28627452, b: 0.21176472, a: 1}
+      key0: {r: 0.41960785, g: 0.9529412, b: 0.84313726, a: 1}
       key1: {r: 0.68235296, g: 0.96470594, b: 0.7803922, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
