@@ -1,3 +1,4 @@
+using AUDIO;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -25,6 +26,7 @@ namespace PLAYER
 
                 GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
                 bullet.GetComponent<Rigidbody2D>().linearVelocity = new Vector3(shootDirection.x, shootDirection.y, shootDirection.z) * bulletSpeed;
+                AudioManager.Instance.PlaySoundEffect("Audio/SFX/Slime/slime_shot", volume: 1f, pitch: 1.5f);
                 Destroy(bullet, 2f);
             }
         }

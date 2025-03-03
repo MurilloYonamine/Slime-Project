@@ -1,4 +1,5 @@
 using System.Collections;
+using AUDIO;
 using PLAYER;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -31,6 +32,7 @@ namespace ENEMY
             currentHealth -= damage;
 
             StartCoroutine(FlashWhite());
+            AudioManager.Instance.PlaySoundEffect("Audio/SFX/Enemy/hit_damage", volume: 1f);
 
             if (currentHealth <= 0) Die();
 
