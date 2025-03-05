@@ -58,7 +58,7 @@ namespace PLAYER {
 
         public void Jump(InputAction.CallbackContext context) {
             if (context.started) {
-                if (isClimbing) {
+                if (isClimbing || isTriggerClimbing) {
                     WallJump();
                 } else if (!isJumping) {
                     rigidBody2D.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
@@ -89,7 +89,7 @@ namespace PLAYER {
         public void TriggerClimb(InputAction.CallbackContext context) {
             climbDirection = context.ReadValue<Vector2>().y;
 
-            if (!isClimbing) climbDirection = 0f;
+            if (!isTriggerClimbing) climbDirection = 0f;
         }
 
         private void TriggerClimbMovement() {
@@ -137,7 +137,7 @@ namespace PLAYER {
 
         private void OnTriggerEnter2D(Collider2D collision) {
             if (((1 << collision.gameObject.layer) & triggerClimbableWallLayer) != 0) {
-                isClimbing = true;
+                isTriggerClimbing = true;
                 isJumping = false;
                 rigidBody2D.linearVelocity = Vector2.zero;
             }
@@ -145,7 +145,8 @@ namespace PLAYER {
 
         private void OnTriggerExit2D(Collider2D collision) {
             if (((1 << collision.gameObject.layer) & triggerClimbableWallLayer) != 0) {
-                isClimbing = false;
+                isTriggerClimbing = false;
+                isJumping = false;
                 climbDirection = 0f;
             }
         }
