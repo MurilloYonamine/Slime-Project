@@ -1,9 +1,13 @@
 using AUDIO;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
-namespace PLAYER {
-    public class PlayerShoot : MonoBehaviour {
+namespace PLAYER
+{
+    
+    public class PlayerShoot : MonoBehaviour
+    {
+        public PlayerHealth pHealth;
+        
         [SerializeField] private GameObject bulletPrefab;
         [SerializeField] private float bulletSpeed = 50f;
         [SerializeField] private Camera mainCamera;
@@ -13,8 +17,13 @@ namespace PLAYER {
             aimPrefab.anchoredPosition = Mouse.current.position.value;
         }
 
-        public void Shoot(InputAction.CallbackContext context) {
-            if (context.started) {
+        public void Shoot(InputAction.CallbackContext context)
+        {
+            
+            if (context.started && pHealth.Health > 1)
+            {
+                pHealth.Health -= 1;
+
                 Vector3 mousePosition = mainCamera.ScreenToWorldPoint(Mouse.current.position.ReadValue());
                 mousePosition.z = transform.position.z;
 
