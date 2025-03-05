@@ -19,6 +19,7 @@ namespace PLAYER {
 
         [Header("Wall Climb Settings")]
         [SerializeField] public bool isClimbing { get; private set; } = false;
+        [SerializeField] public bool isTriggerClimbing { get; private set; } = false;
         [SerializeField] private float climbSpeed = 5f;
         private float climbDirection;
 
@@ -29,6 +30,7 @@ namespace PLAYER {
         [Header("Layer Settings")]
         [SerializeField] private LayerMask groundLayer;
         [SerializeField] private LayerMask climbableWallLayer;
+        [SerializeField] private LayerMask triggerClimbableWallLayer;
 
         private void Start() {
             rigidBody2D = GetComponent<Rigidbody2D>();
@@ -42,6 +44,8 @@ namespace PLAYER {
 
             if (isClimbing) {
                 ClimbMovement();
+            } else if (isTriggerClimbing) {
+                TriggerClimbMovement();
             } else {
                 AdjustGravity();
             }
@@ -70,10 +74,25 @@ namespace PLAYER {
         public void Climb(InputAction.CallbackContext context) {
             climbDirection = context.ReadValue<Vector2>().y;
 
-            if (!isClimbing) climbDirection = 0f; 
+            if (!isClimbing) climbDirection = 0f;
         }
 
         private void ClimbMovement() {
+            if (Mathf.Abs(climbDirection) > 0.1f) {
+                rigidBody2D.linearVelocity = new Vector2(rigidBody2D.linearVelocity.x, climbDirection * climbSpeed);
+                rigidBody2D.gravityScale = 0f;
+            } else {
+                rigidBody2D.linearVelocity = new Vector2(rigidBody2D.linearVelocity.x, -1f);
+            }
+        }
+
+        public void TriggerClimb(InputAction.CallbackContext context) {
+            climbDirection = context.ReadValue<Vector2>().y;
+
+            if (!isClimbing) climbDirection = 0f;
+        }
+
+        private void TriggerClimbMovement() {
             if (Mathf.Abs(climbDirection) > 0.1f) {
                 rigidBody2D.linearVelocity = new Vector2(rigidBody2D.linearVelocity.x, climbDirection * climbSpeed);
                 rigidBody2D.gravityScale = 0f;
@@ -97,7 +116,6 @@ namespace PLAYER {
                 rigidBody2D.gravityScale = fallGravityScale;
             }
         }
-
         private void OnCollisionEnter2D(Collision2D collision) {
             if (((1 << collision.gameObject.layer) & groundLayer) != 0) {
                 isJumping = false;
@@ -106,7 +124,7 @@ namespace PLAYER {
                 isClimbing = true;
                 isJumping = false;
 
-                rigidBody2D.linearVelocity = Vector2.zero; 
+                rigidBody2D.linearVelocity = Vector2.zero;
             }
         }
 
@@ -116,5 +134,21 @@ namespace PLAYER {
                 climbDirection = 0f;
             }
         }
+
+        private void OnTriggerEnter2D(Collider2D collision) {
+            if (((1 << collision.gameObject.layer) & triggerClimbableWallLayer) != 0) {
+                isClimbing = true;
+                isJumping = false;
+                rigidBody2D.linearVelocity = Vector2.zero;
+            }
+        }
+
+        private void OnTriggerExit2D(Collider2D collision) {
+            if (((1 << collision.gameObject.layer) & triggerClimbableWallLayer) != 0) {
+                isClimbing = false;
+                climbDirection = 0f;
+            }
+        }
     }
 }
+
