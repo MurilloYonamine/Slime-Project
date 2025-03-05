@@ -3,7 +3,6 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 namespace PLAYER
 {
-    
     public class PlayerShoot : MonoBehaviour
     {
         public PlayerHealth pHealth;
