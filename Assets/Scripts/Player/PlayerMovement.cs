@@ -19,7 +19,6 @@ namespace PLAYER {
 
         [Header("Wall Climb Settings")]
         [SerializeField] public bool isClimbing { get; private set; } = false;
-        [SerializeField] public bool isTriggerClimbing { get; private set; } = false;
         [SerializeField] private float climbSpeed = 5f;
         private float climbDirection;
 
@@ -30,7 +29,6 @@ namespace PLAYER {
         [Header("Layer Settings")]
         [SerializeField] private LayerMask groundLayer;
         [SerializeField] private LayerMask climbableWallLayer;
-        [SerializeField] private LayerMask triggerClimbableWallLayer;
 
         private void Start() {
             rigidBody2D = GetComponent<Rigidbody2D>();
@@ -44,8 +42,6 @@ namespace PLAYER {
 
             if (isClimbing) {
                 ClimbMovement();
-            } else if (isTriggerClimbing) {
-                TriggerClimbMovement();
             } else {
                 AdjustGravity();
             }
@@ -85,22 +81,6 @@ namespace PLAYER {
                 rigidBody2D.linearVelocity = new Vector2(rigidBody2D.linearVelocity.x, -1f);
             }
         }
-
-        public void TriggerClimb(InputAction.CallbackContext context) {
-            climbDirection = context.ReadValue<Vector2>().y;
-
-            if (!isClimbing) climbDirection = 0f;
-        }
-
-        private void TriggerClimbMovement() {
-            if (Mathf.Abs(climbDirection) > 0.1f) {
-                rigidBody2D.linearVelocity = new Vector2(rigidBody2D.linearVelocity.x, climbDirection * climbSpeed);
-                rigidBody2D.gravityScale = 0f;
-            } else {
-                rigidBody2D.linearVelocity = new Vector2(rigidBody2D.linearVelocity.x, -1f);
-            }
-        }
-
         private void WallJump() {
             Vector2 jumpDirection = new Vector2(moveDirection.x * 5f, 1f).normalized;
             rigidBody2D.linearVelocity = Vector2.zero;
@@ -116,38 +96,51 @@ namespace PLAYER {
                 rigidBody2D.gravityScale = fallGravityScale;
             }
         }
+        private void StartClimbing(Collider2D collision) {
+            if (((1 << collision.gameObject.layer) & climbableWallLayer) != 0) {
+                isClimbing = true;
+                isJumping = false;
+
+                rigidBody2D.linearVelocity = Vector2.zero;
+            }
+        }
+        private void StartClimbing(Collision2D collision) {
+            if (((1 << collision.gameObject.layer) & climbableWallLayer) != 0) {
+                isClimbing = true;
+                isJumping = false;
+
+                rigidBody2D.linearVelocity = Vector2.zero;
+            }
+        }
+        private void StopClimbing(Collider2D collision) {
+            if (((1 << collision.gameObject.layer) & climbableWallLayer) != 0) {
+                isClimbing = false;
+                climbDirection = 0f;
+            }
+        }
+        private void StopClimbing(Collision2D collision) {
+            if (((1 << collision.gameObject.layer) & climbableWallLayer) != 0) {
+                isClimbing = false;
+                climbDirection = 0f;
+            }
+        }
         private void OnCollisionEnter2D(Collision2D collision) {
             if (((1 << collision.gameObject.layer) & groundLayer) != 0) {
                 isJumping = false;
             }
-            if (((1 << collision.gameObject.layer) & climbableWallLayer) != 0) {
-                isClimbing = true;
-                isJumping = false;
-
-                rigidBody2D.linearVelocity = Vector2.zero;
-            }
+            StartClimbing(collision);
         }
 
         private void OnCollisionExit2D(Collision2D collision) {
-            if (((1 << collision.gameObject.layer) & climbableWallLayer) != 0) {
-                isClimbing = false;
-                climbDirection = 0f;
-            }
+            StopClimbing(collision);
         }
 
         private void OnTriggerEnter2D(Collider2D collision) {
-            if (((1 << collision.gameObject.layer) & triggerClimbableWallLayer) != 0) {
-                isClimbing = true;
-                isJumping = false;
-                rigidBody2D.linearVelocity = Vector2.zero;
-            }
+            StartClimbing(collision);
         }
 
         private void OnTriggerExit2D(Collider2D collision) {
-            if (((1 << collision.gameObject.layer) & triggerClimbableWallLayer) != 0) {
-                isClimbing = false;
-                climbDirection = 0f;
-            }
+            StopClimbing(collision);
         }
     }
 }
