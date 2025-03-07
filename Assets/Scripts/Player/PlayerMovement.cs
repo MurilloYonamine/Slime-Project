@@ -130,18 +130,9 @@ namespace PLAYER {
             }
             StartClimbing(collision);
         }
-
-        private void OnCollisionExit2D(Collision2D collision) {
-            StopClimbing(collision);
-        }
-
-        private void OnTriggerEnter2D(Collider2D collision) {
-            StartClimbing(collision);
-        }
-
-        private void OnTriggerExit2D(Collider2D collision) {
-            StopClimbing(collision);
-        }
+        private void OnCollisionExit2D(Collision2D collision) => StopClimbing(collision);
+        private void OnTriggerEnter2D(Collider2D collision) => StartClimbing(collision);
+        private void OnTriggerExit2D(Collider2D collision) => StopClimbing(collision);
     }
 }
 
