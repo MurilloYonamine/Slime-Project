@@ -8,7 +8,8 @@ namespace PLAYER {
         [SerializeField] private LineRenderer lineRenderer;
         [SerializeField] private DistanceJoint2D distanceJoint2D;
         [SerializeField] private LayerMask grappleLayer;
-        public bool canGrapple = true;
+        [SerializeField] private float grappleMaxPoint = 5f;
+        [SerializeField] public bool isGrappleWithinMaxDistance { get; private set; } = true;
 
         [SerializeField] private Image playerAimImage;
         private Color originalColor;
@@ -34,6 +35,8 @@ namespace PLAYER {
                 RaycastHit2D hit = Physics2D.Raycast(transform.position, mousePosition -
                     (Vector2)transform.position, Mathf.Infinity, grappleLayer);
 
+                if (Vector3.Distance(hit.point, transform.position) > grappleMaxPoint) return;
+
                 if (hit.collider != null) {
                     lineRenderer.SetPosition(0, hit.point);
                     lineRenderer.SetPosition(1, transform.position);
@@ -50,12 +53,13 @@ namespace PLAYER {
 
             if (lineRenderer.enabled) lineRenderer.SetPosition(1, transform.position);
         }
+
         private void DetectHover() {
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
             RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero, 0f, grappleLayer);
 
             if (hit.collider != null) {
-               playerAimImage.color = Color.red;
+                playerAimImage.color = Color.red;
             } else {
                 ResetHoverEffect();
             }

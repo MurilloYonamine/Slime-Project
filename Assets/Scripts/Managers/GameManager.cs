@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI playerPositionText;
     [SerializeField] private TextMeshProUGUI playerIsJumping;
     [SerializeField] private TextMeshProUGUI playerIsClimbingText;
+    [SerializeField] private TextMeshProUGUI playerCanGrappleText;
 
     [Header("Game Objects")]
     [SerializeField] public GameObject player;
