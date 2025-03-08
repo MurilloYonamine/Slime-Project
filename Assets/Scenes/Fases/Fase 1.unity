@@ -50077,7 +50077,7 @@ GameObject:
   - component: {fileID: 1344671104}
   - component: {fileID: 1344671103}
   - component: {fileID: 1344671102}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: Trigger Climbable Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}

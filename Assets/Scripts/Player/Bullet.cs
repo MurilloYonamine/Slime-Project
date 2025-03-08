@@ -17,6 +17,7 @@ namespace PLAYER {
             if (!other.CompareTag("Player") && hitEffect != null) {
                 GameObject impact = Instantiate(hitEffect, transform.position, Quaternion.identity);
                 Destroy(impact, 1f);
+                Destroy(gameObject);
             }
         }
     }

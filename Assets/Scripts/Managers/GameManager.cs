@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI playerPositionText;
     [SerializeField] private TextMeshProUGUI playerIsJumping;
     [SerializeField] private TextMeshProUGUI playerIsClimbingText;
-    [SerializeField] private TextMeshProUGUI playerIsTriggerClimbingText;
+    [SerializeField] private TextMeshProUGUI playerCanGrappleText;
 
     [Header("Game Objects")]
     [SerializeField] public GameObject player;
@@ -38,7 +38,6 @@ public class GameManager : MonoBehaviour
         playerPositionText.text = "Player Position: " + player.transform.position.ToString();
         playerIsJumping.text = "Is player jumping? " + player.GetComponent<PlayerMovement>().isJumping.ToString();
         playerIsClimbingText.text = "Is player climbing? " + player.GetComponent<PlayerMovement>().isClimbing.ToString();
-        playerIsTriggerClimbingText.text = "Is player trigger climbing? " + player.GetComponent<PlayerMovement>().isTriggerClimbing.ToString();
     }
 
 }
