@@ -63,7 +63,7 @@
                     "name": "Jump",
                     "type": "Button",
                     "id": "c8c06a29-cb2b-483e-93fc-e40171a7457b",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -81,7 +81,7 @@
                     "name": "Next",
                     "type": "Button",
                     "id": "9301b4f4-4fa1-4589-8ccf-782b12d4c22b",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false

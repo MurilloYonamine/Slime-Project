@@ -3557,13 +3557,13 @@ GameObject:
   - component: {fileID: 156704936}
   - component: {fileID: 156704935}
   - component: {fileID: 156704934}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &156704933
 Transform:
   m_ObjectHideFlags: 0
@@ -3573,7 +3573,7 @@ Transform:
   m_GameObject: {fileID: 156704932}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -12.1, y: -1, z: 0}
+  m_LocalPosition: {x: -21.58, y: -2.27, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -26510,7 +26510,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4281693707818524730, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
       propertyPath: m_ActionEvents.Array.data[21].m_ActionId
-      value: 62db071c-e52f-4d5a-9b13-359a5c2729b0
+      value: 863eb5c3-51a7-4d09-bd18-7f0f1f6cdb66
       objectReference: {fileID: 0}
     - target: {fileID: 4281693707818524730, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
       propertyPath: m_ActionEvents.Array.data[20].m_ActionName
@@ -26518,7 +26518,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4281693707818524730, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
       propertyPath: m_ActionEvents.Array.data[21].m_ActionName
-      value: 'Player/Climb1[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]'
+      value: 'Player/Jump1[/Keyboard/space]'
       objectReference: {fileID: 0}
     - target: {fileID: 4281693707818524730, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
       propertyPath: m_ActionEvents.Array.data[20].m_PersistentCalls.m_Calls.Array.size
@@ -26558,7 +26558,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4281693707818524730, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
       propertyPath: m_ActionEvents.Array.data[21].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: TriggerClimb
+      value: SuperJump
       objectReference: {fileID: 0}
     - target: {fileID: 4281693707818524730, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
       propertyPath: m_ActionEvents.Array.data[20].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -26583,6 +26583,10 @@ PrefabInstance:
     - target: {fileID: 6801612028656615555, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
       propertyPath: m_Size.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7361843280154148714, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
+      propertyPath: jumpPower
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 7361843280154148714, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
       propertyPath: groundLayer.m_Bits
