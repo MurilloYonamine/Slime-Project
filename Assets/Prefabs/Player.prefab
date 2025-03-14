@@ -14,12 +14,13 @@ GameObject:
   - component: {fileID: 7361843280154148714}
   - component: {fileID: 265461876390502868}
   - component: {fileID: 8639635223762759871}
+  - component: {fileID: 7337617330220112044}
   - component: {fileID: 4114351590978167007}
   - component: {fileID: 6801612028656615555}
   - component: {fileID: 8436713445552733064}
   - component: {fileID: 3048601384741564845}
   - component: {fileID: 7015384071408218936}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -265,6 +266,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: a52c1d18-8f41-44f6-a565-10d4de6e0cf9
     m_ActionName: Player/Climb
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7361843280154148714}
+        m_TargetAssemblyTypeName: PLAYER.PlayerMovement, Assembly-CSharp
+        m_MethodName: GoUp
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 63d5199b-e913-4c78-b2e1-1c7f8c9ea319
+    m_ActionName: 'Player/Great Upper[/Keyboard/e]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -284,17 +301,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigidBody2D: {fileID: 0}
   trailRenderer: {fileID: 0}
+  playerHealth: {fileID: 0}
   moveSpeed: 10
   jumpPower: 20
-  climbSpeed: 5
+  <IsJumping>k__BackingField: 0
   gravityScale: 5
   fallGravityScale: 10
   groundLayer:
     serializedVersion: 2
     m_Bits: 128
-  climbableWallLayer:
-    serializedVersion: 2
-    m_Bits: 512
+  <CanGoUp>k__BackingField: 0
+  playerClimb:
+    rigidBody2D: {fileID: 4114351590978167007}
+    climbSpeed: 5
+    <IsClimbing>k__BackingField: 0
+    climbableWallLayer:
+      serializedVersion: 2
+      m_Bits: 512
 --- !u!114 &265461876390502868
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -307,8 +330,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75feb42862de1f3439c6fd87e797e2e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pHealth: {fileID: 7337617330220112044}
   bulletPrefab: {fileID: 2063527191266757597, guid: 99fa830106dc3a14a80cedd4407167db, type: 3}
-  bulletSpeed: 35
+  bulletSpeed: 10
   mainCamera: {fileID: 0}
   aimPrefab: {fileID: 0}
 --- !u!114 &8639635223762759871
@@ -328,8 +352,25 @@ MonoBehaviour:
   grappleLayer:
     serializedVersion: 2
     m_Bits: 256
-  canGrapple: 1
+  grappleMaxPoint: 5
+  <IsGrappleWithinMaxDistance>k__BackingField: 1
+  <CanGrapple>k__BackingField: 0
   playerAimImage: {fileID: 0}
+--- !u!114 &7337617330220112044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 668113724125027090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23bb0b669c248ea488976d8a2fb0e614, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health: 10
+  MaxHealth: 10
+  healthBar: {fileID: 0}
 --- !u!50 &4114351590978167007
 Rigidbody2D:
   serializedVersion: 5
@@ -535,10 +576,10 @@ DistanceJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 0
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 2.9479785, y: 3.970349}
+  m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 12.851461
-  m_MaxDistanceOnly: 1
+  m_Distance: 1
+  m_MaxDistanceOnly: 0
 --- !u!120 &7015384071408218936
 LineRenderer:
   serializedVersion: 2

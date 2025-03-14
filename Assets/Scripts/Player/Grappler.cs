@@ -9,7 +9,8 @@ namespace PLAYER {
         [SerializeField] private DistanceJoint2D distanceJoint2D;
         [SerializeField] private LayerMask grappleLayer;
         [SerializeField] private float grappleMaxPoint = 5f;
-        [SerializeField] public bool isGrappleWithinMaxDistance { get; private set; } = true;
+        [field: SerializeField] public bool IsGrappleWithinMaxDistance { get; private set; } = true;
+        [field: SerializeField] public bool CanGrapple { get; private set; } = false;
 
         [SerializeField] private Image playerAimImage;
         private Color originalColor;
@@ -52,6 +53,7 @@ namespace PLAYER {
             }
 
             if (lineRenderer.enabled) lineRenderer.SetPosition(1, transform.position);
+
         }
 
         private void DetectHover() {
