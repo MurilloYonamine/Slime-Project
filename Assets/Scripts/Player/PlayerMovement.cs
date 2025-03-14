@@ -14,12 +14,12 @@ namespace PLAYER {
         private Vector2 moveDirection;
 
         [Header("Jump Settings")]
-        [SerializeField] private float jumpPower = 10f;
+        [SerializeField] private float jumpPower = 20f;
         [SerializeField] public bool isJumping { get; private set; } = false;
 
         [Header("Wall Climb Settings")]
-        [SerializeField] public bool isClimbing { get; private set; } = false;
         [SerializeField] private float climbSpeed = 5f;
+        public bool isClimbing { get; private set; } = false;
         private float climbDirection;
 
         [Header("Gravity Settings")]
@@ -88,7 +88,6 @@ namespace PLAYER {
 
             isClimbing = false;
         }
-
         private void AdjustGravity() {
             if (rigidBody2D.linearVelocity.y > 0) {
                 rigidBody2D.gravityScale = gravityScale;
@@ -96,43 +95,37 @@ namespace PLAYER {
                 rigidBody2D.gravityScale = fallGravityScale;
             }
         }
-        private void StartClimbing(Collider2D collision) {
-            if (((1 << collision.gameObject.layer) & climbableWallLayer) != 0) {
-                isClimbing = true;
-                isJumping = false;
-
-                rigidBody2D.linearVelocity = Vector2.zero;
-            }
-        }
-        private void StartClimbing(Collision2D collision) {
-            if (((1 << collision.gameObject.layer) & climbableWallLayer) != 0) {
-                isClimbing = true;
-                isJumping = false;
-
-                rigidBody2D.linearVelocity = Vector2.zero;
-            }
-        }
-        private void StopClimbing(Collider2D collision) {
-            if (((1 << collision.gameObject.layer) & climbableWallLayer) != 0) {
-                isClimbing = false;
-                climbDirection = 0f;
-            }
-        }
-        private void StopClimbing(Collision2D collision) {
-            if (((1 << collision.gameObject.layer) & climbableWallLayer) != 0) {
-                isClimbing = false;
-                climbDirection = 0f;
-            }
-        }
         private void OnCollisionEnter2D(Collision2D collision) {
             if (((1 << collision.gameObject.layer) & groundLayer) != 0) {
                 isJumping = false;
             }
-            StartClimbing(collision);
+            if (((1 << collision.gameObject.layer) & climbableWallLayer) != 0) {
+                isClimbing = true;
+                isJumping = false;
+
+                rigidBody2D.linearVelocity = Vector2.zero;
+            }
         }
-        private void OnCollisionExit2D(Collision2D collision) => StopClimbing(collision);
-        private void OnTriggerEnter2D(Collider2D collision) => StartClimbing(collision);
-        private void OnTriggerExit2D(Collider2D collision) => StopClimbing(collision);
+        private void OnCollisionExit2D(Collision2D collision) {
+            if (((1 << collision.gameObject.layer) & climbableWallLayer) != 0) {
+                isClimbing = false;
+                climbDirection = 0f;
+            }
+        }
+        private void OnTriggerEnter2D(Collider2D collision) {
+            if (((1 << collision.gameObject.layer) & climbableWallLayer) != 0) {
+                isClimbing = true;
+                isJumping = false;
+
+                rigidBody2D.linearVelocity = Vector2.zero;
+            }
+        }
+        private void OnTriggerExit2D(Collider2D collision) {
+            if (((1 << collision.gameObject.layer) & climbableWallLayer) != 0) {
+                isClimbing = false;
+                climbDirection = 0f;
+            }
+        } 
     }
 }
 
