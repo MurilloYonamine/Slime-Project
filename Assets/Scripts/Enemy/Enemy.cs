@@ -1,4 +1,5 @@
 using System.Collections;
+using AUDIO;
 using PLAYER;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -17,17 +18,10 @@ namespace ENEMY
         [SerializeField] private float knockbackForce = 25f;
         private float currentHealth;
 
-        [Header("Camera Shake Settings")]
-        [SerializeField] private CameraShake cameraShake;
-        [SerializeField] private float shakeDuration = 0.1f;
-        [SerializeField] private float shakeMagnitude = 0.1f;
-
         private void Start()
         {
             spriteRenderer = GetComponent<SpriteRenderer>();
             rigidBody2D = GetComponent<Rigidbody2D>();
-
-            cameraShake = FindObjectOfType<CameraShake>();
 
             currentHealth = maxHealth;
             originalColor = spriteRenderer.color;
@@ -38,12 +32,12 @@ namespace ENEMY
             currentHealth -= damage;
 
             StartCoroutine(FlashWhite());
+            AudioManager.Instance.PlaySoundEffect("Audio/SFX/Enemy/hit_damage", volume: 1f);
 
             if (currentHealth <= 0) Die();
 
             Vector3 knockbackDirection = (transform.position - GameManager.Instance.player.transform.position).normalized;
             rigidBody2D.AddForce(knockbackDirection * knockbackForce, ForceMode2D.Force);
-            StartCoroutine(cameraShake.Shake(shakeDuration, shakeMagnitude));
         }
 
         private IEnumerator FlashWhite()

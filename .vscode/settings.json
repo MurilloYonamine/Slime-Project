@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Slime-Project.sln"
+    "dotnet.defaultSolution": "Slime-Project-Thales.sln"
 }

@@ -5,18 +5,19 @@ TagManager:
   serializedVersion: 3
   tags:
   - Ground
+  - GrappleArea
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
+  - Grid
   - Ground
-  - 
-  - 
-  - 
-  - 
+  - Grappler
+  - Climbable Wall
+  - Trigger Climbable Wall
   - 
   - 
   - 
