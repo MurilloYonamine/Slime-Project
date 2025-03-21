@@ -16,6 +16,10 @@ namespace PLAYER
         private Camera mainCamera;
         private RectTransform aimPrefab;
 
+        [SerializeField] private float bulletDamage = 1f;
+        [SerializeField] private GameObject hitEffect;
+        [SerializeField] private float bulletDestroyTimer = 2f;
+
         public void Initialize(GameObject player, PlayerHealth playerHealth, GameObject bulletPrefab, RectTransform aimPrefab) {
             this.player = player;
             this.playerHealth = playerHealth;
@@ -43,11 +47,16 @@ namespace PLAYER
 
                 GameObject bullet = GameObject.Instantiate(bulletPrefab, player.transform.position, Quaternion.identity);
 
+                bullet.AddComponent<Bullet>();
+                bullet.GetComponent<Bullet>().bulletDamage = bulletDamage;
+                bullet.GetComponent<Bullet>().hitEffect = hitEffect;
+                bullet.GetComponent<Bullet>().player = player;
+
                 bullet.GetComponent<Rigidbody2D>().linearVelocity = shootDirection * bulletSpeed;
 
                 AudioManager.Instance.PlaySoundEffect("Audio/SFX/Slime/slime_shot", volume: 1f, pitch: 1.5f);
 
-                GameObject.Destroy(bullet, 2f);
+                GameObject.Destroy(bullet, bulletDestroyTimer);
             }
         }
 

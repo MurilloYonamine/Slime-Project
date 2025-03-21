@@ -4,10 +4,8 @@ using PLAYER;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace ENEMY
-{
-    public class Enemy : MonoBehaviour
-    {
+namespace ENEMY {
+    public class Enemy : MonoBehaviour {
         [Header("Enemy Components")]
         private SpriteRenderer spriteRenderer;
         private Rigidbody2D rigidBody2D;
@@ -18,8 +16,9 @@ namespace ENEMY
         [SerializeField] private float knockbackForce = 25f;
         private float currentHealth;
 
-        private void Start()
-        {
+        [HideInInspector] public GameObject player;
+
+        private void Start() {
             spriteRenderer = GetComponent<SpriteRenderer>();
             rigidBody2D = GetComponent<Rigidbody2D>();
 
@@ -27,8 +26,7 @@ namespace ENEMY
             originalColor = spriteRenderer.color;
         }
 
-        public void TakeDamage(float damage)
-        {
+        public void TakeDamage(float damage) {
             currentHealth -= damage;
 
             StartCoroutine(FlashWhite());
@@ -36,12 +34,13 @@ namespace ENEMY
 
             if (currentHealth <= 0) Die();
 
-            Vector3 knockbackDirection = (transform.position - GameManager.Instance.player.transform.position).normalized;
-            rigidBody2D.AddForce(knockbackDirection * knockbackForce, ForceMode2D.Force);
+            if (player != null) {
+                Vector3 knockbackDirection = (transform.position - player.transform.position).normalized;
+                rigidBody2D.AddForce(knockbackDirection * knockbackForce, ForceMode2D.Impulse);
+            }
         }
 
-        private IEnumerator FlashWhite()
-        {
+        private IEnumerator FlashWhite() {
             spriteRenderer.color = Color.white;
             yield return new WaitForSeconds(0.2f);
             spriteRenderer.color = originalColor;

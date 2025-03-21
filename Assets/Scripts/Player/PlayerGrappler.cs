@@ -30,39 +30,39 @@ namespace PLAYER {
             lineRenderer.enabled = false;
             distanceJoint2D.enabled = false;
         }
+
         public void OnUpdate() {
             if (lineRenderer.enabled) lineRenderer.SetPosition(1, player.transform.position);
         }
+
         public void Grapple(InputAction.CallbackContext context) {
             if (context.started) {
                 Vector2 mousePosition = (Vector2)Camera.main.ScreenToWorldPoint(Mouse.current.position.value);
 
-                RaycastHit2D hit = Physics2D.Raycast(player.transform.position, mousePosition -
-                    (Vector2)player.transform.position, Mathf.Infinity, grapplerLayer);
-
-                if (Vector3.Distance(hit.point, player.transform.position) > grappleMaxPoint) {
-                    CanGrapple = false;
-                    return;
-                } else {
-                    CanGrapple = true;
-                }
+                RaycastHit2D hit = Physics2D.Raycast(player.transform.position, mousePosition - (Vector2)player.transform.position, Mathf.Infinity, grapplerLayer);
 
                 if (hit.collider != null) {
-                    lineRenderer.SetPosition(0, hit.point);
-                    lineRenderer.SetPosition(1, player.transform.position);
+                    float distanceToGrapplePoint = Vector2.Distance(player.transform.position, hit.point);
+                    if (distanceToGrapplePoint <= grappleMaxPoint) {
+                        CanGrapple = true;
+                        lineRenderer.SetPosition(0, hit.point);
+                        lineRenderer.SetPosition(1, player.transform.position);
 
-                    distanceJoint2D.connectedAnchor = hit.point;
-                    distanceJoint2D.enabled = true;
-                    lineRenderer.enabled = true;
-                    AudioManager.Instance.PlaySoundEffect("Audio/SFX/Slime/slime_shot", volume: 1f);
+                        distanceJoint2D.connectedAnchor = hit.point;
+                        distanceJoint2D.enabled = true;
+                        lineRenderer.enabled = true;
+                        AudioManager.Instance.PlaySoundEffect("Audio/SFX/Slime/slime_shot", volume: 1f);
+                    } else {
+                        CanGrapple = false;
+                    }
                 }
             } else if (context.canceled) {
                 distanceJoint2D.enabled = false;
                 lineRenderer.enabled = false;
+                CanGrapple = false;
             }
 
             if (lineRenderer.enabled) lineRenderer.SetPosition(1, player.transform.position);
-
         }
     }
 }

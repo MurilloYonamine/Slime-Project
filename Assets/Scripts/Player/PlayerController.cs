@@ -31,7 +31,6 @@ namespace PLAYER {
         public bool IsClimbing => playerClimb.IsClimbing;
         public bool CanGrapple => playerGrappler.CanGrapple;
 
-
         private void Awake() {
             rigidBody2D = GetComponent<Rigidbody2D>();
             trailRenderer = GetComponent<TrailRenderer>();

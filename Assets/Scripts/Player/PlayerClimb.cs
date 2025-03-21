@@ -20,7 +20,6 @@ namespace PLAYER {
 
         private bool IsJumping = false;
 
-
         public void Initialize(Rigidbody2D rigidBody2D, LayerMask climbLayer, bool IsJumping) {
             this.rigidBody2D = rigidBody2D;
             this.IsJumping = IsJumping;

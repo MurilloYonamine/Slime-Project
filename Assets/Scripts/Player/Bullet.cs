@@ -1,13 +1,16 @@
 using ENEMY;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace PLAYER {
     public class Bullet : MonoBehaviour {
-        [SerializeField] private float bulletDamage = 1f;
-        [SerializeField] private GameObject hitEffect;
+        [HideInInspector] public float bulletDamage = 1f;
+        [HideInInspector] public GameObject hitEffect;
+        [HideInInspector] public GameObject player;
 
         private void OnTriggerEnter2D(Collider2D other) {
             if (other.TryGetComponent<Enemy>(out Enemy enemy)) {
+                if (enemy.player == null) enemy.player = player;
                 enemy.TakeDamage(bulletDamage);
                 CameraManager.Instance.ShakeCamera(5f, 0.1f);
 
