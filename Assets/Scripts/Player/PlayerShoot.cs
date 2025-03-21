@@ -1,40 +1,53 @@
 using AUDIO;
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 namespace PLAYER
 {
-    public class PlayerShoot : MonoBehaviour
+    [Serializable]
+    public class PlayerShoot
     {
-        public PlayerHealth pHealth;
-        
-        [SerializeField] private GameObject bulletPrefab;
-        [SerializeField] private float bulletSpeed = 50f;
-        [SerializeField] private Camera mainCamera;
-        [SerializeField] private RectTransform aimPrefab;
+        private PlayerHealth playerHealth;
+        private GameObject player;
 
-        private void Update() {
+        private GameObject bulletPrefab;
+        [SerializeField] private float bulletSpeed = 50f;
+
+        private Camera mainCamera;
+        private RectTransform aimPrefab;
+
+        public void Initialize(GameObject player, PlayerHealth playerHealth, GameObject bulletPrefab, RectTransform aimPrefab) {
+            this.player = player;
+            this.playerHealth = playerHealth;
+            this.bulletPrefab = bulletPrefab;
+            this.aimPrefab = aimPrefab;
+
+            mainCamera = Camera.main;
+        }
+
+        public void OnUpdate() {
             aimPrefab.anchoredPosition = Mouse.current.position.value;
         }
 
         public void Shoot(InputAction.CallbackContext context)
         {
             
-            if (context.started && pHealth.Health > 1)
+            if (context.started && playerHealth.Health > 1)
             {
-                pHealth.Health -= 1;
+                playerHealth.Health -= 1;
 
                 Vector3 mousePosition = mainCamera.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-                mousePosition.z = transform.position.z;
+                mousePosition.z = player.transform.position.z;
 
-                Vector3 shootDirection = (mousePosition - transform.position).normalized;
+                Vector3 shootDirection = (mousePosition - player.transform.position).normalized;
 
-                GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+                GameObject bullet = GameObject.Instantiate(bulletPrefab, player.transform.position, Quaternion.identity);
 
                 bullet.GetComponent<Rigidbody2D>().linearVelocity = shootDirection * bulletSpeed;
 
                 AudioManager.Instance.PlaySoundEffect("Audio/SFX/Slime/slime_shot", volume: 1f, pitch: 1.5f);
 
-                Destroy(bullet, 2f);
+                GameObject.Destroy(bullet, 2f);
             }
         }
 

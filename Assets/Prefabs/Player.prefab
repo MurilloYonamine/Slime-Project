@@ -11,10 +11,7 @@ GameObject:
   - component: {fileID: 2681552103125494043}
   - component: {fileID: 896281668011520122}
   - component: {fileID: 4281693707818524730}
-  - component: {fileID: 7361843280154148714}
-  - component: {fileID: 265461876390502868}
-  - component: {fileID: 8639635223762759871}
-  - component: {fileID: 7337617330220112044}
+  - component: {fileID: 2073715740645569701}
   - component: {fileID: 4114351590978167007}
   - component: {fileID: 6801612028656615555}
   - component: {fileID: 8436713445552733064}
@@ -124,9 +121,9 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7361843280154148714}
-        m_TargetAssemblyTypeName: PLAYER.PlayerMovement, Assembly-CSharp
-        m_MethodName: Move
+      - m_Target: {fileID: 2073715740645569701}
+        m_TargetAssemblyTypeName: PLAYER.PlayerController, Assembly-CSharp
+        m_MethodName: OnMove
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -135,18 +132,22 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 1cad2a6b-4039-48d4-96d9-b524651166c7
-    m_ActionName: 'Player/Move[/XInputControllerWindows/leftStick,/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]'
+        m_CallState: 0
+    m_ActionId: 0e223902-9a0c-4736-a565-6a6938f2419c
+    m_ActionName: 'Player/Move[/XInputControllerWindows/leftStick,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]'
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: 596965a4-8493-4d3f-8c74-e5433a279866
+    m_ActionId: 36b2cde6-4bb9-4aba-8599-130dec31a313
     m_ActionName: 'Player/Look[/XInputControllerWindows/rightStick,/Mouse/delta]'
   - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4a27a059-daf9-4929-90f4-7130cd9b4d68
+    m_ActionName: 'Player/Attack[/XInputControllerWindows/buttonWest,/Mouse/leftButton,/Keyboard/enter]'
+  - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 265461876390502868}
-        m_TargetAssemblyTypeName: PLAYER.PlayerShoot, Assembly-CSharp
-        m_MethodName: Shoot
+      - m_Target: {fileID: 2073715740645569701}
+        m_TargetAssemblyTypeName: PLAYER.PlayerController, Assembly-CSharp
+        m_MethodName: OnGrapple
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -156,21 +157,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: 53288366-e563-4770-a2f1-b9fc51c69398
-    m_ActionName: 'Player/Attack[/XInputControllerWindows/buttonWest,/Mouse/leftButton,/Keyboard/enter]'
+    m_ActionId: cf382e2a-33c3-41d2-90c6-251d2e7ccfdf
+    m_ActionName: 'Player/Grappler[/Mouse/rightButton]'
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: 8e4ab9e1-54fd-43f9-98b1-d5671c9d1df1
+    m_ActionId: 96d5f46e-48be-465f-bc1b-f7f4d6737a76
     m_ActionName: 'Player/Interact[/Keyboard/e,/XInputControllerWindows/buttonNorth]'
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: ef1135cd-5afa-47a5-8754-06a78356cbf9
+    m_ActionId: d542b8ef-6e40-4508-b5df-6f9401396fdc
     m_ActionName: 'Player/Crouch[/XInputControllerWindows/buttonEast,/Keyboard/c]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7361843280154148714}
-        m_TargetAssemblyTypeName: PLAYER.PlayerMovement, Assembly-CSharp
-        m_MethodName: Jump
+      - m_Target: {fileID: 2073715740645569701}
+        m_TargetAssemblyTypeName: PLAYER.PlayerController, Assembly-CSharp
+        m_MethodName: OnJump
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -180,114 +181,66 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: c8c06a29-cb2b-483e-93fc-e40171a7457b
+    m_ActionId: b2c8ad13-1f86-474a-a6f1-a074e9911adb
     m_ActionName: 'Player/Jump[/Keyboard/space,/XInputControllerWindows/buttonSouth]'
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: 53b01e67-d119-4723-8860-d0fdd922603a
+    m_ActionId: 9edf8dc5-2f54-4b50-b956-304d546d4191
     m_ActionName: 'Player/Previous[/Keyboard/1,/XInputControllerWindows/dpad/left]'
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: 9301b4f4-4fa1-4589-8ccf-782b12d4c22b
+    m_ActionId: c898b297-ba53-49de-b7e5-f644dbd930b6
     m_ActionName: 'Player/Next[/Keyboard/2,/XInputControllerWindows/dpad/right]'
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: 95f26b96-15b0-421f-bc61-1541c8e669f0
+    m_ActionId: cb3cd670-ef02-44fa-815d-47cf12074b26
     m_ActionName: 'Player/Sprint[/Keyboard/leftShift,/XInputControllerWindows/leftStickPress]'
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: c84ea2a9-37bc-4364-8a16-f41373fb56bf
+    m_ActionId: c10cf08a-3e79-4f48-94ca-d1fd8abb69e9
     m_ActionName: 'UI/Navigate[/XInputControllerWindows/leftStick/up,/XInputControllerWindows/rightStick/up,/XInputControllerWindows/leftStick/down,/XInputControllerWindows/rightStick/down,/XInputControllerWindows/leftStick/left,/XInputControllerWindows/rightStick/left,/XInputControllerWindows/leftStick/right,/XInputControllerWindows/rightStick/right,/XInputControllerWindows/dpad,/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]'
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: 8d5472b9-5abd-42b2-8874-022842fb980b
+    m_ActionId: 9bad24eb-5144-41a0-a09f-022ee8212f5e
     m_ActionName: 'UI/Submit[/Keyboard/enter,/XInputControllerWindows/buttonSouth]'
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: d12e9e76-e518-4899-9766-9be126204bdc
+    m_ActionId: f32d193a-62f3-4248-acc2-af10b82447fc
     m_ActionName: 'UI/Cancel[/Keyboard/escape,/XInputControllerWindows/buttonEast]'
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: 70ab1f36-ca20-410c-b96d-f19c7f0edc62
+    m_ActionId: f9975dfc-4821-4c17-a1b6-ae6a5f377c43
     m_ActionName: 'UI/Point[/Mouse/position]'
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: 3138dac6-18ef-4ae3-8195-64ded1a1e915
+    m_ActionId: eee514bd-2cfa-4a3d-bcfb-38e69f278226
     m_ActionName: 'UI/Click[/Mouse/leftButton]'
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: f83fcb2d-8818-4dd1-9834-5c73ae1269e7
+    m_ActionId: 7d585a82-d49c-46ba-b51a-bc66fc66b455
     m_ActionName: 'UI/RightClick[/Mouse/rightButton]'
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: a55145fc-2601-485c-a399-b55bec11af0a
+    m_ActionId: a6351a99-9b10-4b3e-a6bc-ffe7d21ad41c
     m_ActionName: 'UI/MiddleClick[/Mouse/middleButton]'
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: 8d56a83d-935a-4b3c-ac1c-ee41b57da7d0
+    m_ActionId: b073b10a-e201-40a9-9f40-eded12e237d7
     m_ActionName: 'UI/ScrollWheel[/Mouse/scroll]'
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: 64b4b79f-704b-44c0-8eee-c447b6a2e1c7
+    m_ActionId: 8d57f55c-ecdd-493c-a6aa-7547dd3b01c1
     m_ActionName: UI/TrackedDevicePosition
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: ff46e24a-8fb3-4fd6-a606-77b86016c83c
+    m_ActionId: 92f59c02-65b9-4166-9029-cf16b29c2ab6
     m_ActionName: UI/TrackedDeviceOrientation
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8639635223762759871}
-        m_TargetAssemblyTypeName: PLAYER.Grappler, Assembly-CSharp
-        m_MethodName: Grapple
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 275f38e4-56f6-4049-9f37-268279dd3fe5
-    m_ActionName: 'Player/Grappler[/XInputControllerWindows/buttonWest,/Mouse/leftButton,/Keyboard/enter]'
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7361843280154148714}
-        m_TargetAssemblyTypeName: PLAYER.PlayerMovement, Assembly-CSharp
-        m_MethodName: Climb
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: a52c1d18-8f41-44f6-a565-10d4de6e0cf9
-    m_ActionName: Player/Climb
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7361843280154148714}
-        m_TargetAssemblyTypeName: PLAYER.PlayerMovement, Assembly-CSharp
-        m_MethodName: GoUp
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 63d5199b-e913-4c78-b2e1-1c7f8c9ea319
-    m_ActionName: 'Player/Great Upper[/Keyboard/e]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &7361843280154148714
+--- !u!114 &2073715740645569701
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -296,81 +249,55 @@ MonoBehaviour:
   m_GameObject: {fileID: 668113724125027090}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44c8d826e8774af488f910183fafcccf, type: 3}
+  m_Script: {fileID: 11500000, guid: d157757d61c503c4c853d4d0effcafc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rigidBody2D: {fileID: 0}
-  trailRenderer: {fileID: 0}
-  playerHealth: {fileID: 0}
-  moveSpeed: 10
-  jumpPower: 20
-  <IsJumping>k__BackingField: 0
-  gravityScale: 5
-  fallGravityScale: 10
+  rigidBody2D: {fileID: 4114351590978167007}
+  trailRenderer: {fileID: 8436713445552733064}
+  lineRenderer: {fileID: 0}
+  distanceJoint2D: {fileID: 0}
   groundLayer:
     serializedVersion: 2
     m_Bits: 128
-  <CanGoUp>k__BackingField: 0
-  playerClimb:
-    rigidBody2D: {fileID: 4114351590978167007}
-    climbSpeed: 5
-    <IsClimbing>k__BackingField: 0
-    climbableWallLayer:
-      serializedVersion: 2
-      m_Bits: 512
---- !u!114 &265461876390502868
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 668113724125027090}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75feb42862de1f3439c6fd87e797e2e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pHealth: {fileID: 7337617330220112044}
-  bulletPrefab: {fileID: 2063527191266757597, guid: 99fa830106dc3a14a80cedd4407167db, type: 3}
-  bulletSpeed: 10
-  mainCamera: {fileID: 0}
-  aimPrefab: {fileID: 0}
---- !u!114 &8639635223762759871
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 668113724125027090}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 179f3e77ee868914dbe29cdf148c50a1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lineRenderer: {fileID: 7015384071408218936}
-  distanceJoint2D: {fileID: 3048601384741564845}
-  grappleLayer:
+  climbLayer:
     serializedVersion: 2
-    m_Bits: 256
-  grappleMaxPoint: 5
-  <IsGrappleWithinMaxDistance>k__BackingField: 1
-  <CanGrapple>k__BackingField: 0
-  playerAimImage: {fileID: 0}
---- !u!114 &7337617330220112044
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 668113724125027090}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23bb0b669c248ea488976d8a2fb0e614, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Health: 10
-  MaxHealth: 10
-  healthBar: {fileID: 0}
+    m_Bits: 0
+  grapplerLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  playerMovement:
+    moveSpeed: 0
+  playerJump:
+    jumpPower: 0
+    IsJumping: 0
+    groundLayer:
+      serializedVersion: 2
+      m_Bits: 0
+  playerClimb:
+    climbSpeed: 0
+    IsClimbing: 0
+    climbDirection: 0
+    gravityScale: 0
+    fallGravityScale: 0
+  playerGrappler:
+    player: {fileID: 668113724125027090}
+    grappleLayer:
+      serializedVersion: 2
+      m_Bits: 256
+    lineRenderer: {fileID: 7015384071408218936}
+    distanceJoint2D: {fileID: 3048601384741564845}
+    grappleMaxPoint: 0
+    <IsGrappleWithinMaxDistance>k__BackingField: 0
+    <CanGrapple>k__BackingField: 0
+  playerShoot:
+    bulletPrefab: {fileID: 0}
+    bulletSpeed: 0
+    mainCamera: {fileID: 0}
+    aimPrefab: {fileID: 0}
+  playerHealth:
+    Health: 0
+    MaxHealth: 0
+    healthBar: {fileID: 0}
 --- !u!50 &4114351590978167007
 Rigidbody2D:
   serializedVersion: 5

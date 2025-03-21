@@ -3721,16 +3721,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &307152803 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 668113724125027090, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
-  m_PrefabInstance: {fileID: 1476156657}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &307152804 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2681552103125494043, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
   m_PrefabInstance: {fileID: 1476156657}
   m_PrefabAsset: {fileID: 0}
+--- !u!120 &307152805 stripped
+LineRenderer:
+  m_CorrespondingSourceObject: {fileID: 7015384071408218936, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
+  m_PrefabInstance: {fileID: 1476156657}
+  m_PrefabAsset: {fileID: 0}
+--- !u!232 &307152806 stripped
+DistanceJoint2D:
+  m_CorrespondingSourceObject: {fileID: 3048601384741564845, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
+  m_PrefabInstance: {fileID: 1476156657}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &307152813 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2073715740645569701, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
+  m_PrefabInstance: {fileID: 1476156657}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d157757d61c503c4c853d4d0effcafc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &354530001
 GameObject:
   m_ObjectHideFlags: 0
@@ -7756,13 +7772,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64e3496b69cfa4f42adbf9131ccb1543, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mousePositionText: {fileID: 1142215171}
-  playerPositionText: {fileID: 1962315325}
-  playerIsJumping: {fileID: 1394765804}
-  playerIsClimbingText: {fileID: 1539899955}
-  playerCanGrappleText: {fileID: 1879099653}
-  player: {fileID: 307152803}
-  playerAim: {fileID: 1255762602}
+  player: {fileID: 0}
 --- !u!1 &1018210444
 GameObject:
   m_ObjectHideFlags: 0
@@ -27072,6 +27082,114 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2073715740645569701, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
+      propertyPath: aimPrefab
+      value: 
+      objectReference: {fileID: 1255762603}
+    - target: {fileID: 2073715740645569701, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 2063527191266757597, guid: 99fa830106dc3a14a80cedd4407167db, type: 3}
+    - target: {fileID: 2073715740645569701, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
+      propertyPath: lineRenderer
+      value: 
+      objectReference: {fileID: 307152805}
+    - target: {fileID: 2073715740645569701, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
+      propertyPath: distanceJoint2D
+      value: 
+      objectReference: {fileID: 307152806}
+    - target: {fileID: 2073715740645569701, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
+      propertyPath: climbLayer.m_Bits
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 2073715740645569701, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
+      propertyPath: groundLayer.m_Bits
+      value: 128
+      objectReference: {fileID: 0}
+    - target: {fileID: 2073715740645569701, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
+      propertyPath: playerHealth.Health
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2073715740645569701, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
+      propertyPath: grapplerLayer.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 2073715740645569701, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
+      propertyPath: playerJump.jumpPower
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2073715740645569701, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
+      propertyPath: playerShoot.aimPrefab
+      value: 
+      objectReference: {fileID: 1255762603}
+    - target: {fileID: 2073715740645569701, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
+      propertyPath: playerClimb.climbSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2073715740645569701, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
+      propertyPath: playerHealth.MaxHealth
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2073715740645569701, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
+      propertyPath: playerHealth.healthBar
+      value: 
+      objectReference: {fileID: 885779469}
+    - target: {fileID: 2073715740645569701, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
+      propertyPath: playerShoot.mainCamera
+      value: 
+      objectReference: {fileID: 450899018}
+    - target: {fileID: 2073715740645569701, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
+      propertyPath: playerShoot.bulletSpeed
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2073715740645569701, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
+      propertyPath: playerClimb.gravityScale
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2073715740645569701, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
+      propertyPath: playerMovement.moveSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2073715740645569701, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
+      propertyPath: playerShoot.bulletPrefab
+      value: 
+      objectReference: {fileID: 2063527191266757597, guid: 99fa830106dc3a14a80cedd4407167db, type: 3}
+    - target: {fileID: 2073715740645569701, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
+      propertyPath: playerStats.playerIsJumping
+      value: 
+      objectReference: {fileID: 1394765804}
+    - target: {fileID: 2073715740645569701, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
+      propertyPath: playerClimb.fallGravityScale
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2073715740645569701, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
+      propertyPath: playerClimb.climbLayer.m_Bits
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 2073715740645569701, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
+      propertyPath: playerJump.groundLayer.m_Bits
+      value: 128
+      objectReference: {fileID: 0}
+    - target: {fileID: 2073715740645569701, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
+      propertyPath: playerStats.mousePositionText
+      value: 
+      objectReference: {fileID: 1142215171}
+    - target: {fileID: 2073715740645569701, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
+      propertyPath: playerStats.playerPositionText
+      value: 
+      objectReference: {fileID: 1962315325}
+    - target: {fileID: 2073715740645569701, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
+      propertyPath: playerStats.playerCanGrappleText
+      value: 
+      objectReference: {fileID: 1879099653}
+    - target: {fileID: 2073715740645569701, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
+      propertyPath: playerStats.playerIsClimbingText
+      value: 
+      objectReference: {fileID: 1539899955}
+    - target: {fileID: 2073715740645569701, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
+      propertyPath: playerGrappler.grapplerLayer.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
     - target: {fileID: 2681552103125494043, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
       propertyPath: m_LocalPosition.x
       value: -18
@@ -27112,14 +27230,82 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4281693707818524730, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
+      propertyPath: m_ActionEvents.Array.size
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 4281693707818524730, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
+      propertyPath: m_ActionEvents.Array.data[20].m_ActionId
+      value: bf8d42ee-6ead-44a0-add7-3676cd1524e5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4281693707818524730, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
+      propertyPath: m_ActionEvents.Array.data[20].m_ActionName
+      value: 'Player/Climb[/XInputControllerWindows/leftStick,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4281693707818524730, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4281693707818524730, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
+      propertyPath: m_ActionEvents.Array.data[20].m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4281693707818524730, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4281693707818524730, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
+      propertyPath: m_ActionEvents.Array.data[20].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4281693707818524730, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 307152813}
+    - target: {fileID: 4281693707818524730, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
+      propertyPath: m_ActionEvents.Array.data[20].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 307152813}
+    - target: {fileID: 4281693707818524730, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
+      propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4281693707818524730, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4281693707818524730, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
+      propertyPath: m_ActionEvents.Array.data[20].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4281693707818524730, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnShoot
+      objectReference: {fileID: 0}
+    - target: {fileID: 4281693707818524730, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
+      propertyPath: m_ActionEvents.Array.data[20].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnClimb
+      objectReference: {fileID: 0}
+    - target: {fileID: 4281693707818524730, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PLAYER.PlayerController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4281693707818524730, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
+      propertyPath: m_ActionEvents.Array.data[20].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PLAYER.PlayerController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4281693707818524730, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4281693707818524730, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
+      propertyPath: m_ActionEvents.Array.data[20].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 7337617330220112044, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 885779469}
-    - target: {fileID: 7361843280154148714, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
-      propertyPath: climbableWallLayer.m_Bits
-      value: 512
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

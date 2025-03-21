@@ -1,19 +1,18 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 namespace PLAYER {
-    public class PlayerHealth : MonoBehaviour {
+    [Serializable]
+    public class PlayerHealth {
+
         public float Health;
-        public float MaxHealth;
+        [HideInInspector] public float MaxHealth;
 
         public Image healthBar;
-        // Start is called once before the first execution of Update after the MonoBehaviour is created
-        void Start() {
+        public void Initialize() {
             MaxHealth = Health;
-            
         }
-
-        // Update is called once per frame
-        void Update() {
+        public void OnUpdate() {
             healthBar.fillAmount = Mathf.Clamp(Health / MaxHealth, 0, 1);
         }
     }
