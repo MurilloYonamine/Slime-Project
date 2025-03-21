@@ -5,6 +5,7 @@ namespace PLAYER {
     public class Bullet : MonoBehaviour {
         [SerializeField] private float bulletDamage = 1f;
         [SerializeField] private GameObject hitEffect;
+        public float timeToDestroy = 2f;
 
         private void OnTriggerEnter2D(Collider2D other) {
             if (other.TryGetComponent<Enemy>(out Enemy enemy)) {
@@ -16,7 +17,7 @@ namespace PLAYER {
 
             if (!other.CompareTag("Player") && hitEffect != null) {
                 GameObject impact = Instantiate(hitEffect, transform.position, Quaternion.identity);
-                Destroy(impact, 1f);
+                Destroy(impact, timeToDestroy);
                 Destroy(gameObject);
             }
         }

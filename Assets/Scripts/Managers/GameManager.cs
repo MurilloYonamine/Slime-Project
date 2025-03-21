@@ -3,13 +3,13 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class GameManager : MonoBehaviour
-{
+public class GameManager : MonoBehaviour {
     public static GameManager Instance { get; private set; }
 
     [Header("Text Elements")]
     [SerializeField] private TextMeshProUGUI mousePositionText;
     [SerializeField] private TextMeshProUGUI playerPositionText;
+    [SerializeField] private TextMeshProUGUI currentStateText;
     [SerializeField] private TextMeshProUGUI playerIsJumping;
     [SerializeField] private TextMeshProUGUI playerIsClimbingText;
     [SerializeField] private TextMeshProUGUI playerCanGrappleText;
@@ -18,26 +18,22 @@ public class GameManager : MonoBehaviour
     [SerializeField] public GameObject player;
     [SerializeField] public GameObject playerAim;
 
-    void Awake()
-    {
+    void Awake() {
         //Cursor.visible = false;
-        if (Instance == null)
-        {
+        if (Instance == null) {
             Instance = this;
-        }
-        else
-        {
+        } else {
             DestroyImmediate(gameObject);
             return;
         }
     }
 
-    void Update()
-    {
+    void Update() {
         mousePositionText.text = "Mouse Position: " + Mouse.current.position.value.ToString();
         playerPositionText.text = "Player Position: " + player.transform.position.ToString();
-        playerIsJumping.text = "Is player jumping? " + player.GetComponent<PlayerMovement>().IsJumping.ToString();
-        playerIsClimbingText.text = "Is player climbing? " + player.GetComponent<PlayerMovement>().IsClimbing.ToString();
+        currentStateText.text = "Current Player State: " + player.GetComponent<PlayerController>().currentState.ToString();
+        playerIsJumping.text = "Is player jumping? " + player.GetComponent<PlayerController>().isJumping.ToString();
+        //playerIsClimbingText.text = "Is player climbing? " + player.GetComponent<PlayerMovement>().IsClimbing.ToString();
     }
 
 }
