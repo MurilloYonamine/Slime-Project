@@ -13,6 +13,12 @@ namespace PLAYER {
         [SerializeField] private LayerMask climbLayer;
         [SerializeField] private LayerMask groundLayer;
 
+        [Header("Booleans")]
+        public bool IsJumping => playerJump.IsJumping;
+        public bool IsClimbing => playerClimb.IsClimbing;
+        public bool CanGrapple => playerGrappler.CanGrapple;
+        public bool IsSpikeActive => playerSpike.IsSpikeActive;
+
         [Header("Prefabs")]
         [SerializeField] private GameObject bulletPrefab;
         [SerializeField] private RectTransform aimPrefab;
@@ -25,11 +31,7 @@ namespace PLAYER {
         [SerializeField] private PlayerGrappler playerGrappler;
         [SerializeField] private PlayerShoot playerShoot;
         [SerializeField] private PlayerHealth playerHealth;
-
-        [Header("Booleans")]
-        public bool IsJumping => playerJump.IsJumping;
-        public bool IsClimbing => playerClimb.IsClimbing;
-        public bool CanGrapple => playerGrappler.CanGrapple;
+        [SerializeField] private PlayerSpike playerSpike;
 
         private void Awake() {
             rigidBody2D = GetComponent<Rigidbody2D>();
@@ -40,11 +42,13 @@ namespace PLAYER {
         private void Start() {
             playerShoot.Initialize(gameObject, playerHealth, bulletPrefab, aimPrefab);
             playerMovement.Initialize(rigidBody2D, trailRenderer);
-            playerJump.Initialize(rigidBody2D, groundLayer, IsClimbing);
+            playerJump.Initialize(rigidBody2D, groundLayer, IsClimbing, IsSpikeActive);
             playerClimb.Initialize(rigidBody2D, climbLayer, IsJumping);
-            playerStats.Initialize(this);
             playerHealth.Initialize();
             playerGrappler.Initialize(gameObject, lineRenderer, distanceJoint2D, grapplerLayer);
+            playerSpike.Initialize(gameObject);
+
+            playerStats.Initialize(this);
         }
 
         private void Update() {
@@ -52,6 +56,8 @@ namespace PLAYER {
             playerHealth.OnUpdate();
             playerGrappler.OnUpdate();
             playerShoot.OnUpdate();
+            playerSpike.OnUpdate();
+            playerJump.OnUpdate(IsSpikeActive);
         }
         private void FixedUpdate() {
             playerMovement.OnFixedUpdate();
@@ -62,6 +68,7 @@ namespace PLAYER {
         public void OnJump(InputAction.CallbackContext context) => playerJump.Jump(context);
         public void OnGrapple(InputAction.CallbackContext context) => playerGrappler.Grapple(context);
         public void OnShoot(InputAction.CallbackContext context) => playerShoot.Shoot(context);
+        public void OnSpike(InputAction.CallbackContext context) => playerSpike.Spike(context);
         private void OnCollisionEnter2D(Collision2D collision) {
             playerJump.CollisionEnter2D(collision);
             playerClimb.CollissionEnter2D(collision);

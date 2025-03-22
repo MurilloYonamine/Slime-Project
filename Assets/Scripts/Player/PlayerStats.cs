@@ -10,6 +10,7 @@ namespace PLAYER {
         [SerializeField] private TextMeshProUGUI playerIsJumping;
         [SerializeField] private TextMeshProUGUI playerIsClimbingText;
         [SerializeField] private TextMeshProUGUI playerCanGrappleText;
+        [SerializeField] private TextMeshProUGUI playerIsSpikeActiveText;
 
         private PlayerController player;
 
@@ -23,6 +24,7 @@ namespace PLAYER {
             playerIsJumping.text = "Is player jumping? " + player.IsJumping.ToString();
             playerIsClimbingText.text = "Is player climbing? " + player.IsClimbing.ToString();
             playerCanGrappleText.text = "Can player grapple? " + player.CanGrapple.ToString();
+            playerIsSpikeActiveText.text = "Is player spike active? " + player.IsSpikeActive.ToString();
         }
     }
 }
