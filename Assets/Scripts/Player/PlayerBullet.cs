@@ -3,7 +3,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 namespace PLAYER {
-    public class Bullet : MonoBehaviour {
+    public class PlayBullet : MonoBehaviour {
         [HideInInspector] public float bulletDamage = 1f;
         [HideInInspector] public GameObject hitEffect;
         [HideInInspector] public GameObject player;
