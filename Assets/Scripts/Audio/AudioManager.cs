@@ -8,9 +8,9 @@ namespace AUDIO
     {
         public static AudioManager Instance { get; private set; }
 
-        public const string MASTER_VOLUME_PARAMETER_NAME = "MasterVolume";
-        public const string MUSIC_VOLUME_PARAMETER_NAME = "MusicVolume";
-        public const string SFX_VOLUME_PARAMETER_NAME = "SoundFXVolume";
+        public const string MASTER_VOLUME_PARAMETER_NAME = "masterVolume";
+        public const string MUSIC_VOLUME_PARAMETER_NAME = "musicVolume";
+        public const string SFX_VOLUME_PARAMETER_NAME = "soundFXVolume";
 
         public const float MUTED_VOLUME_LEVEL = -80f;
         public const float TRACK_TRANSITION_SPEED = 1f;
@@ -217,6 +217,7 @@ namespace AUDIO
             volume = muted ? MUTED_VOLUME_LEVEL : audioFalloffCurve.Evaluate(volume);
             sfxMixer.audioMixer.SetFloat(SFX_VOLUME_PARAMETER_NAME, volume);
         }
+
         #endregion
     }
 }

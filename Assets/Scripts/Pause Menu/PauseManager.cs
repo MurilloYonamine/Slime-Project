@@ -56,6 +56,7 @@ public class PauseManager : MonoBehaviour {
         pauseCanvasGroup.blocksRaycasts = false;
         pauseCanvasGroup.interactable = false;
         isPaused = false;
+        CloseSettingsMenu();
 
         Time.timeScale = 1;
         player.GetComponent<PlayerController>().IsPaused = isPaused;

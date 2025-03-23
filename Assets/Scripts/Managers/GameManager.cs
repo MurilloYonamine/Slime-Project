@@ -1,3 +1,4 @@
+using AUDIO;
 using PLAYER;
 using TMPro;
 using UnityEngine;
@@ -21,5 +22,6 @@ public class GameManager : MonoBehaviour
             DestroyImmediate(gameObject);
             return;
         }
+        AudioManager.Instance.PlayTrack("Audio/Music/test-song", loop: true);
     }
 }
