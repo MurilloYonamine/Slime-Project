@@ -606,6 +606,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Pause Menu",
+                    "type": "Button",
+                    "id": "6045d816-2c41-40c4-bb3f-b12741fcb5e3",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -1024,6 +1033,17 @@
                     "processors": "",
                     "groups": "XR",
                     "action": "TrackedDeviceOrientation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "230a5f6b-f6b1-4f67-9a8a-e2ee655a0439",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Pause Menu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

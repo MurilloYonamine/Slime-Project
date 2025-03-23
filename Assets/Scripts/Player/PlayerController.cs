@@ -18,6 +18,7 @@ namespace PLAYER {
         public bool IsClimbing => playerClimb.IsClimbing;
         public bool CanGrapple => playerGrappler.CanGrapple;
         public bool IsSpikeActive => playerSpike.IsSpikeActive;
+        public bool IsPaused;
 
         [Header("Prefabs")]
         [SerializeField] private GameObject bulletPrefab;
@@ -63,12 +64,12 @@ namespace PLAYER {
             playerMovement.OnFixedUpdate();
             playerClimb.OnFixedUpdate();
         }
-        public void OnMove(InputAction.CallbackContext context) => playerMovement.Move(context);
-        public void OnClimb(InputAction.CallbackContext context) => playerClimb.Climb(context);
-        public void OnJump(InputAction.CallbackContext context) => playerJump.Jump(context);
-        public void OnGrapple(InputAction.CallbackContext context) => playerGrappler.Grapple(context);
-        public void OnShoot(InputAction.CallbackContext context) => playerShoot.Shoot(context);
-        public void OnSpike(InputAction.CallbackContext context) => playerSpike.Spike(context);
+        public void OnMove(InputAction.CallbackContext context) { if (!IsPaused) playerMovement.Move(context); }
+        public void OnClimb(InputAction.CallbackContext context) { if (!IsPaused) playerClimb.Climb(context); }
+        public void OnJump(InputAction.CallbackContext context) { if (!IsPaused) playerJump.Jump(context); }
+        public void OnGrapple(InputAction.CallbackContext context) { if (!IsPaused) playerGrappler.Grapple(context); }
+        public void OnShoot(InputAction.CallbackContext context) { if (!IsPaused) playerShoot.Shoot(context); }
+        public void OnSpike(InputAction.CallbackContext context) { if (!IsPaused) playerSpike.Spike(context); }
         private void OnCollisionEnter2D(Collision2D collision) {
             playerJump.CollisionEnter2D(collision);
             playerClimb.CollissionEnter2D(collision);
