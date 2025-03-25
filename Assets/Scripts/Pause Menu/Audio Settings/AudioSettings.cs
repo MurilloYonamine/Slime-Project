@@ -65,6 +65,8 @@ public class AudioSettings : MonoBehaviour {
         volumeLevel++;
         UpdateVolumeVisual();
         UpdateVolumeMixer();
+
+        if(audioType == AudioType.SFX) AudioManager.Instance.PlaySoundEffect("Audio/SFX/Slime/slime_shot");
     }
 
     private void DecreaseVolume() {
@@ -72,6 +74,8 @@ public class AudioSettings : MonoBehaviour {
         volumeLevel--;
         UpdateVolumeVisual();
         UpdateVolumeMixer();
+
+        if (audioType == AudioType.SFX) AudioManager.Instance.PlaySoundEffect("Audio/SFX/Slime/slime_shot");
     }
 
 
