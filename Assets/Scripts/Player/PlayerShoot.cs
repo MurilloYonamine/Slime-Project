@@ -47,10 +47,10 @@ namespace PLAYER
 
                 GameObject bullet = GameObject.Instantiate(bulletPrefab, player.transform.position, Quaternion.identity);
 
-                bullet.AddComponent<PlayBullet>();
-                bullet.GetComponent<PlayBullet>().bulletDamage = bulletDamage;
-                bullet.GetComponent<PlayBullet>().hitEffect = hitEffect;
-                bullet.GetComponent<PlayBullet>().player = player;
+                bullet.AddComponent<PlayerBullet>();
+                bullet.GetComponent<PlayerBullet>().bulletDamage = bulletDamage;
+                bullet.GetComponent<PlayerBullet>().hitEffect = hitEffect;
+                bullet.GetComponent<PlayerBullet>().player = player;
 
                 bullet.GetComponent<Rigidbody2D>().linearVelocity = shootDirection * bulletSpeed;
 

@@ -7,6 +7,7 @@ namespace PLAYER {
         [SerializeField] private TrailRenderer trailRenderer;
         [SerializeField] private LineRenderer lineRenderer;
         [SerializeField] private DistanceJoint2D distanceJoint2D;
+        [SerializeField] private SpriteRenderer spriteRenderer;
 
         [Header("Layer Settings")]
         [SerializeField] private LayerMask grapplerLayer;
@@ -31,21 +32,22 @@ namespace PLAYER {
         [SerializeField] private PlayerClimb playerClimb;
         [SerializeField] private PlayerGrappler playerGrappler;
         [SerializeField] private PlayerShoot playerShoot;
-        [SerializeField] private PlayerHealth playerHealth;
         [SerializeField] private PlayerSpike playerSpike;
+        [SerializeField] public PlayerHealth playerHealth;
 
         private void Awake() {
             rigidBody2D = GetComponent<Rigidbody2D>();
             trailRenderer = GetComponent<TrailRenderer>();
             lineRenderer = GetComponent<LineRenderer>();
             distanceJoint2D = GetComponent<DistanceJoint2D>();
+            spriteRenderer = GetComponent<SpriteRenderer>();
         }
         private void Start() {
             playerShoot.Initialize(gameObject, playerHealth, bulletPrefab, aimPrefab);
             playerMovement.Initialize(rigidBody2D, trailRenderer);
             playerJump.Initialize(rigidBody2D, groundLayer, IsClimbing, IsSpikeActive);
             playerClimb.Initialize(rigidBody2D, climbLayer, IsJumping);
-            playerHealth.Initialize();
+            playerHealth.Initialize(rigidBody2D);
             playerGrappler.Initialize(gameObject, lineRenderer, distanceJoint2D, grapplerLayer);
             playerSpike.Initialize(gameObject);
 
@@ -58,7 +60,8 @@ namespace PLAYER {
             playerGrappler.OnUpdate();
             playerShoot.OnUpdate();
             playerSpike.OnUpdate();
-            playerJump.OnUpdate(IsSpikeActive);
+
+            playerJump.UpdateSpikeStatus(IsSpikeActive);
         }
         private void FixedUpdate() {
             playerMovement.OnFixedUpdate();

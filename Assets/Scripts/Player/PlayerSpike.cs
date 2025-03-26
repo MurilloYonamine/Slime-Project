@@ -19,15 +19,14 @@ namespace PLAYER {
             this.targetScale = player.transform.localScale;
         }
 
+        public void OnUpdate() {
+            player.transform.localScale = Vector2.SmoothDamp(player.transform.localScale, targetScale, ref velocity, smoothTime);
+        }
         public void Spike(InputAction.CallbackContext context) {
             if (context.performed) {
                 IsSpikeActive = !IsSpikeActive;
                 targetScale = new Vector2(IsSpikeActive ? xScale : 1, IsSpikeActive ? yScale : 1);
             }
-        }
-
-        public void OnUpdate() {
-            player.transform.localScale = Vector2.SmoothDamp(player.transform.localScale, targetScale, ref velocity, smoothTime);
         }
     }
 }

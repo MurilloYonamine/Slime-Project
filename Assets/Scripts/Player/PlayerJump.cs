@@ -25,11 +25,11 @@ namespace PLAYER {
             this.IsSpikeActive = IsSpikeActive;
             this.IsClimbing = IsClimbing;
         }
-        public void OnUpdate(bool IsSpikeActive) {
-            if (!this.IsSpikeActive && IsSpikeActive && IsJumping) {
+        public void UpdateSpikeStatus(bool isSpikeActive) {
+            if (!this.IsSpikeActive && isSpikeActive && IsJumping) {
                 haveSpikedAfterJump = true;
             }
-            this.IsSpikeActive = IsSpikeActive;
+            this.IsSpikeActive = isSpikeActive;
         }
 
         public void Jump(InputAction.CallbackContext context) {

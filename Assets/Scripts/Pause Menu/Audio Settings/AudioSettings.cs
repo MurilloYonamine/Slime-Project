@@ -57,6 +57,8 @@ public class AudioSettings : MonoBehaviour {
                 audioMixerGroup = AudioManager.Instance.sfxMixer;
                 volumeParameterName = AudioManager.SFX_VOLUME_PARAMETER_NAME;
                 break;
+            default:
+                break;
         }
     }
 
