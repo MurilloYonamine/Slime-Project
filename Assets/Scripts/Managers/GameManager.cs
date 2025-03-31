@@ -22,6 +22,6 @@ public class GameManager : MonoBehaviour
             DestroyImmediate(gameObject);
             return;
         }
-        AudioManager.Instance.PlayTrack("Audio/Music/test-song", loop: true);
+        //AudioManager.Instance.PlayTrack("Audio/Music/test-song", loop: true);
     }
 }

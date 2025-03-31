@@ -27,11 +27,12 @@ public class AudioSettings : MonoBehaviour {
 
 
     private void Awake() {
+        SetupAudioType();
+
         increaseButton.onClick.AddListener(IncreaseVolume);
         decreaseButton.onClick.AddListener(DecreaseVolume);
         muteButton.onClick.AddListener(MuteUnmuteVolume);
 
-        SetupAudioType();
         InitializeVolume();
     }
 
@@ -39,6 +40,7 @@ public class AudioSettings : MonoBehaviour {
         if (audioMixerGroup.audioMixer.GetFloat(volumeParameterName, out float currentVolume)) {
             volumeLevel = Mathf.RoundToInt((currentVolume - minVolume) / (maxVolume - minVolume) * (volumeSquares.Length - 1));
             volumeLevel = Mathf.Clamp(volumeLevel, 0, volumeSquares.Length);
+
             UpdateVolumeVisual();
         }
     }

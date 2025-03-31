@@ -16,23 +16,21 @@ namespace MagicPlants {
 
         private void OnTriggerEnter2D(Collider2D collider2D) {
             if (collider2D.TryGetComponent<PlayerController>(out PlayerController player)) {
-                Debug.Log("Player entrou na área de explosão");
 
                 GameObject effect = Instantiate(explosionEffect, transform.position, Quaternion.identity);
                 explosionDuration = effect.GetComponent<ParticleSystem>().main.duration;
 
                 Destroy(effect, explosionDuration);
 
-                AudioManager.Instance.PlaySoundEffect("AUDIO/SFX/Magic Plants/lettuce_explosion");
+                AudioManager.Instance.PlaySoundEffect("Audio/SFX/Magic Plants/lettuce_explosion");
                 CameraManager.Instance.ShakeCamera(15f, 0.1f);
-                player.playerHealth.TakeDamage(10f);
+                player.playerHealth.TakeDamage(10f, this);
 
                 SpriteRenderer spriteRenderer = player.GetComponent<SpriteRenderer>();
                 Color originalColor = spriteRenderer.color;
                 StartCoroutine(FlashDamage(spriteRenderer, new Color(182f / 255f, 29f / 255f, 136f / 255f, 255f / 255f), originalColor));
 
-                player.playerHealth.PlayerKnockback(player.transform.position.x - transform.position.x,
-                                                    player.transform.position.y - transform.position.y, 1500f);
+                player.playerHealth.HandleKnockBack(this);
             }
         }
         private IEnumerator FlashDamage(SpriteRenderer spriteRenderer, Color damageColor, Color originalColor) {
