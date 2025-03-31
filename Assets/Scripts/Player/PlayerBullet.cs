@@ -1,4 +1,5 @@
 using ENEMY;
+using MagicPlants;
 using UnityEngine;
 
 namespace PLAYER {
@@ -8,9 +9,9 @@ namespace PLAYER {
         [HideInInspector] public GameObject player;
 
         private void OnTriggerEnter2D(Collider2D collider2D) {
-            if (collider2D.TryGetComponent<Alface>(out Alface alface)) {
+            if (collider2D.TryGetComponent<Lettuce>(out Lettuce lettuce)) {
                 Debug.Log("Tiro entrou na área de explosão");
-                Physics2D.IgnoreCollision(collider2D, alface.explosionArea);
+                Physics2D.IgnoreCollision(collider2D, lettuce.explosionArea);
 
                 CreateImpactEffect();
             }
