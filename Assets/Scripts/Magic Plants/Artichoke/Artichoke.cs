@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace MagicPlants {
+namespace MAGIC_PLANTS.ARTICHOKE {
     public class Artichoke : MonoBehaviour {
         [SerializeField] private Transform[] spikes;
         private Vector3[] originalScales;

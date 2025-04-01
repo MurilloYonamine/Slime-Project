@@ -1,5 +1,6 @@
 using ENEMY;
-using MagicPlants;
+using MAGIC_PLANTS.FIG_TREE;
+using MAGIC_PLANTS.LETTUCE;
 using UnityEngine;
 
 namespace PLAYER {

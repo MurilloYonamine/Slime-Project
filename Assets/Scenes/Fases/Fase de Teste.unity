@@ -4980,7 +4980,7 @@ CompositeCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -6030,7 +6030,7 @@ GameObject:
   - component: {fileID: 460357687}
   - component: {fileID: 460357690}
   m_Layer: 0
-  m_Name: Alface
+  m_Name: Lettuce
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

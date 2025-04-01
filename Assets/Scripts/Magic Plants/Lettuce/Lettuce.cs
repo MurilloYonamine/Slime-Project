@@ -4,7 +4,7 @@ using PLAYER;
 using System.Collections;
 using UnityEngine;
 
-namespace MagicPlants {
+namespace MAGIC_PLANTS.LETTUCE {
     public class Lettuce : MonoBehaviour {
         public CircleCollider2D explosionArea;
         public CircleCollider2D alfaceCircleCollider2D;

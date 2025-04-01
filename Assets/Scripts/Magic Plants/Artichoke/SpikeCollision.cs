@@ -2,7 +2,7 @@ using PLAYER;
 using System.Collections;
 using UnityEngine;
 
-namespace MagicPlants {
+namespace MAGIC_PLANTS.ARTICHOKE {
     public class SpikeCollision : MonoBehaviour {
         private Artichoke artichoke;
         private float damage;
