@@ -77,6 +77,9 @@ namespace PLAYER {
         public void OnGrapple(InputAction.CallbackContext context) { if (!IsPaused) playerGrappler.Grapple(context); }
         public void OnShoot(InputAction.CallbackContext context) { if (!IsPaused) playerShoot.Shoot(context); }
         public void OnSpike(InputAction.CallbackContext context) { if (!IsPaused) playerSpike.Spike(context); }
+
+        public void StartChangeSpeed(float speed, float timeToNormalize) => StartCoroutine(playerMovement.ChangeSpeed(speed, timeToNormalize));
+
         private void OnCollisionEnter2D(Collision2D collision) {
             playerJump.CollisionEnter2D(collision);
             playerClimb.CollissionEnter2D(collision);

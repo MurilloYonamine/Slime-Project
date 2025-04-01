@@ -6,6 +6,9 @@ using UnityEngine.InputSystem;
 
 namespace ENEMY {
     public class Enemy : MonoBehaviour {
+
+        [SerializeField] private LayerMask groundLayer;
+
         [Header("Enemy Components")]
         private SpriteRenderer spriteRenderer;
         private Rigidbody2D rigidBody2D;
@@ -47,5 +50,11 @@ namespace ENEMY {
         }
 
         private void Die() => Destroy(gameObject);
+
+        private void OnCollisionEnter2D(Collision2D collision2D) {
+            if (!(groundLayer == (groundLayer | (1 << collision2D.gameObject.layer)))) {
+                Debug.Log("XERECA");
+            }
+        }
     }
 }

@@ -33,6 +33,7 @@ namespace PLAYER {
 
             if (!collider2D.CompareTag("Player") && hitEffect != null) {
                 CreateImpactEffect();
+
             }
         }
         private void CreateImpactEffect() {
