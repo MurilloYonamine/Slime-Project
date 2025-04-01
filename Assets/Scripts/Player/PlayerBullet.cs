@@ -25,6 +25,11 @@ namespace PLAYER {
                 return;
             }
 
+            if(collider2D.TryGetComponent<FigTree>(out FigTree figTree)) {
+                figTree.DropMagicSeed();
+                return;
+            }
+
             if (!collider2D.CompareTag("Player") && hitEffect != null) {
                 CreateImpactEffect();
             }

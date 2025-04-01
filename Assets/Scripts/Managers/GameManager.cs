@@ -10,6 +10,10 @@ public class GameManager : MonoBehaviour
 
     public GameObject player;
 
+    [SerializeField]private TextMeshProUGUI magicSeedCountTxt;
+
+    [HideInInspector] public int magicSeedCount = 0;
+
     void Awake()
     {
         //Cursor.visible = false;
@@ -23,5 +27,8 @@ public class GameManager : MonoBehaviour
             return;
         }
         //AudioManager.Instance.PlayTrack("Audio/Music/test-song", loop: true);
+    }
+    private void Update() {
+        magicSeedCountTxt.text = $"Magic Seed Count: {magicSeedCount}";
     }
 }
