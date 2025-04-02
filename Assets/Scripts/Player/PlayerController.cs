@@ -7,6 +7,7 @@ namespace PLAYER {
         [SerializeField] private TrailRenderer trailRenderer;
         [SerializeField] private LineRenderer lineRenderer;
         [SerializeField] private DistanceJoint2D distanceJoint2D;
+        [SerializeField] public Animator animator;
         [SerializeField] private SpriteRenderer spriteRenderer;
         [SerializeField] private BoxCollider2D boxCollider2D;
 
@@ -49,7 +50,7 @@ namespace PLAYER {
         }
         private void Start() {
             playerShoot.Initialize(gameObject, playerHealth, bulletPrefab, aimPrefab);
-            playerMovement.Initialize(rigidBody2D, trailRenderer);
+            playerMovement.Initialize(rigidBody2D, trailRenderer, spriteRenderer, animator);
             playerJump.Initialize(rigidBody2D, groundLayer, IsClimbing, IsSpikeActive);
             playerClimb.Initialize(rigidBody2D, climbLayer, IsJumping);
             playerHealth.Initialize(rigidBody2D, this);
