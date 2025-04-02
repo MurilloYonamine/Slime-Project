@@ -31,6 +31,7 @@ namespace MAGIC_PLANTS.LETTUCE {
                 StartCoroutine(FlashDamage(spriteRenderer, new Color(182f / 255f, 29f / 255f, 136f / 255f, 255f / 255f), originalColor));
 
                 player.playerHealth.HandleKnockBack(this);
+                player.DisableSpike();
             }
         }
         private IEnumerator FlashDamage(SpriteRenderer spriteRenderer, Color damageColor, Color originalColor) {

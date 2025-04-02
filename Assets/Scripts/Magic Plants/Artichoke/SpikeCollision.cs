@@ -26,6 +26,7 @@ namespace MAGIC_PLANTS.ARTICHOKE {
                 StartCoroutine(FlashDamage(spriteRenderer, new Color(182f / 255f, 29f / 255f, 136f / 255f, 255f / 255f), originalColor));
 
                 player.playerHealth.HandleKnockBack(this);
+                player.DisableSpike();
             }
         }
 
