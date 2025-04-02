@@ -26,7 +26,7 @@ public class AudioSettings : MonoBehaviour {
     private float previousVolume = 0f;
 
 
-    private void Awake() {
+    private void Start() {
         SetupAudioType();
 
         increaseButton.onClick.AddListener(IncreaseVolume);
