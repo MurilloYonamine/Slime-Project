@@ -19,10 +19,11 @@ namespace PLAYER {
         public bool IsJumping => playerJump.IsJumping;
         public bool IsClimbing => playerClimb.IsClimbing;
         public bool CanGrapple => playerGrappler.CanGrapple;
-        public bool IsSpikeActive => playerSpike.IsSpikeActive;
+        public bool IsSpikeActive;
         public bool IsPaused;
         public bool takingDamage;
         public bool IsDead;
+        public bool IsInsideWheat;
 
         [Header("Prefabs")]
         [SerializeField] private GameObject bulletPrefab;
@@ -53,7 +54,7 @@ namespace PLAYER {
             playerClimb.Initialize(rigidBody2D, climbLayer, IsJumping);
             playerHealth.Initialize(rigidBody2D, this);
             playerGrappler.Initialize(gameObject, lineRenderer, distanceJoint2D, grapplerLayer);
-            playerSpike.Initialize(gameObject);
+            playerSpike.Initialize(this);
 
             playerStats.Initialize(this);
         }
@@ -66,6 +67,7 @@ namespace PLAYER {
             playerSpike.OnUpdate();
 
             playerJump.UpdateSpikeStatus(IsSpikeActive);
+            playerSpike.UpdateWheatStatus(IsInsideWheat);
         }
         private void FixedUpdate() {
             playerMovement.OnFixedUpdate();
@@ -79,6 +81,7 @@ namespace PLAYER {
         public void OnSpike(InputAction.CallbackContext context) { if (!IsPaused) playerSpike.Spike(context); }
 
         public void StartChangeSpeed(float speed, float timeToNormalize) => StartCoroutine(playerMovement.ChangeSpeed(speed, timeToNormalize));
+        public void DisableSpike() => playerSpike.DisableSpike();
 
         private void OnCollisionEnter2D(Collision2D collision) {
             playerJump.CollisionEnter2D(collision);
