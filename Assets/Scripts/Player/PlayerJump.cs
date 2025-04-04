@@ -7,10 +7,10 @@ namespace PLAYER {
     [Serializable]
     public class PlayerJump {
         private Rigidbody2D rigidBody2D;
+        private PlayerController player;
 
         [SerializeField] private float jumpPower = 20f;
         [SerializeField] private float spikeJumpPower = 30f;
-        [HideInInspector] public bool IsJumping = false;
         [HideInInspector] public bool IsSpikeActive = false;
         private bool haveSpikeJumped = false;
         private bool haveSpikedAfterJump = false;
@@ -19,14 +19,15 @@ namespace PLAYER {
 
         private LayerMask groundLayer;
 
-        public void Initialize(Rigidbody2D rigidBody2D, LayerMask groundLayer, bool IsClimbing, bool IsSpikeActive) {
+        public void Initialize(PlayerController player, Rigidbody2D rigidBody2D, LayerMask groundLayer, bool IsClimbing, bool IsSpikeActive) {
+            this.player = player;
             this.rigidBody2D = rigidBody2D;
             this.groundLayer = groundLayer;
             this.IsSpikeActive = IsSpikeActive;
             this.IsClimbing = IsClimbing;
         }
         public void UpdateSpikeStatus(bool isSpikeActive) {
-            if (!this.IsSpikeActive && isSpikeActive && IsJumping) {
+            if (!this.IsSpikeActive && isSpikeActive && player.IsJumping) {
                 haveSpikedAfterJump = true;
             }
             this.IsSpikeActive = isSpikeActive;
@@ -38,18 +39,18 @@ namespace PLAYER {
                 {
                     rigidBody2D.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
                     IsClimbing = false;
-                    IsJumping = true;
-                } else if (!IsJumping) // Normal jump
+                    player.IsJumping = true;
+                } else if (!player.IsJumping) // Normal jump
                 {
                     if (IsSpikeActive) {
                         rigidBody2D.AddForce(Vector2.up * jumpPower * 1.5f, ForceMode2D.Impulse);
                         AudioManager.Instance.PlaySoundEffect("Audio/SFX/Slime/slime_jump");
-                        IsJumping = true;
+                        player.IsJumping = true;
                         haveSpikeJumped = true;
                     } else {
                         rigidBody2D.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
                         AudioManager.Instance.PlaySoundEffect("Audio/SFX/Slime/slime_jump");
-                        IsJumping = true;
+                        player.IsJumping = true;
                     }
                 }
             }
@@ -67,7 +68,7 @@ namespace PLAYER {
                     haveSpikedAfterJump = false;
                 }
             }
-            IsJumping = false;
+            player.IsJumping = false;
         }
     }
 }

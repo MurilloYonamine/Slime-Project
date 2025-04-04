@@ -19,6 +19,21 @@ namespace PLAYER {
         }
 
         public void OnUpdate() {
+            if(player.DisableStats) {
+                mousePositionText.gameObject.SetActive(false);
+                playerPositionText.gameObject.SetActive(false);
+                playerIsJumping.gameObject.SetActive(false);
+                playerIsClimbingText.gameObject.SetActive(false);
+                playerCanGrappleText.gameObject.SetActive(false);
+                playerIsSpikeActiveText.gameObject.SetActive(false);
+            } else {
+                mousePositionText.gameObject.SetActive(true);
+                playerPositionText.gameObject.SetActive(true);
+                playerIsJumping.gameObject.SetActive(true);
+                playerIsClimbingText.gameObject.SetActive(true);
+                playerCanGrappleText.gameObject.SetActive(true);
+                playerIsSpikeActiveText.gameObject.SetActive(true);
+            }
             mousePositionText.text = "Mouse Position: " + Mouse.current.position.value.ToString();
             playerPositionText.text = "Player Position: " + player.transform.position.ToString();
             playerIsJumping.text = "Is player jumping? " + player.IsJumping.ToString();

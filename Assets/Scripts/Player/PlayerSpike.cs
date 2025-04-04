@@ -11,12 +11,14 @@ namespace PLAYER {
         [SerializeField] private float xScale = 4f;
         [SerializeField] private float yScale = 0.5f;
         [SerializeField] private float smoothTime = 0.2f;
-        private Vector2 targetScale;
+        [SerializeField] private Vector2 targetScale;
         private Vector2 velocity = Vector2.zero;
+        private Vector2 initialScale;
 
         public void Initialize(PlayerController player) {
             this.player = player;
-            this.targetScale = player.transform.localScale;
+            this.initialScale = player.transform.localScale;
+            this.targetScale = initialScale;
         }
         public void OnUpdate() {
             player.transform.localScale = Vector2.SmoothDamp(player.transform.localScale, targetScale, ref velocity, smoothTime);
@@ -24,12 +26,12 @@ namespace PLAYER {
         public void Spike(InputAction.CallbackContext context) {
             if (context.performed && !IsInsideWeed) {
                 player.IsSpikeActive = !player.IsSpikeActive;
-                targetScale = new Vector2(player.IsSpikeActive ? xScale : 1, player.IsSpikeActive ? yScale : 1);
+                targetScale = new Vector2(player.IsSpikeActive ? xScale : initialScale.x, player.IsSpikeActive ? yScale : initialScale.y);
             }
         }
         public void DisableSpike() {
             player.IsSpikeActive = false;
-            targetScale = new Vector2(1, 1);
+            targetScale = initialScale;
         }
         public void UpdateWheatStatus(bool IsInsideWeed) => this.IsInsideWeed = IsInsideWeed;
 

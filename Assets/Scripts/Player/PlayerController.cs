@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 namespace PLAYER {
@@ -17,7 +18,7 @@ namespace PLAYER {
         [SerializeField] private LayerMask groundLayer;
 
         [Header("Booleans")]
-        public bool IsJumping => playerJump.IsJumping;
+        public bool IsJumping;
         public bool IsClimbing => playerClimb.IsClimbing;
         public bool CanGrapple => playerGrappler.CanGrapple;
         public bool IsSpikeActive;
@@ -25,6 +26,7 @@ namespace PLAYER {
         public bool takingDamage;
         public bool IsDead;
         public bool IsInsideWheat;
+        public bool DisableStats;
 
         [Header("Prefabs")]
         [SerializeField] private GameObject bulletPrefab;
@@ -49,9 +51,9 @@ namespace PLAYER {
             boxCollider2D = GetComponent<BoxCollider2D>();
         }
         private void Start() {
-            playerShoot.Initialize(gameObject, playerHealth, bulletPrefab, aimPrefab, this);
+            playerShoot.Initialize(gameObject, playerHealth, bulletPrefab, aimPrefab);
             playerMovement.Initialize(rigidBody2D, trailRenderer, spriteRenderer, animator);
-            playerJump.Initialize(rigidBody2D, groundLayer, IsClimbing, IsSpikeActive);
+            playerJump.Initialize(this, rigidBody2D, groundLayer, IsClimbing, IsSpikeActive);
             playerClimb.Initialize(rigidBody2D, climbLayer, IsJumping);
             playerHealth.Initialize(rigidBody2D, this);
             playerGrappler.Initialize(gameObject, lineRenderer, distanceJoint2D, grapplerLayer);
@@ -69,7 +71,7 @@ namespace PLAYER {
 
             playerJump.UpdateSpikeStatus(IsSpikeActive);
             playerSpike.UpdateWheatStatus(IsInsideWheat);
-            playerSpike.UpdateScaleStatus(transform.localScale);
+            playerClimb.UpdateJumpStatus(IsJumping);
         }
         private void FixedUpdate() {
             playerMovement.OnFixedUpdate();
@@ -89,7 +91,9 @@ namespace PLAYER {
             playerJump.CollisionEnter2D(collision);
             playerClimb.CollissionEnter2D(collision);
         }
-        private void OnCollisionExit2D(Collision2D collision) => playerClimb.CollissionExit2D(collision);
+        private void OnCollisionExit2D(Collision2D collision) {
+            playerClimb.CollissionExit2D(collision);
+        }
         private void OnTriggerEnter2D(Collider2D collision) => playerClimb.TriggerEnter2D(collision);
         private void OnTriggerExit2D(Collider2D collision) => playerClimb.TriggerExit2D(collision);
     }
