@@ -51,6 +51,9 @@ namespace PLAYER {
             climbDirection = context.ReadValue<Vector2>().y;
             if (!IsClimbing) climbDirection = 0f;
         }
+        public void UpdateJumpStatus(bool IsJumping) {
+            this.IsJumping = IsJumping;
+        }
         private void AdjustGravity() {
             if (rigidBody2D.linearVelocity.y > 0) {
                 rigidBody2D.gravityScale = gravityScale;
@@ -60,8 +63,8 @@ namespace PLAYER {
         }
         public void CollissionEnter2D(Collision2D collision2D) {
             if (((1 << collision2D.gameObject.layer) & climbLayer) != 0) {
-                IsClimbing = true;
                 IsJumping = false;
+                IsClimbing = true;
 
                 rigidBody2D.linearVelocity = Vector2.zero;
             }
