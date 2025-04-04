@@ -3,6 +3,7 @@ using PLAYER;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -30,5 +31,9 @@ public class GameManager : MonoBehaviour
     }
     private void Update() {
         magicSeedCountTxt.text = $"Magic Seed Count: {magicSeedCount}";
+    }
+
+    public void DIE(){
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

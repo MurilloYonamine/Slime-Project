@@ -32,5 +32,7 @@ namespace PLAYER {
             targetScale = new Vector2(1, 1);
         }
         public void UpdateWheatStatus(bool IsInsideWeed) => this.IsInsideWeed = IsInsideWeed;
+
+        public void UpdateScaleStatus(Vector2 Scale) => this.targetScale = Scale;
     }
 }

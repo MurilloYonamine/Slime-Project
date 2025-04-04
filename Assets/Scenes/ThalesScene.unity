@@ -1010,8 +1010,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 027889ffdcf5b0e45addf2be3b37a7ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
   maxHealth: 25
   knockbackForce: 80
+  player: {fileID: 0}
 --- !u!61 &925455505
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1177,9 +1181,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23bb0b669c248ea488976d8a2fb0e614, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 10
-  MaxHealth: 0
-  healthBar: {fileID: 1758532852}
 --- !u!1 &1197463379
 GameObject:
   m_ObjectHideFlags: 0
@@ -1930,7 +1931,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77202a8ad9fc82f4ca8470cfdf7f9c1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pHealth: {fileID: 1013143996}
+  pHealth:
+    Health: 0
+    MaxHealth: 0
+    healthBar: {fileID: 0}
+    verticalKnockbackForce: 5
+    horizontalKnockbackForce: 2500
   damage: 1
 --- !u!61 &1759061731
 BoxCollider2D:
@@ -2439,9 +2445,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64e3496b69cfa4f42adbf9131ccb1543, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mousePositionText: {fileID: 2021293045}
-  playerPositionText: {fileID: 1361496282}
   player: {fileID: 1013143984}
+  magicSeedCountTxt: {fileID: 0}
+  magicSeedCount: 0
 --- !u!1001 &2971260112650252658
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2470,6 +2476,14 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2073715740645569701, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
+      propertyPath: aimPrefab
+      value: 
+      objectReference: {fileID: 1798204252}
+    - target: {fileID: 2073715740645569701, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
+      propertyPath: playerHealth.healthBar
+      value: 
+      objectReference: {fileID: 1758532852}
     - target: {fileID: 2681552103125494043, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.52

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace PLAYER {
@@ -26,15 +27,38 @@ namespace PLAYER {
 
         public void OnUpdate() {
             healthBar.fillAmount = Mathf.Clamp(Health / MaxHealth, 0, 1);
+
         }
 
         public void TakeDamage(float damage, MonoBehaviour hostile) {
             Health -= damage;
             if (Health <= 0) {
                 Health = 0;
-                Debug.Log("Player morreu");
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }
+
+            if (Health > 25){
+                playerController.transform.localScale = new Vector2(1f,1f);
+            }
+            else if (Health < 25){
+                playerController.transform.localScale = new Vector2(0.50f,0.50f);
             HandleKnockBack(hostile);
+        }
+        }
+
+        public void HEALME(float heal){
+            Health += heal;
+
+             if (Health > 25){
+                playerController.transform.localScale = new Vector2(1f,1f);
+            }
+            else if (Health < 25){
+                playerController.transform.localScale = new Vector2(0.50f,0.50f);
+
+            }
+            if (Health > MaxHealth){
+                Health = MaxHealth;
+            }
         }
 
         public void HandleKnockBack(MonoBehaviour hostile) {

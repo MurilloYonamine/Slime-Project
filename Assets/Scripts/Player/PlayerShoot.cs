@@ -15,16 +15,18 @@ namespace PLAYER
 
         private Camera mainCamera;
         private RectTransform aimPrefab;
+        private PlayerController playerController;
 
         [SerializeField] private float bulletDamage = 1f;
         [SerializeField] private GameObject hitEffect;
         [SerializeField] private float bulletDestroyTimer = 2f;
 
-        public void Initialize(GameObject player, PlayerHealth playerHealth, GameObject bulletPrefab, RectTransform aimPrefab) {
+        public void Initialize(GameObject player, PlayerHealth playerHealth, GameObject bulletPrefab, RectTransform aimPrefab, PlayerController playerController) {
             this.player = player;
             this.playerHealth = playerHealth;
             this.bulletPrefab = bulletPrefab;
             this.aimPrefab = aimPrefab;
+            this.playerController = playerController;
 
             mainCamera = Camera.main;
         }
@@ -39,7 +41,12 @@ namespace PLAYER
             if (context.started && playerHealth.Health > 1)
             {
                 playerHealth.Health -= 1;
-
+                 if (playerHealth.Health > 25){
+                    playerController.transform.localScale = new Vector2(1f,1f);
+                }
+                else if (playerHealth.Health < 25){
+                    playerController.transform.localScale = new Vector2(0.50f,0.50f);
+                }
                 Vector3 mousePosition = mainCamera.ScreenToWorldPoint(Mouse.current.position.ReadValue());
                 mousePosition.z = player.transform.position.z;
 
@@ -62,3 +69,4 @@ namespace PLAYER
 
     }
 }
+

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using AUDIO;
 using PLAYER;
@@ -5,6 +6,14 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace ENEMY {
+
+    public enum State{
+        Patrol,
+        Chase,
+        Return,
+        Dead
+    }
+
     public class Enemy : MonoBehaviour {
 
         [SerializeField] private LayerMask groundLayer;
@@ -13,20 +22,77 @@ namespace ENEMY {
         private SpriteRenderer spriteRenderer;
         private Rigidbody2D rigidBody2D;
         private Color originalColor;
+        private CircleCollider2D circlecollider2D;
+        private Vector2 Startpoint;
+        [HideInInspector]public Transform target;
+        [SerializeField] private CircleCollider2D vision;
+
+        public State state = State.Patrol;
 
         [Header("Enemy Settings")]
         [SerializeField] private float maxHealth = 3f;
         [SerializeField] private float knockbackForce = 25f;
+        [SerializeField] private float MoveSpeed = 5f;
+        [SerializeField] private int NutritionalValue = 10;
         private float currentHealth;
 
         [HideInInspector] public GameObject player;
 
         private void Start() {
+            target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+            circlecollider2D = GetComponent<CircleCollider2D>();
             spriteRenderer = GetComponent<SpriteRenderer>();
             rigidBody2D = GetComponent<Rigidbody2D>();
 
             currentHealth = maxHealth;
             originalColor = spriteRenderer.color;
+            Startpoint = transform.localPosition;
+            circlecollider2D.enabled = false;
+        }
+
+        private void Update(){
+            if (state == State.Patrol){
+                if(IsFacingRight()){
+                    rigidBody2D.linearVelocity = new Vector2(MoveSpeed,0f);
+                }else{
+                    rigidBody2D.linearVelocity = new Vector2(-MoveSpeed,0f);
+                }
+            }
+            else if(state == State.Chase){
+                transform.position = Vector2.MoveTowards(transform.position, target.position, MoveSpeed * Time.deltaTime);
+            }else if (state == State.Return){
+                transform.position = Vector2.MoveTowards(transform.position, Startpoint, MoveSpeed * Time.deltaTime);
+                if (transform.position.x == Startpoint.x){
+                    ChangeState(State.Patrol, "default");
+                }
+            }
+            else if (state == State.Dead){
+                spriteRenderer.color = Color.blue;
+                circlecollider2D.enabled = true;
+                vision.enabled = false;
+                
+            }
+
+
+        }
+
+        private void OnTriggerEnter2D(Collider2D other) {
+            if (other.TryGetComponent<PlayerController>(out PlayerController play) && state == State.Dead) {
+                PlayerHealth fuck = play.playerHealth;
+                fuck.HEALME(NutritionalValue);
+                AudioManager.Instance.PlaySoundEffect("Audio/SFX/Slime/yummy_snack", volume: 0.1f);
+                Destroy(gameObject);
+            }
+        
+        }
+
+        public void ChangeState(State name, String layername){
+            gameObject.layer = LayerMask.NameToLayer(layername);
+            state = name;
+        }
+
+        private bool IsFacingRight(){
+            return transform.localScale.x > Mathf.Epsilon;
         }
 
         public void TakeDamage(float damage) {
@@ -49,11 +115,11 @@ namespace ENEMY {
             spriteRenderer.color = originalColor;
         }
 
-        private void Die() => Destroy(gameObject);
+        private void Die() => ChangeState(State.Dead, "dead enemy");
 
         private void OnCollisionEnter2D(Collision2D collision2D) {
-            if (!(groundLayer == (groundLayer | (1 << collision2D.gameObject.layer)))) {
-                Debug.Log("XERECA");
+            if (!(groundLayer == (groundLayer | (1 << collision2D.gameObject.layer))) && state == State.Patrol) {
+                transform.localScale = new Vector2(-Mathf.Sign(rigidBody2D.linearVelocity.x), transform.localScale.y);
             }
         }
     }
