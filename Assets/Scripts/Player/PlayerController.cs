@@ -51,7 +51,7 @@ namespace PLAYER {
             boxCollider2D = GetComponent<BoxCollider2D>();
         }
         private void Start() {
-            playerShoot.Initialize(gameObject, playerHealth, bulletPrefab, aimPrefab);
+            playerShoot.Initialize(gameObject, playerHealth, bulletPrefab, aimPrefab,this);
             playerMovement.Initialize(rigidBody2D, trailRenderer, spriteRenderer, animator);
             playerJump.Initialize(this, rigidBody2D, groundLayer, IsClimbing, IsSpikeActive);
             playerClimb.Initialize(rigidBody2D, climbLayer, IsJumping);
@@ -71,6 +71,7 @@ namespace PLAYER {
 
             playerJump.UpdateSpikeStatus(IsSpikeActive);
             playerSpike.UpdateWheatStatus(IsInsideWheat);
+            playerSpike.UpdateScaleStatus(transform.localScale);
             playerClimb.UpdateJumpStatus(IsJumping);
         }
         private void FixedUpdate() {
