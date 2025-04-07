@@ -7,27 +7,57 @@ namespace PLAYER {
     public class PlayerSpike {
         [HideInInspector] public PlayerController player;
         [HideInInspector] public bool IsInsideWeed = false;
+        [HideInInspector] public bool CanScale = true;
+
 
         [SerializeField] private float xScale = 4f;
         [SerializeField] private float yScale = 0.5f;
         [SerializeField] private float smoothTime = 0.2f;
         [SerializeField] private Vector2 targetScale;
-        private Vector2 velocity = Vector2.zero;
+        private Vector2 velocity = new Vector2(2,2);
         private Vector2 initialScale;
+        private float CurTime;
 
         public void Initialize(PlayerController player) {
             this.player = player;
             this.initialScale = player.transform.localScale;
             this.targetScale = initialScale;
+            CurTime = smoothTime+0.8f;
         }
         public void OnUpdate() {
-            player.transform.localScale = Vector2.SmoothDamp(player.transform.localScale, targetScale, ref velocity, smoothTime);
+            //player.transform.localScale = Vector2.SmoothDamp(player.transform.localScale, targetScale, ref velocity, smoothTime);
+            if (player.cursize == CURSIZE.normal){
+                this.initialScale = new Vector2(1f,1f);
+                xScale = 4f;
+                yScale = 0.5f;
+            } else{
+                this.initialScale = new Vector2(0.5f,0.5f);
+                xScale = 2f;
+                yScale = 0.25f;
+            }
+
+
+            if (CanScale){
+                CurTime -= Time.deltaTime;
+                player.transform.localScale = Vector2.SmoothDamp(player.transform.localScale, targetScale, ref velocity, smoothTime);
+                if (CurTime <= 0){
+                    CanScale = false;
+                    CurTime = smoothTime+0.8f;
+                    if (player.curstretch == CURSTRECH.normal){
+                        player.curstretch = CURSTRECH.steched;
+                    } else if (player.curstretch == CURSTRECH.steched){
+                        player.curstretch = CURSTRECH.normal;
+                    }
+                }
+            }
         }
         public void Spike(InputAction.CallbackContext context) {
-            if (context.performed && !IsInsideWeed) {
+            if (context.performed && !IsInsideWeed && !CanScale) {
                 player.IsSpikeActive = !player.IsSpikeActive;
                 targetScale = new Vector2(player.IsSpikeActive ? xScale : initialScale.x, player.IsSpikeActive ? yScale : initialScale.y);
+                AllowedScalingFor90PercentOff();
             }
+
         }
         public void DisableSpike() {
             player.IsSpikeActive = false;
@@ -35,6 +65,11 @@ namespace PLAYER {
         }
         public void UpdateWheatStatus(bool IsInsideWeed) => this.IsInsideWeed = IsInsideWeed;
 
-        public void UpdateScaleStatus(Vector2 Scale) => this.targetScale = Scale;
+        //public void UpdateScaleStatus(Vector2 Scale) => this.targetScale = Scale;
+
+        private void AllowedScalingFor90PercentOff()
+        {
+            CanScale = true;
+        }
     }
 }

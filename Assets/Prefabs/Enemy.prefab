@@ -261,7 +261,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundLayer:
     serializedVersion: 2
-    m_Bits: 24575
+    m_Bits: 122879
   target: {fileID: 0}
   vision: {fileID: 594130140605339140}
   state: 0

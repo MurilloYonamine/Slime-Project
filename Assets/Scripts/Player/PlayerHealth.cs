@@ -6,9 +6,13 @@ using UnityEngine.UI;
 
 namespace PLAYER {
     [Serializable]
+
+
+
     public class PlayerHealth {
 
         public float Health;
+        
         [HideInInspector] public float MaxHealth;
 
         private Rigidbody2D rigidBody2D;
@@ -37,25 +41,15 @@ namespace PLAYER {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }
 
-            if (Health > 25){
-                playerController.transform.localScale = new Vector2(1f,1f);
-            }
-            else if (Health < 25){
-                playerController.transform.localScale = new Vector2(0.50f,0.50f);
+            SizeChange();
             HandleKnockBack(hostile);
-        }
+        
         }
 
         public void HEALME(float heal){
             Health += heal;
 
-             if (Health > 25){
-                playerController.transform.localScale = new Vector2(1f,1f);
-            }
-            else if (Health < 25){
-                playerController.transform.localScale = new Vector2(0.50f,0.50f);
-
-            }
+            SizeChange();
             if (Health > MaxHealth){
                 Health = MaxHealth;
             }
@@ -72,5 +66,29 @@ namespace PLAYER {
                 rigidBody2D.AddForce(Vector2.right * horizontalKnockbackForce, ForceMode2D.Force);
             }
         }
+
+        public void SizeChange(){
+             if (Health > 25  && playerController.cursize == CURSIZE.small && playerController.curstretch == CURSTRECH.steched){
+                playerController.transform.localScale = new Vector2(1f,1f);
+                playerController.cursize = CURSIZE.normal;
+                Debug.Log("was it me?");
+            }
+            else if (Health < 25 && playerController.cursize == CURSIZE.normal && playerController.curstretch == CURSTRECH.steched){
+                playerController.transform.localScale = new Vector2(0.50f,0.50f);
+                playerController.cursize = CURSIZE.small;
+                Debug.Log("or me?");
+            } 
+            else if (Health > 25  && playerController.cursize == CURSIZE.small && playerController.curstretch == CURSTRECH.normal){
+                playerController.transform.localScale = new Vector2(4f,0.5f);
+                playerController.cursize = CURSIZE.normal;
+                Debug.Log("maybe me?");
+            } 
+            else if(Health < 25 && playerController.cursize == CURSIZE.normal && playerController.curstretch == CURSTRECH.normal){
+                playerController.transform.localScale = new Vector2(2f,0.25f);
+                playerController.cursize = CURSIZE.small;
+                Debug.Log("OPTION NUMBER 4");
+            }
+        }
+
     }
 }

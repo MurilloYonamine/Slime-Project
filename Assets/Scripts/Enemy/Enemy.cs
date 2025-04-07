@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using AUDIO;
 using PLAYER;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -63,7 +64,7 @@ namespace ENEMY {
             }else if (state == State.Return){
                 transform.position = Vector2.MoveTowards(transform.position, Startpoint, MoveSpeed * Time.deltaTime);
                 if (transform.position.x == Startpoint.x){
-                    ChangeState(State.Patrol, "default");
+                    ChangeState(State.Patrol, "Default");
                 }
             }
             else if (state == State.Dead){
@@ -87,8 +88,8 @@ namespace ENEMY {
         }
 
         public void ChangeState(State name, String layername){
-            gameObject.layer = LayerMask.NameToLayer(layername);
             state = name;
+            gameObject.layer = LayerMask.NameToLayer(layername);
         }
 
         private bool IsFacingRight(){
@@ -119,7 +120,7 @@ namespace ENEMY {
 
         private void OnCollisionEnter2D(Collision2D collision2D) {
             if (!(groundLayer == (groundLayer | (1 << collision2D.gameObject.layer))) && state == State.Patrol) {
-                transform.localScale = new Vector2(-Mathf.Sign(rigidBody2D.linearVelocity.x), transform.localScale.y);
+                transform.localScale = new Vector2(-Mathf.Sign(transform.localScale.x), transform.localScale.y);
             }
         }
     }

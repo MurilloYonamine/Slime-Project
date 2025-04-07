@@ -2,6 +2,17 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 namespace PLAYER {
+
+    public enum CURSIZE{
+        normal,
+        small
+     }
+
+     public enum CURSTRECH{
+        steched,
+        normal
+     }
+
     public class PlayerController : MonoBehaviour {
         [Header("Components")]
         [SerializeField] private Rigidbody2D rigidBody2D;
@@ -42,6 +53,10 @@ namespace PLAYER {
         [SerializeField] private PlayerSpike playerSpike;
         [SerializeField] public PlayerHealth playerHealth;
 
+
+        [HideInInspector] public CURSTRECH curstretch = CURSTRECH.normal;
+        [HideInInspector] public CURSIZE cursize = CURSIZE.normal;
+
         private void Awake() {
             rigidBody2D = GetComponent<Rigidbody2D>();
             trailRenderer = GetComponent<TrailRenderer>();
@@ -71,7 +86,7 @@ namespace PLAYER {
 
             playerJump.UpdateSpikeStatus(IsSpikeActive);
             playerSpike.UpdateWheatStatus(IsInsideWheat);
-            playerSpike.UpdateScaleStatus(transform.localScale);
+            //playerSpike.UpdateScaleStatus(transform.localScale);
             playerClimb.UpdateJumpStatus(IsJumping);
         }
         private void FixedUpdate() {
