@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using AUDIO;
+using ENEMYVISION;
 using PLAYER;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -12,7 +13,8 @@ namespace ENEMY {
         Patrol,
         Chase,
         Return,
-        Dead
+        Dead,
+        Attack
     }
 
     public class Enemy : MonoBehaviour {
@@ -24,9 +26,10 @@ namespace ENEMY {
         private Rigidbody2D rigidBody2D;
         private Color originalColor;
         private CircleCollider2D circlecollider2D;
-        private Vector2 Startpoint;
+        private Vector3 Startpoint;
         [HideInInspector]public Transform target;
         [SerializeField] private CircleCollider2D vision;
+        [HideInInspector] public Vector2 DistanceToTarget;
 
         public State state = State.Patrol;
 
@@ -35,6 +38,7 @@ namespace ENEMY {
         [SerializeField] private float knockbackForce = 25f;
         [SerializeField] private float MoveSpeed = 5f;
         [SerializeField] private int NutritionalValue = 10;
+        [SerializeField] public int Damage = 10;
         private float currentHealth;
 
         [HideInInspector] public GameObject player;
@@ -60,11 +64,25 @@ namespace ENEMY {
                 }
             }
             else if(state == State.Chase){
-                transform.position = Vector2.MoveTowards(transform.position, target.position, MoveSpeed * Time.deltaTime);
+                DistanceToTarget = transform.position - target.position;
+                if(DistanceToTarget.x > 0){
+                    transform.localScale = new Vector2(-1, transform.localScale.y);
+                } else{
+                    transform.localScale = new Vector2(1, transform.localScale.y);
+                }
+                transform.position = Vector2.MoveTowards(new Vector2(transform.position.x,transform.position.y), new Vector2(target.position.x,transform.position.y), MoveSpeed * Time.deltaTime);
+                
             }else if (state == State.Return){
+                DistanceToTarget = transform.position - Startpoint;
+                if(DistanceToTarget.x > 0){
+                    transform.localScale = new Vector2(-1, transform.localScale.y);
+                } else{
+                    transform.localScale = new Vector2(1, transform.localScale.y);
+                }
                 transform.position = Vector2.MoveTowards(transform.position, Startpoint, MoveSpeed * Time.deltaTime);
                 if (transform.position.x == Startpoint.x){
                     ChangeState(State.Patrol, "Default");
+                    
                 }
             }
             else if (state == State.Dead){
@@ -120,8 +138,13 @@ namespace ENEMY {
 
         private void OnCollisionEnter2D(Collision2D collision2D) {
             if (!(groundLayer == (groundLayer | (1 << collision2D.gameObject.layer))) && state == State.Patrol) {
-                transform.localScale = new Vector2(-Mathf.Sign(transform.localScale.x), transform.localScale.y);
+                TurnAround();
             }
         }
+
+        public void TurnAround(){
+            transform.localScale = new Vector2(-Mathf.Sign(transform.localScale.x), transform.localScale.y);
+        }
+
     }
 }
