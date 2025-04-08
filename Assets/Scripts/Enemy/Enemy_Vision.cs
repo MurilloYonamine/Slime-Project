@@ -20,23 +20,22 @@ namespace ENEMYVISION{
         // Update is called once per frame
         void Update()
         {
-            
+            if (body.state == ENEMY.State.Chase & (body.DistanceToTarget.x >= 18 || body.DistanceToTarget.x <= -18)){
+                body.ChangeState(ENEMY.State.Return, "chasing enemy");
+            }
+
+            if(body.state == ENEMY.State.Patrol){
+                circlecollider2D.enabled = true;
+            }
         }
 
         private void OnTriggerEnter2D(Collider2D other) {
-            if (other.TryGetComponent<PlayerController>(out PlayerController play)){
+            if (other.TryGetComponent<PlayerController>(out PlayerController play) && body.state == ENEMY.State.Patrol){
                 body.ChangeState(ENEMY.State.Chase, "chasing enemy");
-                circlecollider2D.radius = 8;
+                circlecollider2D.enabled = false;
             }
         }
 
-        private void OnTriggerExit2D(Collider2D other)
-        {
-            if (other.TryGetComponent<PlayerController>(out PlayerController play) && body.state == ENEMY.State.Chase){
-                body.ChangeState(ENEMY.State.Return, "chasing enemy");
-                circlecollider2D.radius = 4;
-            }
-        }
 
 
     }
