@@ -104,6 +104,7 @@ namespace PLAYER {
         public void DisableSpike() => playerSpike.DisableSpike();
 
         private void OnCollisionEnter2D(Collision2D collision) {
+            // Debug.Log("Colidiu com: ", collision.layer);
             playerJump.CollisionEnter2D(collision);
             playerClimb.CollissionEnter2D(collision);
         }
