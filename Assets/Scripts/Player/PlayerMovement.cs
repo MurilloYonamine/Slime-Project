@@ -30,8 +30,8 @@ namespace PLAYER {
         }
 
         public void OnFixedUpdate() {
-            Debug.Log($"Animator Bool: {animator.GetBool("IsWalking")}");
-            Debug.Log($"Face Direction: {faceDirection}");
+            // Debug.Log($"Animator Bool: {animator.GetBool("IsWalking")}");
+            // Debug.Log($"Face Direction: {faceDirection}");
 
             rigidBody2D.linearVelocity = new Vector2(moveDirection.x * moveSpeed, rigidBody2D.linearVelocity.y);
         }
