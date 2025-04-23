@@ -7,8 +7,8 @@ namespace PLAYER
     [Serializable]
     public class PlayerShoot
     {
+        private PlayerController player;
         private PlayerHealth playerHealth;
-        private GameObject player;
 
         private GameObject bulletPrefab;
         [SerializeField] private float bulletSpeed = 50f;
@@ -21,12 +21,11 @@ namespace PLAYER
         [SerializeField] private GameObject hitEffect;
         [SerializeField] private float bulletDestroyTimer = 2f;
 
-        public void Initialize(GameObject player, PlayerHealth playerHealth, GameObject bulletPrefab, RectTransform aimPrefab, PlayerController playerController) {
+        public void Initialize(PlayerController player, PlayerHealth playerHealth, GameObject bulletPrefab, RectTransform aimPrefab) {
             this.player = player;
             this.playerHealth = playerHealth;
             this.bulletPrefab = bulletPrefab;
             this.aimPrefab = aimPrefab;
-            this.playerController = playerController;
 
             mainCamera = Camera.main;
         }
@@ -52,7 +51,7 @@ namespace PLAYER
                 bullet.AddComponent<PlayerBullet>();
                 bullet.GetComponent<PlayerBullet>().bulletDamage = bulletDamage;
                 bullet.GetComponent<PlayerBullet>().hitEffect = hitEffect;
-                bullet.GetComponent<PlayerBullet>().player = player;
+                bullet.GetComponent<PlayerBullet>().player = player.gameObject;
 
                 bullet.GetComponent<Rigidbody2D>().linearVelocity = shootDirection * bulletSpeed;
 

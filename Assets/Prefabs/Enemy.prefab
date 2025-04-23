@@ -111,7 +111,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4917969103433014929}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 11.61, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -267,10 +267,11 @@ MonoBehaviour:
   vision: {fileID: 594130140605339140}
   DistanceToTarget: {x: 0, y: 0}
   state: 0
-  maxHealth: 25
+  maxHealth: 8
   knockbackForce: 5
-  MoveSpeed: 5
-  NutritionalValue: 10
+  MoveSpeed: 2
+  NutritionalValue: 50
+  Damage: 10
   player: {fileID: 0}
 --- !u!58 &704179507934716705
 CircleCollider2D:
@@ -354,7 +355,7 @@ CircleCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 131063
@@ -390,3 +391,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   body: {fileID: 7359792767938138716}
+  AttackDuration: 1

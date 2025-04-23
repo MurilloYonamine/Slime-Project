@@ -26,7 +26,7 @@ namespace PLAYER {
         }
         public void OnUpdate() {
             //player.transform.localScale = Vector2.SmoothDamp(player.transform.localScale, targetScale, ref velocity, smoothTime);
-            if (player.cursize == CURSIZE.normal){
+            if (player.cursize == PlayerController.CURSIZE.normal){
                 this.initialScale = new Vector2(1f,1f);
                 xScale = 4f;
                 yScale = 0.5f;
@@ -43,10 +43,10 @@ namespace PLAYER {
                 if (CurTime <= 0){
                     CanScale = false;
                     CurTime = smoothTime+0.8f;
-                    if (player.curstretch == CURSTRECH.normal){
-                        player.curstretch = CURSTRECH.steched;
-                    } else if (player.curstretch == CURSTRECH.steched){
-                        player.curstretch = CURSTRECH.normal;
+                    if (player.curstretch == PlayerController.CURSTRECH.normal){
+                        player.curstretch = PlayerController.CURSTRECH.steched;
+                    } else if (player.curstretch == PlayerController.CURSTRECH.steched){
+                        player.curstretch = PlayerController.CURSTRECH.normal;
                     }
                 }
             }

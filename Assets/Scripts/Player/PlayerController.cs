@@ -3,15 +3,6 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 namespace PLAYER {
 
-    public enum CURSIZE{
-        normal,
-        small
-     }
-
-     public enum CURSTRECH{
-        steched,
-        normal
-     }
 
     public class PlayerController : MonoBehaviour {
         [Header("Components")]
@@ -19,7 +10,7 @@ namespace PLAYER {
         [SerializeField] private TrailRenderer trailRenderer;
         [SerializeField] private LineRenderer lineRenderer;
         [SerializeField] private DistanceJoint2D distanceJoint2D;
-        [SerializeField] public Animator animator;
+        public Animator animator;
         [SerializeField] private SpriteRenderer spriteRenderer;
         [SerializeField] private BoxCollider2D boxCollider2D;
 
@@ -30,8 +21,8 @@ namespace PLAYER {
 
         [Header("Booleans")]
         public bool IsJumping;
-        public bool IsClimbing => playerClimb.IsClimbing;
-        public bool CanGrapple => playerGrappler.CanGrapple;
+        public bool IsClimbing;
+        public bool CanGrapple;
         public bool IsSpikeActive;
         public bool IsPaused;
         public bool takingDamage;
@@ -51,12 +42,12 @@ namespace PLAYER {
         [SerializeField] private PlayerGrappler playerGrappler;
         [SerializeField] private PlayerShoot playerShoot;
         [SerializeField] private PlayerSpike playerSpike;
-        [SerializeField] public PlayerHealth playerHealth;
+        public PlayerHealth playerHealth;
 
-
+        public enum CURSTRECH { steched, normal }
+        public enum CURSIZE { normal, small }
         [HideInInspector] public CURSTRECH curstretch = CURSTRECH.normal;
         [HideInInspector] public CURSIZE cursize = CURSIZE.normal;
-
         private void Awake() {
             rigidBody2D = GetComponent<Rigidbody2D>();
             trailRenderer = GetComponent<TrailRenderer>();
@@ -66,12 +57,12 @@ namespace PLAYER {
             boxCollider2D = GetComponent<BoxCollider2D>();
         }
         private void Start() {
-            playerShoot.Initialize(gameObject, playerHealth, bulletPrefab, aimPrefab,this);
+            playerHealth.Initialize(this, rigidBody2D);
+            playerShoot.Initialize(this, playerHealth, bulletPrefab, aimPrefab);
             playerMovement.Initialize(rigidBody2D, trailRenderer, spriteRenderer, animator);
             playerJump.Initialize(this, rigidBody2D, groundLayer, IsClimbing, IsSpikeActive);
-            playerClimb.Initialize(rigidBody2D, climbLayer, IsJumping);
-            playerHealth.Initialize(rigidBody2D, this);
-            playerGrappler.Initialize(gameObject, lineRenderer, distanceJoint2D, grapplerLayer);
+            playerClimb.Initialize(this, rigidBody2D, climbLayer, IsJumping);
+            playerGrappler.Initialize(this, lineRenderer, distanceJoint2D, grapplerLayer);
             playerSpike.Initialize(this);
 
             playerStats.Initialize(this);
