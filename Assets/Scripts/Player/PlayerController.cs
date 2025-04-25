@@ -1,16 +1,20 @@
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
-namespace PLAYER {
+namespace PLAYER
+{
 
 
-    public class PlayerController : MonoBehaviour {
+    public class PlayerController : MonoBehaviour
+    {
+        private GameManager gameManager = GameManager.Instance;
+
         [Header("Components")]
         [SerializeField] private Rigidbody2D rigidBody2D;
         [SerializeField] private TrailRenderer trailRenderer;
         [SerializeField] private LineRenderer lineRenderer;
         [SerializeField] private DistanceJoint2D distanceJoint2D;
-        public Animator animator;
+        [SerializeField] private Animator animator;
         [SerializeField] private SpriteRenderer spriteRenderer;
         [SerializeField] private BoxCollider2D boxCollider2D;
 
@@ -25,7 +29,7 @@ namespace PLAYER {
         public bool CanGrapple;
         public bool IsSpikeActive;
         public bool IsPaused;
-        public bool takingDamage;
+        public bool IsTakingDamage;
         public bool IsDead;
         public bool IsInsideWheat;
         public bool DisableStats;
@@ -48,7 +52,8 @@ namespace PLAYER {
         public enum CURSIZE { normal, small }
         [HideInInspector] public CURSTRECH curstretch = CURSTRECH.normal;
         [HideInInspector] public CURSIZE cursize = CURSIZE.normal;
-        private void Awake() {
+        private void Awake()
+        {
             rigidBody2D = GetComponent<Rigidbody2D>();
             trailRenderer = GetComponent<TrailRenderer>();
             lineRenderer = GetComponent<LineRenderer>();
@@ -56,7 +61,8 @@ namespace PLAYER {
             spriteRenderer = GetComponent<SpriteRenderer>();
             boxCollider2D = GetComponent<BoxCollider2D>();
         }
-        private void Start() {
+        private void Start()
+        {
             playerHealth.Initialize(this, rigidBody2D);
             playerShoot.Initialize(this, playerHealth, bulletPrefab, aimPrefab);
             playerMovement.Initialize(rigidBody2D, trailRenderer, spriteRenderer, animator);
@@ -68,7 +74,8 @@ namespace PLAYER {
             playerStats.Initialize(this);
         }
 
-        private void Update() {
+        private void Update()
+        {
             playerStats.OnUpdate();
             playerHealth.OnUpdate();
             playerGrappler.OnUpdate();
@@ -80,7 +87,8 @@ namespace PLAYER {
             //playerSpike.UpdateScaleStatus(transform.localScale);
             playerClimb.UpdateJumpStatus(IsJumping);
         }
-        private void FixedUpdate() {
+        private void FixedUpdate()
+        {
             playerMovement.OnFixedUpdate();
             playerClimb.OnFixedUpdate();
         }
@@ -94,15 +102,17 @@ namespace PLAYER {
         public void StartChangeSpeed(float speed, float timeToNormalize) => StartCoroutine(playerMovement.ChangeSpeed(speed, timeToNormalize));
         public void DisableSpike() => playerSpike.DisableSpike();
 
-        private void OnCollisionEnter2D(Collision2D collision) {
+        private void OnCollisionEnter2D(Collision2D collision2D)
+        {
             // Debug.Log("Colidiu com: ", collision.layer);
-            playerJump.CollisionEnter2D(collision);
-            playerClimb.CollissionEnter2D(collision);
+            playerJump.CollisionEnter2D(collision2D);
+            playerClimb.CollissionEnter2D(collision2D);
         }
-        private void OnCollisionExit2D(Collision2D collision) {
-            playerClimb.CollissionExit2D(collision);
+        private void OnCollisionExit2D(Collision2D collision2D)
+        {
+            playerClimb.CollissionExit2D(collision2D);
         }
-        private void OnTriggerEnter2D(Collider2D collision) => playerClimb.TriggerEnter2D(collision);
-        private void OnTriggerExit2D(Collider2D collision) => playerClimb.TriggerExit2D(collision);
+        private void OnTriggerEnter2D(Collider2D collision2D) => playerClimb.TriggerEnter2D(collision2D);
+        private void OnTriggerExit2D(Collider2D collision2D) => playerClimb.TriggerExit2D(collision2D);
     }
 }

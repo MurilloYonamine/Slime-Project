@@ -45,13 +45,11 @@ namespace PLAYER {
             Health += heal;
 
             SizeChange();
-            if (Health > MaxHealth) {
-                Health = MaxHealth;
-            }
+            if (Health > MaxHealth) Health = MaxHealth;
         }
 
         public void HandleKnockBack(MonoBehaviour hostile) {
-            player.takingDamage = true;
+            player.IsTakingDamage = true;
 
             rigidBody2D.AddForce(Vector2.up * verticalKnockbackForce, ForceMode2D.Impulse);
 

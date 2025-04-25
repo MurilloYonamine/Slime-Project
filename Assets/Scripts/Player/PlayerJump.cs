@@ -27,9 +27,8 @@ namespace PLAYER {
             this.IsClimbing = IsClimbing;
         }
         public void UpdateSpikeStatus(bool isSpikeActive) {
-            if (!this.IsSpikeActive && isSpikeActive && player.IsJumping) {
-                haveSpikedAfterJump = true;
-            }
+            if (!this.IsSpikeActive && isSpikeActive && player.IsJumping) haveSpikedAfterJump = true;
+            
             this.IsSpikeActive = isSpikeActive;
         }
 
