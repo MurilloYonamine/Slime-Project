@@ -44,10 +44,11 @@ public class GameManager : MonoBehaviour
         {
             virtualCameras[currentVirtualCamera].Priority--;
             currentVirtualCamera++;
-
+            virtualCameras[currentVirtualCamera].Priority++;
             return;
         }
-        virtualCameras[currentVirtualCamera - 1].Priority++;
+        virtualCameras[currentVirtualCamera].Priority--;
         currentVirtualCamera--;
+        virtualCameras[currentVirtualCamera].Priority++;
     }
 }
