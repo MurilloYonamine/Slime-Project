@@ -24,7 +24,6 @@ namespace PLAYER {
             this.spriteRenderer = spriteRenderer;
             this.animator = animator;
 
-            this.moveSpeed = 10f;
             this.originalSpeed = this.moveSpeed;
             this.moveDirection = Vector2.zero;
         }

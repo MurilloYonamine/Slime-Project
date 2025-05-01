@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 namespace PLAYER {
     [Serializable]
     public class PlayerClimb {
+        private PlayerController player;
         private Rigidbody2D rigidBody2D;
 
         [SerializeField] private float climbSpeed = 5f;
@@ -18,11 +19,9 @@ namespace PLAYER {
 
         private LayerMask climbLayer;
 
-        private bool IsJumping = false;
-
-        public void Initialize(Rigidbody2D rigidBody2D, LayerMask climbLayer, bool IsJumping) {
+        public void Initialize(PlayerController player, Rigidbody2D rigidBody2D, LayerMask climbLayer, bool IsJumping) {
+            this.player = player;
             this.rigidBody2D = rigidBody2D;
-            this.IsJumping = IsJumping;
             this.climbLayer = climbLayer;
 
             this.climbSpeed = 5f;
@@ -52,7 +51,7 @@ namespace PLAYER {
             if (!IsClimbing) climbDirection = 0f;
         }
         public void UpdateJumpStatus(bool IsJumping) {
-            this.IsJumping = IsJumping;
+            player.IsJumping = IsJumping;
         }
         private void AdjustGravity() {
             if (rigidBody2D.linearVelocity.y > 0) {
@@ -63,7 +62,7 @@ namespace PLAYER {
         }
         public void CollissionEnter2D(Collision2D collision2D) {
             if (((1 << collision2D.gameObject.layer) & climbLayer) != 0) {
-                IsJumping = false;
+                player.IsJumping = false;
                 IsClimbing = true;
 
                 rigidBody2D.linearVelocity = Vector2.zero;
@@ -78,7 +77,7 @@ namespace PLAYER {
         public void TriggerEnter2D(Collider2D collider2D) {
             if (((1 << collider2D.gameObject.layer) & climbLayer) != 0) {
                 IsClimbing = true;
-                IsJumping = false;
+                player.IsJumping = false;
 
                 rigidBody2D.linearVelocity = Vector2.zero;
             }

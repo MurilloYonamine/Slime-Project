@@ -7,7 +7,7 @@ using UnityEngine.UI;
 namespace PLAYER {
     [Serializable]
     public class PlayerGrappler {
-        private GameObject player;
+        private PlayerController player;
 
         private LineRenderer lineRenderer;
         private DistanceJoint2D distanceJoint2D;
@@ -15,9 +15,8 @@ namespace PLAYER {
         private LayerMask grapplerLayer;
         [SerializeField] private float grappleMaxPoint = 5f;
         [HideInInspector] public bool IsGrappleWithinMaxDistance { get; private set; } = true;
-        [HideInInspector] public bool CanGrapple { get; private set; } = false;
 
-        public void Initialize(GameObject player, LineRenderer lineRenderer, DistanceJoint2D distanceJoint2D, LayerMask grapplerLayer) {
+        public void Initialize(PlayerController player, LineRenderer lineRenderer, DistanceJoint2D distanceJoint2D, LayerMask grapplerLayer) {
             this.player = player;
             this.lineRenderer = lineRenderer;
             this.distanceJoint2D = distanceJoint2D;
@@ -25,7 +24,6 @@ namespace PLAYER {
 
             this.grappleMaxPoint = 5f;
             this.IsGrappleWithinMaxDistance = true;
-            this.CanGrapple = false;
 
             lineRenderer.enabled = false;
             distanceJoint2D.enabled = false;
@@ -44,7 +42,7 @@ namespace PLAYER {
                 if (hit.collider != null) {
                     float distanceToGrapplePoint = Vector2.Distance(player.transform.position, hit.point);
                     if (distanceToGrapplePoint <= grappleMaxPoint) {
-                        CanGrapple = true;
+                        player.CanGrapple = true;
                         lineRenderer.SetPosition(0, hit.point);
                         lineRenderer.SetPosition(1, player.transform.position);
 
@@ -53,13 +51,13 @@ namespace PLAYER {
                         lineRenderer.enabled = true;
                         AudioManager.Instance.PlaySoundEffect("Audio/SFX/Slime/slime_shot", volume: 1f);
                     } else {
-                        CanGrapple = false;
+                        player.CanGrapple = false;
                     }
                 }
             } else if (context.canceled) {
                 distanceJoint2D.enabled = false;
                 lineRenderer.enabled = false;
-                CanGrapple = false;
+                player.CanGrapple = false;
             }
 
             if (lineRenderer.enabled) lineRenderer.SetPosition(1, player.transform.position);
