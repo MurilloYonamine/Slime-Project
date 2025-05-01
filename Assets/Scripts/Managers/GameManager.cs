@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private int currentVirtualCamera = 0;
     [SerializeField] public List<CinemachineVirtualCamera> virtualCameras;
+    [SerializeField] public object PlayerOriginalLayer;
     private void Awake()
     {
         //Cursor.visible = false;
