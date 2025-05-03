@@ -22,7 +22,6 @@ namespace PLAYER {
             this.distanceJoint2D = distanceJoint2D;
             this.grapplerLayer = grapplerLayer;
 
-            this.grappleMaxPoint = 5f;
             this.IsGrappleWithinMaxDistance = true;
 
             lineRenderer.enabled = false;

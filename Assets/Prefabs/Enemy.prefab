@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1393447567765813430}
   - component: {fileID: 594130140605339140}
   - component: {fileID: 1754228925093380328}
-  m_Layer: 15
+  m_Layer: 0
   m_Name: vision
   m_TagString: Untagged
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}

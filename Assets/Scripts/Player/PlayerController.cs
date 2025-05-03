@@ -26,6 +26,7 @@ namespace PLAYER
         [Header("Booleans")]
         public bool IsJumping;
         public bool IsClimbing;
+        public bool IsGrappling;
         public bool CanGrapple;
         public bool IsSpikeActive;
         public bool IsPaused;
@@ -65,7 +66,7 @@ namespace PLAYER
         {
             playerHealth.Initialize(this, rigidBody2D);
             playerShoot.Initialize(this, playerHealth, bulletPrefab, aimPrefab);
-            playerMovement.Initialize(rigidBody2D, trailRenderer, spriteRenderer, animator);
+            playerMovement.Initialize(this, rigidBody2D, trailRenderer, spriteRenderer, animator, distanceJoint2D);
             playerJump.Initialize(this, rigidBody2D, groundLayer, IsClimbing, IsSpikeActive);
             playerClimb.Initialize(this, rigidBody2D, climbLayer, IsJumping);
             playerGrappler.Initialize(this, lineRenderer, distanceJoint2D, grapplerLayer);
