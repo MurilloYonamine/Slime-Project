@@ -32,6 +32,7 @@ public class PauseManager : MonoBehaviour {
         resumeButton.onClick.AddListener(() => CloseOpenMenu());
         settingsButton.onClick.AddListener(() => OpenSettingsMenu());
         comeBackButton.onClick.AddListener(() => CloseSettingsMenu());
+        quitButton.onClick.AddListener(() => QuitGame());
     }
     public void ManagePauseMenu(InputAction.CallbackContext context) {
         if (context.started) {
@@ -83,4 +84,6 @@ public class PauseManager : MonoBehaviour {
         submenuCanvasGroup.interactable = false;
         OpenMainMenu();
     }
+    private void QuitGame() => Application.Quit();
+    
 }
