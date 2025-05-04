@@ -7,7 +7,7 @@ namespace CAMERA
         private void OnTriggerEnter2D(Collider2D collision2D)
         {
             if (collision2D.CompareTag("Player")) {
-                GameManager.Instance.ChangeCurrentCamera(playerHasPassed);
+                CameraManager.Instance.ChangeCurrentCamera(playerHasPassed);
                 playerHasPassed = !playerHasPassed;
             }
         }

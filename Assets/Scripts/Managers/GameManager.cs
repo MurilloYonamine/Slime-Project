@@ -19,9 +19,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI magicSeedCountTxt;
     [HideInInspector] public int magicSeedCount = 0;
 
-    [SerializeField] private int currentVirtualCamera = 0;
-    [SerializeField] public List<CinemachineVirtualCamera> virtualCameras;
     [SerializeField] public Transform PlayerOriginalLayer;
+
+    [SerializeField] public List<GameObject> allGrapplers;
+
     private void Awake()
     {
         //Cursor.visible = false;
@@ -38,18 +39,10 @@ public class GameManager : MonoBehaviour
     }
     private void Update() => magicSeedCountTxt.text = $"Magic Seed Count: {magicSeedCount}";
     public void Die() => SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-
-    public void ChangeCurrentCamera(bool playerHasPassed)
-    {
-        if (!playerHasPassed)
-        {
-            virtualCameras[currentVirtualCamera].Priority--;
-            currentVirtualCamera++;
-            virtualCameras[currentVirtualCamera].Priority++;
-            return;
+    public void ChangeGrapplersDistance(float distance) {
+        foreach(GameObject grappler in allGrapplers) {
+            grappler.GetComponentInChildren<CircleCollider2D>().radius = distance;
         }
-        virtualCameras[currentVirtualCamera].Priority--;
-        currentVirtualCamera--;
-        virtualCameras[currentVirtualCamera].Priority++;
     }
+
 }
