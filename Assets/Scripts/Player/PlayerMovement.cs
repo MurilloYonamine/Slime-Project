@@ -19,9 +19,8 @@ namespace PLAYER
         [SerializeField] private Vector2 moveDirection;
         bool faceDirection => moveDirection.x < 0; // true if moving right, false if moving left
 
-        private DistanceJoint2D distanceJoint2D;
 
-        public void Initialize(PlayerController player, Rigidbody2D rigidBody2D, TrailRenderer trailRenderer, SpriteRenderer spriteRenderer, Animator animator, DistanceJoint2D distanceJoint2D)
+        public void Initialize(PlayerController player, Rigidbody2D rigidBody2D, TrailRenderer trailRenderer, SpriteRenderer spriteRenderer, Animator animator)
         {
             this.player = player;
             this.rigidBody2D = rigidBody2D;
@@ -31,8 +30,6 @@ namespace PLAYER
 
             this.originalSpeed = this.moveSpeed;
             this.moveDirection = Vector2.zero;
-
-            this.distanceJoint2D = distanceJoint2D;
         }
 
         public void OnFixedUpdate()
@@ -51,11 +48,6 @@ namespace PLAYER
             animator.SetBool("IsWalking", moveDirection.x != 0);
 
             trailRenderer.emitting = moveDirection.x != 0;
-
-            if (player.IsGrappling)
-            {
-                Vector2.MoveTowards(moveDirection, distanceJoint2D.connectedAnchor, 0f);
-            }
         }
         public IEnumerator ChangeSpeed(float speed, float timeToNormalize)
         {
