@@ -33,7 +33,7 @@ namespace PLAYER
 
             lineRenderer.enabled = false;
             distanceJoint2D.enabled = false;
-            
+
             GameManager.Instance.ChangeGrapplersDistance(grappleMaxPoint);
         }
 
@@ -50,10 +50,9 @@ namespace PLAYER
 
                 RaycastHit2D hit = Physics2D.Raycast(player.transform.position, mousePosition - (Vector2)player.transform.position, Mathf.Infinity, grapplerLayer);
 
-                float distanceToGrapplePoint = Vector2.Distance(player.transform.position, hit.point);
-
                 if (hit.collider != null)
                 {
+                    float distanceToGrapplePoint = Vector2.Distance(player.transform.position, hit.point);
                     if (distanceToGrapplePoint <= grappleMaxPoint)
                     {
                         player.IsGrappling = true;
@@ -83,6 +82,7 @@ namespace PLAYER
                 player.CanGrapple = true;
 
                 grapplerObjectOriginalColor = collider2D.gameObject.GetComponentInParent<SpriteRenderer>().color;
+                
                 collider2D.gameObject.GetComponentInParent<SpriteRenderer>().color = Color.yellow;
                 return;
             }

@@ -49,7 +49,7 @@ namespace PLAYER {
 
         public void CollisionEnter2D(Collision2D collision2D) {
             if (((1 << collision2D.gameObject.layer) & groundLayer) != 0) {
-                if (haveSpikeJumped || player.IsSpikeActive) {
+                if (haveSpikeJumped && player.IsSpikeActive) {
                     rigidBody2D.AddForce(Vector2.up * spikeJumpPower, ForceMode2D.Impulse);
                     AudioManager.Instance.PlaySoundEffect("Audio/SFX/Slime/slime_jump");
                     haveSpikeJumped = false;

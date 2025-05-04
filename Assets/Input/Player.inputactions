@@ -112,15 +112,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "Swing",
-                    "type": "Value",
-                    "id": "92cdc5c3-38e1-4991-a48b-decce2af18d5",
-                    "expectedControlType": "Axis",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -517,28 +508,6 @@
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
                     "action": "Spike",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "bd2acc84-72e7-4226-b09c-85751e0a5445",
-                    "path": "<Keyboard>/a",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard&Mouse",
-                    "action": "Swing",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "a9f9dd1c-a834-427c-9647-ecad95757b63",
-                    "path": "<Keyboard>/d",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard&Mouse",
-                    "action": "Swing",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

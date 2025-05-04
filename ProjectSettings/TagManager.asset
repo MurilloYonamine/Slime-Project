@@ -18,6 +18,7 @@ TagManager:
   - Scenario Barrier
   - Jump
   - Grappler
+  - Grappler Area
   - Climb
   - Trigger Climb
   - Bullet
@@ -26,7 +27,6 @@ TagManager:
   - Dead Enemy
   - Enemy Vision
   - Chasing Enemy
-  - 
   - 
   - 
   - 
