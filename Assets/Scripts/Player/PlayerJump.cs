@@ -11,37 +11,26 @@ namespace PLAYER {
 
         [SerializeField] private float jumpPower = 20f;
         [SerializeField] private float spikeJumpPower = 30f;
-        [HideInInspector] public bool IsSpikeActive = false;
         private bool haveSpikeJumped = false;
-        private bool haveSpikedAfterJump = false;
-
-        private bool IsClimbing = false;
 
         private LayerMask groundLayer;
 
-        public void Initialize(PlayerController player, Rigidbody2D rigidBody2D, LayerMask groundLayer, bool IsClimbing, bool IsSpikeActive) {
+        public void Initialize(PlayerController player, Rigidbody2D rigidBody2D, LayerMask groundLayer) {
             this.player = player;
             this.rigidBody2D = rigidBody2D;
             this.groundLayer = groundLayer;
-            this.IsSpikeActive = IsSpikeActive;
-            this.IsClimbing = IsClimbing;
-        }
-        public void UpdateSpikeStatus(bool isSpikeActive) {
-            if (!this.IsSpikeActive && isSpikeActive && player.IsJumping) haveSpikedAfterJump = true;
-            
-            this.IsSpikeActive = isSpikeActive;
         }
 
         public void Jump(InputAction.CallbackContext context) {
             if (context.started) {
-                if (IsClimbing) // Wall jump
+                if (player.IsClimbing) // Wall jump
                 {
                     rigidBody2D.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
-                    IsClimbing = false;
+                    player.IsClimbing = false;
                     player.IsJumping = true;
                 } else if (!player.IsJumping) // Normal jump
                 {
-                    if (IsSpikeActive) {
+                    if (player.IsSpikeActive) {
                         rigidBody2D.AddForce(Vector2.up * jumpPower * 1.5f, ForceMode2D.Impulse);
                         AudioManager.Instance.PlaySoundEffect("Audio/SFX/Slime/slime_jump");
                         player.IsJumping = true;
@@ -60,11 +49,11 @@ namespace PLAYER {
 
         public void CollisionEnter2D(Collision2D collision2D) {
             if (((1 << collision2D.gameObject.layer) & groundLayer) != 0) {
-                if (haveSpikeJumped || haveSpikedAfterJump) {
+                if (haveSpikeJumped || player.IsSpikeActive) {
                     rigidBody2D.AddForce(Vector2.up * spikeJumpPower, ForceMode2D.Impulse);
                     AudioManager.Instance.PlaySoundEffect("Audio/SFX/Slime/slime_jump");
                     haveSpikeJumped = false;
-                    haveSpikedAfterJump = false;
+                    player.IsSpikeActive = false;
                 }
             }
             player.IsJumping = false;
