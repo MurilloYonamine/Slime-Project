@@ -13,7 +13,6 @@ namespace PLAYER
         private Rigidbody2D rigidBody2D;
 
         [SerializeField] private float climbSpeed = 5f;
-        [HideInInspector] public bool IsClimbing = false;
         public float climbDirection = 0f;
 
         [SerializeField] private float gravityScale = 5f;
@@ -32,7 +31,7 @@ namespace PLAYER
 
         public void OnFixedUpdate()
         {
-            if (IsClimbing)
+            if (player.IsClimbing)
             {
                 if (Mathf.Abs(climbDirection) >= 0.1f)
                 {
@@ -50,7 +49,7 @@ namespace PLAYER
         public void Climb(InputAction.CallbackContext context)
         {
             climbDirection = context.ReadValue<Vector2>().y;
-            if (!IsClimbing) climbDirection = 0f;
+            if (!player.IsClimbing) climbDirection = 0f;
         }
         private void AdjustGravity()
         {
@@ -68,7 +67,7 @@ namespace PLAYER
             if (((1 << collision2D.gameObject.layer) & climbLayer) != 0)
             {
                 player.IsJumping = false;
-                IsClimbing = true;
+                player.IsClimbing = true;
 
                 rigidBody2D.linearVelocity = Vector2.zero;
             }
@@ -77,7 +76,7 @@ namespace PLAYER
         {
             if (((1 << collision2D.gameObject.layer) & climbLayer) != 0)
             {
-                IsClimbing = false;
+                player.IsClimbing = false;
                 climbDirection = 0f;
             }
         }
@@ -85,7 +84,7 @@ namespace PLAYER
         {
             if (((1 << collider2D.gameObject.layer) & climbLayer) != 0)
             {
-                IsClimbing = true;
+                player.IsClimbing = true;
                 player.IsJumping = false;
 
                 rigidBody2D.linearVelocity = Vector2.zero;
@@ -95,7 +94,7 @@ namespace PLAYER
         {
             if (((1 << collider2D.gameObject.layer) & climbLayer) != 0)
             {
-                IsClimbing = false;
+                player.IsClimbing = false;
                 climbDirection = 0f;
             }
         }
