@@ -11,7 +11,7 @@ namespace PLAYER {
 
         private void OnTriggerEnter2D(Collider2D collider2D) {
             if (collider2D.TryGetComponent<Lettuce>(out Lettuce lettuce)) {
-                Debug.Log("Tiro entrou na área de explosão");
+                Debug.Log("Tiro entrou na ï¿½rea de explosï¿½o");
                 Physics2D.IgnoreCollision(collider2D, lettuce.explosionArea);
 
                 CreateImpactEffect();
@@ -21,7 +21,7 @@ namespace PLAYER {
                 if (enemy.player == null) enemy.player = player;
 
                 enemy.TakeDamage(bulletDamage);
-                CameraManager.Instance.ShakeCamera(5f, 0.1f);
+                //CameraManager.Instance.ShakeCamera(5f, 0.1f);
                 CreateImpactEffect();
 
                 Destroy(gameObject);

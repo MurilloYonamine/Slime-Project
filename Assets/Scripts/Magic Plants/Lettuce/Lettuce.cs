@@ -23,7 +23,7 @@ namespace MAGIC_PLANTS.LETTUCE {
                 Destroy(effect, explosionDuration);
 
                 AudioManager.Instance.PlaySoundEffect("Audio/SFX/Magic Plants/lettuce_explosion");
-                CameraManager.Instance.ShakeCamera(15f, 0.1f);
+                //CameraManager.Instance.ShakeCamera(15f, 0.1f);
                 player.playerHealth.TakeDamage(10f, this);
 
                 SpriteRenderer spriteRenderer = player.GetComponent<SpriteRenderer>();
