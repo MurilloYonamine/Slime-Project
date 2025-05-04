@@ -17,6 +17,7 @@ namespace PLAYER
 
         [Header("Layer Settings")]
         [SerializeField] private LayerMask grapplerLayer;
+        [SerializeField] private LayerMask grapplerArea;
         [SerializeField] private LayerMask climbLayer;
         [SerializeField] private LayerMask groundLayer;
 
@@ -64,10 +65,10 @@ namespace PLAYER
         {
             playerHealth.Initialize(this, rigidBody2D);
             playerShoot.Initialize(this, playerHealth, bulletPrefab, aimPrefab);
-            playerMovement.Initialize(this, rigidBody2D, trailRenderer, spriteRenderer, animator, distanceJoint2D);
+            playerMovement.Initialize(this, rigidBody2D, trailRenderer, spriteRenderer, animator);
             playerJump.Initialize(this, rigidBody2D, groundLayer);
             playerClimb.Initialize(this, rigidBody2D, climbLayer);
-            playerGrappler.Initialize(this, lineRenderer, distanceJoint2D, grapplerLayer, rigidBody2D);
+            playerGrappler.Initialize(this, lineRenderer, distanceJoint2D, grapplerLayer, grapplerArea, rigidBody2D);
             playerSpike.Initialize(this);
 
             playerStats.Initialize(this);
@@ -105,7 +106,15 @@ namespace PLAYER
         {
             playerClimb.CollissionExit2D(collision2D);
         }
-        private void OnTriggerEnter2D(Collider2D collision2D) => playerClimb.TriggerEnter2D(collision2D);
-        private void OnTriggerExit2D(Collider2D collision2D) => playerClimb.TriggerExit2D(collision2D);
+        private void OnTriggerEnter2D(Collider2D collision2D)
+        {
+            playerClimb.TriggerEnter2D(collision2D);
+            playerGrappler.TriggerEnter2D(collision2D);
+        }
+        private void OnTriggerExit2D(Collider2D collision2D)
+        {
+            playerClimb.TriggerExit2D(collision2D);
+            playerGrappler.TriggerExit2D(collision2D);
+        }
     }
 }
