@@ -6,7 +6,6 @@ namespace PLAYER {
     [Serializable]
     public class PlayerSpike {
         [HideInInspector] public PlayerController player;
-        [HideInInspector] public bool IsInsideWeed = false;
         [HideInInspector] public bool CanScale = true;
 
 
@@ -25,7 +24,6 @@ namespace PLAYER {
             CurTime = smoothTime+0.8f;
         }
         public void OnUpdate() {
-            //player.transform.localScale = Vector2.SmoothDamp(player.transform.localScale, targetScale, ref velocity, smoothTime);
             if (player.cursize == PlayerController.CURSIZE.normal){
                 this.initialScale = new Vector2(1f,1f);
                 xScale = 4f;
@@ -52,7 +50,7 @@ namespace PLAYER {
             }
         }
         public void Spike(InputAction.CallbackContext context) {
-            if (context.performed && !IsInsideWeed && !CanScale) {
+            if (context.performed && !CanScale) {
                 player.IsSpikeActive = !player.IsSpikeActive;
                 targetScale = new Vector2(player.IsSpikeActive ? xScale : initialScale.x, player.IsSpikeActive ? yScale : initialScale.y);
                 AllowedScalingFor90PercentOff();
@@ -63,10 +61,8 @@ namespace PLAYER {
             player.IsSpikeActive = false;
             targetScale = initialScale;
         }
-        public void UpdateWheatStatus(bool IsInsideWeed) => this.IsInsideWeed = IsInsideWeed;
 
         //public void UpdateScaleStatus(Vector2 Scale) => this.targetScale = Scale;
-
         private void AllowedScalingFor90PercentOff()
         {
             CanScale = true;
