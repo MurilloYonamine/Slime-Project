@@ -3,8 +3,6 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 namespace PLAYER
 {
-
-
     public class PlayerController : MonoBehaviour
     {
         private GameManager gameManager = GameManager.Instance;
@@ -16,7 +14,6 @@ namespace PLAYER
         [SerializeField] private DistanceJoint2D distanceJoint2D;
         [SerializeField] private Animator animator;
         [SerializeField] private SpriteRenderer spriteRenderer;
-        [SerializeField] private BoxCollider2D boxCollider2D;
 
         [Header("Layer Settings")]
         [SerializeField] private LayerMask grapplerLayer;
@@ -24,16 +21,16 @@ namespace PLAYER
         [SerializeField] private LayerMask groundLayer;
 
         [Header("Booleans")]
-        public bool IsJumping;
-        public bool IsClimbing;
-        public bool IsGrappling;
-        public bool CanGrapple;
-        public bool IsSpikeActive;
-        public bool IsPaused;
-        public bool IsTakingDamage;
-        public bool IsDead;
-        public bool IsInsideWheat;
-        public bool DisableStats;
+        public bool IsJumping = false;
+        public bool IsClimbing = false;
+        public bool IsGrappling = false;
+        public bool CanGrapple = false;
+        public bool IsSpikeActive = false;
+        public bool IsPaused = false;
+        public bool IsTakingDamage = false;
+        public bool IsDead = false;
+        public bool IsInsideWheat = false;
+        public bool DisableStats = false;
 
         [Header("Prefabs")]
         [SerializeField] private GameObject bulletPrefab;
@@ -49,10 +46,12 @@ namespace PLAYER
         [SerializeField] private PlayerSpike playerSpike;
         public PlayerHealth playerHealth;
 
-        public enum CURSTRECH { steched, normal }
-        public enum CURSIZE { normal, small }
+        [Header("Enum Settings")]
         [HideInInspector] public CURSTRECH curstretch = CURSTRECH.normal;
         [HideInInspector] public CURSIZE cursize = CURSIZE.normal;
+        public enum CURSTRECH { steched, normal }
+        public enum CURSIZE { normal, small }
+
         private void Awake()
         {
             rigidBody2D = GetComponent<Rigidbody2D>();
@@ -60,16 +59,15 @@ namespace PLAYER
             lineRenderer = GetComponent<LineRenderer>();
             distanceJoint2D = GetComponent<DistanceJoint2D>();
             spriteRenderer = GetComponent<SpriteRenderer>();
-            boxCollider2D = GetComponent<BoxCollider2D>();
         }
         private void Start()
         {
             playerHealth.Initialize(this, rigidBody2D);
             playerShoot.Initialize(this, playerHealth, bulletPrefab, aimPrefab);
             playerMovement.Initialize(this, rigidBody2D, trailRenderer, spriteRenderer, animator, distanceJoint2D);
-            playerJump.Initialize(this, rigidBody2D, groundLayer, IsClimbing, IsSpikeActive);
-            playerClimb.Initialize(this, rigidBody2D, climbLayer, IsJumping);
-            playerGrappler.Initialize(this, lineRenderer, distanceJoint2D, grapplerLayer);
+            playerJump.Initialize(this, rigidBody2D, groundLayer);
+            playerClimb.Initialize(this, rigidBody2D, climbLayer);
+            playerGrappler.Initialize(this, lineRenderer, distanceJoint2D, grapplerLayer, rigidBody2D);
             playerSpike.Initialize(this);
 
             playerStats.Initialize(this);
@@ -82,11 +80,6 @@ namespace PLAYER
             playerGrappler.OnUpdate();
             playerShoot.OnUpdate();
             playerSpike.OnUpdate();
-
-            playerJump.UpdateSpikeStatus(IsSpikeActive);
-            playerSpike.UpdateWheatStatus(IsInsideWheat);
-            //playerSpike.UpdateScaleStatus(transform.localScale);
-            playerClimb.UpdateJumpStatus(IsJumping);
         }
         private void FixedUpdate()
         {
@@ -105,7 +98,6 @@ namespace PLAYER
 
         private void OnCollisionEnter2D(Collision2D collision2D)
         {
-            // Debug.Log("Colidiu com: ", collision.layer);
             playerJump.CollisionEnter2D(collision2D);
             playerClimb.CollissionEnter2D(collision2D);
         }
