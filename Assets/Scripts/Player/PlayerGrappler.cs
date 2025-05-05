@@ -40,6 +40,11 @@ namespace PLAYER
         public void OnUpdate()
         {
             if (lineRenderer.enabled) lineRenderer.SetPosition(1, player.transform.position);
+            if (player.IsClimbing){
+                distanceJoint2D.enabled = false;
+                lineRenderer.enabled = false;
+                player.IsGrappling = false;
+            }
         }
 
         public void Grapple(InputAction.CallbackContext context)

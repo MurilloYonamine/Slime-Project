@@ -30,7 +30,7 @@ namespace PLAYER
         {
             if (player.cursize == PlayerController.CURSIZE.normal)
             {
-                this.initialScale = new Vector2(1f, 1f);
+                this.initialScale = new Vector2(1.5f, 1.5f);
                 xScale = 4f;
                 yScale = 0.5f;
             }
