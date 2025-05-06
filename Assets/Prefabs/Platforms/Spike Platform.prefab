@@ -504,7 +504,7 @@ GameObject:
   - component: {fileID: 9130720050675020488}
   - component: {fileID: 8757802274083921030}
   - component: {fileID: 4590167740373216049}
-  - component: {fileID: 5687708984175672600}
+  - component: {fileID: 6777603741018648297}
   m_Layer: 0
   m_Name: platform
   m_TagString: Ground
@@ -649,7 +649,7 @@ PlatformEffector2D:
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
---- !u!114 &5687708984175672600
+--- !u!114 &6777603741018648297
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -658,10 +658,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 7898464815514497285}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f78fcd17b0b5c4448109301ed8dd467, type: 3}
+  m_Script: {fileID: 11500000, guid: 3519304d85925d24da6eb65c0e623b46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pointA: {fileID: 7327328638601052007}
   pointB: {fileID: 3598477422233807608}
   moveSpeed: 2
   NextPosition: {x: 0, y: 0, z: 0}
+  spikes:
+  - {fileID: 1220216230390041533}
+  - {fileID: 5770552435479617727}
