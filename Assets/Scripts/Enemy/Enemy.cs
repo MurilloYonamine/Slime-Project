@@ -91,8 +91,6 @@ namespace ENEMY {
                 vision.enabled = false;
                 
             }
-
-
         }
 
         private void OnTriggerEnter2D(Collider2D other) {
