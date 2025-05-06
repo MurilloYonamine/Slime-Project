@@ -1,6 +1,4 @@
 using ENEMY;
-using MAGIC_PLANTS.FIG_TREE;
-using MAGIC_PLANTS.LETTUCE;
 using UnityEngine;
 
 namespace PLAYER {
@@ -10,12 +8,6 @@ namespace PLAYER {
         [HideInInspector] public GameObject player;
 
         private void OnTriggerEnter2D(Collider2D collider2D) {
-            if (collider2D.TryGetComponent<Lettuce>(out Lettuce lettuce)) {
-                Debug.Log("Tiro entrou na �rea de explos�o");
-                Physics2D.IgnoreCollision(collider2D, lettuce.explosionArea);
-
-                CreateImpactEffect();
-            }
 
             if (collider2D.TryGetComponent<Enemy>(out Enemy enemy)) {
                 if (enemy.player == null) enemy.player = player;
@@ -28,14 +20,8 @@ namespace PLAYER {
                 return;
             }
 
-            if(collider2D.TryGetComponent<FigTree>(out FigTree figTree)) {
-                figTree.DropMagicSeed();
-                return;
-            }
-
             if (!collider2D.CompareTag("Player") && hitEffect != null) {
                 CreateImpactEffect();
-
             }
         }
         private void CreateImpactEffect() {

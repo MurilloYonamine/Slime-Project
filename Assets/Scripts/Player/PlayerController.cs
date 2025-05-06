@@ -1,12 +1,8 @@
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
-namespace PLAYER
-{
-    public class PlayerController : MonoBehaviour
-    {
-        private GameManager gameManager = GameManager.Instance;
-
+namespace PLAYER {
+    public class PlayerController : MonoBehaviour {
         [Header("Components")]
         [SerializeField] private Rigidbody2D rigidBody2D;
         [SerializeField] private TrailRenderer trailRenderer;
@@ -53,16 +49,14 @@ namespace PLAYER
         public enum CURSTRECH { steched, normal }
         public enum CURSIZE { normal, small }
 
-        private void Awake()
-        {
+        private void Awake() {
             rigidBody2D = GetComponent<Rigidbody2D>();
             trailRenderer = GetComponent<TrailRenderer>();
             lineRenderer = GetComponent<LineRenderer>();
             distanceJoint2D = GetComponent<DistanceJoint2D>();
             spriteRenderer = GetComponent<SpriteRenderer>();
         }
-        private void Start()
-        {
+        private void Start() {
             playerHealth.Initialize(this, rigidBody2D);
             playerShoot.Initialize(this, playerHealth, bulletPrefab, aimPrefab);
             playerMovement.Initialize(this, rigidBody2D, trailRenderer, spriteRenderer, animator);
@@ -74,16 +68,14 @@ namespace PLAYER
             playerStats.Initialize(this);
         }
 
-        private void Update()
-        {
+        private void Update() {
             playerStats.OnUpdate();
             playerHealth.OnUpdate();
             playerGrappler.OnUpdate();
             playerShoot.OnUpdate();
             playerSpike.OnUpdate();
         }
-        private void FixedUpdate()
-        {
+        private void FixedUpdate() {
             playerMovement.OnFixedUpdate();
             playerClimb.OnFixedUpdate();
         }
@@ -97,22 +89,18 @@ namespace PLAYER
         public void StartChangeSpeed(float speed, float timeToNormalize) => StartCoroutine(playerMovement.ChangeSpeed(speed, timeToNormalize));
         public void DisableSpike() => playerSpike.DisableSpike();
 
-        private void OnCollisionEnter2D(Collision2D collision2D)
-        {
+        private void OnCollisionEnter2D(Collision2D collision2D) {
             playerJump.CollisionEnter2D(collision2D);
             playerClimb.CollissionEnter2D(collision2D);
         }
-        private void OnCollisionExit2D(Collision2D collision2D)
-        {
+        private void OnCollisionExit2D(Collision2D collision2D) {
             playerClimb.CollissionExit2D(collision2D);
         }
-        private void OnTriggerEnter2D(Collider2D collision2D)
-        {
+        private void OnTriggerEnter2D(Collider2D collision2D) {
             playerClimb.TriggerEnter2D(collision2D);
             playerGrappler.TriggerEnter2D(collision2D);
         }
-        private void OnTriggerExit2D(Collider2D collision2D)
-        {
+        private void OnTriggerExit2D(Collider2D collision2D) {
             playerClimb.TriggerExit2D(collision2D);
             playerGrappler.TriggerExit2D(collision2D);
         }

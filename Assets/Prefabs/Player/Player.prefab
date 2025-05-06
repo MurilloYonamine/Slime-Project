@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 8436713445552733064}
   - component: {fileID: 3048601384741564845}
   - component: {fileID: 7015384071408218936}
-  - component: {fileID: 8899868351732832924}
+  - component: {fileID: 2763425874604256044}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -177,7 +177,19 @@ MonoBehaviour:
     m_ActionId: 96d5f46e-48be-465f-bc1b-f7f4d6737a76
     m_ActionName: 'Player/Interact[/Keyboard/e,/XInputControllerWindows/buttonNorth]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: DIE
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: d542b8ef-6e40-4508-b5df-6f9401396fdc
     m_ActionName: 'Player/Crouch[/XInputControllerWindows/buttonEast,/Keyboard/c]'
   - m_PersistentCalls:
@@ -317,30 +329,38 @@ MonoBehaviour:
   trailRenderer: {fileID: 8436713445552733064}
   lineRenderer: {fileID: 7015384071408218936}
   distanceJoint2D: {fileID: 3048601384741564845}
-  animator: {fileID: 8899868351732832924}
+  animator: {fileID: 2763425874604256044}
   spriteRenderer: {fileID: 896281668011520122}
-  boxCollider2D: {fileID: 6801612028656615555}
   grapplerLayer:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 512
+  grapplerArea:
+    serializedVersion: 2
+    m_Bits: 1024
   climbLayer:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 2048
   groundLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 768
+  IsJumping: 0
+  IsClimbing: 0
+  IsGrappling: 0
+  CanGrapple: 0
   IsSpikeActive: 0
   IsPaused: 0
-  takingDamage: 0
+  IsTakingDamage: 0
   IsDead: 0
   IsInsideWheat: 0
+  DisableStats: 0
   bulletPrefab: {fileID: 2063527191266757597, guid: 99fa830106dc3a14a80cedd4407167db, type: 3}
   aimPrefab: {fileID: 0}
   playerStats:
     mousePositionText: {fileID: 0}
     playerPositionText: {fileID: 0}
-    playerIsJumping: {fileID: 0}
+    playerIsJumpingText: {fileID: 0}
     playerIsClimbingText: {fileID: 0}
+    playerIsGrapplingText: {fileID: 0}
     playerCanGrappleText: {fileID: 0}
     playerIsSpikeActiveText: {fileID: 0}
   playerMovement:
@@ -350,16 +370,13 @@ MonoBehaviour:
   playerJump:
     jumpPower: 20
     spikeJumpPower: 30
-    IsJumping: 0
-    IsSpikeActive: 0
   playerClimb:
     climbSpeed: 5
-    IsClimbing: 0
     climbDirection: 0
     gravityScale: 5
     fallGravityScale: 10
   playerGrappler:
-    grappleMaxPoint: 0
+    grappleMaxPoint: 8
   playerShoot:
     bulletSpeed: 30
     bulletDamage: 1
@@ -367,16 +384,19 @@ MonoBehaviour:
     bulletDestroyTimer: 2
   playerSpike:
     player: {fileID: 0}
-    IsInsideWeed: 0
+    CanScale: 1
     xScale: 4
     yScale: 0.5
     smoothTime: 0.2
+    targetScale: {x: 0, y: 0}
   playerHealth:
+    healthBar: {fileID: 0}
     Health: 50
     MaxHealth: 0
-    healthBar: {fileID: 0}
     verticalKnockbackForce: 5
     horizontalKnockbackForce: 2500
+  curstretch: 1
+  cursize: 0
 --- !u!50 &4114351590978167007
 Rigidbody2D:
   serializedVersion: 5
@@ -391,7 +411,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDamping: 0
-  m_AngularDamping: 0.05
+  m_AngularDamping: 0.5
   m_GravityScale: 5
   m_Material: {fileID: 6200000, guid: 3f43772bfa4836240a20b37fa9ff95c6, type: 2}
   m_IncludeLayers:
@@ -401,7 +421,7 @@ Rigidbody2D:
     serializedVersion: 2
     m_Bits: 0
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!61 &6801612028656615555
@@ -420,7 +440,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 65536
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -654,8 +674,8 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.41960788, g: 0.95294124, b: 0.8431373, a: 1}
-      key1: {r: 0.14117648, g: 0.30980393, b: 0.33333334, a: 1}
+      key0: {r: 0.19215688, g: 0.92549026, b: 0.3529412, a: 1}
+      key1: {r: 0.09411766, g: 0.44705886, b: 0.09411766, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -693,7 +713,7 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
---- !u!95 &8899868351732832924
+--- !u!95 &2763425874604256044
 Animator:
   serializedVersion: 7
   m_ObjectHideFlags: 0
