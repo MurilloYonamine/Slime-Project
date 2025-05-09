@@ -15,11 +15,9 @@ namespace PLAYER
 
         private Camera mainCamera;
         private RectTransform aimPrefab;
-        private PlayerController playerController;
 
         [SerializeField] private float bulletDamage = 1f;
         [SerializeField] private GameObject hitEffect;
-        [SerializeField] private float bulletDestroyTimer = 2f;
 
         public void Initialize(PlayerController player, PlayerHealth playerHealth, GameObject bulletPrefab, RectTransform aimPrefab) {
             this.player = player;

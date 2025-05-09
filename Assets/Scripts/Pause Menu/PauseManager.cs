@@ -48,6 +48,7 @@ public class PauseManager : MonoBehaviour {
         pauseCanvasGroup.blocksRaycasts = true;
         pauseCanvasGroup.interactable = true;
         isPaused = true;
+        pauseCanvasGroup.gameObject.SetActive(true);
 
         Time.timeScale = 0;
         player.GetComponent<PlayerController>().IsPaused = isPaused;
@@ -58,6 +59,7 @@ public class PauseManager : MonoBehaviour {
         pauseCanvasGroup.interactable = false;
         isPaused = false;
         CloseSettingsMenu();
+        pauseCanvasGroup.gameObject.SetActive(false);
 
         Time.timeScale = 1;
         player.GetComponent<PlayerController>().IsPaused = isPaused;
@@ -66,22 +68,26 @@ public class PauseManager : MonoBehaviour {
         mainCanvasGroup.alpha = 1;
         mainCanvasGroup.blocksRaycasts = true;
         mainCanvasGroup.interactable = true;
+        mainCanvasGroup.gameObject.SetActive(true);
     }
     private void CloseMainMenu() {
         mainCanvasGroup.alpha = 0;
         mainCanvasGroup.blocksRaycasts = false;
         mainCanvasGroup.interactable = false;
+        mainCanvasGroup.gameObject.SetActive(false);
     }
     public void OpenSettingsMenu() {
         CloseMainMenu();
         submenuCanvasGroup.alpha = 1;
         submenuCanvasGroup.blocksRaycasts = true;
         submenuCanvasGroup.interactable = true;
+        submenuCanvasGroup.gameObject.SetActive(true);
     }
     public void CloseSettingsMenu() {
         submenuCanvasGroup.alpha = 0;
         submenuCanvasGroup.blocksRaycasts = false;
         submenuCanvasGroup.interactable = false;
+        submenuCanvasGroup.gameObject.SetActive(false);
         OpenMainMenu();
     }
     private void QuitGame() => Application.Quit();

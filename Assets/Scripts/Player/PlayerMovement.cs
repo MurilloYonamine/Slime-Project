@@ -19,7 +19,6 @@ namespace PLAYER
         [SerializeField] private Vector2 moveDirection;
         bool faceDirection => moveDirection.x < 0; // true if moving right, false if moving left
 
-
         public void Initialize(PlayerController player, Rigidbody2D rigidBody2D, TrailRenderer trailRenderer, SpriteRenderer spriteRenderer, Animator animator)
         {
             this.player = player;
