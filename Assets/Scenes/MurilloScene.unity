@@ -1389,7 +1389,6 @@ MonoBehaviour:
   - {fileID: 768926422}
   - {fileID: 1515489125}
   - {fileID: 1438354560}
-  elapsedSeconds: 0
 --- !u!1 &260227416
 GameObject:
   m_ObjectHideFlags: 0
@@ -1997,7 +1996,7 @@ GameObject:
   - component: {fileID: 449054724}
   - component: {fileID: 449054726}
   - component: {fileID: 449054725}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Virtual Camera (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2339,7 +2338,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 488228204}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Cameras
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2556,7 +2555,7 @@ GameObject:
   m_Component:
   - component: {fileID: 540546007}
   - component: {fileID: 540546010}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4080,7 +4079,7 @@ GameObject:
   - component: {fileID: 835807824}
   - component: {fileID: 835807826}
   - component: {fileID: 835807825}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Virtual Camera (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7985,7 +7984,7 @@ GameObject:
   - component: {fileID: 1212203227}
   - component: {fileID: 1212203230}
   - component: {fileID: 1212203229}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Virtual Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8970,11 +8969,11 @@ PrefabInstance:
       objectReference: {fileID: 800271271}
     - target: {fileID: 2681552103125494043, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -14.3
+      value: -12.09
       objectReference: {fileID: 0}
     - target: {fileID: 2681552103125494043, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.42
+      value: -3.93
       objectReference: {fileID: 0}
     - target: {fileID: 2681552103125494043, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
       propertyPath: m_LocalPosition.z
@@ -9007,6 +9006,10 @@ PrefabInstance:
     - target: {fileID: 2681552103125494043, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4114351590978167007, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 8192
       objectReference: {fileID: 0}
     - target: {fileID: 4281693707818524730, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
       propertyPath: m_ActionEvents.Array.data[5].m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -15192,7 +15195,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1896404671}
   - component: {fileID: 1896404674}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17153,7 +17156,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2118069430}
   - component: {fileID: 2118069433}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
