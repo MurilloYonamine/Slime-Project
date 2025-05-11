@@ -18,23 +18,22 @@ namespace PLATFORMS {
         }
         protected override void OnCollisionEnter2D(Collision2D collision) {
             base.OnCollisionEnter2D(collision);
-            if (collision.gameObject.CompareTag("Player")) 
+            if (collision.gameObject.CompareTag("Player"))
                 StartCoroutine(DisablePlatform());
-            
+
         }
         protected override void OnCollisionExit2D(Collision2D collision) {
             base.OnCollisionExit2D(collision);
-            if (collision.gameObject.CompareTag("Player")) 
-                StartCoroutine(ResetPlatform());
-            
+            //StopAllCoroutines();
+            StartCoroutine(ResetPlatform());
         }
         private IEnumerator DisablePlatform() {
-            StartCoroutine(DisappearingEffect(2f));
+            StartCoroutine(FadeEffect(2f, true));
             yield return new WaitForSeconds(timeToDestroy);
             SetActiveComponents(false);
         }
         private IEnumerator ResetPlatform() {
-            StartCoroutine(DisappearingEffect(3f));
+            StartCoroutine(FadeEffect(2f, false));
             yield return new WaitForSeconds(timeToReset);
             SetActiveComponents(true);
         }
@@ -43,20 +42,20 @@ namespace PLATFORMS {
             platformEffector2D.enabled = isActive;
             spriteRenderer.enabled = isActive;
         }
-        private IEnumerator DisappearingEffect(float time) {
+        private IEnumerator FadeEffect(float time, bool fade) {
             float fadeDuration = time;
             float elapsedTime = 0f;
+            float a = fade ? 1f : 0f;
+            float b = fade ? 0f : 1f;
 
             Color originalColor = spriteRenderer.color;
-
             while (elapsedTime < fadeDuration) {
+                spriteRenderer.enabled = true;
                 elapsedTime += Time.deltaTime;
-                float alpha = Mathf.Lerp(1f, 0f, elapsedTime / fadeDuration);
+                float alpha = Mathf.Lerp(a, b, elapsedTime / fadeDuration);
                 spriteRenderer.color = new Color(originalColor.r, originalColor.g, originalColor.b, alpha);
                 yield return null;
             }
-
-            spriteRenderer.color = new Color(originalColor.r, originalColor.g, originalColor.b, 0f); 
         }
     }
 }
