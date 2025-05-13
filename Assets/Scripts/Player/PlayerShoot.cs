@@ -35,9 +35,9 @@ namespace PLAYER
         public void Shoot(InputAction.CallbackContext context)
         {
             
-            if (context.started && playerHealth.Health > 1)
+            if (context.started && playerHealth.currentHealth >= 1)
             {
-                playerHealth.Health -= 1;
+                playerHealth.currentHealth -= 1;
                 playerHealth.SizeChange();
                 Vector3 mousePosition = mainCamera.ScreenToWorldPoint(Mouse.current.position.ReadValue());
                 mousePosition.z = player.transform.position.z;

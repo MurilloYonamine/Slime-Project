@@ -4,7 +4,7 @@ using PLAYER;
 public class BirdDamageTest : MonoBehaviour
 {
     public PlayerHealth pHealth;
-    public float damage;
+    public int damage;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -21,7 +21,7 @@ public class BirdDamageTest : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player"))
         {
-            pHealth.Health -= damage;
+            pHealth.currentHealth -= damage;
         }
     }
 
