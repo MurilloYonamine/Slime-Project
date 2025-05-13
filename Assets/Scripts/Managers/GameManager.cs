@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] public Transform PlayerOriginalLayer;
 
     [SerializeField] private List<GameObject> allGrapplers;
+    [SerializeField] private List<Image> allLifes;
+
 
     private void Awake()
     {
@@ -33,5 +36,10 @@ public class GameManager : MonoBehaviour
             grappler.GetComponentInChildren<CircleCollider2D>().radius = distance;
         }
     }
-
+    public int GetLifeSize() => allLifes.Count;
+    public void ChangeLifeHUD(int currentLife) {
+        Debug.Log(currentLife);
+        if(currentLife > allLifes.Count) currentLife = allLifes.Count;
+        allLifes[currentLife].GetComponent<CanvasGroup>().alpha = 0.2f;
+    }
 }

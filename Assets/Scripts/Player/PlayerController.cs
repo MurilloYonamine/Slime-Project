@@ -70,7 +70,6 @@ namespace PLAYER {
 
         private void Update() {
             playerStats.OnUpdate();
-            playerHealth.OnUpdate();
             playerGrappler.OnUpdate();
             playerShoot.OnUpdate();
             playerSpike.OnUpdate();
@@ -86,7 +85,7 @@ namespace PLAYER {
         public void OnShoot(InputAction.CallbackContext context) { if (!IsPaused) playerShoot.Shoot(context); }
         public void OnSpike(InputAction.CallbackContext context) { if (!IsPaused) playerSpike.Spike(context); }
 
-        public void StartChangeSpeed(float speed, float timeToNormalize) => StartCoroutine(playerMovement.ChangeSpeed(speed, timeToNormalize));
+        public void OnChangeSpeed(float speed) => playerMovement.ChangeSpeed(speed);
         public void DisableSpike() => playerSpike.DisableSpike();
 
         private void OnCollisionEnter2D(Collision2D collision2D) {

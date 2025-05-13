@@ -48,12 +48,7 @@ namespace PLAYER
 
             trailRenderer.emitting = moveDirection.x != 0;
         }
-        public IEnumerator ChangeSpeed(float speed, float timeToNormalize)
-        {
-            moveSpeed = speed;
-            yield return new WaitForSeconds(timeToNormalize);
-            moveSpeed = originalSpeed;
-        }
+        public void ChangeSpeed(float speed) => moveSpeed = moveSpeed * speed;
     }
 }
 
