@@ -40,7 +40,7 @@ namespace PLAYER {
         [SerializeField] private PlayerClimb playerClimb;
         [SerializeField] private PlayerGrappler playerGrappler;
         [SerializeField] private PlayerShoot playerShoot;
-        [SerializeField] private PlayerSpike playerSpike;
+        //[SerializeField] private PlayerSpike playerSpike;
         public PlayerHealth playerHealth;
 
         [Header("Enum Settings")]
@@ -63,7 +63,7 @@ namespace PLAYER {
             playerJump.Initialize(this, rigidBody2D, groundLayer);
             playerClimb.Initialize(this, rigidBody2D, climbLayer);
             playerGrappler.Initialize(this, lineRenderer, distanceJoint2D, grapplerLayer, grapplerArea, rigidBody2D);
-            playerSpike.Initialize(this);
+            //playerSpike.Initialize(this);
 
             playerStats.Initialize(this);
         }
@@ -72,7 +72,7 @@ namespace PLAYER {
             playerStats.OnUpdate();
             playerGrappler.OnUpdate();
             playerShoot.OnUpdate();
-            playerSpike.OnUpdate();
+            //playerSpike.OnUpdate();
         }
         private void FixedUpdate() {
             playerMovement.OnFixedUpdate();
@@ -83,10 +83,10 @@ namespace PLAYER {
         public void OnJump(InputAction.CallbackContext context) { if (!IsPaused) playerJump.Jump(context); }
         public void OnGrapple(InputAction.CallbackContext context) { if (!IsPaused) playerGrappler.Grapple(context); }
         public void OnShoot(InputAction.CallbackContext context) { if (!IsPaused) playerShoot.Shoot(context); }
-        public void OnSpike(InputAction.CallbackContext context) { if (!IsPaused) playerSpike.Spike(context); }
+        //public void OnSpike(InputAction.CallbackContext context) { if (!IsPaused) playerSpike.Spike(context); }
 
         public void OnChangeSpeed(float speed) => playerMovement.ChangeSpeed(speed);
-        public void DisableSpike() => playerSpike.DisableSpike();
+        //public void DisableSpike() => playerSpike.DisableSpike();
 
         private void OnCollisionEnter2D(Collision2D collision2D) {
             playerJump.CollisionEnter2D(collision2D);
