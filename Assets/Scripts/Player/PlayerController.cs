@@ -69,10 +69,10 @@ namespace PLAYER {
         }
 
         private void Update() {
-            playerStats.OnUpdate();
             playerGrappler.OnUpdate();
             playerShoot.OnUpdate();
             //playerSpike.OnUpdate();
+            playerStats.OnUpdate();
         }
         private void FixedUpdate() {
             playerMovement.OnFixedUpdate();
