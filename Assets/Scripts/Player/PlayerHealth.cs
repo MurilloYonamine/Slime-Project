@@ -48,11 +48,11 @@ namespace PLAYER {
 
             rigidBody2D.AddForce(Vector2.up * verticalKnockbackForce, ForceMode2D.Impulse);
 
-            if (player.transform.position.x < hostile.transform.position.x) {
+            if (player.transform.position.x < hostile.transform.position.x)
                 rigidBody2D.AddForce(Vector2.left * horizontalKnockbackForce, ForceMode2D.Force);
-            } else {
+            else
                 rigidBody2D.AddForce(Vector2.right * horizontalKnockbackForce, ForceMode2D.Force);
-            }
+
         }
 
         public void HandleKnockBack(MonoBehaviour hostile) {
@@ -60,27 +60,14 @@ namespace PLAYER {
 
             rigidBody2D.AddForce(Vector2.up * verticalKnockbackForce, ForceMode2D.Impulse);
 
-            if (player.transform.position.x < hostile.transform.position.x) {
+            if (player.transform.position.x < hostile.transform.position.x) 
                 rigidBody2D.AddForce(Vector2.left * horizontalKnockbackForce, ForceMode2D.Force);
-            } else {
+             else 
                 rigidBody2D.AddForce(Vector2.right * horizontalKnockbackForce, ForceMode2D.Force);
-            }
+            
         }
 
         public void SizeChange() {
-            //if (Health > 25 && player.cursize == PlayerController.CURSIZE.small && player.curstretch == PlayerController.CURSTRECH.steched) {
-            //    player.transform.localScale = new Vector2(1f, 1f);
-            //    player.cursize = PlayerController.CURSIZE.normal;
-            //} else if (Health < 25 && player.cursize == PlayerController.CURSIZE.normal && player.curstretch == PlayerController.CURSTRECH.steched) {
-            //    player.transform.localScale = new Vector2(0.50f, 0.50f);
-            //    player.cursize = PlayerController.CURSIZE.small;
-            //} else if (Health > 25 && player.cursize == PlayerController.CURSIZE.small && player.curstretch == PlayerController.CURSTRECH.normal) {
-            //    player.transform.localScale = new Vector2(4f, 0.5f);
-            //    player.cursize = PlayerController.CURSIZE.normal;
-            //} else if (Health < 25 && player.cursize == PlayerController.CURSIZE.normal && player.curstretch == PlayerController.CURSTRECH.normal) {
-            //    player.transform.localScale = new Vector2(2f, 0.25f);
-            //    player.cursize = PlayerController.CURSIZE.small;
-            //}
             switch (currentHealth) {
                 case 0:
                     GameManager.Instance.ChangeLifeHUD(currentHealth);
