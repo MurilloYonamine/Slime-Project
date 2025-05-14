@@ -27,16 +27,14 @@ namespace CAMERA {
         private void OnTriggerEnter2D(Collider2D other) {
             if (other.CompareTag("Player")) {
                 virtualCamera.Priority = 1;
-
-                GameManager.Instance.SetNewCheckpoint();
             }
         }
 
         private void OnTriggerExit2D(Collider2D other) {
             if (other.CompareTag("Player")) {
                 virtualCamera.Priority = 0;
-
             }
+            GameManager.Instance.ChangeCurrentCheckpoint();
         }
     }
 }
