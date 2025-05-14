@@ -36,11 +36,10 @@ namespace PLAYER {
             HandleKnockBack(hostile);
         }
 
-        public void HEALME(int heal) {
-            currentHealth += heal;
-
+        public void HandleHealing() {
+            currentHealth = maxHealth;
+            Debug.Log("Player healed to max health: " + currentHealth);
             SizeChange();
-            if (currentHealth > maxHealth) currentHealth = maxHealth;
         }
 
         public void HandleKnockBack(GameObject hostile) {
@@ -60,14 +59,16 @@ namespace PLAYER {
 
             rigidBody2D.AddForce(Vector2.up * verticalKnockbackForce, ForceMode2D.Impulse);
 
-            if (player.transform.position.x < hostile.transform.position.x) 
+            if (player.transform.position.x < hostile.transform.position.x)
                 rigidBody2D.AddForce(Vector2.left * horizontalKnockbackForce, ForceMode2D.Force);
-             else 
+            else
                 rigidBody2D.AddForce(Vector2.right * horizontalKnockbackForce, ForceMode2D.Force);
-            
+
         }
 
         public void SizeChange() {
+            Debug.Log($"Current Health: {currentHealth}, Max Health: {maxHealth}");
+
             switch (currentHealth) {
                 case 0:
                     GameManager.Instance.ChangeLifeHUD(currentHealth);
