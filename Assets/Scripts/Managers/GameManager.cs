@@ -42,7 +42,13 @@ public class GameManager : MonoBehaviour {
     }
     public int GetLifeSize() => lifeList.Count;
     public void ChangeLifeHUD(int currentLife) {
-        if (currentLife > lifeList.Count) currentLife = lifeList.Count;
+        if(currentLife == lifeList.Count) {
+            for (int i = 0; i < lifeList.Count; i++) {
+                lifeList[i].GetComponent<CanvasGroup>().alpha = 1f;
+            }
+            return;
+        }
+        
         lifeList[currentLife].GetComponent<CanvasGroup>().alpha = 0.2f;
     }
     public void ChangeCheckpoint(GameObject checkpoint) {

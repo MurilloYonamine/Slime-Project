@@ -84,9 +84,9 @@ namespace PLAYER {
         public void OnGrapple(InputAction.CallbackContext context) { if (!IsPaused) playerGrappler.Grapple(context); }
         public void OnShoot(InputAction.CallbackContext context) { if (!IsPaused) playerShoot.Shoot(context); }
         //public void OnSpike(InputAction.CallbackContext context) { if (!IsPaused) playerSpike.Spike(context); }
-
         public void OnChangeSpeed(float speed) => playerMovement.ChangeSpeed(speed);
         //public void DisableSpike() => playerSpike.DisableSpike();
+        public void UpdateHealth(int health) => playerHealth.HandleHealing();
 
         private void OnCollisionEnter2D(Collision2D collision2D) {
             playerJump.CollisionEnter2D(collision2D);
