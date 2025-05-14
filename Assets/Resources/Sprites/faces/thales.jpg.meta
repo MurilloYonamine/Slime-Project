@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      thales_0: 8987342429884651720
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -8,6 +8,7 @@ namespace PLATFORMS
     {
         [SerializeField] private float timeToDestroy = 2f;
         [SerializeField] private float timeToReset = 3f;
+        [SerializeField] private Animator animator;
 
         private BoxCollider2D boxCollider;
         private PlatformEffector2D platformEffector2D;

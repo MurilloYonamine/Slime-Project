@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 6eec74c84d4f3d64e85e812600023040
+guid: 0b4026ee67e04674faeb65794e3da87f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5092895136280177615
-    second: Bruno_0
+      213: 3001607674386473965
+    second: parede gosma 1 sem borda_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Bruno_0
+      name: parede gosma 1 sem borda_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1073
-        height: 1600
+        x: 29
+        y: 99
+        width: 422
+        height: 332
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fcb6b44a4299da640800000000000000
-      internalID: 5092895136280177615
+      spriteID: de364e2d64ad7a920800000000000000
+      internalID: 3001607674386473965
       vertices: []
       indices: 
       edges: []
@@ -134,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Bruno_0: 5092895136280177615
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
