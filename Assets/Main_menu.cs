@@ -22,7 +22,7 @@ public class Main_menu : MonoBehaviour {
           StartCoroutine(MenuEndTransition());
      }
      public void Play() {
-          StartCoroutine(LoadSceneTransition(1));
+          StartCoroutine(LoadSceneTransition());
      }
      public IEnumerator MenuStartTransition() {
           transitionAnimator.SetTrigger("Start");
@@ -32,7 +32,7 @@ public class Main_menu : MonoBehaviour {
           transitionAnimator.SetTrigger("End");
           yield return new WaitForSeconds(transitionTime);
      }
-     private IEnumerator LoadSceneTransition(int sceneIndex) {
+     private IEnumerator LoadSceneTransition() {
 
           transitionCanvas.alpha = 1f;
           transitionCanvas.interactable = true;
@@ -42,7 +42,7 @@ public class Main_menu : MonoBehaviour {
 
           yield return new WaitForSeconds(transitionTime + 0.5f);
 
-          SceneManager.LoadScene(sceneIndex, LoadSceneMode.Single);
+          SceneManager.LoadScene("fase_1", LoadSceneMode.Single);
 
           StopAllCoroutines();
      }
