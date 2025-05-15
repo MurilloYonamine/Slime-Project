@@ -5,7 +5,7 @@ namespace PLATFORMS {
 
         [SerializeField] private Transform pointA;
         [SerializeField] private Transform pointB;
-        [SerializeField] private float moveSpeed = 2f;
+        [SerializeField] public float moveSpeed = 2f;
 
         [SerializeField] private Vector3 NextPosition;
 
