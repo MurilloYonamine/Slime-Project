@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using PLAYER;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class PauseManager : MonoBehaviour {
 
@@ -21,13 +22,24 @@ public class PauseManager : MonoBehaviour {
 
     [Header("Settings")]
     [SerializeField] private Button comeBackButton;
-
+    [SerializeField] private GameObject transitionPrefab;
+    private CanvasGroup transitionCanvas;
+    private Animator transitionAnimator;
+    private float transitionTime;
     public bool isPaused = false;
     private void Awake() {
         CloseOpenMenu();
         CloseMainMenu();
         CloseSettingsMenu();
         ButtonListeners();
+
+        transitionCanvas = transitionPrefab.GetComponentInChildren<CanvasGroup>();
+        transitionAnimator = transitionPrefab.GetComponent<Animator>();
+        transitionTime = transitionAnimator.GetCurrentAnimatorStateInfo(0).length;
+
+        transitionCanvas.alpha = 0f;
+        transitionCanvas.interactable = false;
+        transitionCanvas.blocksRaycasts = false;
     }
     private void ButtonListeners() {
         resumeButton.onClick.AddListener(() => CloseOpenMenu());
@@ -39,7 +51,8 @@ public class PauseManager : MonoBehaviour {
         if (context.started) {
             if (!isPaused) {
                 OpenPauseMenu();
-            } else {
+            }
+            else {
                 CloseOpenMenu();
             }
         }
@@ -91,6 +104,15 @@ public class PauseManager : MonoBehaviour {
         submenuCanvasGroup.gameObject.SetActive(false);
         OpenMainMenu();
     }
-    private void QuitGame() => SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
-    
+    private void QuitGame() {
+        Time.timeScale = 1;
+        StartCoroutine(MenuStartTransition());
+    }
+    private IEnumerator MenuStartTransition() {
+        transitionAnimator.SetTrigger("Start");
+        CloseMainMenu();
+
+        yield return new WaitForSeconds(transitionTime + 0.5f);
+        SceneManager.LoadSceneAsync("MainMenu", LoadSceneMode.Single);
+    }
 }

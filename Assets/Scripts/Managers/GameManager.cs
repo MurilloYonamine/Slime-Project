@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour {
             DestroyImmediate(gameObject);
             return;
         }
-        StartCoroutine(MenuTransition());
+        StartCoroutine(MenuEndTransition());
         //AudioManager.Instance.PlayTrack("Audio/Music/test-song", loop: true);
     }
     private void Start() {
@@ -65,8 +65,16 @@ public class GameManager : MonoBehaviour {
         newCheckpointPosition = checkpointList[currentCheckpoint].transform.position;
         player.transform.position = newCheckpointPosition;
     }
-    private IEnumerator MenuTransition() {
+    public IEnumerator MenuStartTransition() {
+        menuTransitionAnimator.SetTrigger("Start");
+        menuTransitionCanvas.interactable = false;
+        menuTransitionCanvas.blocksRaycasts = false;
+        yield return new WaitForSeconds(menuTransitionTime);
+    }
+    public IEnumerator MenuEndTransition() {
         menuTransitionAnimator.SetTrigger("End");
+        menuTransitionCanvas.interactable = false;
+        menuTransitionCanvas.blocksRaycasts = false;
         yield return new WaitForSeconds(menuTransitionTime);
     }
     public void ChangeGrapplersDistance(float distance) {
