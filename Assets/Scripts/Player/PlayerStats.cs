@@ -20,32 +20,11 @@ namespace PLAYER
         public void Initialize(PlayerController player)
         {
             this.player = player;
-
-            if (player.DisableStats)
-            {
-                mousePositionText.gameObject.SetActive(false);
-                playerPositionText.gameObject.SetActive(false);
-                playerIsJumpingText.gameObject.SetActive(false);
-                playerIsClimbingText.gameObject.SetActive(false);
-                playerIsGrapplingText.gameObject.SetActive(false);
-                playerCanGrappleText.gameObject.SetActive(false);
-                playerIsSpikeActiveText.gameObject.SetActive(false);
-            }
-            else
-            {
-                mousePositionText.gameObject.SetActive(true);
-                playerPositionText.gameObject.SetActive(true);
-                playerIsJumpingText.gameObject.SetActive(true);
-                playerIsClimbingText.gameObject.SetActive(true);
-                playerIsClimbingText.gameObject.SetActive(true);
-                playerCanGrappleText.gameObject.SetActive(true);
-                playerIsSpikeActiveText.gameObject.SetActive(true);
-            }
         }
 
         public void OnUpdate()
         {
-
+            if (player.DisableStats) return;
             mousePositionText.text = "Mouse Position: " + Mouse.current.position.value.ToString();
             playerPositionText.text = "Player Position: " + player.transform.position.ToString();
             playerIsJumpingText.text = "Is player jumping? " + player.IsJumping.ToString();

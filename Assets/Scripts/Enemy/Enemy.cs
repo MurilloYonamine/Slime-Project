@@ -96,7 +96,7 @@ namespace ENEMY {
         private void OnTriggerEnter2D(Collider2D other) {
             if (other.TryGetComponent<PlayerController>(out PlayerController play) && state == State.Dead) {
                 PlayerHealth fuck = play.playerHealth;
-                fuck.HEALME(NutritionalValue);
+                fuck.HandleHealing();
                 AudioManager.Instance.PlaySoundEffect("Audio/SFX/Slime/yummy_snack", volume: 0.1f);
                 Destroy(gameObject);
             }
