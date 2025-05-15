@@ -85,6 +85,7 @@ namespace PLAYER {
         public void OnShoot(InputAction.CallbackContext context) { if (!IsPaused) playerShoot.Shoot(context); }
         //public void OnSpike(InputAction.CallbackContext context) { if (!IsPaused) playerSpike.Spike(context); }
         public void OnChangeSpeed(float speed) => playerMovement.ChangeSpeed(speed);
+        public void OnResetSpeed() => playerMovement.ResetSpeed();
         //public void DisableSpike() => playerSpike.DisableSpike();
         public void UpdateHealth(int health) => playerHealth.HandleHealing();
 

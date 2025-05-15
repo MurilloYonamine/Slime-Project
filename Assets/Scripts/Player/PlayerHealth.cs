@@ -28,8 +28,7 @@ namespace PLAYER {
         public void TakeDamage(int damage, MonoBehaviour hostile) {
             currentHealth -= damage;
             if (currentHealth <= 0) {
-                currentHealth = 0;
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                GameManager.Instance.RespawnPlayer();
             }
 
             SizeChange();
@@ -72,27 +71,27 @@ namespace PLAYER {
             switch (currentHealth) {
                 case 0:
                     GameManager.Instance.ChangeLifeHUD(currentHealth);
-                    player.transform.localScale = new Vector2(0.25f, 0.25f);
+                    player.transform.localScale = new Vector2(0.5f, 0.5f);
                     player.cursize = PlayerController.CURSIZE.small;
-                    player.OnChangeSpeed(1.5f);
+                    player.OnChangeSpeed(25f);
                     break;
                 case 1:
                     GameManager.Instance.ChangeLifeHUD(currentHealth);
-                    player.transform.localScale = new Vector2(0.50f, 0.50f);
+                    player.transform.localScale = new Vector2(0.60f, 0.60f);
                     player.cursize = PlayerController.CURSIZE.small;
-                    player.OnChangeSpeed(1.4f);
+                    player.OnChangeSpeed(20f);
                     break;
                 case 2:
                     GameManager.Instance.ChangeLifeHUD(currentHealth);
                     player.transform.localScale = new Vector2(0.75f, 0.75f);
                     player.cursize = PlayerController.CURSIZE.normal;
-                    player.OnChangeSpeed(1.25f);
+                    player.OnChangeSpeed(15f);
                     break;
                 case 3:
                     GameManager.Instance.ChangeLifeHUD(currentHealth);
                     player.transform.localScale = new Vector2(1f, 1f);
                     player.cursize = PlayerController.CURSIZE.normal;
-                    player.OnChangeSpeed(1f);
+                    player.OnResetSpeed();
                     break;
             }
         }

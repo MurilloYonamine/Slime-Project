@@ -3,11 +3,9 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace PLAYER
-{
+namespace PLAYER {
     [Serializable]
-    public class PlayerMovement
-    {
+    public class PlayerMovement {
         private PlayerController player;
         private Rigidbody2D rigidBody2D;
         private TrailRenderer trailRenderer;
@@ -19,8 +17,7 @@ namespace PLAYER
         [SerializeField] private Vector2 moveDirection;
         bool faceDirection => moveDirection.x < 0; // true if moving right, false if moving left
 
-        public void Initialize(PlayerController player, Rigidbody2D rigidBody2D, TrailRenderer trailRenderer, SpriteRenderer spriteRenderer, Animator animator)
-        {
+        public void Initialize(PlayerController player, Rigidbody2D rigidBody2D, TrailRenderer trailRenderer, SpriteRenderer spriteRenderer, Animator animator) {
             this.player = player;
             this.rigidBody2D = rigidBody2D;
             this.trailRenderer = trailRenderer;
@@ -31,13 +28,11 @@ namespace PLAYER
             this.moveDirection = Vector2.zero;
         }
 
-        public void OnFixedUpdate()
-        {
+        public void OnFixedUpdate() {
             rigidBody2D.linearVelocity = new Vector2(moveDirection.x * moveSpeed, rigidBody2D.linearVelocity.y);
         }
 
-        public void Move(InputAction.CallbackContext context)
-        {
+        public void Move(InputAction.CallbackContext context) {
             spriteRenderer.flipX = faceDirection;
 
             if (!animator.GetBool("IsWalking")) spriteRenderer.flipX = faceDirection;
@@ -48,7 +43,9 @@ namespace PLAYER
 
             trailRenderer.emitting = moveDirection.x != 0;
         }
-        public void ChangeSpeed(float speed) => moveSpeed = moveSpeed * speed;
+        public void ChangeSpeed(float speed) => moveSpeed = speed;
+        public void ResetSpeed() => moveSpeed = originalSpeed;
+        
     }
 }
 
