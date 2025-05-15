@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      parede gosma 3 32x32_0: 2153512955130708953
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

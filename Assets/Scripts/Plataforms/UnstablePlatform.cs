@@ -8,7 +8,7 @@ namespace PLATFORMS
     {
         [SerializeField] private float timeToDestroy = 2f;
         [SerializeField] private float timeToReset = 3f;
-        [SerializeField] private Animator animator;
+        [SerializeField] private Animator _animator;
 
         private BoxCollider2D boxCollider;
         private PlatformEffector2D platformEffector2D;
@@ -26,7 +26,9 @@ namespace PLATFORMS
             base.OnCollisionEnter2D(collision);
             if (collision.gameObject.CompareTag("Player"))
             {
+                
                 StartCoroutine(DisablePlatform());
+                
             }
 
         }
@@ -35,15 +37,21 @@ namespace PLATFORMS
             base.OnCollisionExit2D(collision);
             //StopAllCoroutines();
             StartCoroutine(ResetPlatform());
+            
         }
         private IEnumerator DisablePlatform()
         {
+            //_animator.SetBool("Ondeath",true);
+            //yield return new WaitForSeconds(0.5f);
             StartCoroutine(FadeEffect(2f, true));
             yield return new WaitForSeconds(timeToDestroy);
             SetActiveComponents(false);
+            
         }
         private IEnumerator ResetPlatform()
         {
+            //_animator.SetBool("Ondeath",false);
+            //yield return new WaitForSeconds(1f);
             StartCoroutine(FadeEffect(2f, false));
             yield return new WaitForSeconds(timeToReset);
             SetActiveComponents(true);
