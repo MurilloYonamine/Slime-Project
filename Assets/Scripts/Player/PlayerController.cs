@@ -87,7 +87,7 @@ namespace PLAYER {
         public void OnChangeSpeed(float speed) => playerMovement.ChangeSpeed(speed);
         public void OnResetSpeed() => playerMovement.ResetSpeed();
         //public void DisableSpike() => playerSpike.DisableSpike();
-        public void UpdateHealth(int health) => playerHealth.HandleHealing();
+        public void UpdateHealth() => playerHealth.HandleHealing();
 
         private void OnCollisionEnter2D(Collision2D collision2D) {
             playerJump.CollisionEnter2D(collision2D);
