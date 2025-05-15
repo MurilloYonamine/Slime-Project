@@ -7,7 +7,7 @@ public class Checkpoint : MonoBehaviour {
         if (other.CompareTag("Player")) {
             GameManager.Instance.ChangeCheckpoint(this.gameObject);
             if (!hasHealed) {
-                other.GetComponent<PlayerController>().playerHealth.HandleHealing();
+                other.GetComponent<PlayerController>().UpdateHealth();
                 hasHealed = true;
             }
         }

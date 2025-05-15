@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using PLAYER;
+using UnityEngine.SceneManagement;
 
 public class PauseManager : MonoBehaviour {
 
@@ -90,6 +91,6 @@ public class PauseManager : MonoBehaviour {
         submenuCanvasGroup.gameObject.SetActive(false);
         OpenMainMenu();
     }
-    private void QuitGame() => Application.Quit();
+    private void QuitGame() => SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
     
 }

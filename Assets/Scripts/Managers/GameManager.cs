@@ -21,12 +21,35 @@ public class GameManager : MonoBehaviour {
     [SerializeField] private List<CinemachineVirtualCamera> virtualCamerasList;
     [SerializeField] private Vector3 newCheckpointPosition;
 
-    [SerializeField] private GameObject transitionPrefab;
-    [SerializeField] private CanvasGroup transitionCanvas;
-    [SerializeField] private Animator transitionAnimator;
-    [SerializeField] private float transitionTime;
+    [Header("Death Transition Components")]
+    [SerializeField] private GameObject deathTransition;
+    private CanvasGroup deathTransitionCanvas;
+    private Animator deathTransitionAnimator;
+    private float deathTransitionTime;
+
+    [Header("Menu Transition Components")]
+    [SerializeField] private GameObject menuTransition;
+    private CanvasGroup menuTransitionCanvas;
+    private Animator menuTransitionAnimator;
+    private float menuTransitionTime;
+
+
     private void Awake() {
         //Cursor.visible = false;
+        deathTransitionAnimator = deathTransition.GetComponent<Animator>();
+        deathTransitionCanvas = deathTransition.GetComponentInChildren<CanvasGroup>();
+        deathTransitionCanvas.alpha = 0f;
+        deathTransitionCanvas.interactable = false;
+        deathTransitionCanvas.blocksRaycasts = false;
+        deathTransitionTime = deathTransitionAnimator.GetCurrentAnimatorStateInfo(0).length;
+
+        menuTransitionAnimator = menuTransition.GetComponent<Animator>();
+        menuTransitionCanvas = menuTransition.GetComponentInChildren<CanvasGroup>();
+        menuTransitionCanvas.alpha = 0f;
+        menuTransitionCanvas.interactable = false;
+        menuTransitionCanvas.blocksRaycasts = false;
+        deathTransitionTime = deathTransitionAnimator.GetCurrentAnimatorStateInfo(0).length;
+
         if (Instance == null) {
             Instance = this;
         }
@@ -34,20 +57,17 @@ public class GameManager : MonoBehaviour {
             DestroyImmediate(gameObject);
             return;
         }
+        StartCoroutine(MenuTransition());
         //AudioManager.Instance.PlayTrack("Audio/Music/test-song", loop: true);
     }
     private void Start() {
-        transitionCanvas = transitionPrefab.GetComponentInChildren<CanvasGroup>();
-        transitionAnimator = transitionPrefab.GetComponent<Animator>();
-        transitionTime = transitionAnimator.GetCurrentAnimatorStateInfo(0).length;
-
-        transitionCanvas.alpha = 0f;
-        transitionCanvas.interactable = false;
-        transitionCanvas.blocksRaycasts = false;
-
         currentCheckpoint = FindTheHighestPriorityCamera();
         newCheckpointPosition = checkpointList[currentCheckpoint].transform.position;
         player.transform.position = newCheckpointPosition;
+    }
+    private IEnumerator MenuTransition() {
+        menuTransitionAnimator.SetTrigger("End");
+        yield return new WaitForSeconds(menuTransitionTime);
     }
     public void ChangeGrapplersDistance(float distance) {
         foreach (GameObject grappler in grapplerList) {
@@ -74,8 +94,8 @@ public class GameManager : MonoBehaviour {
         StartCoroutine(TransitionToRespawn());
     }
     private IEnumerator TransitionToRespawn() {
-        transitionAnimator.SetTrigger("Start");
-        yield return new WaitForSeconds(transitionTime);
+        deathTransitionAnimator.SetTrigger("Start");
+        yield return new WaitForSeconds(deathTransitionTime);
         newCheckpointPosition = checkpointList[currentCheckpoint].transform.position;
         player.transform.position = newCheckpointPosition;
     }

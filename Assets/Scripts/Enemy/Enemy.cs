@@ -37,7 +37,7 @@ namespace ENEMY {
         [SerializeField] private float maxHealth = 3f;
         [SerializeField] private float knockbackForce = 25f;
         [SerializeField] private float MoveSpeed = 5f;
-        [SerializeField] private int NutritionalValue = 10;
+        //[SerializeField] private int NutritionalValue = 10;
         [SerializeField] public int Damage = 10;
         private float currentHealth;
 
