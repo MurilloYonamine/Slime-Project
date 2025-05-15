@@ -46,7 +46,6 @@ GameObject:
   - component: {fileID: 4835980285447359741}
   - component: {fileID: 1418119692860772272}
   - component: {fileID: 8690066252529401084}
-  - component: {fileID: 7816539047958554021}
   - component: {fileID: 5727689036206728683}
   m_Layer: 0
   m_Name: platform
@@ -190,22 +189,6 @@ PlatformEffector2D:
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
---- !u!114 &7816539047958554021
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4607834420551237314}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74151d01a81e3de48aad908ded741838, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pointA: {fileID: 8655548245836354213}
-  pointB: {fileID: 3490914155824941756}
-  moveSpeed: 2
-  NextPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &5727689036206728683
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -218,8 +201,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 786a56172b9ecae4f9d6efaf92bc7705, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointA: {fileID: 0}
-  pointB: {fileID: 0}
+  pointA: {fileID: 8655548245836354213}
+  pointB: {fileID: 3490914155824941756}
   moveSpeed: 2
   NextPosition: {x: 0, y: 0, z: 0}
   verticalKnockbackForce: 30
