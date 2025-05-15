@@ -85,8 +85,8 @@ CanvasGroup:
   m_GameObject: {fileID: 4833714864465729808}
   m_Enabled: 1
   m_Alpha: 0
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
 --- !u!1 &7332800871910477115
 GameObject:
@@ -201,7 +201,7 @@ Animator:
   m_GameObject: {fileID: 7332800871910477115}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ac98f70746b885e498a3a253b71534e5, type: 2}
+  m_Controller: {fileID: 9100000, guid: fd12c4c108a17424ebdcbdb6f8f3aa4a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
