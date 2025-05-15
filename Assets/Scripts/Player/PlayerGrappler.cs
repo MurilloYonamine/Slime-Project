@@ -4,11 +4,9 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-namespace PLAYER
-{
+namespace PLAYER {
     [Serializable]
-    public class PlayerGrappler
-    {
+    public class PlayerGrappler {
         private PlayerController player;
 
         private LineRenderer lineRenderer;
@@ -22,8 +20,7 @@ namespace PLAYER
 
         private Color grapplerObjectOriginalColor;
 
-        public void Initialize(PlayerController player, LineRenderer lineRenderer, DistanceJoint2D distanceJoint2D, LayerMask grapplerLayer, LayerMask grapplerArea, Rigidbody2D rigidBody2D)
-        {
+        public void Initialize(PlayerController player, LineRenderer lineRenderer, DistanceJoint2D distanceJoint2D, LayerMask grapplerLayer, LayerMask grapplerArea, Rigidbody2D rigidBody2D) {
             this.player = player;
             this.lineRenderer = lineRenderer;
             this.distanceJoint2D = distanceJoint2D;
@@ -37,29 +34,24 @@ namespace PLAYER
             GameManager.Instance.ChangeGrapplersDistance(grappleMaxPoint);
         }
 
-        public void OnUpdate()
-        {
+        public void OnUpdate() {
             if (lineRenderer.enabled) lineRenderer.SetPosition(1, player.transform.position);
-            if (player.IsClimbing){
+            if (player.IsClimbing) {
                 distanceJoint2D.enabled = false;
                 lineRenderer.enabled = false;
                 player.IsGrappling = false;
             }
         }
 
-        public void Grapple(InputAction.CallbackContext context)
-        {
-            if (context.started)
-            {
+        public void Grapple(InputAction.CallbackContext context) {
+            if (context.started) {
                 Vector2 mousePosition = (Vector2)Camera.main.ScreenToWorldPoint(Mouse.current.position.value);
 
                 RaycastHit2D hit = Physics2D.Raycast(player.transform.position, mousePosition - (Vector2)player.transform.position, Mathf.Infinity, grapplerLayer);
 
-                if (hit.collider != null)
-                {
+                if (hit.collider != null) {
                     float distanceToGrapplePoint = Vector2.Distance(player.transform.position, hit.point);
-                    if (distanceToGrapplePoint <= grappleMaxPoint)
-                    {
+                    if (distanceToGrapplePoint <= grappleMaxPoint) {
                         player.IsGrappling = true;
                         lineRenderer.SetPosition(0, hit.point);
                         lineRenderer.SetPosition(1, player.transform.position);
@@ -71,8 +63,7 @@ namespace PLAYER
                     }
                 }
             }
-            else if (context.canceled)
-            {
+            else if (context.canceled) {
                 distanceJoint2D.enabled = false;
                 lineRenderer.enabled = false;
                 player.IsGrappling = false;
@@ -80,23 +71,22 @@ namespace PLAYER
 
             if (lineRenderer.enabled) lineRenderer.SetPosition(1, player.transform.position);
         }
-        public void TriggerEnter2D(Collider2D collider2D)
-        {
-            if (((1 << collider2D.gameObject.layer) & grapplerArea) != 0)
-            {
+        public void TriggerEnter2D(Collider2D collider2D) {
+            if (((1 << collider2D.gameObject.layer) & grapplerArea) != 0) {
                 player.CanGrapple = true;
 
+                if (collider2D.gameObject.GetComponentInParent<SpriteRenderer>() != null) return;
+
                 grapplerObjectOriginalColor = collider2D.gameObject.GetComponentInParent<SpriteRenderer>().color;
-                
+
                 collider2D.gameObject.GetComponentInParent<SpriteRenderer>().color = Color.yellow;
-                return;
             }
         }
-        public void TriggerExit2D(Collider2D collider2D)
-        {
-            if (((1 << collider2D.gameObject.layer) & grapplerArea) != 0)
-            {
+        public void TriggerExit2D(Collider2D collider2D) {
+            if (((1 << collider2D.gameObject.layer) & grapplerArea) != 0) {
                 player.CanGrapple = false;
+
+                if (collider2D.gameObject.GetComponentInParent<SpriteRenderer>() != null) return;
 
                 collider2D.gameObject.GetComponentInParent<SpriteRenderer>().color = grapplerObjectOriginalColor;
             }

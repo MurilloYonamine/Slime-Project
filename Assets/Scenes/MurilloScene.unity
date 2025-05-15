@@ -8006,6 +8006,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Death Transition
       objectReference: {fileID: 0}
+    - target: {fileID: 3610336760137649643, guid: e21b8509a594df947a67f5c11871ad0c, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: f05bcaadb839ebf4bb24ec6c5a9325d3, type: 2}
     - target: {fileID: 3867687752064365477, guid: e21b8509a594df947a67f5c11871ad0c, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -8784,6 +8788,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1837834456}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 333752716}
         m_TargetAssemblyTypeName: 
         m_MethodName: 
@@ -9539,6 +9555,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 955775767}
     m_Modifications:
+    - target: {fileID: 47256538057142174, guid: d1ef3ffcf19c19641852f23a710de691, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: fd12c4c108a17424ebdcbdb6f8f3aa4a, type: 2}
+    - target: {fileID: 673277894933423321, guid: d1ef3ffcf19c19641852f23a710de691, type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 673277894933423321, guid: d1ef3ffcf19c19641852f23a710de691, type: 3}
+      propertyPath: m_BlocksRaycasts
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7332800871910477115, guid: d1ef3ffcf19c19641852f23a710de691, type: 3}
       propertyPath: m_Name
       value: Menu Transition
@@ -13961,7 +13989,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1659412173}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1837834456}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1659412173
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14524,7 +14564,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1767460326}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1837834456}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1767460326
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15185,6 +15237,7 @@ MonoBehaviour:
   mainCanvasGroup: {fileID: 9206636}
   submenuCanvasGroup: {fileID: 560622637}
   comeBackButton: {fileID: 84745532}
+  transitionPrefab: {fileID: 1855762538}
   isPaused: 0
 --- !u!1 &1837945734
 GameObject:

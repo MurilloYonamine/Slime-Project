@@ -7,6 +7,9 @@ public class Main_menu : MonoBehaviour {
      private CanvasGroup transitionCanvas;
      private Animator transitionAnimator;
      private float transitionTime;
+     private void Awake() {
+
+     }
      private void Start() {
           transitionCanvas = transitionPrefab.GetComponentInChildren<CanvasGroup>();
           transitionAnimator = transitionPrefab.GetComponent<Animator>();
@@ -15,11 +18,22 @@ public class Main_menu : MonoBehaviour {
           transitionCanvas.alpha = 0f;
           transitionCanvas.interactable = false;
           transitionCanvas.blocksRaycasts = false;
+
+          StartCoroutine(MenuEndTransition());
      }
      public void Play() {
           StartCoroutine(LoadSceneTransition(1));
      }
+     public IEnumerator MenuStartTransition() {
+          transitionAnimator.SetTrigger("Start");
+          yield return new WaitForSeconds(transitionTime);
+     }
+     public IEnumerator MenuEndTransition() {
+          transitionAnimator.SetTrigger("End");
+          yield return new WaitForSeconds(transitionTime);
+     }
      private IEnumerator LoadSceneTransition(int sceneIndex) {
+
           transitionCanvas.alpha = 1f;
           transitionCanvas.interactable = true;
           transitionCanvas.blocksRaycasts = true;
@@ -28,7 +42,9 @@ public class Main_menu : MonoBehaviour {
 
           yield return new WaitForSeconds(transitionTime + 0.5f);
 
-          SceneManager.LoadSceneAsync(sceneIndex);
+          SceneManager.LoadScene(sceneIndex, LoadSceneMode.Single);
+
+          StopAllCoroutines();
      }
 
      public void FUCKYOU() {
