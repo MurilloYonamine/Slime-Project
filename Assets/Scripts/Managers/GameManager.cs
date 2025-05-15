@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
 using TMPro;
@@ -19,6 +20,11 @@ public class GameManager : MonoBehaviour {
     [SerializeField] private List<GameObject> checkpointList;
     [SerializeField] private List<CinemachineVirtualCamera> virtualCamerasList;
     [SerializeField] private Vector3 newCheckpointPosition;
+
+    [SerializeField] private GameObject transitionPrefab;
+    [SerializeField] private CanvasGroup transitionCanvas;
+    [SerializeField] private Animator transitionAnimator;
+    [SerializeField] private float transitionTime;
     private void Awake() {
         //Cursor.visible = false;
         if (Instance == null) {
@@ -31,6 +37,14 @@ public class GameManager : MonoBehaviour {
         //AudioManager.Instance.PlayTrack("Audio/Music/test-song", loop: true);
     }
     private void Start() {
+        transitionCanvas = transitionPrefab.GetComponentInChildren<CanvasGroup>();
+        transitionAnimator = transitionPrefab.GetComponent<Animator>();
+        transitionTime = transitionAnimator.GetCurrentAnimatorStateInfo(0).length;
+
+        transitionCanvas.alpha = 0f;
+        transitionCanvas.interactable = false;
+        transitionCanvas.blocksRaycasts = false;
+
         currentCheckpoint = FindTheHighestPriorityCamera();
         newCheckpointPosition = checkpointList[currentCheckpoint].transform.position;
         player.transform.position = newCheckpointPosition;
@@ -57,20 +71,19 @@ public class GameManager : MonoBehaviour {
 
     public void RespawnPlayer() {
         virtualCamerasList[currentCheckpoint].Priority = 1;
+        StartCoroutine(TransitionToRespawn());
+    }
+    private IEnumerator TransitionToRespawn() {
+        transitionAnimator.SetTrigger("Start");
+        yield return new WaitForSeconds(transitionTime);
         newCheckpointPosition = checkpointList[currentCheckpoint].transform.position;
         player.transform.position = newCheckpointPosition;
     }
     public int ChangeCurrentCheckpoint() => currentCheckpoint = FindTheHighestPriorityCamera();
     public int FindTheHighestPriorityCamera() {
-        int highestPriority = int.MinValue;
-        CinemachineVirtualCamera highestPriorityCamera = null;
-        foreach (CinemachineVirtualCamera camera in virtualCamerasList) {
-            if (camera.Priority > highestPriority) {
-                highestPriority = camera.Priority;
-                highestPriorityCamera = camera;
-            }
+        for (int i = 0; i < virtualCamerasList.Count; i++) {
+            if (virtualCamerasList[i].Priority == 1) return i;
         }
-        return highestPriorityCamera != null ? virtualCamerasList.IndexOf(highestPriorityCamera) : 0;
-
+        return currentCheckpoint;
     }
 }
