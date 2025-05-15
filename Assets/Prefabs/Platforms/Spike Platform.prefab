@@ -44,7 +44,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7615502401706372421}
   - component: {fileID: 1767878205623800936}
-  m_Layer: 0
+  - component: {fileID: 7633939110609984213}
+  m_Layer: 14
   m_Name: Spike
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,6 +95,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &7633939110609984213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1220216230390041533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ac228d973042dc4580bef366ebf5868, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1555131292014084400
 GameObject:
   m_ObjectHideFlags: 0
@@ -105,7 +118,7 @@ GameObject:
   - component: {fileID: 8201232200802206906}
   - component: {fileID: 2527883402991557724}
   - component: {fileID: 4091341849963291722}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Middle Triangle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -172,7 +185,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -1
   m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
-  m_Color: {r: 0.12941177, g: 0.09019608, b: 0.16078432, a: 1}
+  m_Color: {r: 0.93725497, g: 0.8588236, b: 0.7019608, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -304,7 +317,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5237597231533220229}
   - component: {fileID: 4582009036069369}
-  m_Layer: 0
+  - component: {fileID: 2473220200934522692}
+  m_Layer: 14
   m_Name: Spike (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -354,6 +368,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &2473220200934522692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5770552435479617727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ac228d973042dc4580bef366ebf5868, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6702598379255392042
 GameObject:
   m_ObjectHideFlags: 0
@@ -365,7 +391,7 @@ GameObject:
   - component: {fileID: 5262618659497883392}
   - component: {fileID: 3819402240331912868}
   - component: {fileID: 8127805579452965810}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Middle Triangle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -432,7 +458,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -1
   m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
-  m_Color: {r: 0.12941177, g: 0.09019608, b: 0.16078432, a: 1}
+  m_Color: {r: 0.93725497, g: 0.8588236, b: 0.7019608, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

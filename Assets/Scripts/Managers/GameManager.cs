@@ -42,13 +42,13 @@ public class GameManager : MonoBehaviour {
     }
     public int GetLifeSize() => lifeList.Count;
     public void ChangeLifeHUD(int currentLife) {
-        if(currentLife == lifeList.Count) {
+        if (currentLife == lifeList.Count) {
             for (int i = 0; i < lifeList.Count; i++) {
                 lifeList[i].GetComponent<CanvasGroup>().alpha = 1f;
             }
             return;
         }
-        
+
         lifeList[currentLife].GetComponent<CanvasGroup>().alpha = 0.2f;
     }
     public void ChangeCheckpoint(GameObject checkpoint) {
@@ -62,7 +62,7 @@ public class GameManager : MonoBehaviour {
     }
     public int ChangeCurrentCheckpoint() => currentCheckpoint = FindTheHighestPriorityCamera();
     public int FindTheHighestPriorityCamera() {
-        int highestPriority = 0;
+        int highestPriority = int.MinValue;
         CinemachineVirtualCamera highestPriorityCamera = null;
         foreach (CinemachineVirtualCamera camera in virtualCamerasList) {
             if (camera.Priority > highestPriority) {
@@ -70,6 +70,7 @@ public class GameManager : MonoBehaviour {
                 highestPriorityCamera = camera;
             }
         }
-        return highestPriorityCamera != null ? virtualCamerasList.IndexOf(highestPriorityCamera) : -1;
+        return highestPriorityCamera != null ? virtualCamerasList.IndexOf(highestPriorityCamera) : 0;
+
     }
 }
