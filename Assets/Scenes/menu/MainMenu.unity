@@ -298,7 +298,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Jo\xE3o Pedro: \ndesigner\n\"Jo\xE3o Pedro - trabalhei em algumas muitas
-    coisas no talvez jogo\""
+    coisas no talvez jogo - Jo\xE3o Pedro\""
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6c5236d6477c44048be639747b7e961e, type: 2}
   m_sharedMaterial: {fileID: 1406369201567366904, guid: 6c5236d6477c44048be639747b7e961e, type: 2}

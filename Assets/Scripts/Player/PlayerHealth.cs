@@ -71,25 +71,25 @@ namespace PLAYER {
             switch (currentHealth) {
                 case 0:
                     GameManager.Instance.ChangeLifeHUD(currentHealth);
-                    player.transform.localScale = new Vector2(0.5f, 0.5f);
+                    player.transform.localScale = new Vector2(-1f, -1f);
                     player.cursize = PlayerController.CURSIZE.small;
-                    player.OnChangeSpeed(25f);
+                    player.OnChangeSpeed(10f);
                     break;
                 case 1:
                     GameManager.Instance.ChangeLifeHUD(currentHealth);
-                    player.transform.localScale = new Vector2(0.60f, 0.60f);
+                    player.transform.localScale = new Vector2(0.6f, 0.6f);
                     player.cursize = PlayerController.CURSIZE.small;
-                    player.OnChangeSpeed(20f);
+                    player.OnChangeSpeed(15f);
                     break;
                 case 2:
                     GameManager.Instance.ChangeLifeHUD(currentHealth);
-                    player.transform.localScale = new Vector2(0.75f, 0.75f);
+                    player.transform.localScale = new Vector2(1f, 1f);
                     player.cursize = PlayerController.CURSIZE.normal;
-                    player.OnChangeSpeed(15f);
+                    player.OnChangeSpeed(10f);
                     break;
                 case 3:
                     GameManager.Instance.ChangeLifeHUD(currentHealth);
-                    player.transform.localScale = new Vector2(1f, 1f);
+                    player.transform.localScale = new Vector2(1.5f, 1.5f);
                     player.cursize = PlayerController.CURSIZE.normal;
                     player.OnResetSpeed();
                     break;
