@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
+using PLAYER;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -33,8 +34,10 @@ public class GameManager : MonoBehaviour {
     private Animator menuTransitionAnimator;
     private float menuTransitionTime;
 
+    public bool IsTransitioning { get; private set; } = false;
 
-    private void Awake() {
+
+private void Awake() {
         //Cursor.visible = false;
         deathTransitionAnimator = deathTransition.GetComponent<Animator>();
         deathTransitionCanvas = deathTransition.GetComponentInChildren<CanvasGroup>();
@@ -104,6 +107,7 @@ public class GameManager : MonoBehaviour {
     private IEnumerator TransitionToRespawn() {
         deathTransitionAnimator.SetTrigger("Start");
         yield return new WaitForSeconds(deathTransitionTime);
+        player.GetComponent<PlayerController>().UpdateHealth();
         newCheckpointPosition = checkpointList[currentCheckpoint].transform.position;
         player.transform.position = newCheckpointPosition;
     }

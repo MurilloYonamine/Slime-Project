@@ -20,12 +20,14 @@ namespace PLATFORMS {
                 NextPosition = (NextPosition == pointA.position) ? pointB.position : pointA.position;
         }
         protected virtual void OnCollisionEnter2D(Collision2D collision) {
-            if (collision.gameObject.CompareTag("Player"))
+            if (collision.gameObject.CompareTag("Player")) {
                 collision.gameObject.transform.parent = transform;
+            }
         }
         protected virtual void OnCollisionExit2D(Collision2D collision) {
-            if (collision.gameObject.CompareTag("Player"))
+            if (collision.gameObject.CompareTag("Player")) {
                 collision.gameObject.transform.parent = GameManager.Instance.PlayerOriginalLayer;
+            }
         }
 
     }
