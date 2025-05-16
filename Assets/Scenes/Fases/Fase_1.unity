@@ -9974,6 +9974,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 625365409}
     m_Modifications:
+    - target: {fileID: 1418119692860772272, guid: ae11c15dc7b9d9b48b6321c7b122769b, type: 3}
+      propertyPath: m_Size.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1418119692860772272, guid: ae11c15dc7b9d9b48b6321c7b122769b, type: 3}
+      propertyPath: m_Size.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1418119692860772272, guid: ae11c15dc7b9d9b48b6321c7b122769b, type: 3}
+      propertyPath: m_Offset.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1418119692860772272, guid: ae11c15dc7b9d9b48b6321c7b122769b, type: 3}
+      propertyPath: m_UsedByEffector
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1418119692860772272, guid: ae11c15dc7b9d9b48b6321c7b122769b, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 2308111202527831647, guid: ae11c15dc7b9d9b48b6321c7b122769b, type: 3}
       propertyPath: m_Name
       value: Moving Platform
@@ -16027,7 +16047,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2241093382970057560, guid: 5cc17e0493568b54b9b8420ae23d28c0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -9.34
+      value: -10.33
       objectReference: {fileID: 0}
     - target: {fileID: 2241093382970057560, guid: 5cc17e0493568b54b9b8420ae23d28c0, type: 3}
       propertyPath: m_LocalPosition.z
