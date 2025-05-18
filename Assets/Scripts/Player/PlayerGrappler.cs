@@ -75,7 +75,7 @@ namespace PLAYER {
             if (((1 << collider2D.gameObject.layer) & grapplerArea) != 0) {
                 player.CanGrapple = true;
 
-                if (collider2D.gameObject.GetComponentInParent<SpriteRenderer>() != null) return;
+                if (collider2D.gameObject.GetComponentInParent<SpriteRenderer>() == null) return;
 
                 grapplerObjectOriginalColor = collider2D.gameObject.GetComponentInParent<SpriteRenderer>().color;
 
@@ -86,7 +86,7 @@ namespace PLAYER {
             if (((1 << collider2D.gameObject.layer) & grapplerArea) != 0) {
                 player.CanGrapple = false;
 
-                if (collider2D.gameObject.GetComponentInParent<SpriteRenderer>() != null) return;
+                if (collider2D.gameObject.GetComponentInParent<SpriteRenderer>() == null) return;
 
                 collider2D.gameObject.GetComponentInParent<SpriteRenderer>().color = grapplerObjectOriginalColor;
             }

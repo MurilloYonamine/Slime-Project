@@ -28,7 +28,7 @@ namespace PLAYER {
         public void TakeDamage(int damage, MonoBehaviour hostile) {
             currentHealth -= damage;
             if (currentHealth <= 0) {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                GameManager.Instance.RespawnPlayer();
             }
 
             SizeChange();
@@ -37,7 +37,6 @@ namespace PLAYER {
 
         public void HandleHealing() {
             currentHealth = maxHealth;
-            Debug.Log("Player healed to max health: " + currentHealth);
             SizeChange();
         }
 
@@ -66,30 +65,28 @@ namespace PLAYER {
         }
 
         public void SizeChange() {
-            Debug.Log($"Current Health: {currentHealth}, Max Health: {maxHealth}");
-
             switch (currentHealth) {
                 case 0:
                     GameManager.Instance.ChangeLifeHUD(currentHealth);
-                    player.transform.localScale = new Vector2(0.4f, 0.4f);
+                    player.transform.localScale = new Vector3(0.4f, 0.4f);
                     player.cursize = PlayerController.CURSIZE.small;
                     player.OnChangeSpeed(10f);
                     break;
                 case 1:
                     GameManager.Instance.ChangeLifeHUD(currentHealth);
-                    player.transform.localScale = new Vector2(0.6f, 0.6f);
+                    player.transform.localScale = new Vector3(0.6f, 0.6f);
                     player.cursize = PlayerController.CURSIZE.small;
                     player.OnChangeSpeed(15f);
                     break;
                 case 2:
                     GameManager.Instance.ChangeLifeHUD(currentHealth);
-                    player.transform.localScale = new Vector2(1f, 1f);
+                    player.transform.localScale = new Vector3(1f, 1f);
                     player.cursize = PlayerController.CURSIZE.normal;
                     player.OnChangeSpeed(10f);
                     break;
                 case 3:
                     GameManager.Instance.ChangeLifeHUD(currentHealth);
-                    player.transform.localScale = new Vector2(1.5f, 1.5f);
+                    player.transform.localScale = new Vector3(1.5f, 1.5f);
                     player.cursize = PlayerController.CURSIZE.normal;
                     player.OnResetSpeed();
                     break;
