@@ -174,7 +174,7 @@ MonoBehaviour:
   NextPosition: {x: 0, y: 0, z: 0}
   timeToDestroy: 2
   timeToReset: 3
-  _animator: {fileID: 0}
+  _animator: {fileID: 4949228706320655202}
 --- !u!95 &4949228706320655202
 Animator:
   serializedVersion: 7
