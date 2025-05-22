@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 8436713445552733064}
   - component: {fileID: 3048601384741564845}
   - component: {fileID: 7015384071408218936}
-  - component: {fileID: 2763425874604256044}
+  - component: {fileID: 840640248406007680}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -35,7 +35,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.52, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -308,6 +308,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 6045d816-2c41-40c4-bb3f-b12741fcb5e3
     m_ActionName: 'UI/Pause Menu[/Keyboard/escape]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 92cdc5c3-38e1-4991-a48b-decce2af18d5
+    m_ActionName: 'Player/Swing[/Keyboard/a,/Keyboard/d]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -329,8 +333,9 @@ MonoBehaviour:
   trailRenderer: {fileID: 8436713445552733064}
   lineRenderer: {fileID: 7015384071408218936}
   distanceJoint2D: {fileID: 3048601384741564845}
-  animator: {fileID: 2763425874604256044}
+  animator: {fileID: 840640248406007680}
   spriteRenderer: {fileID: 896281668011520122}
+  playerInput: {fileID: 0}
   grapplerLayer:
     serializedVersion: 2
     m_Bits: 512
@@ -352,7 +357,7 @@ MonoBehaviour:
   IsTakingDamage: 0
   IsDead: 0
   IsInsideWheat: 0
-  DisableStats: 0
+  DisableStats: 1
   bulletPrefab: {fileID: 2063527191266757597, guid: 99fa830106dc3a14a80cedd4407167db, type: 3}
   aimPrefab: {fileID: 0}
   playerStats:
@@ -369,7 +374,6 @@ MonoBehaviour:
     moveDirection: {x: 0, y: 0}
   playerJump:
     jumpPower: 20
-    spikeJumpPower: 30
   playerClimb:
     climbSpeed: 5
     climbDirection: 0
@@ -381,18 +385,9 @@ MonoBehaviour:
     bulletSpeed: 30
     bulletDamage: 1
     hitEffect: {fileID: 5870765672286812921, guid: 608d8167747936043b500036779a5f19, type: 3}
-    bulletDestroyTimer: 2
-  playerSpike:
-    player: {fileID: 0}
-    CanScale: 1
-    xScale: 4
-    yScale: 0.5
-    smoothTime: 0.2
-    targetScale: {x: 0, y: 0}
   playerHealth:
-    healthBar: {fileID: 0}
-    Health: 50
-    MaxHealth: 0
+    currentHealth: 0
+    maxHealth: 0
     verticalKnockbackForce: 5
     horizontalKnockbackForce: 2500
   curstretch: 1
@@ -458,7 +453,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.003324151, y: -0.15957016}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -468,7 +463,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.7938881, y: 0.6941575}
   m_EdgeRadius: 0
 --- !u!96 &8436713445552733064
 TrailRenderer:
@@ -713,7 +708,7 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
---- !u!95 &2763425874604256044
+--- !u!95 &840640248406007680
 Animator:
   serializedVersion: 7
   m_ObjectHideFlags: 0
