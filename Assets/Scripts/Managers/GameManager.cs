@@ -107,9 +107,13 @@ private void Awake() {
     private IEnumerator TransitionToRespawn() {
         deathTransitionAnimator.SetTrigger("Start");
         yield return new WaitForSeconds(deathTransitionTime);
+
         player.GetComponent<PlayerController>().UpdateHealth();
+
         newCheckpointPosition = checkpointList[currentCheckpoint].transform.position;
         player.transform.position = newCheckpointPosition;
+
+        player.GetComponent<PlayerController>().TogglePlayerInput();
     }
     public int ChangeCurrentCheckpoint() => currentCheckpoint = FindTheHighestPriorityCamera();
     public int FindTheHighestPriorityCamera() {

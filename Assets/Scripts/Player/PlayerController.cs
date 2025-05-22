@@ -10,6 +10,7 @@ namespace PLAYER {
         [SerializeField] private DistanceJoint2D distanceJoint2D;
         [SerializeField] private Animator animator;
         [SerializeField] private SpriteRenderer spriteRenderer;
+        [SerializeField] private PlayerInput playerInput;
 
         [Header("Layer Settings")]
         [SerializeField] private LayerMask grapplerLayer;
@@ -55,6 +56,7 @@ namespace PLAYER {
             lineRenderer = GetComponent<LineRenderer>();
             distanceJoint2D = GetComponent<DistanceJoint2D>();
             spriteRenderer = GetComponent<SpriteRenderer>();
+            playerInput = GetComponent<PlayerInput>();
         }
         private void Start() {
             playerHealth.Initialize(this, rigidBody2D);
@@ -88,6 +90,7 @@ namespace PLAYER {
         public void OnResetSpeed() => playerMovement.ResetSpeed();
         //public void DisableSpike() => playerSpike.DisableSpike();
         public void UpdateHealth() => playerHealth.HandleHealing();
+        public void TogglePlayerInput() => playerInput.enabled = !playerInput.enabled;
 
         private void OnCollisionEnter2D(Collision2D collision2D) {
             playerJump.CollisionEnter2D(collision2D);
