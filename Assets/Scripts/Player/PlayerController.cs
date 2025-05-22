@@ -35,7 +35,7 @@ namespace PLAYER {
         [SerializeField] private RectTransform aimPrefab;
 
         [Header("Script Settings")]
-        [SerializeField] private PlayerStats playerStats;
+        //[SerializeField] private PlayerStats playerStats;
         [SerializeField] private PlayerMovement playerMovement;
         [SerializeField] private PlayerJump playerJump;
         [SerializeField] private PlayerClimb playerClimb;
@@ -67,14 +67,14 @@ namespace PLAYER {
             playerGrappler.Initialize(this, lineRenderer, distanceJoint2D, grapplerLayer, grapplerArea, rigidBody2D);
             //playerSpike.Initialize(this);
 
-            playerStats.Initialize(this);
+            //playerStats.Initialize(this);
         }
 
         private void Update() {
             playerGrappler.OnUpdate();
             playerShoot.OnUpdate();
             //playerSpike.OnUpdate();
-            playerStats.OnUpdate();
+            //playerStats.OnUpdate();
         }
         private void FixedUpdate() {
             playerMovement.OnFixedUpdate();
