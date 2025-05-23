@@ -48,6 +48,11 @@ public class Main_menu : MonoBehaviour {
      }
 
      public void FUCKYOU() {
-          Application.Quit();
+        StartCoroutine(CloseGame());
      }
+    public IEnumerator CloseGame() {
+        StartCoroutine(LoadSceneTransition());
+        yield return new WaitForSeconds(1.5f);
+        Application.Quit();
+    }
 }
