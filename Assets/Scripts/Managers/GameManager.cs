@@ -109,6 +109,8 @@ public class GameManager : MonoBehaviour {
     private IEnumerator TransitionToRespawn() {
         deathTransitionAnimator.SetTrigger("Start");
         IsTransitioning = true;
+        player.GetComponent<PlayerController>().TogglePlayerInput();
+
         yield return new WaitForSeconds(deathTransitionTime);
 
         player.GetComponent<PlayerController>().UpdateHealth();
@@ -123,6 +125,7 @@ public class GameManager : MonoBehaviour {
         player.transform.position = newCheckpointPosition;
 
         player.GetComponent<PlayerController>().TogglePlayerInput();
+
         IsTransitioning = false;
     }
     public int ChangeCurrentCheckpoint() => currentCheckpoint = FindTheHighestPriorityCamera();
