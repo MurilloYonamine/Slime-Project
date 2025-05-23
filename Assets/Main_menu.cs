@@ -51,7 +51,7 @@ public class Main_menu : MonoBehaviour {
         StartCoroutine(CloseGame());
      }
     public IEnumerator CloseGame() {
-        StartCoroutine(LoadSceneTransition());
+        StartCoroutine(MenuStartTransition());
         yield return new WaitForSeconds(1.5f);
         Application.Quit();
     }
