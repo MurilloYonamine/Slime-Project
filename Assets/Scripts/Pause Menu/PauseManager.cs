@@ -50,10 +50,12 @@ public class PauseManager : MonoBehaviour {
     public void ManagePauseMenu(InputAction.CallbackContext context) {
         if (context.started) {
             if (!isPaused) {
+                Cursor.visible = true;
                 OpenPauseMenu();
             }
             else {
                 CloseOpenMenu();
+                Cursor.visible = false;
             }
         }
     }
@@ -106,6 +108,7 @@ public class PauseManager : MonoBehaviour {
     }
     private void QuitGame() {
         Time.timeScale = 1;
+        Cursor.visible = true;
         StartCoroutine(MenuStartTransition());
     }
     private IEnumerator MenuStartTransition() {

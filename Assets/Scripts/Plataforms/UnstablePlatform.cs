@@ -14,8 +14,9 @@ namespace PLATFORMS
         private PlatformEffector2D platformEffector2D;
         private SpriteRenderer spriteRenderer;
 
-        protected override void Start()
-        {
+        private bool animating = false;
+
+        protected override void Start() {
             base.Start();
             boxCollider = GetComponent<BoxCollider2D>();
             platformEffector2D = GetComponent<PlatformEffector2D>();
@@ -26,35 +27,44 @@ namespace PLATFORMS
             base.OnCollisionEnter2D(collision);
             if (collision.gameObject.CompareTag("Player"))
             {
-                
-                StartCoroutine(DisablePlatform());
-                
+                if (!animating)
+                {
+                    StartCoroutine(DisablePlatform());
+                }
             }
 
         }
         protected override void OnCollisionExit2D(Collision2D collision)
         {
-            base.OnCollisionExit2D(collision);
+            //base.OnCollisionExit2D(collision);
             //StopAllCoroutines();
-            StartCoroutine(ResetPlatform());
+            //StartCoroutine(ResetPlatform());
             
         }
-        private IEnumerator DisablePlatform()
-        {
-            //_animator.SetBool("Ondeath",true);
-            //yield return new WaitForSeconds(0.5f);
+
+        protected void Bogus() {
+            StopAllCoroutines();
+            StartCoroutine(ResetPlatform());
+
+         }
+        private IEnumerator DisablePlatform() {
+            animating = true;
+            _animator.SetBool("Ondeath", true);
+            yield return new WaitForSeconds(0.5f);
             StartCoroutine(FadeEffect(2f, true));
             yield return new WaitForSeconds(timeToDestroy);
             SetActiveComponents(false);
-            
+            yield return new WaitForSeconds(2f);
+            Bogus();
+
         }
-        private IEnumerator ResetPlatform()
-        {
-            //_animator.SetBool("Ondeath",false);
-            //yield return new WaitForSeconds(1f);
+        private IEnumerator ResetPlatform() {
+            SetActiveComponents(true);
+            _animator.SetBool("Ondeath", false);
+            yield return new WaitForSeconds(1f);
             StartCoroutine(FadeEffect(2f, false));
             yield return new WaitForSeconds(timeToReset);
-            SetActiveComponents(true);
+            animating = false;
         }
         private void SetActiveComponents(bool isActive)
         {

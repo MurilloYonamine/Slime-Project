@@ -18,7 +18,8 @@ namespace PLAYER {
         [SerializeField] private float grappleMaxPoint = 5f;
         [HideInInspector] public bool IsGrappleWithinMaxDistance { get; private set; } = true;
 
-        private Color grapplerObjectOriginalColor;
+        [SerializeField] private Sprite defaultSprite;
+        [SerializeField] private Sprite inAreaSprite;
 
         public void Initialize(PlayerController player, LineRenderer lineRenderer, DistanceJoint2D distanceJoint2D, LayerMask grapplerLayer, LayerMask grapplerArea, Rigidbody2D rigidBody2D) {
             this.player = player;
@@ -77,9 +78,7 @@ namespace PLAYER {
 
                 if (collider2D.gameObject.GetComponentInParent<SpriteRenderer>() == null) return;
 
-                grapplerObjectOriginalColor = collider2D.gameObject.GetComponentInParent<SpriteRenderer>().color;
-
-                collider2D.gameObject.GetComponentInParent<SpriteRenderer>().color = Color.yellow;
+                collider2D.gameObject.GetComponentInParent<SpriteRenderer>().sprite = inAreaSprite;
             }
         }
         public void TriggerExit2D(Collider2D collider2D) {
@@ -88,7 +87,7 @@ namespace PLAYER {
 
                 if (collider2D.gameObject.GetComponentInParent<SpriteRenderer>() == null) return;
 
-                collider2D.gameObject.GetComponentInParent<SpriteRenderer>().color = grapplerObjectOriginalColor;
+                collider2D.gameObject.GetComponentInParent<SpriteRenderer>().sprite = defaultSprite;
             }
         }
     }

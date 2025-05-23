@@ -331,6 +331,7 @@ MonoBehaviour:
   distanceJoint2D: {fileID: 3048601384741564845}
   animator: {fileID: 2763425874604256044}
   spriteRenderer: {fileID: 896281668011520122}
+  playerInput: {fileID: 0}
   grapplerLayer:
     serializedVersion: 2
     m_Bits: 512
@@ -369,7 +370,6 @@ MonoBehaviour:
     moveDirection: {x: 0, y: 0}
   playerJump:
     jumpPower: 20
-    spikeJumpPower: 30
   playerClimb:
     climbSpeed: 5
     climbDirection: 0
@@ -377,22 +377,15 @@ MonoBehaviour:
     fallGravityScale: 10
   playerGrappler:
     grappleMaxPoint: 8
+    defaultSprite: {fileID: 3426288446239337210, guid: c4983f70a9b4fdf4ba71da0a6df1daa3, type: 3}
+    inAreaSprite: {fileID: 7241202679297815420, guid: 9f4fb6a08099034409b7052601322811, type: 3}
   playerShoot:
     bulletSpeed: 30
     bulletDamage: 1
     hitEffect: {fileID: 5870765672286812921, guid: 608d8167747936043b500036779a5f19, type: 3}
-    bulletDestroyTimer: 2
-  playerSpike:
-    player: {fileID: 0}
-    CanScale: 1
-    xScale: 4
-    yScale: 0.5
-    smoothTime: 0.2
-    targetScale: {x: 0, y: 0}
   playerHealth:
-    healthBar: {fileID: 0}
-    Health: 50
-    MaxHealth: 0
+    currentHealth: 0
+    maxHealth: 0
     verticalKnockbackForce: 5
     horizontalKnockbackForce: 2500
   curstretch: 1
@@ -458,7 +451,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.0021128654, y: -0.15001297}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -468,7 +461,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.79294014, y: 0.69997406}
   m_EdgeRadius: 0
 --- !u!96 &8436713445552733064
 TrailRenderer:
