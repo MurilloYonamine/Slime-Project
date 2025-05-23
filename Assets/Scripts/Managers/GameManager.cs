@@ -1,8 +1,10 @@
+using Cinemachine;
+using PLATFORMS;
+using PLAYER;
 using System.Collections;
 using System.Collections.Generic;
-using Cinemachine;
-using PLAYER;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -20,6 +22,7 @@ public class GameManager : MonoBehaviour {
     [SerializeField] private List<Image> lifeList;
     [SerializeField] private List<GameObject> checkpointList;
     [SerializeField] private List<CinemachineVirtualCamera> virtualCamerasList;
+    [SerializeField] private List<ShootToStopPlatform> shootToStopPlatforms;
     [SerializeField] private Vector3 newCheckpointPosition;
 
     [Header("Death Transition Components")]
@@ -37,8 +40,8 @@ public class GameManager : MonoBehaviour {
     public bool IsTransitioning { get; private set; } = false;
 
 
-private void Awake() {
-        //Cursor.visible = false;
+    private void Awake() {
+        Cursor.visible = false;
         deathTransitionAnimator = deathTransition.GetComponent<Animator>();
         deathTransitionCanvas = deathTransition.GetComponentInChildren<CanvasGroup>();
         deathTransitionCanvas.alpha = 0f;
@@ -55,8 +58,7 @@ private void Awake() {
 
         if (Instance == null) {
             Instance = this;
-        }
-        else {
+        } else {
             DestroyImmediate(gameObject);
             return;
         }
@@ -102,14 +104,26 @@ private void Awake() {
 
     public void RespawnPlayer() {
         virtualCamerasList[currentCheckpoint].Priority = 1;
-        StartCoroutine(TransitionToRespawn());
+        if(!IsTransitioning) StartCoroutine(TransitionToRespawn());
     }
     private IEnumerator TransitionToRespawn() {
         deathTransitionAnimator.SetTrigger("Start");
+        IsTransitioning = true;
         yield return new WaitForSeconds(deathTransitionTime);
+
         player.GetComponent<PlayerController>().UpdateHealth();
+
+        for (int i = 0; i < shootToStopPlatforms.Count; i++) {
+            shootToStopPlatforms[i].ison = true;
+            shootToStopPlatforms[i].moveSpeed = shootToStopPlatforms[i].oldspeed;
+
+        }
+
         newCheckpointPosition = checkpointList[currentCheckpoint].transform.position;
         player.transform.position = newCheckpointPosition;
+
+        player.GetComponent<PlayerController>().TogglePlayerInput();
+        IsTransitioning = false;
     }
     public int ChangeCurrentCheckpoint() => currentCheckpoint = FindTheHighestPriorityCamera();
     public int FindTheHighestPriorityCamera() {
