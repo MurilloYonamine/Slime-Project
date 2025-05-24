@@ -13,7 +13,7 @@ namespace PLAYER {
                 if (enemy.player == null) enemy.player = player;
 
                 enemy.TakeDamage(bulletDamage);
-                //CameraManager.Instance.ShakeCamera(5f, 0.1f);
+
                 CreateImpactEffect();
 
                 Destroy(gameObject);
