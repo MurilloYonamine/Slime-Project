@@ -38,10 +38,11 @@ public class GameManager : MonoBehaviour {
     private float menuTransitionTime;
 
     public bool IsTransitioning { get; private set; } = false;
+    [SerializeField] private bool isCursorVisible = false;
 
 
     private void Awake() {
-        Cursor.visible = false;
+        Cursor.visible = isCursorVisible;
         deathTransitionAnimator = deathTransition.GetComponent<Animator>();
         deathTransitionCanvas = deathTransition.GetComponentInChildren<CanvasGroup>();
         deathTransitionCanvas.alpha = 0f;

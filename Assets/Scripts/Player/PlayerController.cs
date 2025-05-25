@@ -31,8 +31,6 @@ namespace PLAYER {
         public bool DisableStats = false;
 
         [Header("Prefabs")]
-        [SerializeField] private GameObject bulletPrefab;
-        [SerializeField] private RectTransform aimPrefab;
 
         [Header("Script Settings")]
         //[SerializeField] private PlayerStats playerStats;
@@ -60,12 +58,11 @@ namespace PLAYER {
         }
         private void Start() {
             playerHealth.Initialize(this, rigidBody2D);
-            playerShoot.Initialize(this, playerHealth, bulletPrefab, aimPrefab);
+            playerShoot.Initialize(this, playerHealth);
             playerMovement.Initialize(this, rigidBody2D, trailRenderer, spriteRenderer, animator);
-            playerJump.Initialize(this, rigidBody2D, groundLayer);
+            playerJump.Initialize(this, rigidBody2D, groundLayer, animator);
             playerClimb.Initialize(this, rigidBody2D, climbLayer);
-            playerGrappler.Initialize(this, lineRenderer, distanceJoint2D, grapplerLayer, grapplerArea, rigidBody2D);
-            //playerSpike.Initialize(this);
+            playerGrappler.Initialize(this, lineRenderer, distanceJoint2D, grapplerLayer, grapplerArea, rigidBody2D, animator);
 
             //playerStats.Initialize(this);
         }
@@ -73,7 +70,6 @@ namespace PLAYER {
         private void Update() {
             playerGrappler.OnUpdate();
             playerShoot.OnUpdate();
-            //playerSpike.OnUpdate();
             //playerStats.OnUpdate();
         }
         private void FixedUpdate() {
