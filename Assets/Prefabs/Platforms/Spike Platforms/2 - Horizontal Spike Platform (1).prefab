@@ -840,19 +840,9 @@ MonoBehaviour:
   NextPosition: {x: 0, y: 0, z: 0}
   spikes:
   - {fileID: 1696628040311629394}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 401199817274755716}
+  - {fileID: 5251620092096168466}
+  - {fileID: 1915774052856697388}
 --- !u!1 &5251620092096168466
 GameObject:
   m_ObjectHideFlags: 0
