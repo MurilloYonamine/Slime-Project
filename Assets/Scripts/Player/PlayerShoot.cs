@@ -33,6 +33,8 @@ namespace PLAYER {
         }
 
         public void OnUpdate() {
+            if (!CheatManager.Instance.canMouseControl) return;
+
             Vector2 mousePosition = Mouse.current.position.ReadValue();
             Vector2 anchoredPos;
 
@@ -60,7 +62,7 @@ namespace PLAYER {
         }
 
         public void Shoot(InputAction.CallbackContext context) {
-            if (context.started && playerHealth.currentHealth > 0) {
+            if (context.started && playerHealth.currentHealth > 0 && CheatManager.Instance.canMouseControl) {
                 playerHealth.currentHealth -= 1;
                 playerHealth.SizeChange();
 

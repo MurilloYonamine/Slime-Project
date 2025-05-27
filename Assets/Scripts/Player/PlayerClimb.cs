@@ -4,11 +4,9 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
-namespace PLAYER
-{
+namespace PLAYER {
     [Serializable]
-    public class PlayerClimb
-    {
+    public class PlayerClimb {
         private PlayerController player;
         private Rigidbody2D rigidBody2D;
 
@@ -20,8 +18,7 @@ namespace PLAYER
 
         private LayerMask climbLayer;
 
-        public void Initialize(PlayerController player, Rigidbody2D rigidBody2D, LayerMask climbLayer)
-        {
+        public void Initialize(PlayerController player, Rigidbody2D rigidBody2D, LayerMask climbLayer) {
             this.player = player;
             this.rigidBody2D = rigidBody2D;
             this.climbLayer = climbLayer;
@@ -29,71 +26,53 @@ namespace PLAYER
             rigidBody2D.gravityScale = gravityScale;
         }
 
-        public void OnFixedUpdate()
-        {
-            if (player.IsClimbing)
-            {
-                if (Mathf.Abs(climbDirection) >= 0.1f)
-                {
+        public void OnFixedUpdate() {
+            if (player.IsClimbing) {
+                if (Mathf.Abs(climbDirection) >= 0.1f) {
                     rigidBody2D.linearVelocity = new Vector2(rigidBody2D.linearVelocity.x, climbDirection * climbSpeed);
                     rigidBody2D.gravityScale = 0f;
-                }
-                else
-                {
+                } else {
                     rigidBody2D.linearVelocity = new Vector2(rigidBody2D.linearVelocity.x, -1f);
                 }
                 return;
             }
             AdjustGravity();
         }
-        public void Climb(InputAction.CallbackContext context)
-        {
+        public void Climb(InputAction.CallbackContext context) {
             climbDirection = context.ReadValue<Vector2>().y;
             if (!player.IsClimbing) climbDirection = 0f;
         }
-        private void AdjustGravity()
-        {
-            if (rigidBody2D.linearVelocity.y > 0)
-            {
+        private void AdjustGravity() {
+            if (rigidBody2D.linearVelocity.y > 0) {
                 rigidBody2D.gravityScale = gravityScale;
-            }
-            else
-            {
+            } else {
                 rigidBody2D.gravityScale = fallGravityScale;
             }
         }
-        public void CollissionEnter2D(Collision2D collision2D)
-        {
-            if (((1 << collision2D.gameObject.layer) & climbLayer) != 0)
-            {
+        public void CollissionEnter2D(Collision2D collision2D) {
+            if (((1 << collision2D.gameObject.layer) & climbLayer) != 0) {
                 player.IsJumping = false;
                 player.IsClimbing = true;
 
                 rigidBody2D.linearVelocity = Vector2.zero;
             }
         }
-        public void CollissionExit2D(Collision2D collision2D)
-        {
-            if (((1 << collision2D.gameObject.layer) & climbLayer) != 0)
-            {
+        public void CollissionExit2D(Collision2D collision2D) {
+            if (((1 << collision2D.gameObject.layer) & climbLayer) != 0) {
                 player.IsClimbing = false;
                 climbDirection = 0f;
             }
         }
-        public void TriggerEnter2D(Collider2D collider2D)
-        {
-            if (((1 << collider2D.gameObject.layer) & climbLayer) != 0)
-            {
+        public void TriggerEnter2D(Collider2D collider2D) {
+            if (((1 << collider2D.gameObject.layer) & climbLayer) != 0) {
                 player.IsClimbing = true;
                 player.IsJumping = false;
 
                 rigidBody2D.linearVelocity = Vector2.zero;
             }
         }
-        public void TriggerExit2D(Collider2D collider2D)
-        {
-            if (((1 << collider2D.gameObject.layer) & climbLayer) != 0)
-            {
+        public void TriggerExit2D(Collider2D collider2D) {
+            if (((1 << collider2D.gameObject.layer) & climbLayer) != 0) {
                 player.IsClimbing = false;
                 climbDirection = 0f;
             }

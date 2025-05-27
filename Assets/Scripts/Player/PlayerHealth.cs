@@ -26,10 +26,11 @@ namespace PLAYER {
         }
 
         public void TakeDamage(int damage, MonoBehaviour hostile) {
-            currentHealth -= damage;
-            if (currentHealth <= 0) {
-                GameManager.Instance.RespawnPlayer();
-            }
+
+            if (!CheatManager.Instance.invunerable) currentHealth -= damage;
+
+            if (currentHealth <= 0) GameManager.Instance.RespawnPlayer();
+            
 
             SizeChange();
             HandleKnockBack(hostile);

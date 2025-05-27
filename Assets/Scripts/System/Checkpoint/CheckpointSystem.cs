@@ -11,7 +11,7 @@ namespace SYSTEM.CHECKPOINT {
 
         // Inicializa o checkpoint atual com o índice da câmera ativa.
         public void Initialize() => currentCheckpoint = CameraManager.Instance.GetActiveCameraIndex();
-        
+
 
         // Altera o checkpoint atual para o índice do checkpoint fornecido e ativa a câmera correspondente.
         public void ChangeCheckpoint(GameObject checkpoint) {
@@ -38,7 +38,11 @@ namespace SYSTEM.CHECKPOINT {
                 CameraManager.Instance.ActivateCamera(index);
             }
         }
-        
+        public void TeleportToCheckpoint(int index, GameObject player) {
+            ChangeCheckpointByIndex(index);
+            Vector3 targetPosition = GetCheckpointPosition();
+            player.transform.position = targetPosition;
+        }
         public int GetCurrentCheckpointIndex() => currentCheckpoint = CameraManager.Instance.CurrentCheckpointIndex; // Retorna e sincroniza o índice do checkpoint atual com o CameraManager.
         public int FindCheckpointIndex(GameObject checkpoint) => checkpointList.IndexOf(checkpoint); // Retorna o índice do checkpoint fornecido na lista.
         public int Count => checkpointList.Count; // Retorna a quantidade de checkpoints na lista.

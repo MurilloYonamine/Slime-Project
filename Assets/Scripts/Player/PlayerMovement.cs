@@ -29,9 +29,12 @@ namespace PLAYER {
         }
 
         public void OnFixedUpdate() {
-            rigidBody2D.linearVelocity = new Vector2(moveDirection.x * moveSpeed, rigidBody2D.linearVelocity.y);
+            if (!CheatManager.Instance.flying) {
+                rigidBody2D.linearVelocity = new Vector2(moveDirection.x * moveSpeed, rigidBody2D.linearVelocity.y);
+            } else {
+                rigidBody2D.linearVelocity = new Vector2(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed);
+            }
         }
-
         public void Move(InputAction.CallbackContext context) {
             spriteRenderer.flipX = faceDirection;
 

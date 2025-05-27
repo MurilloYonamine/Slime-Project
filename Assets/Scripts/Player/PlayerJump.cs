@@ -37,7 +37,7 @@ namespace PLAYER
                     player.IsClimbing = false;
                 }
             }
-            if (context.canceled && rigidBody2D.linearVelocity.y > 0)
+            if (context.canceled && rigidBody2D.linearVelocity.y > 0 && !CheatManager.Instance.flying)
             {
                 rigidBody2D.linearVelocity = new Vector2(rigidBody2D.linearVelocity.x, rigidBody2D.linearVelocity.y * 0.6f);
             }
