@@ -52,12 +52,12 @@ public class TransitionManager : MonoBehaviour {
     // Inicia a animação de transição do menu e espera sua duração.
     public IEnumerator MenuStartTransition() {
         menuAnimator.SetTrigger("Start");
-        yield return new WaitForSeconds(menuDuration);
+        yield return new WaitForSeconds(menuDuration + 0.5f);
     }
 
     // Finaliza a animação de transição do menu e espera sua duração.
     public IEnumerator MenuEndTransition() {
         menuAnimator.SetTrigger("End");
-        yield return new WaitForSeconds(menuDuration);
+        yield return new WaitForSeconds(menuDuration + 0.5f);
     }
 }

@@ -79,7 +79,7 @@ GameObject:
   - component: {fileID: 7657703425840864811}
   - component: {fileID: 4176052660974207404}
   - component: {fileID: 7379530533872847532}
-  - component: {fileID: 8953954302094594589}
+  - component: {fileID: 1870105945813211813}
   m_Layer: 9
   m_Name: Grappler
   m_TagString: Untagged
@@ -185,8 +185,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &8953954302094594589
-CircleCollider2D:
+--- !u!61 &1870105945813211813
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -220,4 +220,14 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
