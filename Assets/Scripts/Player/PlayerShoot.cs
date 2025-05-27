@@ -22,6 +22,7 @@ namespace PLAYER {
         [SerializeField] private GameObject hitEffect;
 
         [SerializeField] private GameObject playerEyes;
+        [SerializeField] private float eyesHeight;
 
         public void Initialize(PlayerController player, PlayerHealth playerHealth) {
             this.player = player;
@@ -32,19 +33,30 @@ namespace PLAYER {
         }
 
         public void OnUpdate() {
-            Vector2 mousePos = Mouse.current.position.ReadValue();
+            Vector2 mousePosition = Mouse.current.position.ReadValue();
             Vector2 anchoredPos;
 
             RectTransformUtility.ScreenPointToLocalPointInRectangle(
                 canvas.transform as RectTransform,
-                mousePos,
+                mousePosition,
                 canvas.renderMode == RenderMode.ScreenSpaceOverlay ? null : canvas.worldCamera,
                 out anchoredPos
             );
 
             aimPrefab.anchoredPosition = anchoredPos;
-
             aimPrefab.gameObject.SetActive(!GameManager.Instance.isPaused);
+
+            HandlePlayerEyes(mousePosition.x, mousePosition.y);
+        }
+        private void HandlePlayerEyes(float x, float y) {
+            Vector3 eyesOrigin = new Vector3(0f, eyesHeight, 0f);
+            Vector3 worldMouse = mainCamera.ScreenToWorldPoint(new Vector3(x, y, mainCamera.nearClipPlane));
+            worldMouse.z = player.transform.position.z;
+            Vector3 dir = (worldMouse - player.transform.position).normalized;
+
+            float maxOffset = 0.1f;
+            Vector3 offset = dir * maxOffset;
+            playerEyes.transform.localPosition = eyesOrigin + offset;
         }
 
         public void Shoot(InputAction.CallbackContext context) {
