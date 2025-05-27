@@ -213,7 +213,7 @@ GameObject:
   m_Component:
   - component: {fileID: 997220545038116177}
   m_Layer: 0
-  m_Name: Lauch Platform
+  m_Name: 2 - Lauch Platform 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
