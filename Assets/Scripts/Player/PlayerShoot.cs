@@ -43,6 +43,8 @@ namespace PLAYER {
             );
 
             aimPrefab.anchoredPosition = anchoredPos;
+
+            aimPrefab.gameObject.SetActive(!GameManager.Instance.isPaused);
         }
 
         public void Shoot(InputAction.CallbackContext context) {
