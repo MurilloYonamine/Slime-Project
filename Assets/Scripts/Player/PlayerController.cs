@@ -76,11 +76,11 @@ namespace PLAYER {
             playerMovement.OnFixedUpdate();
             playerClimb.OnFixedUpdate();
         }
-        public void OnMove(InputAction.CallbackContext context) { if (!GameManager.Instance.isPaused) playerMovement.Move(context); }
-        public void OnClimb(InputAction.CallbackContext context) { if (!GameManager.Instance.isPaused) playerClimb.Climb(context); }
-        public void OnJump(InputAction.CallbackContext context) { if (!GameManager.Instance.isPaused) playerJump.Jump(context); }
-        public void OnGrapple(InputAction.CallbackContext context) { if (!GameManager.Instance.isPaused) playerGrappler.Grapple(context); }
-        public void OnShoot(InputAction.CallbackContext context) { if (!GameManager.Instance.isPaused) playerShoot.Shoot(context); }
+        public void OnMove(InputAction.CallbackContext context) { if (!IsPaused) playerMovement.Move(context); }
+        public void OnClimb(InputAction.CallbackContext context) { if (!IsPaused) playerClimb.Climb(context); }
+        public void OnJump(InputAction.CallbackContext context) { if (!IsPaused) playerJump.Jump(context); }
+        public void OnGrapple(InputAction.CallbackContext context) { if (!IsPaused) playerGrappler.Grapple(context); }
+        public void OnShoot(InputAction.CallbackContext context) { if (!IsPaused) playerShoot.Shoot(context); }
         //public void OnSpike(InputAction.CallbackContext context) { if (!IsPaused) playerSpike.Spike(context); }
         public void OnChangeSpeed(float speed) => playerMovement.ChangeSpeed(speed);
         public void OnResetSpeed() => playerMovement.ResetSpeed();

@@ -1,16 +1,19 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using PLAYER;
 using UnityEngine.SceneManagement;
-using MENU;
+using System.Collections;
 
 public class PauseManager : MonoBehaviour {
+
+    [SerializeField] private GameObject player;
+
     [Header("Buttons")]
     [SerializeField] private Button resumeButton;
     [SerializeField] private Button restartButton;
     [SerializeField] private Button settingsButton;
     [SerializeField] private Button quitButton;
-    [SerializeField] private Button comeBackButton;
 
     [Header("Canvas Groups")]
     [SerializeField] private CanvasGroup pauseCanvasGroup;
@@ -18,18 +21,25 @@ public class PauseManager : MonoBehaviour {
     [SerializeField] private CanvasGroup submenuCanvasGroup;
 
     [Header("Settings")]
+    [SerializeField] private Button comeBackButton;
     [SerializeField] private GameObject transitionPrefab;
-
-    private Menu menu;
-
-    private void Start() {
-        menu = new Menu(transitionPrefab);
-
-
+    private CanvasGroup transitionCanvas;
+    private Animator transitionAnimator;
+    private float transitionTime;
+    public bool isPaused = false;
+    private void Awake() {
         CloseOpenMenu();
         CloseMainMenu();
         CloseSettingsMenu();
         ButtonListeners();
+
+        transitionCanvas = transitionPrefab.GetComponentInChildren<CanvasGroup>();
+        transitionAnimator = transitionPrefab.GetComponent<Animator>();
+        transitionTime = transitionAnimator.GetCurrentAnimatorStateInfo(0).length;
+
+        transitionCanvas.alpha = 0f;
+        transitionCanvas.interactable = false;
+        transitionCanvas.blocksRaycasts = false;
     }
     private void ButtonListeners() {
         resumeButton.onClick.AddListener(() => CloseOpenMenu());
@@ -39,44 +49,73 @@ public class PauseManager : MonoBehaviour {
     }
     public void ManagePauseMenu(InputAction.CallbackContext context) {
         if (context.started) {
-            if (!GameManager.Instance.isPaused) {
+            if (!isPaused) {
+                Cursor.visible = true;
                 OpenPauseMenu();
-                return;
             }
-            CloseOpenMenu();
+            else {
+                CloseOpenMenu();
+                Cursor.visible = false;
+            }
         }
     }
     private void OpenPauseMenu() {
-        menu.SetVisibility(pauseCanvasGroup, isVisible: true);
-        OpenMainMenu();
+        pauseCanvasGroup.alpha = 1;
+        pauseCanvasGroup.blocksRaycasts = true;
+        pauseCanvasGroup.interactable = true;
+        isPaused = true;
+        pauseCanvasGroup.gameObject.SetActive(true);
 
         Time.timeScale = 0;
-        GameManager.Instance.isPaused = true;
-        Cursor.visible = true;
+        player.GetComponent<PlayerController>().IsPaused = isPaused;
     }
     private void CloseOpenMenu() {
-        menu.SetVisibility(pauseCanvasGroup, isVisible: false);
+        pauseCanvasGroup.alpha = 0;
+        pauseCanvasGroup.blocksRaycasts = false;
+        pauseCanvasGroup.interactable = false;
+        isPaused = false;
         CloseSettingsMenu();
+        pauseCanvasGroup.gameObject.SetActive(false);
 
         Time.timeScale = 1;
-        GameManager.Instance.isPaused = false;
-        Cursor.visible = false;
+        player.GetComponent<PlayerController>().IsPaused = isPaused;
     }
-    public void OpenMainMenu() => menu.SetVisibility(mainCanvasGroup, isVisible: true);
-    public void CloseMainMenu() => menu.SetVisibility(mainCanvasGroup, isVisible: false);
+    public void OpenMainMenu() {
+        mainCanvasGroup.alpha = 1;
+        mainCanvasGroup.blocksRaycasts = true;
+        mainCanvasGroup.interactable = true;
+        mainCanvasGroup.gameObject.SetActive(true);
+    }
+    private void CloseMainMenu() {
+        mainCanvasGroup.alpha = 0;
+        mainCanvasGroup.blocksRaycasts = false;
+        mainCanvasGroup.interactable = false;
+        mainCanvasGroup.gameObject.SetActive(false);
+    }
     public void OpenSettingsMenu() {
         CloseMainMenu();
-        menu.SetVisibility(submenuCanvasGroup, isVisible: true);
+        submenuCanvasGroup.alpha = 1;
+        submenuCanvasGroup.blocksRaycasts = true;
+        submenuCanvasGroup.interactable = true;
+        submenuCanvasGroup.gameObject.SetActive(true);
     }
     public void CloseSettingsMenu() {
-        menu.SetVisibility(submenuCanvasGroup, isVisible: false);
+        submenuCanvasGroup.alpha = 0;
+        submenuCanvasGroup.blocksRaycasts = false;
+        submenuCanvasGroup.interactable = false;
+        submenuCanvasGroup.gameObject.SetActive(false);
         OpenMainMenu();
     }
     private void QuitGame() {
         Time.timeScale = 1;
         Cursor.visible = true;
-        StartCoroutine(menu.HandleTransition("Start", moreTime: 0.5f));
+        StartCoroutine(MenuStartTransition());
+    }
+    private IEnumerator MenuStartTransition() {
+        transitionAnimator.SetTrigger("Start");
         CloseMainMenu();
+
+        yield return new WaitForSeconds(transitionTime + 0.5f);
         SceneManager.LoadSceneAsync("MainMenu", LoadSceneMode.Single);
     }
 }

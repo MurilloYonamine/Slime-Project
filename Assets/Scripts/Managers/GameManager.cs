@@ -38,7 +38,6 @@ public class GameManager : MonoBehaviour {
     private float menuTransitionTime;
 
     public bool IsTransitioning { get; private set; } = false;
-    public bool isPaused = false;
     [SerializeField] private bool isCursorVisible = false;
 
 
