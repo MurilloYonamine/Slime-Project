@@ -635,10 +635,10 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 38
-      y: 198
-      width: 11
-      height: 13
+      x: 37
+      y: 196
+      width: 16
+      height: 16
     spriteID: 5dd3ec90233d2d04cb2da1bbbcee757f
     spriteBone: []
     spriteOutline: []
@@ -656,10 +656,10 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 55
-      y: 197
-      width: 9
-      height: 15
+      x: 52
+      y: 196
+      width: 16
+      height: 16
     spriteID: d8008e959da3b574998b4a9d05ac5576
     spriteBone: []
     spriteOutline: []
@@ -678,9 +678,9 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 68
-      y: 199
+      y: 196
       width: 16
-      height: 13
+      height: 16
     spriteID: bbed5043e987f6f4282fa525d8f7f3a2
     spriteBone: []
     spriteOutline: []
@@ -3307,6 +3307,69 @@ ScriptedImporter:
       width: 32
       height: 16
     spriteID: 9aa6dcdfbb0adf948a8af56dd421ea6d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: Tileset_44
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 148
+      y: 168
+      width: 32
+      height: 8
+    spriteID: 340589a806ad26e4ba98df6d75d9752b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: Tileset_45
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 152
+      y: 215
+      width: 26
+      height: 10
+    spriteID: 8a6ffbfe78c2d9040aca3fa54f48f698
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: Tileset_46
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 52
+      y: 216
+      width: 16
+      height: 8
+    spriteID: 836148f74310a57498806f11fc88d8b2
     spriteBone: []
     spriteOutline: []
     vertices: []
