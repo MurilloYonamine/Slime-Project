@@ -3071,9 +3071,9 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 201
+      x: 200
       y: 388
-      width: 15
+      width: 16
       height: 16
     spriteID: 756d4c214a5300b4f9c33cc2112bb827
     spriteBone: []
@@ -3094,7 +3094,7 @@ ScriptedImporter:
       serializedVersion: 2
       x: 232
       y: 388
-      width: 15
+      width: 16
       height: 16
     spriteID: c1fb2130af40f9a40923b8f9a552657f
     spriteBone: []
@@ -3370,6 +3370,69 @@ ScriptedImporter:
       width: 16
       height: 8
     spriteID: 836148f74310a57498806f11fc88d8b2
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: Tileset_47
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 324
+      y: 228
+      width: 80
+      height: 16
+    spriteID: 33f0a1e448e44504b90216fb6131cc35
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: Tileset_48
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 324
+      y: 260
+      width: 64
+      height: 16
+    spriteID: c3d2511ab680091488c4ec495c975562
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: Tileset_49
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 292
+      y: 228
+      width: 16
+      height: 64
+    spriteID: 6fcb411015c768345abd96c48d91dfc7
     spriteBone: []
     spriteOutline: []
     vertices: []
