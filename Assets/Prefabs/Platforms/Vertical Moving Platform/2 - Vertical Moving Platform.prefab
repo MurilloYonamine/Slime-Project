@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3322800521447911558}
   - component: {fileID: 120655583873972379}
   - component: {fileID: 686573310159373823}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: platform
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -182,7 +182,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1788999281686742901}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: point B
   m_TagString: Untagged
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
@@ -213,7 +213,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7004692645963392189}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: point A
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
@@ -244,7 +244,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4034469753166204235}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: 2 - Vertical Moving Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -260,7 +260,7 @@ Transform:
   m_GameObject: {fileID: 8130106539347549798}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 10}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
