@@ -1,13 +1,9 @@
-using Cinemachine;
-using PLATFORMS;
-using PLAYER;
+using CAMERA;
 using System.Collections;
-using System.Collections.Generic;
-using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
+using SYSTEM;
+using SYSTEM.CHECKPOINT;
+
 
 public class GameManager : MonoBehaviour {
     public static GameManager Instance { get; private set; }
@@ -15,48 +11,20 @@ public class GameManager : MonoBehaviour {
     [Header("Player Components")]
     [SerializeField] private GameObject player;
     [SerializeField] public Transform PlayerOriginalLayer;
-    [SerializeField] private int currentCheckpoint;
 
-    [Header("List Components")]
-    [SerializeField] private List<GameObject> grapplerList;
-    [SerializeField] private List<Image> lifeList;
-    [SerializeField] private List<GameObject> checkpointList;
-    [SerializeField] private List<CinemachineVirtualCamera> virtualCamerasList;
-    [SerializeField] private List<ShootToStopPlatform> shootToStopPlatforms;
-    [SerializeField] private Vector3 newCheckpointPosition;
+    [Header("Systems and Settings")]
+    [SerializeField] private GrapplerSettings grapplerSettings;
+    [SerializeField] private CheckpointSystem checkpointSystem;
+    [SerializeField] private RespawnSystem respawnSystem;
+    [SerializeField] private LifeHUDSystem lifeHUDSystem;
 
-    [Header("Death Transition Components")]
-    [SerializeField] private GameObject deathTransition;
-    private CanvasGroup deathTransitionCanvas;
-    private Animator deathTransitionAnimator;
-    private float deathTransitionTime;
-
-    [Header("Menu Transition Components")]
-    [SerializeField] private GameObject menuTransition;
-    private CanvasGroup menuTransitionCanvas;
-    private Animator menuTransitionAnimator;
-    private float menuTransitionTime;
-
-    public bool IsTransitioning { get; private set; } = false;
+    [Header("Booleas")]
     public bool isPaused = false;
     [SerializeField] private bool isCursorVisible = false;
 
-
+    // Inicializa o singleton e manipula o cursor do mouse
     private void Awake() {
         Cursor.visible = isCursorVisible;
-        deathTransitionAnimator = deathTransition.GetComponent<Animator>();
-        deathTransitionCanvas = deathTransition.GetComponentInChildren<CanvasGroup>();
-        deathTransitionCanvas.alpha = 0f;
-        deathTransitionCanvas.interactable = false;
-        deathTransitionCanvas.blocksRaycasts = false;
-        deathTransitionTime = deathTransitionAnimator.GetCurrentAnimatorStateInfo(0).length;
-
-        menuTransitionAnimator = menuTransition.GetComponent<Animator>();
-        menuTransitionCanvas = menuTransition.GetComponentInChildren<CanvasGroup>();
-        menuTransitionCanvas.alpha = 0f;
-        menuTransitionCanvas.interactable = false;
-        menuTransitionCanvas.blocksRaycasts = false;
-        deathTransitionTime = deathTransitionAnimator.GetCurrentAnimatorStateInfo(0).length;
 
         if (Instance == null) {
             Instance = this;
@@ -64,77 +32,36 @@ public class GameManager : MonoBehaviour {
             DestroyImmediate(gameObject);
             return;
         }
-        StartCoroutine(MenuEndTransition());
-        //AudioManager.Instance.PlayTrack("Audio/Music/test-song", loop: true);
     }
+
+    // Inicializa o sistema de respawn, posiciona o jogador no checkpoint e inicia a transição de menu.
     private void Start() {
-        currentCheckpoint = FindTheHighestPriorityCamera();
-        newCheckpointPosition = checkpointList[currentCheckpoint].transform.position;
-        player.transform.position = newCheckpointPosition;
-    }
-    public IEnumerator MenuStartTransition() {
-        menuTransitionAnimator.SetTrigger("Start");
-        menuTransitionCanvas.interactable = false;
-        menuTransitionCanvas.blocksRaycasts = false;
-        yield return new WaitForSeconds(menuTransitionTime);
-    }
-    public IEnumerator MenuEndTransition() {
-        menuTransitionAnimator.SetTrigger("End");
-        menuTransitionCanvas.interactable = false;
-        menuTransitionCanvas.blocksRaycasts = false;
-        yield return new WaitForSeconds(menuTransitionTime);
-    }
-    public void ChangeGrapplersDistance(float distance) {
-        foreach (GameObject grappler in grapplerList) {
-            grappler.GetComponentInChildren<CircleCollider2D>().radius = distance;
-        }
-    }
-    public int GetLifeSize() => lifeList.Count;
-    public void ChangeLifeHUD(int currentLife) {
-        if (currentLife == lifeList.Count) {
-            for (int i = 0; i < lifeList.Count; i++) {
-                lifeList[i].GetComponent<CanvasGroup>().alpha = 1f;
-            }
-            return;
-        }
+        respawnSystem = new RespawnSystem(player);
+        checkpointSystem.Initialize();
 
-        lifeList[currentLife].GetComponent<CanvasGroup>().alpha = 0.2f;
-    }
-    public void ChangeCheckpoint(GameObject checkpoint) {
-        newCheckpointPosition = checkpoint.transform.position;
+        player.transform.position = checkpointSystem.GetCheckpointPosition();
+
+        StartCoroutine(TransitionManager.Instance.MenuEndTransition());
     }
 
+    
+    public IEnumerator MenuStartTransition() { yield return TransitionManager.Instance.MenuStartTransition(); } // Inicia a transição de saída do menu.
+    public IEnumerator MenuEndTransition() { yield return TransitionManager.Instance.MenuEndTransition(); } // Inicia a transição de entrada do menu.
+
+    
+    public void ChangeGrapplersDistance(float distance) => grapplerSettings.ChangeDistance(distance); // Altera a distância dos grapplers.
+
+    
+    public int GetLifeSize() => lifeHUDSystem.GetLifeSize(); // Retorna a quantidade total de vidas no HUD.
+    public void ChangeLifeHUD(int currentLife) => lifeHUDSystem.ChangeLifeHUD(currentLife); // Atualiza a exibição das vidas no HUD conforme a vida atual.
+
+    
+    public void ChangeCheckpoint(GameObject checkpoint) => checkpointSystem.ChangeCheckpoint(checkpoint); // Altera o checkpoint atual para o fornecido.
+    public void UpdateCheckpointFromCamera(int cameraIndex) => checkpointSystem.ChangeCheckpointByIndex(cameraIndex);  // Atualiza o checkpoint com base no índice da câmera.
+
+    // Respawna o jogador na posição do checkpoint atual.
     public void RespawnPlayer() {
-        virtualCamerasList[currentCheckpoint].Priority = 1;
-        if(!IsTransitioning) StartCoroutine(TransitionToRespawn());
-    }
-    private IEnumerator TransitionToRespawn() {
-        deathTransitionAnimator.SetTrigger("Start");
-        IsTransitioning = true;
-        player.GetComponent<PlayerController>().TogglePlayerInput();
-
-        yield return new WaitForSeconds(deathTransitionTime);
-
-        player.GetComponent<PlayerController>().UpdateHealth();
-
-        for (int i = 0; i < shootToStopPlatforms.Count; i++) {
-            shootToStopPlatforms[i].ison = true;
-            shootToStopPlatforms[i].moveSpeed = shootToStopPlatforms[i].oldspeed;
-
-        }
-
-        newCheckpointPosition = checkpointList[currentCheckpoint].transform.position;
-        player.transform.position = newCheckpointPosition;
-
-        player.GetComponent<PlayerController>().TogglePlayerInput();
-
-        IsTransitioning = false;
-    }
-    public int ChangeCurrentCheckpoint() => currentCheckpoint = FindTheHighestPriorityCamera();
-    public int FindTheHighestPriorityCamera() {
-        for (int i = 0; i < virtualCamerasList.Count; i++) {
-            if (virtualCamerasList[i].Priority == 1) return i;
-        }
-        return currentCheckpoint;
+        Vector3 pos = checkpointSystem.GetCheckpointPosition();
+        respawnSystem.RespawnPlayer(CameraManager.Instance.CurrentCheckpointIndex, pos);
     }
 }
