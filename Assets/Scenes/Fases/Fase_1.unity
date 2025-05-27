@@ -1287,6 +1287,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 842054129a6d99c489c73117d0d4955c, type: 3}
+--- !u!1 &261803277 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1921459469970214535, guid: 842054129a6d99c489c73117d0d4955c, type: 3}
+  m_PrefabInstance: {fileID: 261803276}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &319262816
 GameObject:
   m_ObjectHideFlags: 0
@@ -8900,6 +8905,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 842054129a6d99c489c73117d0d4955c, type: 3}
+--- !u!1 &1437849206 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1921459469970214535, guid: 842054129a6d99c489c73117d0d4955c, type: 3}
+  m_PrefabInstance: {fileID: 1437849205}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1438104374
 GameObject:
   m_ObjectHideFlags: 0
@@ -11592,7 +11602,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5.625
+  orthographic size: 6.515625
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -12748,6 +12758,8 @@ MonoBehaviour:
   - {fileID: 1074712874}
   - {fileID: 1062121897}
   - {fileID: 1296543067}
+  - {fileID: 1437849206}
+  - {fileID: 261803277}
   lifeList:
   - {fileID: 1600266475}
   - {fileID: 1054603519}
