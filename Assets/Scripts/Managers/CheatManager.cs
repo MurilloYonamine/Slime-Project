@@ -25,11 +25,13 @@ public class CheatManager : MonoBehaviour {
         }
     }
     public void cheatercheaterpoopooeater() {
+        Debug.Log("piss");
         if (CheatMenu.activeInHierarchy == true) {
             CheatMenu.SetActive(false);
             canMouseControl = true;
             Cursor.visible = false;
-        } else {
+        }
+        else {
             CheatMenu.SetActive(true);
             canMouseControl = false;
             Cursor.visible = true;
