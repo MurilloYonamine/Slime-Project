@@ -7,8 +7,7 @@ namespace PLATFORMS {
         [SerializeField] bool isactive = false;
         private float oldspeed;
 
-        protected override void Start()
-        {
+        protected override void Start(){
             base.Start();
             oldspeed = moveSpeed;
              if (!isactive){
@@ -18,27 +17,17 @@ namespace PLATFORMS {
 
             }
         }
-        protected override void Update()
-        {
+        protected override void Update(){
             base.Update();
 
         }
-        
-
-
-         public void CHANGE()
-         {
+         public void CHANGE(){
             isactive = !isactive;
             if (!isactive){
                 moveSpeed = 0;
             } else{
                 moveSpeed = oldspeed;
             }
-        }
-
-
-
-
-    
+        }    
     }
 }
