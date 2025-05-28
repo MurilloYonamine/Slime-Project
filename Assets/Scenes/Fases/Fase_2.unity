@@ -289,7 +289,7 @@ GameObject:
   - component: {fileID: 42806512}
   - component: {fileID: 42806511}
   m_Layer: 0
-  m_Name: next
+  m_Name: Scene Loader
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -319,9 +319,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 42806509}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4210e79b427c8454b852938841e9c6ff, type: 3}
+  m_Script: {fileID: 11500000, guid: b60bd91aa4797254b8f1c68e12aecdb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextScene: Fase_3
 --- !u!212 &42806512
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5629,6 +5630,18 @@ PrefabInstance:
     - target: {fileID: 2681552103125494043, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4281693707818524730, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
+      propertyPath: m_ActionEvents.Array.data[22].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1837834458}
+    - target: {fileID: 4281693707818524730, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
+      propertyPath: m_ActionEvents.Array.data[22].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ManagePauseMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 4281693707818524730, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
+      propertyPath: m_ActionEvents.Array.data[22].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MENU.PauseManager, Assembly-CSharp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
