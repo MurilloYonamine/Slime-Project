@@ -99,7 +99,7 @@
                     "name": "Next",
                     "type": "Button",
                     "id": "c898b297-ba53-49de-b7e5-f644dbd930b6",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -108,6 +108,15 @@
                     "name": "Sprint",
                     "type": "Button",
                     "id": "cb3cd670-ef02-44fa-815d-47cf12074b26",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "cheater cheater poopoo eater",
+                    "type": "Button",
+                    "id": "4fa9c9d9-d1f9-406f-a8b5-fe8421e6f36b",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -174,6 +183,50 @@
                     "name": "right",
                     "id": "ca02c948-1e42-400b-b4c7-388ca29c334d",
                     "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Up",
+                    "id": "b4e49d9b-2f17-4ac0-b040-0f4e09488878",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Up",
+                    "id": "83abcbbc-86fb-4c27-b4de-f3e9ca30f67c",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Down",
+                    "id": "8366f406-5e57-439a-86e8-9fa0f1c77290",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Down",
+                    "id": "544df10c-08d3-46d4-93d4-ffd26c2b955d",
+                    "path": "<Keyboard>/downArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
@@ -508,6 +561,17 @@
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
                     "action": "Spike",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1b0687db-1164-4b5d-b1e2-57fa964cedab",
+                    "path": "<Keyboard>/backquote",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "cheater cheater poopoo eater",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

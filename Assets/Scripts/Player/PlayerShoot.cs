@@ -63,7 +63,7 @@ namespace PLAYER {
 
         public void Shoot(InputAction.CallbackContext context) {
             if (context.started && playerHealth.currentHealth > 0 && CheatManager.Instance.canMouseControl) {
-                playerHealth.currentHealth -= 1;
+                if (!CheatManager.Instance.invunerable) playerHealth.currentHealth -= 1;
                 playerHealth.SizeChange();
 
                 Vector3 mousePosition = mainCamera.ScreenToWorldPoint(Mouse.current.position.ReadValue());
