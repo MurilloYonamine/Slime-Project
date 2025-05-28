@@ -35,9 +35,10 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.52, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 4593462914891318994}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &896281668011520122
@@ -84,12 +85,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7635910343955825667, guid: c8800ff4b519c2345966e4acb47d0e24, type: 3}
+  m_Sprite: {fileID: -5702333031731141084, guid: 8839b2094d60b5847a7ee920ac00de12, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.75, y: 0.625}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -137,7 +138,19 @@ MonoBehaviour:
     m_ActionId: 0e223902-9a0c-4736-a565-6a6938f2419c
     m_ActionName: 'Player/Move[/XInputControllerWindows/leftStick,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2073715740645569701}
+        m_TargetAssemblyTypeName: PLAYER.PlayerController, Assembly-CSharp
+        m_MethodName: Onlook
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 36b2cde6-4bb9-4aba-8599-130dec31a313
     m_ActionName: 'Player/Look[/XInputControllerWindows/rightStick,/Mouse/delta]'
   - m_PersistentCalls:
@@ -177,19 +190,7 @@ MonoBehaviour:
     m_ActionId: 96d5f46e-48be-465f-bc1b-f7f4d6737a76
     m_ActionName: 'Player/Interact[/Keyboard/e,/XInputControllerWindows/buttonNorth]'
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: DIE
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: d542b8ef-6e40-4508-b5df-6f9401396fdc
     m_ActionName: 'Player/Crouch[/XInputControllerWindows/buttonEast,/Keyboard/c]'
   - m_PersistentCalls:
@@ -277,19 +278,7 @@ MonoBehaviour:
     m_ActionId: bf8d42ee-6ead-44a0-add7-3676cd1524e5
     m_ActionName: 'Player/Climb[/XInputControllerWindows/leftStick,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]'
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2073715740645569701}
-        m_TargetAssemblyTypeName: PLAYER.PlayerController, Assembly-CSharp
-        m_MethodName: OnSpike
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: 57db713a-f6c6-477a-a654-3d7a0b6ef7e3
     m_ActionName: 'Player/Spike[/Keyboard/shift]'
   - m_PersistentCalls:
@@ -308,6 +297,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 6045d816-2c41-40c4-bb3f-b12741fcb5e3
     m_ActionName: 'UI/Pause Menu[/Keyboard/escape]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4fa9c9d9-d1f9-406f-a8b5-fe8421e6f36b
+    m_ActionName: 'Player/cheater cheater poopoo eater[/Keyboard/backquote]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -331,7 +324,7 @@ MonoBehaviour:
   distanceJoint2D: {fileID: 3048601384741564845}
   animator: {fileID: 2763425874604256044}
   spriteRenderer: {fileID: 896281668011520122}
-  playerInput: {fileID: 0}
+  playerInput: {fileID: 4281693707818524730}
   grapplerLayer:
     serializedVersion: 2
     m_Bits: 512
@@ -354,16 +347,6 @@ MonoBehaviour:
   IsDead: 0
   IsInsideWheat: 0
   DisableStats: 0
-  bulletPrefab: {fileID: 2063527191266757597, guid: 99fa830106dc3a14a80cedd4407167db, type: 3}
-  aimPrefab: {fileID: 0}
-  playerStats:
-    mousePositionText: {fileID: 0}
-    playerPositionText: {fileID: 0}
-    playerIsJumpingText: {fileID: 0}
-    playerIsClimbingText: {fileID: 0}
-    playerIsGrapplingText: {fileID: 0}
-    playerCanGrappleText: {fileID: 0}
-    playerIsSpikeActiveText: {fileID: 0}
   playerMovement:
     originalSpeed: 0
     moveSpeed: 10
@@ -376,13 +359,17 @@ MonoBehaviour:
     gravityScale: 5
     fallGravityScale: 10
   playerGrappler:
-    grappleMaxPoint: 8
-    defaultSprite: {fileID: 3426288446239337210, guid: c4983f70a9b4fdf4ba71da0a6df1daa3, type: 3}
-    inAreaSprite: {fileID: 7241202679297815420, guid: 9f4fb6a08099034409b7052601322811, type: 3}
+    grappleMaxPoint: 6
+    defaultSprite: {fileID: 7427982379929260077, guid: 8839b2094d60b5847a7ee920ac00de12, type: 3}
+    inAreaSprite: {fileID: -5192121685840580575, guid: 8839b2094d60b5847a7ee920ac00de12, type: 3}
   playerShoot:
     bulletSpeed: 30
+    aimPrefab: {fileID: 0}
+    bulletPrefab: {fileID: 2063527191266757597, guid: 99fa830106dc3a14a80cedd4407167db, type: 3}
     bulletDamage: 1
     hitEffect: {fileID: 5870765672286812921, guid: 608d8167747936043b500036779a5f19, type: 3}
+    playerEyes: {fileID: 3386070781410976890}
+    eyesHeight: 0.2
   playerHealth:
     currentHealth: 0
     maxHealth: 0
@@ -451,17 +438,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.0021128654, y: -0.15001297}
+  m_Offset: {x: -0.0037899017, y: 0.22085094}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.21, y: 1.02}
-    newSize: {x: 1, y: 1}
+    pivot: {x: 0.5, y: 0}
+    oldSize: {x: 0.75, y: 0.625}
+    newSize: {x: 0.75, y: 0.625}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.79294014, y: 0.69997406}
+  m_Size: {x: 0.5021248, y: 0.44048405}
   m_EdgeRadius: 0
 --- !u!96 &8436713445552733064
 TrailRenderer:
@@ -597,7 +584,7 @@ DistanceJoint2D:
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 1
+  m_Distance: 5.2547283
   m_MaxDistanceOnly: 0
 --- !u!120 &7015384071408218936
 LineRenderer:
@@ -728,3 +715,90 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &3386070781410976890
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4593462914891318994}
+  - component: {fileID: 5787924971552431644}
+  m_Layer: 0
+  m_Name: Player Eyes
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4593462914891318994
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3386070781410976890}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.1, y: 0.2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2681552103125494043}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &5787924971552431644
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3386070781410976890}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 605305961926566488, guid: 8839b2094d60b5847a7ee920ac00de12, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 0.25, y: 0.1875}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
