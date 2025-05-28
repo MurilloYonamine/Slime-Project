@@ -303,7 +303,7 @@
                 {
                     "name": "",
                     "id": "06e19789-b0a0-44ec-b3b9-2834e4b4bf01",
-                    "path": "<Pointer>/delta",
+                    "path": "<Mouse>/delta",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse;Touch",

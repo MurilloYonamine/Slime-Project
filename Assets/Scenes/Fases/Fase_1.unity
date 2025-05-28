@@ -1578,7 +1578,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Option A
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 6ec86ca6217a16242bec155e6cb412fc, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1609,7 +1609,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 16
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -1644,7 +1644,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &415256062
@@ -2259,6 +2259,7 @@ GameObject:
   m_Component:
   - component: {fileID: 590106190}
   - component: {fileID: 590106191}
+  - component: {fileID: 590106192}
   m_Layer: 5
   m_Name: SFX
   m_TagString: Untagged
@@ -2313,6 +2314,20 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &590106192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 590106189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48db6ad04511c8647b685f883af0c83f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioType: 2
+  volumeSlider: {fileID: 1769989328}
 --- !u!4 &592156321 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 997220545038116177, guid: a9a7bf0fea190d7408a0e93fb22806a5, type: 3}
@@ -5864,6 +5879,7 @@ GameObject:
   m_Component:
   - component: {fileID: 825465730}
   - component: {fileID: 825465731}
+  - component: {fileID: 825465732}
   m_Layer: 5
   m_Name: Master
   m_TagString: Untagged
@@ -5918,6 +5934,20 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &825465732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 825465729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48db6ad04511c8647b685f883af0c83f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioType: 0
+  volumeSlider: {fileID: 1227717708}
 --- !u!1 &825650867
 GameObject:
   m_ObjectHideFlags: 0
@@ -6063,6 +6093,7 @@ GameObject:
   m_Component:
   - component: {fileID: 862190815}
   - component: {fileID: 862190816}
+  - component: {fileID: 862190817}
   m_Layer: 5
   m_Name: Resolution
   m_TagString: Untagged
@@ -6117,6 +6148,19 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &862190817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 862190814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d74a53fad91f9da4da511e2fc11e086a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resolutionDropdown: {fileID: 1176958239}
 --- !u!1 &891412179
 GameObject:
   m_ObjectHideFlags: 0
@@ -6625,6 +6669,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1037299621}
   - component: {fileID: 1037299622}
+  - component: {fileID: 1037299623}
   m_Layer: 5
   m_Name: Sensibility
   m_TagString: Untagged
@@ -6679,6 +6724,21 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &1037299623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1037299620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 282da600e5472d744b7b5af63366a3cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sensibilitySlider: {fileID: 2029271342}
+  playerController: {fileID: 1528126533}
+  playerShoot: {player: {fileID: 0}, playerHealth: {player: {fileID: 0}, rigidBody2D: {fileID: 0}, currentHealth: 0, maxHealth: 0, verticalKnockbackForce: 5, horizontalKnockbackForce: 2500}, bulletSpeed: 50, aimPrefab: {fileID: 0}, bulletPrefab: {fileID: 0}, mainCamera: {fileID: 0}, canvas: {fileID: 0}, bulletDamage: 1, hitEffect: {fileID: 0}, playerEyes: {fileID: 0}, eyesHeight: 0, initialized: 0}
 --- !u!1 &1054603516
 GameObject:
   m_ObjectHideFlags: 0
@@ -8176,12 +8236,60 @@ PrefabInstance:
       value: 5.2547283
       objectReference: {fileID: 0}
     - target: {fileID: 4281693707818524730, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
+      propertyPath: m_ActionEvents.Array.size
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 4281693707818524730, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
+      propertyPath: m_ActionEvents.Array.data[23].m_ActionId
+      value: 4fa9c9d9-d1f9-406f-a8b5-fe8421e6f36b
+      objectReference: {fileID: 0}
+    - target: {fileID: 4281693707818524730, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
+      propertyPath: m_ActionEvents.Array.data[23].m_ActionName
+      value: 'Player/cheater cheater poopoo eater[/Keyboard/backquote]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4281693707818524730, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4281693707818524730, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
+      propertyPath: m_ActionEvents.Array.data[5].m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4281693707818524730, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
+      propertyPath: m_ActionEvents.Array.data[21].m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4281693707818524730, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4281693707818524730, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1528126533}
+    - target: {fileID: 4281693707818524730, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
       propertyPath: m_ActionEvents.Array.data[22].m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1837834458}
     - target: {fileID: 4281693707818524730, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4281693707818524730, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Onlook
+      objectReference: {fileID: 0}
+    - target: {fileID: 4281693707818524730, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
       propertyPath: m_ActionEvents.Array.data[22].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ManagePauseMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 4281693707818524730, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PLAYER.PlayerController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4281693707818524730, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 6801612028656615555, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
       propertyPath: m_Size.x
@@ -8571,12 +8679,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18
-  m_fontSizeBase: 18
+  m_fontSize: 14
+  m_fontSizeBase: 14
   m_fontWeight: 400
   m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMin: 12
+  m_fontSizeMax: 18
   m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
@@ -9356,6 +9464,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1528126533 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2073715740645569701, guid: 20cb6be7f16bd7f42befe43e5213f638, type: 3}
+  m_PrefabInstance: {fileID: 1330964394}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1528126508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d157757d61c503c4c853d4d0effcafc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1531937079
@@ -11720,7 +11839,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5.359375
+  orthographic size: 5.625
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -12284,6 +12403,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1909611015}
   - component: {fileID: 1909611016}
+  - component: {fileID: 1909611017}
   m_Layer: 5
   m_Name: Music
   m_TagString: Untagged
@@ -12338,6 +12458,20 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &1909611017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1909611014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48db6ad04511c8647b685f883af0c83f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioType: 1
+  volumeSlider: {fileID: 1438104376}
 --- !u!1 &1918290546
 GameObject:
   m_ObjectHideFlags: 0
@@ -12834,7 +12968,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 779741423}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
+  m_MaxValue: 10
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:

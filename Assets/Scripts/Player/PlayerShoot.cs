@@ -58,6 +58,7 @@ namespace PLAYER {
 
             float maxOffset = 0.1f;
             Vector3 offset = dir * maxOffset;
+
             playerEyes.transform.localPosition = eyesOrigin + offset;
         }
 
