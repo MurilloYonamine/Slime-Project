@@ -11,7 +11,7 @@ namespace MENU.SETTINGS {
         private List<string> options = new List<string>();
 
         private void Awake() {
-            int[] scales = { 30, 40, 60, 80, 100, 120 }; 
+            int[] scales = { 40, 60, 80, 100, 120 }; 
             foreach (int scale in scales) {
                 int width = 16 * scale;
                 int height = 9 * scale;
