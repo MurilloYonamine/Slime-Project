@@ -27,7 +27,6 @@ namespace MENU {
         private void Start() {
             menu = new Menu(transitionPrefab);
 
-
             CloseOpenMenu();
             CloseMainMenu();
             CloseSettingsMenu();
