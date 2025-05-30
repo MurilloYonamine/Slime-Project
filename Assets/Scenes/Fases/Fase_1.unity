@@ -6102,7 +6102,6 @@ GameObject:
   m_Component:
   - component: {fileID: 862190815}
   - component: {fileID: 862190816}
-  - component: {fileID: 862190817}
   m_Layer: 5
   m_Name: Resolution
   m_TagString: Untagged
@@ -6157,19 +6156,6 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
---- !u!114 &862190817
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 862190814}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d74a53fad91f9da4da511e2fc11e086a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  resolutionDropdown: {fileID: 1176958239}
 --- !u!1001 &883418800
 PrefabInstance:
   m_ObjectHideFlags: 0
