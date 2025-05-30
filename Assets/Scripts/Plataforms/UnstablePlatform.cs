@@ -36,7 +36,7 @@ namespace PLATFORMS
         }
         protected override void OnCollisionExit2D(Collision2D collision)
         {
-            //base.OnCollisionExit2D(collision);
+            base.OnCollisionExit2D(collision);
             //StopAllCoroutines();
             //StartCoroutine(ResetPlatform());
             
