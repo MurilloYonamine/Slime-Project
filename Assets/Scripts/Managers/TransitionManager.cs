@@ -9,8 +9,6 @@ public class TransitionManager : MonoBehaviour {
     [SerializeField] private GameObject menuObject;
     private Animator deathAnimator;
     private Animator menuAnimator;
-    private CanvasGroup deathCanvas;
-    private CanvasGroup menuCanvas;
 
     private float deathDuration;
     private float menuDuration;
@@ -23,17 +21,9 @@ public class TransitionManager : MonoBehaviour {
         else DestroyImmediate(gameObject);
 
         deathAnimator = deathObject.GetComponent<Animator>();
-        deathCanvas = menuObject.gameObject.AddComponent<CanvasGroup>();
-        deathCanvas.alpha = 0;
-        deathCanvas.interactable = false;
-        deathCanvas.blocksRaycasts = false;
         deathDuration = deathAnimator.GetCurrentAnimatorStateInfo(0).length;
 
         menuAnimator = menuObject.GetComponent<Animator>();
-        menuCanvas = menuObject.gameObject.GetComponent<CanvasGroup>();
-        menuCanvas.alpha = 0;
-        menuCanvas.interactable = false;
-        menuCanvas.blocksRaycasts = false;
         menuDuration = menuAnimator.GetCurrentAnimatorStateInfo(0).length;
     }
 

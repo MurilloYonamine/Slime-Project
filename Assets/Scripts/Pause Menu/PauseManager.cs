@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using MENU;
+using System.Collections;
 
 namespace MENU {
     public class PauseManager : MonoBehaviour {
@@ -76,8 +77,12 @@ namespace MENU {
         private void QuitGame() {
             Time.timeScale = 1;
             Cursor.visible = true;
-            StartCoroutine(menu.HandleTransition("Start", moreTime: 0.5f));
+            StartCoroutine(QuitGameRoutine());
             CloseMainMenu();
+        }
+
+        private IEnumerator QuitGameRoutine() {
+            yield return menu.HandleTransition("Start", moreTime: 0.5f);
             SceneManager.LoadSceneAsync("MainMenu", LoadSceneMode.Single);
         }
     }
