@@ -35,6 +35,7 @@ namespace MENU {
         }
         private void ButtonListeners() {
             resumeButton.onClick.AddListener(() => CloseOpenMenu());
+            restartButton.onClick.AddListener(() => CloseOpenMenu());
             settingsButton.onClick.AddListener(() => OpenSettingsMenu());
             comeBackButton.onClick.AddListener(() => CloseSettingsMenu());
             quitButton.onClick.AddListener(() => QuitGame());

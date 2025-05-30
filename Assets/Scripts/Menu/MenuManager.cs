@@ -17,6 +17,7 @@ namespace MENU {
 
         private void Awake() {
             menu = new Menu(transitionPrefab);
+            Cursor.visible = true;
             StartCoroutine(menu.HandleTransition("End", moreTime: 0.5f));
         }
         private void Start() {
