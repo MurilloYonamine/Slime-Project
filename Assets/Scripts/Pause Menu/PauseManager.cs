@@ -27,6 +27,10 @@ namespace MENU {
         private void Start() {
             menu = new Menu(transitionPrefab);
 
+            Canvas canvas = pauseCanvasGroup.GetComponentInParent<Canvas>();
+            canvas.renderMode = RenderMode.ScreenSpaceCamera;
+            canvas.worldCamera = Camera.main;
+
             CloseOpenMenu();
             CloseMainMenu();
             CloseSettingsMenu();

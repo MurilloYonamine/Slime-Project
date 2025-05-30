@@ -19,6 +19,8 @@ namespace MENU.SETTINGS {
 
 
         private void Awake() {
+            if (resolutionDropdown == null) resolutionDropdown = FindAnyObjectByType<TMP_Dropdown>();
+
             Screen.SetResolution(640, 360, Screen.fullScreenMode = FullScreenMode.Windowed);
 
             if (Instance == null) {
@@ -42,7 +44,7 @@ namespace MENU.SETTINGS {
                 int width = 16 * scale;
                 int height = 9 * scale;
                 availableResolutions.Add(new Resolution { width = width, height = height });
-                options.Add($"{width} x {height}");
+                options.Add($"{width}x{height}");
             }
 
             resolutionDropdown.ClearOptions();

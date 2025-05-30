@@ -593,10 +593,10 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 7
-      y: 198
-      width: 10
-      height: 12
+      x: 4
+      y: 196
+      width: 16
+      height: 16
     spriteID: df54801a54325e44e9cd061a174a33b1
     spriteBone: []
     spriteOutline: []
@@ -3769,6 +3769,27 @@ ScriptedImporter:
       width: 22
       height: 24
     spriteID: eb69feb272892c64988f2471ce37ff98
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: Tileset_111
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 327
+      y: 119
+      width: 10
+      height: 9
+    spriteID: 1bbabbb01403c674c915a9e35e0f6cbb
     spriteBone: []
     spriteOutline: []
     vertices: []
