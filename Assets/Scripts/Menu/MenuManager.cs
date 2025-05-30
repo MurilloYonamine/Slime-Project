@@ -4,11 +4,10 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 namespace MENU {
     public class MenuManager : MonoBehaviour {
-        [Header("Buttons")]
-        [SerializeField] private Button jogarButton;
-        [SerializeField] private Button creditosButton;
-        [SerializeField] private Button opcoesButton;
-        [SerializeField] private Button sairButton;
+        [Header("Canvas Menus")]
+        [SerializeField] private CanvasGroup mainMenuCanvas;
+        [SerializeField] private CanvasGroup optionsCanvas;
+        [SerializeField] private CanvasGroup creditsCanvas;
 
         private Menu menu;
 
@@ -20,27 +19,41 @@ namespace MENU {
             menu = new Menu(transitionPrefab);
             StartCoroutine(menu.HandleTransition("End", moreTime: 0.5f));
         }
-
         private void Start() {
-            jogarButton.onClick.AddListener(() => Jogar());
-            creditosButton.onClick.AddListener(() => Creditos());
-            opcoesButton.onClick.AddListener(() => Opcoes());
-            sairButton.onClick.AddListener(() => Sair());
+            HandleVisibility(mainMenuCanvas, hide: false);
+            HandleVisibility(optionsCanvas, hide: true);
+            HandleVisibility(creditsCanvas, hide: true);
         }
-
         public void Jogar() {
-            StartCoroutine(TransitionManager.Instance.MenuStartTransition());
-            SceneManager.LoadScene(firstScene);
+            StartCoroutine(StartGame());
         }
-
+        private IEnumerator StartGame() {
+            yield return menu.HandleTransition("Start", moreTime: 0.5f);
+            SceneManager.LoadSceneAsync(firstScene, LoadSceneMode.Single);
+        }
         public void Creditos() {
-
+            HandleVisibility(mainMenuCanvas, hide: true);
+            HandleVisibility(creditsCanvas, hide: false);
         }
         public void Opcoes() {
-
+            HandleVisibility(mainMenuCanvas, hide: true);
+            HandleVisibility(optionsCanvas, hide: false);
+        }
+        public void VoltarProMenuPeloCreditos() {
+            HandleVisibility(mainMenuCanvas, hide: false);
+            HandleVisibility(creditsCanvas, hide: true);
+        }
+        public void VoltarProMenuPeloOpcoes() {
+            HandleVisibility(mainMenuCanvas, hide: false);
+            HandleVisibility(optionsCanvas, hide: true);
         }
         public void Sair() {
 
+        }
+        private void HandleVisibility(CanvasGroup canvas, bool hide) {
+            canvas.alpha = hide? 0: 1;
+            canvas.interactable = !hide;
+            canvas.blocksRaycasts = !hide;
         }
     }
 }
