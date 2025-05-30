@@ -49,10 +49,14 @@ namespace MENU {
             HandleVisibility(optionsCanvas, hide: true);
         }
         public void Sair() {
-
+            StartCoroutine(QuitAnimation());
+        }
+        private IEnumerator QuitAnimation() {
+            yield return menu.HandleTransition("Start", moreTime: 0.5f);
+            Application.Quit();
         }
         private void HandleVisibility(CanvasGroup canvas, bool hide) {
-            canvas.alpha = hide? 0: 1;
+            canvas.alpha = hide ? 0 : 1;
             canvas.interactable = !hide;
             canvas.blocksRaycasts = !hide;
         }
