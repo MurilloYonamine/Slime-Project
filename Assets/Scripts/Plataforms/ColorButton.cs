@@ -8,13 +8,14 @@ namespace PLATFORMS {
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         [SerializeField] ColorPlatform RedPlatform;
         [SerializeField] ColorPlatform BluePlatform;
-        [SerializeField] private Sprite Bluelook;
-        [SerializeField] private Sprite Redlook;
-        private SpriteRenderer butt;
-        private bool isactive = true;
+        private bool changed = true;
+        [SerializeField] private Sprite redass;
+        [SerializeField] private Sprite blueass;
+        private SpriteRenderer selfspriteshit;
+
 
         private void Start() {
-            butt = GetComponent<SpriteRenderer>();
+            selfspriteshit = GetComponent<SpriteRenderer>();
         }
         private void OnTriggerEnter2D(Collider2D collider2D) {
 
@@ -23,20 +24,18 @@ namespace PLATFORMS {
                 BluePlatform.CHANGE();
                 CHANGE();
             }
-
-
         }
 
         private void CHANGE() {
-            isactive = !isactive;
-            if (!isactive) {
-                butt.sprite = Redlook;
+            changed = !changed;
+            if (changed) {
+                selfspriteshit.sprite = blueass;
             }
             else {
-                butt.sprite = Bluelook;
+                selfspriteshit.sprite = redass;
             }
-        }
 
+        }
 
     }
 }
