@@ -3821,8 +3821,8 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: Tileset_113
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
+    pivot: {x: 0.5, y: 0}
+    alignment: 7
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
@@ -3842,8 +3842,8 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: Tileset_114
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
+    pivot: {x: 0.5, y: 0}
+    alignment: 7
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
@@ -3863,8 +3863,8 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: Tileset_115
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
+    pivot: {x: 0.5, y: 0}
+    alignment: 7
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
@@ -3884,8 +3884,8 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: Tileset_116
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
+    pivot: {x: 0.5, y: 0}
+    alignment: 7
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
@@ -3905,8 +3905,8 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: Tileset_117
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
+    pivot: {x: 0.5, y: 0}
+    alignment: 7
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
@@ -3926,8 +3926,8 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: Tileset_118
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
+    pivot: {x: 0.5, y: 0}
+    alignment: 7
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
@@ -3947,8 +3947,8 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: Tileset_120
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
+    pivot: {x: 0.5, y: 0}
+    alignment: 7
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
@@ -3968,15 +3968,15 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: Tileset_121
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
+    pivot: {x: 0.5, y: 0}
+    alignment: 7
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
       serializedVersion: 2
-      x: 372
+      x: 376
       y: 36
-      width: 16
+      width: 7
       height: 16
     spriteID: 701878329ab7ac445ac8622c2b7e9f2f
     spriteBone: []
@@ -3989,8 +3989,8 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: Tileset_122
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
+    pivot: {x: 0.5, y: 0}
+    alignment: 7
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
@@ -4010,8 +4010,8 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: Tileset_123
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
+    pivot: {x: 0.5, y: 0}
+    alignment: 7
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
@@ -4031,8 +4031,8 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: Tileset_124
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
+    pivot: {x: 0.5, y: 0}
+    alignment: 7
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
@@ -4052,8 +4052,8 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: Tileset_125
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
+    pivot: {x: 0.5, y: 0}
+    alignment: 7
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
@@ -4073,8 +4073,8 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: Tileset_126
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
+    pivot: {x: 0.5, y: 0}
+    alignment: 7
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
@@ -4094,8 +4094,8 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: Tileset_127
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
+    pivot: {x: 0.5, y: 0}
+    alignment: 7
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
@@ -4115,8 +4115,8 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: Tileset_128
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
+    pivot: {x: 0.5, y: 0}
+    alignment: 7
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
@@ -4136,8 +4136,8 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: Tileset_130
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
+    pivot: {x: 0.5, y: 0}
+    alignment: 7
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
@@ -4157,8 +4157,8 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: Tileset_131
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
+    pivot: {x: 0.5, y: 0}
+    alignment: 7
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
@@ -4178,8 +4178,8 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: Tileset_132
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
+    pivot: {x: 0.5, y: 0}
+    alignment: 7
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
@@ -4199,8 +4199,8 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: Tileset_133
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
+    pivot: {x: 0.5, y: 0}
+    alignment: 7
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
@@ -4220,8 +4220,8 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: Tileset_134
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
+    pivot: {x: 0.5, y: 0}
+    alignment: 7
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
@@ -4378,6 +4378,48 @@ ScriptedImporter:
       width: 48
       height: 16
     spriteID: 1e6888ad179aa3c4d8b31ed48c5a44f1
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: Tileset_143
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 7
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 324
+      y: 36
+      width: 16
+      height: 23
+    spriteID: ea759f6160cfac642990ea4ca51768ef
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: Tileset_144
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 292
+      y: 4
+      width: 16
+      height: 16
+    spriteID: ad0237be8c176124182b7742a1abde19
     spriteBone: []
     spriteOutline: []
     vertices: []
