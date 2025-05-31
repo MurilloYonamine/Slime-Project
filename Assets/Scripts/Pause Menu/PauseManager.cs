@@ -90,10 +90,10 @@ namespace MENU {
             Time.timeScale = 1;
             Cursor.visible = true;
             StartCoroutine(QuitGameRoutine());
-            CloseMainMenu();
         }
 
         private IEnumerator QuitGameRoutine() {
+            CloseMainMenu();
             yield return menu.HandleTransition("Start", moreTime: 0.5f);
             SceneManager.LoadSceneAsync("MainMenu", LoadSceneMode.Single);
         }
