@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using MENU;
 using System.Collections;
+using MENU.SETTINGS;
 
 namespace MENU {
     public class PauseManager : MonoBehaviour {
@@ -13,6 +14,7 @@ namespace MENU {
         [SerializeField] private Button settingsButton;
         [SerializeField] private Button quitButton;
         [SerializeField] private Button comeBackButton;
+        [SerializeField] public Button switchButton;
 
         [Header("Canvas Groups")]
         [SerializeField] private CanvasGroup pauseCanvasGroup;
@@ -27,6 +29,10 @@ namespace MENU {
         private void Start() {
             menu = new Menu(transitionPrefab);
 
+            Canvas canvas = pauseCanvasGroup.GetComponentInParent<Canvas>();
+            canvas.renderMode = RenderMode.ScreenSpaceCamera;
+            canvas.worldCamera = Camera.main;
+
             CloseOpenMenu();
             CloseMainMenu();
             CloseSettingsMenu();
@@ -34,10 +40,12 @@ namespace MENU {
         }
         private void ButtonListeners() {
             resumeButton.onClick.AddListener(() => CloseOpenMenu());
-            restartButton.onClick.AddListener(() => CloseOpenMenu());
+            restartButton.onClick.AddListener(() => Restart());
             settingsButton.onClick.AddListener(() => OpenSettingsMenu());
             comeBackButton.onClick.AddListener(() => CloseSettingsMenu());
             quitButton.onClick.AddListener(() => QuitGame());
+
+            switchButton.onClick.AddListener(() => ResolutionManager.Instance.ChangeResolutionBySwitch());
         }
         public void ManagePauseMenu(InputAction.CallbackContext context) {
             if (context.started) {
@@ -63,6 +71,10 @@ namespace MENU {
             Time.timeScale = 1;
             GameManager.Instance.isPaused = false;
             Cursor.visible = false;
+        }
+        private void Restart() {
+            CloseOpenMenu();
+            GameManager.Instance.RespawnPlayer();
         }
         public void OpenMainMenu() => menu.SetVisibility(mainCanvasGroup, isVisible: true);
         public void CloseMainMenu() => menu.SetVisibility(mainCanvasGroup, isVisible: false);

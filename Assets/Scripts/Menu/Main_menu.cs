@@ -8,9 +8,9 @@ public class Main_menu : MonoBehaviour {
      private Animator transitionAnimator;
      private float transitionTime;
      private void Awake() {
-
-     }
-     private void Start() {
+        Screen.SetResolution(640, 360, Screen.fullScreenMode = FullScreenMode.Windowed);
+    }
+    private void Start() {
           transitionCanvas = transitionPrefab.GetComponentInChildren<CanvasGroup>();
           transitionAnimator = transitionPrefab.GetComponent<Animator>();
           transitionTime = transitionAnimator.GetCurrentAnimatorStateInfo(0).length;
