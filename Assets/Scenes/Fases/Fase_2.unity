@@ -1585,6 +1585,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3018324486669908988, guid: 106997334864db74d81b084be8c59627, type: 3}
+      propertyPath: transitionPrefab
+      value: 
+      objectReference: {fileID: 681235018}
     - target: {fileID: 3641493741958681165, guid: 106997334864db74d81b084be8c59627, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -2857,7 +2861,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2241093382970057560, guid: 5cc17e0493568b54b9b8420ae23d28c0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -17.5
+      value: -16.73
       objectReference: {fileID: 0}
     - target: {fileID: 2241093382970057560, guid: 5cc17e0493568b54b9b8420ae23d28c0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -10079,7 +10083,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 6.515625
+  orthographic size: 5.625
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2

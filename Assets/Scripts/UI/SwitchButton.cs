@@ -34,8 +34,11 @@ namespace MENU.SETTINGS {
         }
 
         public void SetFullscreenSprite(bool isFullscreen) {
-            currentSprite = isFullscreen ? on : off;
-            button.image.sprite = currentSprite;
+            if (button == null) return;
+            if (isFullscreen && on != null)
+                button.image.sprite = on;
+            else if (!isFullscreen && off != null)
+                button.image.sprite = off;
         }
     }
 }
