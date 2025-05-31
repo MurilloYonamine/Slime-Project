@@ -40,7 +40,7 @@ namespace MENU {
         }
         private void ButtonListeners() {
             resumeButton.onClick.AddListener(() => CloseOpenMenu());
-            restartButton.onClick.AddListener(() => CloseOpenMenu());
+            restartButton.onClick.AddListener(() => Restart());
             settingsButton.onClick.AddListener(() => OpenSettingsMenu());
             comeBackButton.onClick.AddListener(() => CloseSettingsMenu());
             quitButton.onClick.AddListener(() => QuitGame());
@@ -71,6 +71,10 @@ namespace MENU {
             Time.timeScale = 1;
             GameManager.Instance.isPaused = false;
             Cursor.visible = false;
+        }
+        private void Restart() {
+            CloseOpenMenu();
+            GameManager.Instance.RespawnPlayer();
         }
         public void OpenMainMenu() => menu.SetVisibility(mainCanvasGroup, isVisible: true);
         public void CloseMainMenu() => menu.SetVisibility(mainCanvasGroup, isVisible: false);
