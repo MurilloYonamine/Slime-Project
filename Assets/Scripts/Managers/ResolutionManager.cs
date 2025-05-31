@@ -1,7 +1,7 @@
-using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace MENU.SETTINGS {
@@ -9,14 +9,12 @@ namespace MENU.SETTINGS {
         public static ResolutionManager Instance { get; private set; }
 
         [SerializeField] private TMP_Dropdown resolutionDropdown;
+        [SerializeField] private SwitchButton switchButton;
+
         private List<Resolution> availableResolutions = new List<Resolution>();
         private List<string> options = new List<string>();
 
         private int currentLevel = 0;
-        private int previuslyLevel = 0;
-
-        [SerializeField] private SwitchButton switchButton;
-
         private PauseManager pauseManager;
 
         private void Awake() {
@@ -24,33 +22,33 @@ namespace MENU.SETTINGS {
                 transform.SetParent(null);
                 DontDestroyOnLoad(gameObject);
                 Instance = this;
+
+                SceneManager.sceneLoaded += OnSceneLoaded;
+                InitializeResolutions();
             } else {
                 DestroyImmediate(gameObject);
-                return;
             }
-
-            SetResolution();
         }
 
         private void Start() {
             if (resolutionDropdown == null) resolutionDropdown = FindAnyObjectByType<TMP_Dropdown>();
-
             switchButton.Initialize();
-
-            int savedIndex = PlayerPrefs.GetInt("ResolutionIndex", 3);
-            int isFullscreen = PlayerPrefs.GetInt("IsFullscreen", 0);
-
-            resolutionDropdown.value = savedIndex;
-            currentLevel = savedIndex;
-
-            Resolution res = availableResolutions[savedIndex];
-            Screen.SetResolution(res.width, res.height,
-                isFullscreen == 1 ? FullScreenMode.FullScreenWindow : FullScreenMode.Windowed);
-
-            switchButton.SetFullscreenSprite(isFullscreen == 1);
+            ApplySavedResolution();
         }
 
-        private void SetResolution() {
+        private void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
+            resolutionDropdown = FindAnyObjectByType<TMP_Dropdown>();
+
+            if (switchButton.button == null) {
+                switchButton.button = GameObject.FindWithTag("SwitchButton")?.GetComponent<Button>();
+            }
+
+            switchButton.Initialize();
+            ApplySavedResolution();
+        }
+
+
+        private void InitializeResolutions() {
             availableResolutions.Clear();
             options.Clear();
 
@@ -62,73 +60,57 @@ namespace MENU.SETTINGS {
                 options.Add($"{width}x{height}");
             }
 
+            if (resolutionDropdown == null) return;
+
             resolutionDropdown.ClearOptions();
             resolutionDropdown.AddOptions(options);
             resolutionDropdown.onValueChanged.RemoveAllListeners();
             resolutionDropdown.onValueChanged.AddListener(OnResolutionChange);
         }
 
-        private void OnLevelWasLoaded(int level) {
-            if (resolutionDropdown == null) resolutionDropdown = FindAnyObjectByType<TMP_Dropdown>();
-            if (pauseManager == null) pauseManager = FindAnyObjectByType<PauseManager>();
-            if (switchButton.button == null) switchButton.button = pauseManager.switchButton;
-
-            SetResolution();
+        private void ApplySavedResolution() {
+            InitializeResolutions();
 
             int savedIndex = PlayerPrefs.GetInt("ResolutionIndex", 3);
-            int isFullscreen = PlayerPrefs.GetInt("IsFullscreen", 0);
+            bool isFullscreen = PlayerPrefs.GetInt("IsFullscreen", 0) == 1;
 
             resolutionDropdown.value = savedIndex;
             currentLevel = savedIndex;
 
             Resolution res = availableResolutions[savedIndex];
-            Screen.SetResolution(res.width, res.height, isFullscreen == 1 ? FullScreenMode.FullScreenWindow : FullScreenMode.Windowed);
+            Screen.SetResolution(res.width, res.height, isFullscreen ? FullScreenMode.FullScreenWindow : FullScreenMode.Windowed);
 
-            switchButton.SetFullscreenSprite(isFullscreen == 1);
+            switchButton.SetFullscreenSprite(isFullscreen);
         }
-
 
         private void OnResolutionChange(int index) {
             Resolution res = availableResolutions[index];
             currentLevel = index;
 
-            Screen.SetResolution(res.width, res.height, FullScreenMode.Windowed);
+            bool isFullscreen = PlayerPrefs.GetInt("IsFullscreen", 0) == 1;
 
-            switchButton.SetFullscreenSprite(false);
+            Screen.SetResolution(res.width, res.height,
+                isFullscreen ? FullScreenMode.FullScreenWindow : FullScreenMode.Windowed);
 
             PlayerPrefs.SetInt("ResolutionIndex", index);
-            PlayerPrefs.SetInt("IsFullscreen", 0);
             PlayerPrefs.Save();
         }
-
 
         public void ChangeResolutionBySwitch() {
-            Resolution res;
+            bool isCurrentlyFullscreen = Screen.fullScreen;
+            bool newIsFullscreen = !isCurrentlyFullscreen;
 
-            if (Screen.fullScreen) {
-                res = availableResolutions[previuslyLevel];
-                currentLevel = previuslyLevel;
-                resolutionDropdown.value = currentLevel;
+            int savedIndex = PlayerPrefs.GetInt("ResolutionIndex", 3);
+            Resolution res = availableResolutions[savedIndex];
 
-                Screen.SetResolution(res.width, res.height, FullScreenMode.Windowed);
-                switchButton.TaskOnClick();
+            Screen.SetResolution(res.width, res.height,
+                newIsFullscreen ? FullScreenMode.FullScreenWindow : FullScreenMode.Windowed);
 
-                PlayerPrefs.SetInt("ResolutionIndex", currentLevel);
-                PlayerPrefs.SetInt("IsFullscreen", 0);
-            } else {
-                previuslyLevel = currentLevel;
-                res = availableResolutions[availableResolutions.Count - 1];
-                currentLevel = availableResolutions.Count - 1;
-                resolutionDropdown.value = currentLevel;
+            switchButton.SetFullscreenSprite(newIsFullscreen);
 
-                Screen.SetResolution(res.width, res.height, FullScreenMode.FullScreenWindow);
-                switchButton.TaskOnClick();
-
-                PlayerPrefs.SetInt("ResolutionIndex", currentLevel);
-                PlayerPrefs.SetInt("IsFullscreen", 1);
-            }
-
+            PlayerPrefs.SetInt("IsFullscreen", newIsFullscreen ? 1 : 0);
             PlayerPrefs.Save();
         }
+
     }
 }

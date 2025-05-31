@@ -6,39 +6,26 @@ namespace MENU.SETTINGS {
     [Serializable]
     public class SwitchButton {
         [SerializeField] public Button button;
-
         [SerializeField] private Sprite on;
         [SerializeField] private Sprite off;
 
-        [SerializeField] private Sprite currentSprite;
-
         public void Initialize() {
+            if (button == null) return;
+
             bool isFullscreen = Screen.fullScreen;
+            button.image.sprite = isFullscreen ? on : off;
 
-            currentSprite = isFullscreen ? on : off;
-            button.image.sprite = currentSprite;
+            button.onClick.RemoveAllListeners();
+            button.onClick.AddListener(OnButtonClick);
         }
 
-        public void SetCurrentSprite() {
-            button.image.sprite = currentSprite;
-        }
-
-        public void TaskOnClick() {
-            if (currentSprite == on) {
-                currentSprite = off;
-                button.image.sprite = off;
-            } else {
-                currentSprite = on;
-                button.image.sprite = on;
-            }
+        private void OnButtonClick() {
+            ResolutionManager.Instance.ChangeResolutionBySwitch();
         }
 
         public void SetFullscreenSprite(bool isFullscreen) {
             if (button == null) return;
-            if (isFullscreen && on != null)
-                button.image.sprite = on;
-            else if (!isFullscreen && off != null)
-                button.image.sprite = off;
+            button.image.sprite = isFullscreen ? on : off;
         }
     }
 }
