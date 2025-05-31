@@ -8,6 +8,7 @@ TagManager:
   - GrappleArea
   - Bullet
   - Checkpoint
+  - SwitchButton
   layers:
   - Default
   - TransparentFX

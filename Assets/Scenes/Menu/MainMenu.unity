@@ -9898,6 +9898,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1346166834395801473, guid: 07b87550f5e84004eacc131b7ba490c1, type: 3}
   m_PrefabInstance: {fileID: 7762167631893664906}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1106262684 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7649855535215752669, guid: 07b87550f5e84004eacc131b7ba490c1, type: 3}
+  m_PrefabInstance: {fileID: 7762167631893664906}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77888f5c99ee671498b647693b450c1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1123101247
 GameObject:
   m_ObjectHideFlags: 0
@@ -16595,7 +16606,6 @@ GameObject:
   - component: {fileID: 1964190013}
   - component: {fileID: 1964190012}
   - component: {fileID: 1964190011}
-  - component: {fileID: 1964190014}
   m_Layer: 5
   m_Name: Switch Button
   m_TagString: Untagged
@@ -16666,9 +16676,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1964190014}
-        m_TargetAssemblyTypeName: SwitchButton, Assembly-CSharp
-        m_MethodName: TaskOnClick
+      - m_Target: {fileID: 1106262684}
+        m_TargetAssemblyTypeName: MENU.SETTINGS.ResolutionManager, Assembly-CSharp
+        m_MethodName: ChangeResolutionBySwitch
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -16716,22 +16726,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1964190009}
   m_CullTransparentMesh: 1
---- !u!114 &1964190014
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1964190009}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af4a4134245eabf41b970756030bae96, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  button: {fileID: 1964190011}
-  on: {fileID: 5979666733451304985, guid: 8839b2094d60b5847a7ee920ac00de12, type: 3}
-  off: {fileID: -2567571580427996736, guid: 8839b2094d60b5847a7ee920ac00de12, type: 3}
-  currentSprite: {fileID: 0}
 --- !u!1 &1973863002
 GameObject:
   m_ObjectHideFlags: 0
@@ -18224,9 +18218,21 @@ PrefabInstance:
       value: Resolution Manager
       objectReference: {fileID: 0}
     - target: {fileID: 7649855535215752669, guid: 07b87550f5e84004eacc131b7ba490c1, type: 3}
+      propertyPath: switchButton.on
+      value: 
+      objectReference: {fileID: 5979666733451304985, guid: 8839b2094d60b5847a7ee920ac00de12, type: 3}
+    - target: {fileID: 7649855535215752669, guid: 07b87550f5e84004eacc131b7ba490c1, type: 3}
+      propertyPath: switchButton.off
+      value: 
+      objectReference: {fileID: -2567571580427996736, guid: 8839b2094d60b5847a7ee920ac00de12, type: 3}
+    - target: {fileID: 7649855535215752669, guid: 07b87550f5e84004eacc131b7ba490c1, type: 3}
       propertyPath: resolutionDropdown
       value: 
       objectReference: {fileID: 2084524069}
+    - target: {fileID: 7649855535215752669, guid: 07b87550f5e84004eacc131b7ba490c1, type: 3}
+      propertyPath: switchButton.button
+      value: 
+      objectReference: {fileID: 1964190011}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

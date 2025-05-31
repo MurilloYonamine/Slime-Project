@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using MENU;
 using System.Collections;
+using MENU.SETTINGS;
 
 namespace MENU {
     public class PauseManager : MonoBehaviour {
@@ -13,6 +14,7 @@ namespace MENU {
         [SerializeField] private Button settingsButton;
         [SerializeField] private Button quitButton;
         [SerializeField] private Button comeBackButton;
+        [SerializeField] public Button switchButton;
 
         [Header("Canvas Groups")]
         [SerializeField] private CanvasGroup pauseCanvasGroup;
@@ -42,6 +44,8 @@ namespace MENU {
             settingsButton.onClick.AddListener(() => OpenSettingsMenu());
             comeBackButton.onClick.AddListener(() => CloseSettingsMenu());
             quitButton.onClick.AddListener(() => QuitGame());
+
+            switchButton.onClick.AddListener(() => ResolutionManager.Instance.ChangeResolutionBySwitch());
         }
         public void ManagePauseMenu(InputAction.CallbackContext context) {
             if (context.started) {

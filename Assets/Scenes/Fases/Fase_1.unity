@@ -8790,10 +8790,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5843397741942437559, guid: 106997334864db74d81b084be8c59627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 2034018327}
     - target: {fileID: 5951391174224746635, guid: 106997334864db74d81b084be8c59627, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
