@@ -19,6 +19,7 @@ namespace SYSTEM {
             CameraManager.Instance.ActivateCamera(checkpointIndex);
 
             if (!TransitionManager.Instance.IsTransitioning) {
+                player.GetComponent<PlayerController>().TogglePlayerInput();
                 GameManager.Instance.StartCoroutine(
                     TransitionManager.Instance.PlayDeathTransition(() =>
                         ExecuteRespawn(respawnPosition)
@@ -37,6 +38,7 @@ namespace SYSTEM {
                     platform.moveSpeed = platform.oldspeed;
                 }
             }
+            player.GetComponent<PlayerController>().TogglePlayerInput();
             player.transform.position = respawnPosition;
         }
     }
