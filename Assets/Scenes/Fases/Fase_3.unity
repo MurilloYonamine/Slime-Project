@@ -5653,7 +5653,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5.625
+  orthographic size: 6.0208335
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -6039,6 +6039,10 @@ PrefabInstance:
     - target: {fileID: 4052034659663911624, guid: d4715dae56b366b41adaa11485f9efe0, type: 3}
       propertyPath: m_Name
       value: 1 - Pointy Horizontal Spike
+      objectReference: {fileID: 0}
+    - target: {fileID: 6289809444652645194, guid: d4715dae56b366b41adaa11485f9efe0, type: 3}
+      propertyPath: moveSpeed
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7913162960456514447, guid: d4715dae56b366b41adaa11485f9efe0, type: 3}
       propertyPath: m_LocalPosition.x
