@@ -36,10 +36,8 @@ namespace PLATFORMS {
             if (_animator != null)
                 _animator.SetBool("Ondeath", false);
             animating = false;
-            if (pointA != null) {
-                transform.position = pointA.position;
-                NextPosition = pointB.position;
-            }
+            transform.position = initialPosition;
+            NextPosition = pointA != null ? pointA.position : initialPosition;
             if (spriteRenderer != null) {
                 var color = spriteRenderer.color;
                 color.a = 1f;
@@ -49,13 +47,20 @@ namespace PLATFORMS {
 
         private IEnumerator DisablePlatform() {
             animating = true;
-            _animator.SetBool("Ondeath", true);
+            if (_animator != null)
+                _animator.SetBool("Ondeath", true);
+
             yield return new WaitForSeconds(0.5f);
-            StartCoroutine(FadeEffect(2f, true));
-            yield return new WaitForSeconds(timeToDestroy);
+
+            yield return StartCoroutine(FadeEffect(0.5f, true));
+
             SetActiveComponents(false);
-            yield return new WaitForSeconds(2f);
+
+            yield return new WaitForSeconds(timeToReset);
+
             ResetPlatform();
+
+            yield return StartCoroutine(FadeEffect(0.5f, false));
         }
 
         private void SetActiveComponents(bool isActive) {

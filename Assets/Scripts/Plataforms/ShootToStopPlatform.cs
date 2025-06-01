@@ -23,14 +23,11 @@ namespace PLATFORMS {
         public void ResetPlatform() {
             ison = true;
             moveSpeed = oldspeed;
-            if (pointA != null) {
-                transform.position = pointA.position;
-                NextPosition = pointB.position;
-            }
+            transform.position = initialPosition;
+            NextPosition = pointA != null ? pointA.position : initialPosition;
         }
 
         private void OnTriggerEnter2D(Collider2D collider2D) {
-
             if (collider2D.TryGetComponent<PlayerBullet>(out PlayerBullet bullet)) {
                 CHANGE();
             }
@@ -39,13 +36,6 @@ namespace PLATFORMS {
         private void CHANGE() {
             ison = !ison;
             moveSpeed = ison ? oldspeed : 0;
-        }
-
-        public static void ResetAllPlatforms() {
-            foreach (var platform in ResettablePlatformRegistry.All.ToList()) {
-                if (platform != null && (platform as MonoBehaviour) != null)
-                    platform.ResetPlatform();
-            }
         }
     }
 }

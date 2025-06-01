@@ -1,11 +1,8 @@
 using PLAYER;
-using Unity.VisualScripting;
 using UnityEngine;
 
-
 namespace PLATFORMS {
-    public class ColorButton : MonoBehaviour {
-        // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public class ColorButton : MonoBehaviour, IResettablePlatform {
         [SerializeField] ColorPlatform RedPlatform;
         [SerializeField] ColorPlatform BluePlatform;
         private bool changed = true;
@@ -13,12 +10,12 @@ namespace PLATFORMS {
         [SerializeField] private Sprite blueass;
         private SpriteRenderer selfspriteshit;
 
-
         private void Start() {
             selfspriteshit = GetComponent<SpriteRenderer>();
+            ResetPlatform();
         }
-        private void OnTriggerEnter2D(Collider2D collider2D) {
 
+        private void OnTriggerEnter2D(Collider2D collider2D) {
             if (collider2D.TryGetComponent<PlayerBullet>(out PlayerBullet bullet)) {
                 RedPlatform.CHANGE();
                 BluePlatform.CHANGE();
@@ -30,12 +27,25 @@ namespace PLATFORMS {
             changed = !changed;
             if (changed) {
                 selfspriteshit.sprite = blueass;
-            }
-            else {
+            } else {
                 selfspriteshit.sprite = redass;
             }
-
         }
 
+        public void ResetPlatform() {
+            changed = true;
+            if (selfspriteshit == null)
+                selfspriteshit = GetComponent<SpriteRenderer>();
+            selfspriteshit.sprite = blueass;
+
+            if (BluePlatform != null) {
+                BluePlatform.isactive = true;
+                BluePlatform.moveSpeed = BluePlatform.oldspeed;
+            }
+            if (RedPlatform != null) {
+                RedPlatform.isactive = false;
+                RedPlatform.moveSpeed = 0;
+            }
+        }
     }
 }

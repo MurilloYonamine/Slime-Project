@@ -26,10 +26,8 @@ namespace PLATFORMS {
         public void ResetPlatform() {
             isactive = true;
             moveSpeed = oldspeed;
-            if (pointA != null) {
-                transform.position = pointA.position;
-                NextPosition = pointB.position;
-            }
+            transform.position = initialPosition;
+            NextPosition = pointA != null ? pointA.position : initialPosition;
         }
 
         public void CHANGE() {

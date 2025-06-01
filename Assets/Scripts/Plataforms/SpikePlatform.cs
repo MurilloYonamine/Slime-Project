@@ -5,10 +5,8 @@ namespace PLATFORMS {
         [SerializeField] private GameObject[] spikes;
 
         public void ResetPlatform() {
-            if (pointA != null) {
-                transform.position = pointA.position;
-                NextPosition = pointB.position;
-            }
+            transform.position = initialPosition;
+            NextPosition = pointA != null ? pointA.position : initialPosition;
         }
     }
 }
