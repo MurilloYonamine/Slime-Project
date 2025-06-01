@@ -14,9 +14,6 @@ namespace MENU.SETTINGS {
         private List<Resolution> availableResolutions = new List<Resolution>();
         private List<string> options = new List<string>();
 
-        private int currentLevel = 0;
-        private PauseManager pauseManager;
-
         private void Awake() {
             if (Instance == null) {
                 transform.SetParent(null);
@@ -31,28 +28,28 @@ namespace MENU.SETTINGS {
         }
 
         private void Start() {
-            if (resolutionDropdown == null) resolutionDropdown = FindAnyObjectByType<TMP_Dropdown>();
+            TryFindComponents();
             switchButton.Initialize();
             ApplySavedResolution();
         }
 
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
-            resolutionDropdown = FindAnyObjectByType<TMP_Dropdown>();
-
-            if (switchButton.button == null) {
-                switchButton.button = GameObject.FindWithTag("SwitchButton")?.GetComponent<Button>();
-            }
-
+            TryFindComponents();
             switchButton.Initialize();
             ApplySavedResolution();
         }
 
+        private void TryFindComponents() {
+            if (resolutionDropdown == null) resolutionDropdown = FindAnyObjectByType<TMP_Dropdown>();
+            if (switchButton.button == null)
+                switchButton.button = GameObject.FindWithTag("SwitchButton")?.GetComponent<Button>();
+        }
 
         private void InitializeResolutions() {
             availableResolutions.Clear();
             options.Clear();
 
-            int[] scales = { 40, 80, 120 };
+            int[] scales = { 40, 80, 120 }; // 640x360, 1280x720, 1920x1080
             foreach (int scale in scales) {
                 int width = 16 * scale;
                 int height = 9 * scale;
@@ -71,11 +68,12 @@ namespace MENU.SETTINGS {
         private void ApplySavedResolution() {
             InitializeResolutions();
 
-            int savedIndex = PlayerPrefs.GetInt("ResolutionIndex", 3);
+            int savedIndex = PlayerPrefs.GetInt("ResolutionIndex", 1); // default = 1280x720 (80*16x80*9)
             bool isFullscreen = PlayerPrefs.GetInt("IsFullscreen", 0) == 1;
 
+            savedIndex = Mathf.Clamp(savedIndex, 0, availableResolutions.Count - 1);
+
             resolutionDropdown.value = savedIndex;
-            currentLevel = savedIndex;
 
             Resolution res = availableResolutions[savedIndex];
             Screen.SetResolution(res.width, res.height, isFullscreen ? FullScreenMode.FullScreenWindow : FullScreenMode.Windowed);
@@ -85,8 +83,6 @@ namespace MENU.SETTINGS {
 
         private void OnResolutionChange(int index) {
             Resolution res = availableResolutions[index];
-            currentLevel = index;
-
             bool isFullscreen = PlayerPrefs.GetInt("IsFullscreen", 0) == 1;
 
             Screen.SetResolution(res.width, res.height,
@@ -100,7 +96,8 @@ namespace MENU.SETTINGS {
             bool isCurrentlyFullscreen = Screen.fullScreen;
             bool newIsFullscreen = !isCurrentlyFullscreen;
 
-            int savedIndex = PlayerPrefs.GetInt("ResolutionIndex", 3);
+            int savedIndex = PlayerPrefs.GetInt("ResolutionIndex", 1);
+            savedIndex = Mathf.Clamp(savedIndex, 0, availableResolutions.Count - 1);
             Resolution res = availableResolutions[savedIndex];
 
             Screen.SetResolution(res.width, res.height,
@@ -111,6 +108,5 @@ namespace MENU.SETTINGS {
             PlayerPrefs.SetInt("IsFullscreen", newIsFullscreen ? 1 : 0);
             PlayerPrefs.Save();
         }
-
     }
 }
