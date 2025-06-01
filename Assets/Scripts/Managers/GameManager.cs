@@ -58,7 +58,9 @@ public class GameManager : MonoBehaviour {
 
     // Respawna o jogador na posição do checkpoint atual.
     public void RespawnPlayer() {
-        Vector3 pos = checkpointSystem.GetCheckpointPosition();
+        Vector3 rawPos = checkpointSystem.GetCheckpointPosition();
+        Vector3 pos = new Vector3(rawPos.x, rawPos.y, 0f);
+
         respawnSystem.RespawnPlayer(CameraManager.Instance.CurrentCheckpointIndex, pos);
     }
 
