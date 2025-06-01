@@ -4,8 +4,8 @@ using UnityEngine;
 namespace PLATFORMS {
     public class ColorPlatform : Platform{
 
-        [SerializeField] bool isactive = false;
-        private float oldspeed;
+        [SerializeField] public bool isactive = false;
+        public float oldspeed;
 
         protected override void Start(){
             base.Start();

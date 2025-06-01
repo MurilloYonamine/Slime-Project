@@ -44,17 +44,13 @@ public class GameManager : MonoBehaviour {
         StartCoroutine(TransitionManager.Instance.MenuEndTransition());
     }
 
-
     public IEnumerator MenuStartTransition() { yield return TransitionManager.Instance.MenuStartTransition(); } // Inicia a transição de saída do menu.
     public IEnumerator MenuEndTransition() { yield return TransitionManager.Instance.MenuEndTransition(); } // Inicia a transição de entrada do menu.
 
-
     public void ChangeGrapplersDistance(float distance) => grapplerSettings.ChangeDistance(distance); // Altera a distância dos grapplers.
-
 
     public int GetLifeSize() => lifeHUDSystem.GetLifeSize(); // Retorna a quantidade total de vidas no HUD.
     public void ChangeLifeHUD(int currentLife) => lifeHUDSystem.ChangeLifeHUD(currentLife); // Atualiza a exibição das vidas no HUD conforme a vida atual.
-
 
     public void TeleportToCheckpoint(int target) => checkpointSystem.TeleportToCheckpoint(target, player);
     public void ChangeCheckpoint(GameObject checkpoint) => checkpointSystem.ChangeCheckpoint(checkpoint); // Altera o checkpoint atual para o fornecido.
