@@ -52,7 +52,7 @@ namespace MENU.SETTINGS {
             availableResolutions.Clear();
             options.Clear();
 
-            int[] scales = { 40, 60, 80, 100, 120 };
+            int[] scales = { 40, 80, 120 };
             foreach (int scale in scales) {
                 int width = 16 * scale;
                 int height = 9 * scale;
