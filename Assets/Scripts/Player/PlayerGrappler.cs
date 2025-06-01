@@ -16,11 +16,13 @@ namespace PLAYER {
 
         private LayerMask grapplerLayer;
         private LayerMask grapplerArea;
-        [SerializeField] private float grappleMaxPoint = 5f;
+        [SerializeField] private float grappleMaxPoint = 6f;
         [HideInInspector] public bool IsGrappleWithinMaxDistance { get; private set; } = true;
 
         [SerializeField] private Sprite defaultSprite;
         [SerializeField] private Sprite inAreaSprite;
+
+        private int grapplerAreaCount = 0;
 
         public void Initialize(PlayerController player, LineRenderer lineRenderer, DistanceJoint2D distanceJoint2D, LayerMask grapplerLayer, LayerMask grapplerArea, Rigidbody2D rigidBody2D, Animator animator) {
             this.player = player;
@@ -52,7 +54,7 @@ namespace PLAYER {
 
                 RaycastHit2D hit = Physics2D.Raycast(player.transform.position, mousePosition - (Vector2)player.transform.position, Mathf.Infinity, grapplerLayer);
 
-                if (hit.collider != null) {
+                if (hit.collider != null && player.CanGrapple) {
                     float distanceToGrapplePoint = Vector2.Distance(player.transform.position, hit.point);
                     if (distanceToGrapplePoint <= grappleMaxPoint) {
                         player.IsGrappling = true;
@@ -86,20 +88,20 @@ namespace PLAYER {
         }
         public void TriggerEnter2D(Collider2D collider2D) {
             if (((1 << collider2D.gameObject.layer) & grapplerArea) != 0) {
+                grapplerAreaCount++;
                 player.CanGrapple = true;
 
-                if (collider2D.gameObject.GetComponentInParent<SpriteRenderer>() == null) return;
-
-                collider2D.gameObject.GetComponentInParent<SpriteRenderer>().sprite = inAreaSprite;
+                var spriteRenderer = collider2D.gameObject.GetComponentInParent<SpriteRenderer>();
+                if (spriteRenderer != null) spriteRenderer.sprite = inAreaSprite;
             }
         }
         public void TriggerExit2D(Collider2D collider2D) {
             if (((1 << collider2D.gameObject.layer) & grapplerArea) != 0) {
-                player.CanGrapple = false;
+                grapplerAreaCount = Mathf.Max(0, grapplerAreaCount - 1);
+                player.CanGrapple = grapplerAreaCount > 0;
 
-                if (collider2D.gameObject.GetComponentInParent<SpriteRenderer>() == null) return;
-
-                collider2D.gameObject.GetComponentInParent<SpriteRenderer>().sprite = defaultSprite;
+                var spriteRenderer = collider2D.gameObject.GetComponentInParent<SpriteRenderer>();
+                if (spriteRenderer != null) spriteRenderer.sprite = defaultSprite;
             }
         }
     }
