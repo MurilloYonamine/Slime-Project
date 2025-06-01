@@ -207,8 +207,8 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: 0, y: 0.18}
-      - {x: -0.22, y: -0.28866667}
-      - {x: 0.22, y: -0.28866667}
+      - {x: -0.32, y: -0.28866667}
+      - {x: 0.32, y: -0.28866667}
   m_UseDelaunayMesh: 0
 --- !u!1 &1033537817600919283
 GameObject:
@@ -691,6 +691,6 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: 0, y: 0.18}
-      - {x: -0.22, y: -0.28866667}
-      - {x: 0.22, y: -0.28866667}
+      - {x: -0.32, y: -0.28866667}
+      - {x: 0.32, y: -0.28866667}
   m_UseDelaunayMesh: 0
