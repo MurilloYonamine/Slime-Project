@@ -1,25 +1,36 @@
+using System.Reflection.Emit;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace CHEAT {
     public class CheatMenuScript : MonoBehaviour {
-        [SerializeField] private Button check1;
-        [SerializeField] private Button check2;
-        [SerializeField] private Button check3;
+        [SerializeField] private TextMeshProUGUI flytext;
+        [SerializeField] private TextMeshProUGUI invtext;
 
-        private void Start() {
-            ButtonThemButtons();
-        }
-        private void ButtonThemButtons() {
-            check1.onClick.AddListener(() => telepotato(0));
-            check2.onClick.AddListener(() => telepotato(1));
-            check3.onClick.AddListener(() => telepotato(2));
-        }
-        // Update is called once per frame
+        private bool inv = false;
+        private bool fly = false;
 
-        private void telepotato(int piss) {
-            CheatManager.Instance.Teleportation(piss);
+        public void invname() {
+            inv = !inv;
+            if (inv) {
+                invtext.text = "massa infinita on";
+            }
+            else {
+                invtext.text = "massa infinita off";
+            }
         }
+        public void flyname() {
+            fly = !fly;
+            if (fly) {
+                flytext.text = "voar on";
+            }
+            else {
+                flytext.text = "voar off";
+            }
+        }
+        
+
 
     }
 }

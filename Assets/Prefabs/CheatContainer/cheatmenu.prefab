@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2575189667107998770}
   - component: {fileID: 1399888361207119046}
+  - component: {fileID: 6749396649651147893}
   m_Layer: 5
   m_Name: cheatmenu
   m_TagString: Untagged
@@ -49,6 +50,20 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &6749396649651147893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 357404055557778778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40b8d872521d525429565ddde97f513a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flytext: {fileID: 322603316276797020}
+  invtext: {fileID: 6099642765443146957}
 --- !u!1 &1159526379190468875
 GameObject:
   m_ObjectHideFlags: 0
@@ -182,6 +197,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 6749396649651147893}
+        m_TargetAssemblyTypeName: CHEAT.CheatMenuScript, Assembly-CSharp
+        m_MethodName: invname
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2096527681386601594
 GameObject:
   m_ObjectHideFlags: 0
@@ -306,6 +333,18 @@ MonoBehaviour:
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: CheatManager, Assembly-CSharp
         m_MethodName: OnFlyChange
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6749396649651147893}
+        m_TargetAssemblyTypeName: CHEAT.CheatMenuScript, Assembly-CSharp
+        m_MethodName: flyname
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1125,7 +1164,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Voar
+  m_text: Voar off
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1470,7 +1509,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Massa infinita
+  m_text: Massa infinita off
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
