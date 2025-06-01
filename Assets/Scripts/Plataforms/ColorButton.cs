@@ -33,18 +33,32 @@ namespace PLATFORMS {
         }
 
         public void ResetPlatform() {
-            changed = true;
             if (selfspriteshit == null)
                 selfspriteshit = GetComponent<SpriteRenderer>();
-            selfspriteshit.sprite = blueass;
 
-            if (BluePlatform != null) {
-                BluePlatform.isactive = true;
-                BluePlatform.moveSpeed = BluePlatform.oldspeed;
-            }
-            if (RedPlatform != null) {
-                RedPlatform.isactive = false;
-                RedPlatform.moveSpeed = 0;
+            bool useBlue = BluePlatform != null;
+
+            changed = useBlue;
+            selfspriteshit.sprite = useBlue ? blueass : redass;
+
+            if (useBlue) {
+                if (BluePlatform != null) {
+                    BluePlatform.isactive = true;
+                    BluePlatform.moveSpeed = BluePlatform.oldspeed;
+                }
+                if (RedPlatform != null) {
+                    RedPlatform.isactive = false;
+                    RedPlatform.moveSpeed = 0;
+                }
+            } else {
+                if (RedPlatform != null) {
+                    RedPlatform.isactive = true;
+                    RedPlatform.moveSpeed = RedPlatform.oldspeed;
+                }
+                if (BluePlatform != null) {
+                    BluePlatform.isactive = false;
+                    BluePlatform.moveSpeed = 0;
+                }
             }
         }
     }

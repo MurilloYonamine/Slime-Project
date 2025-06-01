@@ -3964,6 +3964,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 788405542}
     m_Modifications:
+    - target: {fileID: 545541253492489004, guid: b40d5044e424f7944b3865ebc5d8f80e, type: 3}
+      propertyPath: disappearOnlyOnce
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7622270141785012735, guid: b40d5044e424f7944b3865ebc5d8f80e, type: 3}
       propertyPath: m_Name
       value: Unstable Platform
@@ -7173,6 +7177,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 788405542}
     m_Modifications:
+    - target: {fileID: 545541253492489004, guid: b40d5044e424f7944b3865ebc5d8f80e, type: 3}
+      propertyPath: onlyOnce
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 545541253492489004, guid: b40d5044e424f7944b3865ebc5d8f80e, type: 3}
+      propertyPath: onlyDisappearOnce
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7319053722057111798, guid: b40d5044e424f7944b3865ebc5d8f80e, type: 3}
+      propertyPath: m_UsedByEffector
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7622270141785012735, guid: b40d5044e424f7944b3865ebc5d8f80e, type: 3}
       propertyPath: m_Name
       value: Unstable Platform (1)
@@ -7217,7 +7233,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2084430492587869482, guid: b40d5044e424f7944b3865ebc5d8f80e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -10039,7 +10056,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 5.625
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
