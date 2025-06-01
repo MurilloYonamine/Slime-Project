@@ -10,6 +10,7 @@ namespace SYSTEM {
     public class RespawnSystem {
         private GameObject player;
         [SerializeField] private List<ShootToStopPlatform> shootToStopPlatforms;
+        [SerializeField] private List<ColorPlatform> colorPlatforms;
 
         // Construtor que inicializa o sistema de respawn com o jogador fornecido.
         public RespawnSystem(GameObject player) => this.player = player;
@@ -35,6 +36,13 @@ namespace SYSTEM {
             if (shootToStopPlatforms != null && shootToStopPlatforms.Count > 0) {
                 foreach (var platform in shootToStopPlatforms) {
                     platform.ison = true;
+                    platform.moveSpeed = platform.oldspeed;
+                }
+            }
+
+            if (colorPlatforms != null && colorPlatforms.Count > 0) {
+                foreach (var platform in colorPlatforms) {
+                    platform.isactive = true;
                     platform.moveSpeed = platform.oldspeed;
                 }
             }
