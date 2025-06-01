@@ -7185,6 +7185,18 @@ PrefabInstance:
       propertyPath: onlyDisappearOnce
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2084430492587869482, guid: b40d5044e424f7944b3865ebc5d8f80e, type: 3}
+      propertyPath: m_UseOneWay
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2084430492587869482, guid: b40d5044e424f7944b3865ebc5d8f80e, type: 3}
+      propertyPath: m_SurfaceArc
+      value: 360
+      objectReference: {fileID: 0}
+    - target: {fileID: 2084430492587869482, guid: b40d5044e424f7944b3865ebc5d8f80e, type: 3}
+      propertyPath: m_UseOneWayGrouping
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7319053722057111798, guid: b40d5044e424f7944b3865ebc5d8f80e, type: 3}
       propertyPath: m_UsedByEffector
       value: 0
