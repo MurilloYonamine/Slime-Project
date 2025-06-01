@@ -284,7 +284,7 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: PauseManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: MENU.PauseManager, Assembly-CSharp
         m_MethodName: ManagePauseMenu
         m_Mode: 0
         m_Arguments:
@@ -298,7 +298,19 @@ MonoBehaviour:
     m_ActionId: 6045d816-2c41-40c4-bb3f-b12741fcb5e3
     m_ActionName: 'UI/Pause Menu[/Keyboard/escape]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: CheatManager, Assembly-CSharp
+        m_MethodName: cheatercheaterpoopooeater
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 4fa9c9d9-d1f9-406f-a8b5-fe8421e6f36b
     m_ActionName: 'Player/cheater cheater poopoo eater[/Keyboard/backquote]'
   m_NeverAutoSwitchControlSchemes: 0
