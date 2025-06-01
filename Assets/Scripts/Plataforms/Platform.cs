@@ -9,11 +9,10 @@ namespace PLATFORMS {
 
         [SerializeField] protected Vector3 NextPosition;
 
-        // Adicione este campo:
         protected Vector3 initialPosition;
 
         protected virtual void Start() {
-            initialPosition = transform.position; // Salva a posição inicial
+            initialPosition = transform.position; 
             NextPosition = pointA != null ? pointA.position : transform.position;
         }
 
@@ -34,7 +33,6 @@ namespace PLATFORMS {
             }
         }
 
-        // Opcional: método utilitário para resetar posição
         public virtual void ResetToInitialPosition() {
             transform.position = initialPosition;
         }

@@ -7,17 +7,20 @@ namespace PLATFORMS {
         [SerializeField] public bool isactive = false;
         public float oldspeed;
 
-        protected override void Start() {
-            base.Start();
-            oldspeed = moveSpeed;
-            ResettablePlatformRegistry.All.Add(this);
-
+        private void Awake() {
             if (!isactive) {
+                oldspeed = moveSpeed;
                 moveSpeed = 0;
             } else {
-                moveSpeed = oldspeed;
+                oldspeed = moveSpeed;
             }
         }
+
+        protected override void Start() {
+            base.Start();
+            ResettablePlatformRegistry.All.Add(this);
+        }
+
 
         private void OnDestroy() {
             ResettablePlatformRegistry.All.Remove(this);
@@ -32,7 +35,11 @@ namespace PLATFORMS {
 
         public void CHANGE() {
             isactive = !isactive;
-            moveSpeed = isactive ? oldspeed : 0;
+            if (!isactive) {
+                moveSpeed = 0;
+            } else {
+                moveSpeed = oldspeed;
+            }
         }
     }
 }
