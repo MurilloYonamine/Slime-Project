@@ -35,14 +35,13 @@ namespace PLATFORMS {
         public void ResetPlatform() {
             StopAllCoroutines();
 
-            if (!disappearOnlyOnce) {
-                SetActiveComponents(true);
-                alreadyUsed = false;
+            SetActiveComponents(true);
 
+            if (disappearOnlyOnce && alreadyUsed) {
+                animating = false;
+                if (!boxCollider.enabled) boxCollider.enabled = true;
                 if (_animator != null)
                     _animator.SetBool("Ondeath", false);
-
-                animating = false;
 
                 transform.position = initialPosition;
                 NextPosition = pointA != null ? pointA.position : initialPosition;
@@ -52,19 +51,32 @@ namespace PLATFORMS {
                     color.a = 1f;
                     spriteRenderer.color = color;
                 }
-            } else {
-                SetActiveComponents(true);
-                animating = false;
-                alreadyUsed = true;
+                return;
+            }
 
-                if (_animator != null)
-                    _animator.SetBool("Ondeath", false);
+            alreadyUsed = false;
+
+            if (_animator != null)
+                _animator.SetBool("Ondeath", false);
+
+            animating = false;
+
+            transform.position = initialPosition;
+            NextPosition = pointA != null ? pointA.position : initialPosition;
+
+            if (spriteRenderer != null) {
+                var color = spriteRenderer.color;
+                color.a = 1f;
+                spriteRenderer.color = color;
             }
         }
 
-
         private IEnumerator DisablePlatform() {
             animating = true;
+
+            if (disappearOnlyOnce) {
+                alreadyUsed = true; 
+            }
 
             if (_animator != null)
                 _animator.SetBool("Ondeath", true);
@@ -80,10 +92,6 @@ namespace PLATFORMS {
             ResetPlatform();
 
             yield return StartCoroutine(FadeEffect(0.5f, false));
-
-            if (disappearOnlyOnce) {
-                alreadyUsed = true;
-            }
 
             animating = false;
         }

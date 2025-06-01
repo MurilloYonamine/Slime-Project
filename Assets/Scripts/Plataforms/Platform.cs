@@ -12,7 +12,7 @@ namespace PLATFORMS {
         protected Vector3 initialPosition;
 
         protected virtual void Start() {
-            initialPosition = transform.position; 
+            initialPosition = transform.position;
             NextPosition = pointA != null ? pointA.position : transform.position;
         }
 
@@ -22,14 +22,24 @@ namespace PLATFORMS {
             if (transform.position == NextPosition)
                 NextPosition = (NextPosition == pointA.position) ? pointB.position : pointA.position;
         }
+
         protected virtual void OnCollisionEnter2D(Collision2D collision) {
             if (collision.gameObject.CompareTag("Player")) {
-                collision.gameObject.transform.parent = transform;
+                Transform playerTransform = collision.gameObject.transform;
+
+                playerTransform.SetParent(transform, true);
+
+                Debug.Log("Player entrou na plataforma. Scale atual: " + playerTransform.localScale);
             }
         }
+
         protected virtual void OnCollisionExit2D(Collision2D collision) {
             if (collision.gameObject.CompareTag("Player")) {
-                collision.gameObject.transform.parent = GameManager.Instance.PlayerOriginalLayer;
+                Transform playerTransform = collision.gameObject.transform;
+
+                playerTransform.SetParent(GameManager.Instance.PlayerOriginalLayer, true);
+
+                Debug.Log("Player saiu da plataforma. Scale atual: " + playerTransform.localScale);
             }
         }
 
