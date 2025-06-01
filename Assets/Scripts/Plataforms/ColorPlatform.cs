@@ -2,32 +2,39 @@ using PLAYER;
 using UnityEngine;
 
 namespace PLATFORMS {
-    public class ColorPlatform : Platform{
+    public class ColorPlatform : Platform, IResettablePlatform {
 
         [SerializeField] public bool isactive = false;
         public float oldspeed;
 
-        protected override void Start(){
+        protected override void Start() {
             base.Start();
             oldspeed = moveSpeed;
-             if (!isactive){
-                moveSpeed = 0;
-            } else{
-                moveSpeed = oldspeed;
+            ResettablePlatformRegistry.All.Add(this);
 
+            if (!isactive) {
+                moveSpeed = 0;
+            } else {
+                moveSpeed = oldspeed;
             }
         }
-        protected override void Update(){
-            base.Update();
 
+        private void OnDestroy() {
+            ResettablePlatformRegistry.All.Remove(this);
         }
-         public void CHANGE(){
+
+        public void ResetPlatform() {
+            isactive = true;
+            moveSpeed = oldspeed;
+            if (pointA != null) {
+                transform.position = pointA.position;
+                NextPosition = pointB.position;
+            }
+        }
+
+        public void CHANGE() {
             isactive = !isactive;
-            if (!isactive){
-                moveSpeed = 0;
-            } else{
-                moveSpeed = oldspeed;
-            }
-        }    
+            moveSpeed = isactive ? oldspeed : 0;
+        }
     }
 }

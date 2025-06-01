@@ -2,10 +2,8 @@ using System.Collections;
 using PLAYER;
 using UnityEngine;
 
-namespace PLATFORMS
-{
-    public class UnstablePlatform : Platform
-    {
+namespace PLATFORMS {
+    public class UnstablePlatform : Platform, IResettablePlatform {
         [SerializeField] private float timeToDestroy = 2f;
         [SerializeField] private float timeToReset = 3f;
         [SerializeField] private Animator _animator;
@@ -22,31 +20,33 @@ namespace PLATFORMS
             platformEffector2D = GetComponent<PlatformEffector2D>();
             spriteRenderer = GetComponent<SpriteRenderer>();
         }
-        protected override void OnCollisionEnter2D(Collision2D collision)
-        {
+
+        protected override void OnCollisionEnter2D(Collision2D collision) {
             base.OnCollisionEnter2D(collision);
-            if (collision.gameObject.CompareTag("Player"))
-            {
-                if (!animating)
-                {
+            if (collision.gameObject.CompareTag("Player")) {
+                if (!animating) {
                     StartCoroutine(DisablePlatform());
                 }
             }
-
-        }
-        protected override void OnCollisionExit2D(Collision2D collision)
-        {
-            base.OnCollisionExit2D(collision);
-            //StopAllCoroutines();
-            //StartCoroutine(ResetPlatform());
-            
         }
 
-        protected void Bogus() {
+        public void ResetPlatform() {
             StopAllCoroutines();
-            StartCoroutine(ResetPlatform());
+            SetActiveComponents(true);
+            if (_animator != null)
+                _animator.SetBool("Ondeath", false);
+            animating = false;
+            if (pointA != null) {
+                transform.position = pointA.position;
+                NextPosition = pointB.position;
+            }
+            if (spriteRenderer != null) {
+                var color = spriteRenderer.color;
+                color.a = 1f;
+                spriteRenderer.color = color;
+            }
+        }
 
-         }
         private IEnumerator DisablePlatform() {
             animating = true;
             _animator.SetBool("Ondeath", true);
@@ -55,33 +55,23 @@ namespace PLATFORMS
             yield return new WaitForSeconds(timeToDestroy);
             SetActiveComponents(false);
             yield return new WaitForSeconds(2f);
-            Bogus();
+            ResetPlatform();
+        }
 
+        private void SetActiveComponents(bool isActive) {
+            if (boxCollider != null) boxCollider.enabled = isActive;
+            if (platformEffector2D != null) platformEffector2D.enabled = isActive;
+            if (spriteRenderer != null) spriteRenderer.enabled = isActive;
         }
-        private IEnumerator ResetPlatform() {
-            SetActiveComponents(true);
-            _animator.SetBool("Ondeath", false);
-            yield return new WaitForSeconds(1f);
-            StartCoroutine(FadeEffect(2f, false));
-            yield return new WaitForSeconds(timeToReset);
-            animating = false;
-        }
-        private void SetActiveComponents(bool isActive)
-        {
-            boxCollider.enabled = isActive;
-            platformEffector2D.enabled = isActive;
-            spriteRenderer.enabled = isActive;
-        }
-        private IEnumerator FadeEffect(float time, bool fade)
-        {
+
+        private IEnumerator FadeEffect(float time, bool fade) {
             float fadeDuration = time;
             float elapsedTime = 0f;
             float a = fade ? 1f : 0f;
             float b = fade ? 0f : 1f;
 
             Color originalColor = spriteRenderer.color;
-            while (elapsedTime < fadeDuration)
-            {
+            while (elapsedTime < fadeDuration) {
                 spriteRenderer.enabled = true;
                 elapsedTime += Time.deltaTime;
                 float alpha = Mathf.Lerp(a, b, elapsedTime / fadeDuration);

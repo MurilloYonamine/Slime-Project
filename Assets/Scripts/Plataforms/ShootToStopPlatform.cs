@@ -2,20 +2,32 @@ using PLATFORMS;
 using PLAYER;
 using UnityEditor;
 using UnityEngine;
-namespace PLATFORMS {
-    public class ShootToStopPlatform : Platform {
+using System.Linq;
 
+namespace PLATFORMS {
+    public class ShootToStopPlatform : Platform, IResettablePlatform {
 
         public bool ison = true;
         [HideInInspector] public float oldspeed;
-        // Start is called once before the first execution of Update after the MonoBehaviour is created
+
         protected override void Start() {
             base.Start();
             oldspeed = moveSpeed;
+            ResettablePlatformRegistry.All.Add(this);
         }
 
-        // Update is called once per frame
+        private void OnDestroy() {
+            ResettablePlatformRegistry.All.Remove(this);
+        }
 
+        public void ResetPlatform() {
+            ison = true;
+            moveSpeed = oldspeed;
+            if (pointA != null) {
+                transform.position = pointA.position;
+                NextPosition = pointB.position;
+            }
+        }
 
         private void OnTriggerEnter2D(Collider2D collider2D) {
 
@@ -26,12 +38,14 @@ namespace PLATFORMS {
 
         private void CHANGE() {
             ison = !ison;
-            if (!ison) {
-                moveSpeed = 0;
-            } else {
-                moveSpeed = oldspeed;
-            }
+            moveSpeed = ison ? oldspeed : 0;
         }
 
+        public static void ResetAllPlatforms() {
+            foreach (var platform in ResettablePlatformRegistry.All.ToList()) {
+                if (platform != null && (platform as MonoBehaviour) != null)
+                    platform.ResetPlatform();
+            }
+        }
     }
 }

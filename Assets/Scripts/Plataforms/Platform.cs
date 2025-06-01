@@ -3,14 +3,15 @@ using UnityEngine;
 namespace PLATFORMS {
     public class Platform : MonoBehaviour {
 
-        [SerializeField] private Transform pointA;
-        [SerializeField] private Transform pointB;
+        [SerializeField] protected Transform pointA;
+        [SerializeField] protected Transform pointB;
         [SerializeField] public float moveSpeed = 2f;
 
-        [SerializeField] private Vector3 NextPosition;
+        [SerializeField] protected Vector3 NextPosition;
 
         protected virtual void Start() {
-            NextPosition = pointA.position;
+            transform.position = pointA.position;
+            NextPosition = pointB.position;
         }
 
         protected virtual void Update() {

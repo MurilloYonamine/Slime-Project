@@ -1,9 +1,14 @@
 using UnityEngine;
 
 namespace PLATFORMS {
-    public class SpikePlatform : Platform {
+    public class SpikePlatform : Platform, IResettablePlatform {
         [SerializeField] private GameObject[] spikes;
 
-        // Existe um universo que eu irei fazer algo aqui
+        public void ResetPlatform() {
+            if (pointA != null) {
+                transform.position = pointA.position;
+                NextPosition = pointB.position;
+            }
+        }
     }
 }
