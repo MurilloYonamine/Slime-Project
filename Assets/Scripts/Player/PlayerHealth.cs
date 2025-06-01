@@ -1,3 +1,4 @@
+using AUDIO;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -28,6 +29,9 @@ namespace PLAYER {
         public void TakeDamage(int damage, MonoBehaviour hostile) {
 
             if (!CheatManager.Instance.invunerable) currentHealth -= damage;
+
+            AudioManager.Instance.PlaySoundEffect("Audio/SFX/Slime/playerhit");
+
 
             if (currentHealth <= 0) GameManager.Instance.RespawnPlayer();
             
