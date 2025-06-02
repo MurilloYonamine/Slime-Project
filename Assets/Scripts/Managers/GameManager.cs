@@ -65,13 +65,13 @@ public class GameManager : MonoBehaviour {
 
         respawnSystem.RespawnPlayer(CameraManager.Instance.CurrentCheckpointIndex, pos);
     }
-    // Adiciona um método para identificar a fase atual e setar a música correspondente
     public void UpdateCurrentStageAndMusic() {
-        string currentSceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+        string currentSceneName = SceneManager.GetActiveScene().name;
         switch (currentSceneName) {
             case "Fase_1": SetStageMusic("Audio/Music/fase1"); break;
             case "Fase_2": SetStageMusic("Audio/Music/fase2"); break;
             case "Fase_3": SetStageMusic("Audio/Music/fase3"); break;
+            case "MainMenu": SetStageMusic("Audio/Music/menu"); break;
         }
     }
 

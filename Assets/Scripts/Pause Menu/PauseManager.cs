@@ -1,10 +1,11 @@
+using AUDIO;
+using MENU;
+using MENU.SETTINGS;
+using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
-using MENU;
-using System.Collections;
-using MENU.SETTINGS;
+using UnityEngine.UI;
 
 namespace MENU {
     public class PauseManager : MonoBehaviour {
@@ -95,6 +96,7 @@ namespace MENU {
         private IEnumerator QuitGameRoutine() {
             CloseMainMenu();
             yield return menu.HandleTransition("Start", moreTime: 0.5f);
+            AudioManager.Instance.StopAllTracks();
             SceneManager.LoadSceneAsync("MainMenu", LoadSceneMode.Single);
         }
     }
