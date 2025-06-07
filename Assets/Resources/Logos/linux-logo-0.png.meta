@@ -1,16 +1,34 @@
 fileFormatVersion: 2
-guid: 18a7b43a3894ed5409107e91cbfd0d52
+guid: d5116fac43245594b8369a685f86e82d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 988653976320867520
-    second: logo_senac_0
+      213: -521158623840407886
+    second: linux-logo-0_0
   - first:
-      213: -5820328509143286148
-    second: logo_senac_1
+      213: -3337073190293823063
+    second: linux-logo-0_1
   - first:
-      213: -7390201768354233948
-    second: logo_senac_2
+      213: -5912592423749777215
+    second: linux-logo-0_2
+  - first:
+      213: 4523590350533590369
+    second: linux-logo-0_3
+  - first:
+      213: 2183518380267094965
+    second: linux-logo-0_4
+  - first:
+      213: 3855128134505539358
+    second: linux-logo-0_5
+  - first:
+      213: -3097974717730871595
+    second: linux-logo-0_6
+  - first:
+      213: -6998150727990794837
+    second: linux-logo-0_7
+  - first:
+      213: 5138543267779171168
+    second: linux-logo-0_8
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -57,7 +75,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 160
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -145,13 +163,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: logo_senac_0
+      name: linux-logo-0_0
       rect:
         serializedVersion: 2
-        x: 166
-        y: 95
-        width: 205
-        height: 108
+        x: 470
+        y: 1778
+        width: 419
+        height: 554
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -160,20 +178,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0ccf168ad8768bd00800000000000000
-      internalID: 988653976320867520
+      spriteID: 2be6c5a2ef874c8f0800000000000000
+      internalID: -521158623840407886
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: logo_senac_1
+      name: linux-logo-0_1
       rect:
         serializedVersion: 2
-        x: 222
-        y: 197
-        width: 123
-        height: 37
+        x: 970
+        y: 2247
+        width: 125
+        height: 125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -182,20 +200,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c7e7f60fe0a0a3fa0800000000000000
-      internalID: -5820328509143286148
+      spriteID: 9a1ae0f2d9550b1d0800000000000000
+      internalID: -3337073190293823063
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: logo_senac_2
+      name: linux-logo-0_2
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 400
-        height: 102
+        x: 2741
+        y: 1492
+        width: 889
+        height: 1124
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -204,8 +222,140 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4a148ca85aab07990800000000000000
-      internalID: -7390201768354233948
+      spriteID: 1c88ab0548042fda0800000000000000
+      internalID: -5912592423749777215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: linux-logo-0_3
+      rect:
+        serializedVersion: 2
+        x: 920
+        y: 1777
+        width: 217
+        height: 412
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 16d70f0f47507ce30800000000000000
+      internalID: 4523590350533590369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: linux-logo-0_4
+      rect:
+        serializedVersion: 2
+        x: 1169
+        y: 1777
+        width: 468
+        height: 412
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b34b58e56a6d4e10800000000000000
+      internalID: 2183518380267094965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: linux-logo-0_5
+      rect:
+        serializedVersion: 2
+        x: 1659
+        y: 1769
+        width: 463
+        height: 420
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e1721dcec9a208530800000000000000
+      internalID: 3855128134505539358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: linux-logo-0_6
+      rect:
+        serializedVersion: 2
+        x: 2144
+        y: 1776
+        width: 430
+        height: 407
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d6a2827868c105d0800000000000000
+      internalID: -3097974717730871595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: linux-logo-0_7
+      rect:
+        serializedVersion: 2
+        x: 2555
+        y: 2175
+        width: 46
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba5a77d9df291ee90800000000000000
+      internalID: -6998150727990794837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: linux-logo-0_8
+      rect:
+        serializedVersion: 2
+        x: 2602
+        y: 2174
+        width: 51
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 063d3fa70e5cf4740800000000000000
+      internalID: 5138543267779171168
       vertices: []
       indices: 
       edges: []
@@ -224,9 +374,15 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      logo_senac_0: 988653976320867520
-      logo_senac_1: -5820328509143286148
-      logo_senac_2: -7390201768354233948
+      linux-logo-0_0: -521158623840407886
+      linux-logo-0_1: -3337073190293823063
+      linux-logo-0_2: -5912592423749777215
+      linux-logo-0_3: 4523590350533590369
+      linux-logo-0_4: 2183518380267094965
+      linux-logo-0_5: 3855128134505539358
+      linux-logo-0_6: -3097974717730871595
+      linux-logo-0_7: -6998150727990794837
+      linux-logo-0_8: 5138543267779171168
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,0 +1,650 @@
+fileFormatVersion: 2
+guid: 878a84bea3f90bc42be29fa8de618abd
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6053641904250417495
+    second: official-nintendo-switch-2-logo-with-and-without-background-v0-8tr456obbfde1_0
+  - first:
+      213: -2237612394707285175
+    second: official-nintendo-switch-2-logo-with-and-without-background-v0-8tr456obbfde1_1
+  - first:
+      213: 9082279686887431531
+    second: official-nintendo-switch-2-logo-with-and-without-background-v0-8tr456obbfde1_2
+  - first:
+      213: 5608574511418026099
+    second: official-nintendo-switch-2-logo-with-and-without-background-v0-8tr456obbfde1_3
+  - first:
+      213: -4897352114132795109
+    second: official-nintendo-switch-2-logo-with-and-without-background-v0-8tr456obbfde1_4
+  - first:
+      213: -3408716519056192507
+    second: official-nintendo-switch-2-logo-with-and-without-background-v0-8tr456obbfde1_5
+  - first:
+      213: 5538655329761714148
+    second: official-nintendo-switch-2-logo-with-and-without-background-v0-8tr456obbfde1_6
+  - first:
+      213: -4833885467508637532
+    second: official-nintendo-switch-2-logo-with-and-without-background-v0-8tr456obbfde1_7
+  - first:
+      213: -8311286439025029131
+    second: official-nintendo-switch-2-logo-with-and-without-background-v0-8tr456obbfde1_8
+  - first:
+      213: 2136952719594001752
+    second: official-nintendo-switch-2-logo-with-and-without-background-v0-8tr456obbfde1_9
+  - first:
+      213: 1623153147573597357
+    second: official-nintendo-switch-2-logo-with-and-without-background-v0-8tr456obbfde1_10
+  - first:
+      213: 7807581719507553595
+    second: official-nintendo-switch-2-logo-with-and-without-background-v0-8tr456obbfde1_11
+  - first:
+      213: -5516960207938675497
+    second: official-nintendo-switch-2-logo-with-and-without-background-v0-8tr456obbfde1_12
+  - first:
+      213: -1850978261730014847
+    second: official-nintendo-switch-2-logo-with-and-without-background-v0-8tr456obbfde1_13
+  - first:
+      213: 6349946708770050741
+    second: official-nintendo-switch-2-logo-with-and-without-background-v0-8tr456obbfde1_14
+  - first:
+      213: 4841124238631383767
+    second: official-nintendo-switch-2-logo-with-and-without-background-v0-8tr456obbfde1_15
+  - first:
+      213: 3799388389579327093
+    second: official-nintendo-switch-2-logo-with-and-without-background-v0-8tr456obbfde1_16
+  - first:
+      213: 3268134709488670751
+    second: official-nintendo-switch-2-logo-with-and-without-background-v0-8tr456obbfde1_17
+  - first:
+      213: 6047496685853956195
+    second: official-nintendo-switch-2-logo-with-and-without-background-v0-8tr456obbfde1_18
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: official-nintendo-switch-2-logo-with-and-without-background-v0-8tr456obbfde1_0
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 284
+        width: 121
+        height: 248
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ae0cbbf2c42dfba0800000000000000
+      internalID: -6053641904250417495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: official-nintendo-switch-2-logo-with-and-without-background-v0-8tr456obbfde1_1
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 284
+        width: 106
+        height: 248
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94b0674e16762f0e0800000000000000
+      internalID: -2237612394707285175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: official-nintendo-switch-2-logo-with-and-without-background-v0-8tr456obbfde1_2
+      rect:
+        serializedVersion: 2
+        x: 359
+        y: 284
+        width: 194
+        height: 253
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b6ddba7514dba0e70800000000000000
+      internalID: 9082279686887431531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: official-nintendo-switch-2-logo-with-and-without-background-v0-8tr456obbfde1_3
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 199
+        width: 39
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 378a1697dc8a5dd40800000000000000
+      internalID: 5608574511418026099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: official-nintendo-switch-2-logo-with-and-without-background-v0-8tr456obbfde1_4
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 199
+        width: 15
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b114b11133c190cb0800000000000000
+      internalID: -4897352114132795109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: official-nintendo-switch-2-logo-with-and-without-background-v0-8tr456obbfde1_5
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 199
+        width: 40
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 50c46a5d26ec1b0d0800000000000000
+      internalID: -3408716519056192507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: official-nintendo-switch-2-logo-with-and-without-background-v0-8tr456obbfde1_6
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 199
+        width: 38
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ef55c76da14ddc40800000000000000
+      internalID: 5538655329761714148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: official-nintendo-switch-2-logo-with-and-without-background-v0-8tr456obbfde1_7
+      rect:
+        serializedVersion: 2
+        x: 316
+        y: 199
+        width: 32
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a0893047c69aecb0800000000000000
+      internalID: -4833885467508637532
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: official-nintendo-switch-2-logo-with-and-without-background-v0-8tr456obbfde1_8
+      rect:
+        serializedVersion: 2
+        x: 374
+        y: 199
+        width: 38
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ff446fc40168ac80800000000000000
+      internalID: -8311286439025029131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: official-nintendo-switch-2-logo-with-and-without-background-v0-8tr456obbfde1_9
+      rect:
+        serializedVersion: 2
+        x: 435
+        y: 199
+        width: 40
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 85594392d2bf7ad10800000000000000
+      internalID: 2136952719594001752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: official-nintendo-switch-2-logo-with-and-without-background-v0-8tr456obbfde1_10
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 198
+        width: 45
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da47e291039968610800000000000000
+      internalID: 1623153147573597357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: official-nintendo-switch-2-logo-with-and-without-background-v0-8tr456obbfde1_11
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 111
+        width: 68
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3dc412253a1a5c60800000000000000
+      internalID: 7807581719507553595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: official-nintendo-switch-2-logo-with-and-without-background-v0-8tr456obbfde1_12
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 115
+        width: 102
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7dc99d5cbe1df63b0800000000000000
+      internalID: -5516960207938675497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: official-nintendo-switch-2-logo-with-and-without-background-v0-8tr456obbfde1_13
+      rect:
+        serializedVersion: 2
+        x: 286
+        y: 114
+        width: 21
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 189cc9ee3110056e0800000000000000
+      internalID: -1850978261730014847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: official-nintendo-switch-2-logo-with-and-without-background-v0-8tr456obbfde1_14
+      rect:
+        serializedVersion: 2
+        x: 318
+        y: 115
+        width: 64
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b256ee53ea8f1850800000000000000
+      internalID: 6349946708770050741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: official-nintendo-switch-2-logo-with-and-without-background-v0-8tr456obbfde1_15
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 111
+        width: 73
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d2382d78d02f2340800000000000000
+      internalID: 4841124238631383767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: official-nintendo-switch-2-logo-with-and-without-background-v0-8tr456obbfde1_16
+      rect:
+        serializedVersion: 2
+        x: 469
+        y: 114
+        width: 65
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5768e9c3c932ab430800000000000000
+      internalID: 3799388389579327093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: official-nintendo-switch-2-logo-with-and-without-background-v0-8tr456obbfde1_17
+      rect:
+        serializedVersion: 2
+        x: 534
+        y: 115
+        width: 13
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f185235f33fba5d20800000000000000
+      internalID: 3268134709488670751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: official-nintendo-switch-2-logo-with-and-without-background-v0-8tr456obbfde1_18
+      rect:
+        serializedVersion: 2
+        x: 546
+        y: 115
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3685dacd1360de350800000000000000
+      internalID: 6047496685853956195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      official-nintendo-switch-2-logo-with-and-without-background-v0-8tr456obbfde1_0: -6053641904250417495
+      official-nintendo-switch-2-logo-with-and-without-background-v0-8tr456obbfde1_1: -2237612394707285175
+      official-nintendo-switch-2-logo-with-and-without-background-v0-8tr456obbfde1_10: 1623153147573597357
+      official-nintendo-switch-2-logo-with-and-without-background-v0-8tr456obbfde1_11: 7807581719507553595
+      official-nintendo-switch-2-logo-with-and-without-background-v0-8tr456obbfde1_12: -5516960207938675497
+      official-nintendo-switch-2-logo-with-and-without-background-v0-8tr456obbfde1_13: -1850978261730014847
+      official-nintendo-switch-2-logo-with-and-without-background-v0-8tr456obbfde1_14: 6349946708770050741
+      official-nintendo-switch-2-logo-with-and-without-background-v0-8tr456obbfde1_15: 4841124238631383767
+      official-nintendo-switch-2-logo-with-and-without-background-v0-8tr456obbfde1_16: 3799388389579327093
+      official-nintendo-switch-2-logo-with-and-without-background-v0-8tr456obbfde1_17: 3268134709488670751
+      official-nintendo-switch-2-logo-with-and-without-background-v0-8tr456obbfde1_18: 6047496685853956195
+      official-nintendo-switch-2-logo-with-and-without-background-v0-8tr456obbfde1_2: 9082279686887431531
+      official-nintendo-switch-2-logo-with-and-without-background-v0-8tr456obbfde1_3: 5608574511418026099
+      official-nintendo-switch-2-logo-with-and-without-background-v0-8tr456obbfde1_4: -4897352114132795109
+      official-nintendo-switch-2-logo-with-and-without-background-v0-8tr456obbfde1_5: -3408716519056192507
+      official-nintendo-switch-2-logo-with-and-without-background-v0-8tr456obbfde1_6: 5538655329761714148
+      official-nintendo-switch-2-logo-with-and-without-background-v0-8tr456obbfde1_7: -4833885467508637532
+      official-nintendo-switch-2-logo-with-and-without-background-v0-8tr456obbfde1_8: -8311286439025029131
+      official-nintendo-switch-2-logo-with-and-without-background-v0-8tr456obbfde1_9: 2136952719594001752
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
