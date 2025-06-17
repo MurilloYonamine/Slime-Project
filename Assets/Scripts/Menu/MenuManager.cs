@@ -1,3 +1,4 @@
+using AUDIO;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -21,11 +22,13 @@ namespace MENU {
             StartCoroutine(menu.HandleTransition("End", moreTime: 0.5f));
         }
         private void Start() {
+            AudioManager.Instance.PlayTrack("Audio/Music/menu", loop: true, startingVolume: 0.5f);
             HandleVisibility(mainMenuCanvas, hide: false);
             HandleVisibility(optionsCanvas, hide: true);
             HandleVisibility(creditsCanvas, hide: true);
         }
         public void Jogar() {
+            AudioManager.Instance.StopAllTracks();
             StartCoroutine(StartGame());
         }
         private IEnumerator StartGame() {
